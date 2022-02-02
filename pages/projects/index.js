@@ -40,15 +40,21 @@ export default function Projects() {
               href={`/projects/${encodeURIComponent(project.slug)}`}
             >
               <div key={project.slug}>
-                <Image
-                  alt={project.title}
-                  src={project.imgsrc}
-                  width={600}
-                  height={400}
-                  className="cursor-pointer rounded-md"
-                />
+                <div
+                  className="overflow-hidden rounded-md shadow-lg"
+                  style={{ position: 'relative', maxWidth: '600px', maxHeight: '400px' }}
+                >
+                  <Image
+                    alt={project.title}
+                    src={project.imgsrc}
+                    width={600}
+                    height={400}
+                    layout="responsive"
+                    className="cursor-pointer overflow-hidden rounded-md transition-all duration-300 ease-in-out hover:scale-105"
+                  />
+                </div>
                 <div className="cursor-pointer">
-                  <h2 className="mb-2 text-2xl font-bold">{project.name}</h2>
+                  <h2 className="my-2 text-2xl font-bold">{project.name}</h2>
                   <p>{project.description}</p>
                 </div>
               </div>

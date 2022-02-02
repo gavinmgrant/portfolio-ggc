@@ -42,7 +42,10 @@ export default function Projects() {
         <meta name="description" content={data.description} />
       </Head>
 
-      <div className="mb-4">
+      <div
+        className="mb-2 overflow-hidden rounded-md shadow-lg"
+        style={{ position: 'relative', maxWidth: '800px', maxHeight: '534px' }}
+      >
         <Link href={data.url}>
           <Image
             src={data.imgsrc}
@@ -50,13 +53,13 @@ export default function Projects() {
             width={800}
             height={534}
             quality={100}
-            className="cursor-pointer rounded-md"
+            className="cursor-pointer overflow-hidden rounded-md transition-all duration-300 ease-in-out hover:scale-105"
           />
         </Link>
       </div>
 
       <div className="flex justify-between">
-        <h1 className="mb-2 text-4xl font-bold">{data.name}</h1>
+        <h1 className="my-2 text-2xl md:text-3xl lg:text-4xl font-bold">{data.name}</h1>
         <a href={data.url} target="_blank">
           <LinkIcon />
         </a>
@@ -64,14 +67,22 @@ export default function Projects() {
       <p className="mb-4">{data.description}</p>
       <ul className="list-disc">
         {data.bullets.map((bullet, i) => {
-          return <li key={i} className="ml-6">{bullet}</li>
+          return (
+            <li key={i} className="ml-6">
+              {bullet}
+            </li>
+          )
         })}
       </ul>
 
       <h3 className="mt-6 mb-2 text-2xl">Technology</h3>
       <ul className="list-disc">
         {data.technologies.map((tech, i) => {
-          return <li key={i} className="ml-6">{tech}</li>
+          return (
+            <li key={i} className="ml-6">
+              {tech}
+            </li>
+          )
         })}
       </ul>
       {data.github !== null && (
