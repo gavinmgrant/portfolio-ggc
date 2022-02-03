@@ -58,8 +58,8 @@ export default function Projects() {
         </Link>
       </div>
 
-      <div className="flex justify-between">
-        <h1 className="my-2 text-2xl md:text-3xl lg:text-4xl font-bold">{data.name}</h1>
+      <div className="flex justify-between items-center my-2">
+        <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold">{data.name}</h1>
         <a href={data.url} target="_blank">
           <LinkIcon />
         </a>
