@@ -2,7 +2,6 @@ import { useRouter } from 'next/router'
 import Image from 'next/image'
 import useSWR from 'swr'
 import Head from 'next/head'
-import Link from 'next/link'
 import { LinkIcon } from '../../public/LinkIcon'
 
 const fetcher = async (url) => {
@@ -46,7 +45,7 @@ export default function Projects() {
         className="mb-2 overflow-hidden rounded-md shadow-lg"
         style={{ position: 'relative', maxWidth: '800px', maxHeight: '534px' }}
       >
-        <Link href={data.url}>
+        <a href={data.url} target="_blank">
           <Image
             src={data.imgsrc}
             alt="Screenshot"
@@ -55,7 +54,7 @@ export default function Projects() {
             quality={100}
             className="cursor-pointer overflow-hidden rounded-md transition-all duration-300 ease-in-out hover:scale-105"
           />
-        </Link>
+        </a>
       </div>
 
       <div className="flex justify-between items-center my-2">
