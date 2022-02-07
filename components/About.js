@@ -14,13 +14,13 @@ const About = () => {
             <p className="mb-4">
               I'm a developer leveraging his architecture background to utilize
               JavaScript, TypeScript, React, Next.js, Node.js, Express, and
-              other modern web development frameworks.
+              other modern web development frameworks. Currently, I'm working as
+              a front-end developer at AndAlways, an e-commerce company that
+              provides uniquely personalized and custom printed gifts.
             </p>
           </div>
           <button className="btn-primary mt-2">
-            <a href="/projects">
-              View Projects
-            </a>
+            <a href="/projects">View Projects</a>
           </button>
         </div>
         <div className="mb-10 flex-shrink-0 lg:mt-12 lg:px-4">
