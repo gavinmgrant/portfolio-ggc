@@ -4,7 +4,7 @@ import ThemeSwitch from './ThemeSwitch'
 
 const Navigation = () => {
   return (
-    <div className="sticky top-0 z-20 mx-auto flex items-center justify-between bg-white py-3 pl-4 pr-3 dark:bg-black lg:max-w-6xl lg:py-6">
+    <div className="fixed w-screen top-0 z-20 mx-auto flex items-center justify-between bg-white py-3 pl-4 pr-3 dark:bg-black lg:py-6">
       <Link href="/">
         <a
           className={

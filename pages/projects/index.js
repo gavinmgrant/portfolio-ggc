@@ -11,13 +11,13 @@ export default function Projects() {
 
   if (error)
     return (
-      <div className="flex items-center justify-center">
+      <div className="flex items-center justify-center h-screen">
         <p>Failed to load projects.</p>
       </div>
     )
   if (!data)
     return (
-      <div className="flex items-center justify-center">
+      <div className="flex items-center justify-center h-screen">
         <p>Loading projects...</p>
       </div>
     )
@@ -32,7 +32,7 @@ export default function Projects() {
         <link rel="icon" href="/icon.png" />
       </Head>
 
-      <main className="container mx-auto grid grid-cols-1 gap-x-6 gap-y-14 px-4 lg:max-w-6xl lg:grid-cols-2">
+      <main className="container mx-auto mt-20 lg:mt-24 grid grid-cols-1 gap-x-6 gap-y-14 px-4 lg:max-w-6xl lg:grid-cols-2">
         {data.map((project) => {
           return (
             <Link
@@ -54,7 +54,7 @@ export default function Projects() {
                   />
                 </div>
                 <div className="cursor-pointer">
-                  <h2 className="my-2 text-2xl font-bold">{project.name}</h2>
+                  <h2 className="my-4 text-2xl font-bold">{project.name}</h2>
                   <p>{project.description}</p>
                 </div>
               </div>

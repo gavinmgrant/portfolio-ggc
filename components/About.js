@@ -4,7 +4,7 @@ import profile from '../public/headshot.png'
 
 const About = () => {
   return (
-    <div className="container mx-auto mt-0 max-w-5xl px-4 py-16 sm:py-20 md:py-24 lg:mt-6">
+    <div className="container mx-auto my-20 max-w-xl lg:max-w-5xl px-4 h-full sm:my-0 sm:h-screen flex justify-center items-center">
       <div className="item-center flex flex-col-reverse text-center lg:mx-4 lg:flex-row lg:items-center lg:text-left">
         <div className="lg:px-4">
           <h1 className="text-2xl font-bold text-gray-900 dark:text-white lg:text-5xl">

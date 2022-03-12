@@ -23,42 +23,46 @@ export default function Projects() {
 
   if (error)
     return (
-      <div className="flex items-center justify-center">
+      <div className="flex items-center justify-center h-screen">
         <p>{error.message}</p>
       </div>
     )
   if (!data)
     return (
-      <div className="flex items-center justify-center">
+      <div className="flex items-center justify-center h-screen">
         <p>Loading project...</p>
       </div>
     )
 
   return (
-    <div className="container mx-auto px-4 lg:max-w-6xl">
+    <div className="container mx-auto mt-16 px-4 lg:mt-24 lg:max-w-6xl">
       <Head>
         <title>Gavin Grant Consulting | {data.name}</title>
         <meta name="description" content={data.description} />
       </Head>
-
-      <div
-        className="mb-2 overflow-hidden rounded-md shadow-lg"
-        style={{ position: 'relative', maxWidth: '800px', maxHeight: '534px' }}
-      >
-        <a href={data.url} target="_blank">
+      <a href={data.url} target="_blank">
+        <div
+          className="overflow-hidden rounded-md shadow-lg"
+          style={{
+            position: 'relative',
+            maxWidth: '800px',
+            maxHeight: '534px',
+          }}
+        >
           <Image
+            alt={data.name}
             src={data.imgsrc}
-            alt="Screenshot"
             width={800}
             height={534}
             quality={100}
+            layout="responsive"
             className="cursor-pointer overflow-hidden rounded-md transition-all duration-300 ease-in-out hover:scale-105"
           />
-        </a>
-      </div>
+        </div>
+      </a>
 
-      <div className="flex justify-between items-center my-2">
-        <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold">{data.name}</h1>
+      <div className="my-4 flex items-center justify-between lg:my-8">
+        <h1 className="text-3xl font-bold lg:text-4xl">{data.name}</h1>
         <a href={data.url} target="_blank">
           <LinkIcon />
         </a>
@@ -85,11 +89,13 @@ export default function Projects() {
         })}
       </ul>
       {data.github !== null && (
-        <button className="btn-primary mt-6">
-          <a href={data.github} target="_blank">
-            GitHub Repo
-          </a>
-        </button>
+        <div className="flex w-screen items-center justify-center">
+          <button className="btn-primary mt-6">
+            <a href={data.github} target="_blank">
+              GitHub Repo
+            </a>
+          </button>
+        </div>
       )}
     </div>
   )
