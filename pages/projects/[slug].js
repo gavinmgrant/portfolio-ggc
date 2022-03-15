@@ -35,7 +35,7 @@ export default function Projects() {
     )
 
   return (
-    <div className="container mx-auto mt-16 px-4 lg:mt-24 lg:max-w-6xl">
+    <div className="container mx-auto pt-16 px-4 lg:pt-24 lg:max-w-6xl">
       <Head>
         <title>Gavin Grant Consulting | {data.name}</title>
         <meta name="description" content={data.description} />

@@ -32,7 +32,7 @@ export default function Projects() {
         <link rel="icon" href="/icon.png" />
       </Head>
 
-      <main className="container mx-auto mt-20 lg:mt-24 grid grid-cols-1 gap-x-6 gap-y-14 px-4 lg:max-w-6xl lg:grid-cols-2">
+      <main className="container mx-auto pt-20 lg:pt-24 grid grid-cols-1 gap-x-6 gap-y-14 px-4 lg:max-w-6xl lg:grid-cols-2">
         {data.map((project) => {
           return (
             <Link
