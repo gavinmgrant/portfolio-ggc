@@ -34,6 +34,12 @@ const Footer = () => {
             >
               GitHub
             </a>
+            <a
+              href="mailto:gavin@gavingrant.co?subject=Hi Gavin!"
+              className={'transition-colors hover:text-yellow-500'}
+            >
+              Email
+            </a>
           </div>
           <div className="flex items-center mt-3 lg:mt-0 text-sm">
             <Link
