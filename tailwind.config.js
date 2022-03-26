@@ -6,7 +6,7 @@ module.exports = {
   darkMode: 'class', // or 'media' or 'class'
   theme: {
     fontFamily: {
-      sans: ["Outfit", "ui-sans-serif"],
+      sans: ["Poppins", "ui-sans-serif"],
       serif: ["DM Serif Text", "ui-serif"],
       mono: ["SFMono-Regular", "ui-monospace"],
       display: ["Oswald"],

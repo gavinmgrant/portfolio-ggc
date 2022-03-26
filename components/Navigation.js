@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import React from 'react'
 import ThemeSwitch from './ThemeSwitch'
+import LogoHeader from './LogoHeader'
 
 const Navigation = () => {
   return (
@@ -11,7 +12,7 @@ const Navigation = () => {
             'uppercase tracking-wider text-gray-900 transition-colors hover:text-yellow-500 dark:text-white dark:hover:text-yellow-500'
           }
         >
-          Gavin Grant
+          <LogoHeader />
         </a>
       </Link>
       <div className="flex items-center">
