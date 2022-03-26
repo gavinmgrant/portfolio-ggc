@@ -7,7 +7,7 @@ const About = () => {
     <div className="container mx-auto my-20 max-w-xl lg:max-w-5xl px-4 h-full lg:my-0 lg:h-screen flex justify-center items-center">
       <div className="item-center flex flex-col-reverse text-center lg:mx-4 lg:flex-row lg:items-center lg:text-left">
         <div className="lg:px-4">
-          <h1 className="text-2xl font-bold text-gray-900 dark:text-white lg:text-5xl">
+          <h1 className="text-2xl font-semibold text-gray-900 dark:text-white lg:text-5xl">
             Hi there, I'm Gavin.
           </h1>
           <div className="mt-6 text-gray-800 dark:text-white">

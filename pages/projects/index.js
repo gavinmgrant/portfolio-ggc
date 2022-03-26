@@ -54,7 +54,7 @@ export default function Projects() {
                   />
                 </div>
                 <div className="cursor-pointer">
-                  <h2 className="my-4 text-2xl font-bold">{project.name}</h2>
+                  <h2 className="my-4 text-2xl font-semibold">{project.name}</h2>
                   <p>{project.description}</p>
                 </div>
               </div>

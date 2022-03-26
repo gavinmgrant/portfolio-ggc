@@ -62,7 +62,7 @@ export default function Projects() {
       </a>
 
       <div className="my-4 flex items-center justify-between lg:my-8">
-        <h1 className="text-3xl font-bold lg:text-4xl">{data.name}</h1>
+        <h1 className="text-3xl font-semibold lg:text-4xl">{data.name}</h1>
         <a href={data.url} target="_blank">
           <LinkIcon />
         </a>
