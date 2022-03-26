@@ -41,16 +41,14 @@ const Footer = () => {
               Email
             </a>
           </div>
-          <div className="flex items-center mt-3 lg:mt-0 text-sm">
+          <div className="mt-6 flex flex-col items-center text-sm lg:flex-row lg:mt-0">
             <Link
               href="/privacy"
               target="_blank"
             >
-              Privacy Policy
+              <a className="transition-colors hover:text-yellow-500">Privacy Policy</a>
             </Link>
-            <p className="ml-3">
-              © {year} Gavin Grant Consulting
-            </p>
+            <p className="ml-3">© {year} Gavin Grant Consulting</p>
           </div>
         </div>
       </div>
