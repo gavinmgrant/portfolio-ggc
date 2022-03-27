@@ -3,6 +3,7 @@ import Image from 'next/image'
 import useSWR from 'swr'
 import Head from 'next/head'
 import { LinkIcon } from '../../public/LinkIcon'
+import Loader from '../../components/Loader'
 
 const fetcher = async (url) => {
   const res = await fetch(url)
@@ -30,7 +31,7 @@ export default function Projects() {
   if (!data)
     return (
       <div className="flex items-center justify-center h-screen">
-        <p>Loading project...</p>
+        <Loader />
       </div>
     )
 

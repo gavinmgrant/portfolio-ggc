@@ -3,6 +3,7 @@ import useSWR from 'swr'
 import Head from 'next/head'
 import Link from 'next/link'
 import Image from 'next/image'
+import Loader from '../../components/Loader'
 
 const fetcher = (url) => fetch(url).then((res) => res.json())
 
@@ -18,7 +19,7 @@ export default function Projects() {
   if (!data)
     return (
       <div className="flex items-center justify-center h-screen">
-        <p>Loading projects...</p>
+        <Loader />
       </div>
     )
 
