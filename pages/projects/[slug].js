@@ -89,7 +89,7 @@ export default function Projects() {
         })}
       </ul>
       {data.github !== null && (
-        <div className="flex w-screen items-center justify-center">
+        <div className="flex w-full items-center justify-center">
           <button className="btn-primary mt-6">
             <a href={data.github} target="_blank">
               GitHub Repo
