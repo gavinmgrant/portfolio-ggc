@@ -8,7 +8,7 @@ export default function Home() {
 
   setTimeout(() => {
     setIsVisible(false);
-  }, 6000);
+  }, 5000);
 
   return (
     <div>
