@@ -14,9 +14,7 @@ const About = () => {
             <p className="mb-4">
               I'm a developer leveraging his architecture background to utilize
               JavaScript, TypeScript, React, Next.js, Node.js, Express, and
-              other modern web development frameworks. Currently, I'm working as
-              a front-end developer at AndAlways, an e-commerce company that
-              provides uniquely personalized and custom printed gifts.
+              other modern web development frameworks.
             </p>
           </div>
           <button className="btn-primary mt-2">
