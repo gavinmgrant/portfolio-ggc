@@ -12,12 +12,9 @@ const About = () => {
           </h1>
           <div className="mt-6 text-gray-800 dark:text-white">
             <p className="mb-4">
-              I'm a software engineer at{' '}
-              <a href="https://sessionslive.com/" target="_blank">
-                Sessions
-              </a>
-              , a live video streaming service that connects musicians to a
-              global audience.
+              I'm a software engineer leveraging my architecture background to
+              utilize JavaScript, TypeScript, React, Next.js, Node.js, Express,
+              and other modern web development frameworks.
             </p>
           </div>
           <button className="btn-primary mt-2">
