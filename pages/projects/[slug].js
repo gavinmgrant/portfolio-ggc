@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { useRouter } from 'next/router'
 import Image from 'next/image'
 import useSWR from 'swr'
@@ -16,6 +17,7 @@ const fetcher = async (url) => {
 }
 
 export default function Projects() {
+  const [isLoaded, setIsLoaded] = useState(false)
   const { query } = useRouter()
   const { data, error } = useSWR(
     () => query.slug && `/api/projects/${query.slug}`,
@@ -24,19 +26,19 @@ export default function Projects() {
 
   if (error)
     return (
-      <div className="flex items-center justify-center h-screen">
+      <div className="flex h-screen items-center justify-center">
         <p>{error.message}</p>
       </div>
     )
   if (!data)
     return (
-      <div className="flex items-center justify-center h-screen">
+      <div className="flex h-screen items-center justify-center">
         <Loader />
       </div>
     )
 
   return (
-    <div className="container mx-auto pt-16 px-4 lg:pt-24 lg:max-w-6xl">
+    <div className="container mx-auto px-4 pt-16 lg:max-w-6xl lg:pt-24">
       <Head>
         <title>Gavin Grant Consulting | {data.name}</title>
         <meta name="description" content={data.description} />
@@ -57,7 +59,10 @@ export default function Projects() {
             height={534}
             quality={100}
             layout="responsive"
-            className="cursor-pointer overflow-hidden rounded-md transition-all duration-300 ease-in-out hover:scale-105"
+            className={`cursor-pointer overflow-hidden rounded-md transition-all duration-300 ease-in-out hover:scale-105 ${
+              !isLoaded && 'animate-pulse'
+            }`}
+            onLoad={() => setIsLoaded(true)}
           />
         </div>
       </a>
