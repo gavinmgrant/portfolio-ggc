@@ -1,6 +1,7 @@
 import React from 'react'
 import Image from 'next/image'
 import profile from '../public/headshot.png'
+import { motion } from 'framer-motion'
 
 const About = () => {
   return (
@@ -17,9 +18,13 @@ const About = () => {
               and other modern web development frameworks.
             </p>
           </div>
-          <button className="btn-primary mt-2">
+          <motion.button
+            className="btn-primary mt-2"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
             <a href="/projects">View Projects</a>
-          </button>
+          </motion.button>
         </div>
         <div className="mb-10 flex-shrink-0 lg:mt-12 lg:pl-10">
           <Image

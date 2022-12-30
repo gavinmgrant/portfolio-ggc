@@ -5,6 +5,7 @@ import useSWR from 'swr'
 import Head from 'next/head'
 import { LinkIcon } from '../../public/LinkIcon'
 import Loader from '../../components/Loader'
+import { motion } from 'framer-motion'
 
 const fetcher = async (url) => {
   const res = await fetch(url)
@@ -44,13 +45,16 @@ export default function Projects() {
         <meta name="description" content={data.description} />
       </Head>
       <a href={data.url} target="_blank">
-        <div
+        <motion.div
           className="overflow-hidden rounded-md shadow-lg"
           style={{
             position: 'relative',
             maxWidth: '800px',
             maxHeight: '534px',
           }}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.2 }}
         >
           <Image
             alt={data.name}
@@ -64,7 +68,7 @@ export default function Projects() {
             }`}
             onLoad={() => setIsLoaded(true)}
           />
-        </div>
+        </motion.div>
       </a>
 
       <div className="my-4 flex items-center justify-between lg:my-8">
@@ -96,11 +100,15 @@ export default function Projects() {
       </ul>
       {data.github !== null && (
         <div className="flex w-full items-center justify-center">
-          <button className="btn-primary mt-6">
+          <motion.button
+            className="btn-primary mt-6"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
             <a href={data.github} target="_blank">
               GitHub Repo
             </a>
-          </button>
+          </motion.button>
         </div>
       )}
     </div>
