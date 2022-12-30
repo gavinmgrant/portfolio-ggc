@@ -25,6 +25,15 @@ export default function Projects() {
     fetcher
   )
 
+  const variants = {
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { type: 'spring', stiffness: 300, damping: 24 },
+    },
+    hidden: { opacity: 0, y: 20, transition: { duration: 0.2 } },
+  }
+
   if (error)
     return (
       <div className="flex h-screen items-center justify-center">
@@ -45,29 +54,29 @@ export default function Projects() {
         <meta name="description" content={data.description} />
       </Head>
       <a href={data.url} target="_blank">
-        <motion.div
-          className="overflow-hidden rounded-md shadow-lg"
-          style={{
-            position: 'relative',
-            maxWidth: '800px',
-            maxHeight: '534px',
-          }}
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.2 }}
-        >
-          <Image
-            alt={data.name}
-            src={data.imgsrc}
-            width={800}
-            height={534}
-            quality={100}
-            layout="responsive"
-            className={`cursor-pointer overflow-hidden rounded-md transition-all duration-300 ease-in-out hover:scale-105 ${
-              !isLoaded && 'animate-pulse'
-            }`}
-            onLoad={() => setIsLoaded(true)}
-          />
+        <motion.div initial="hidden" animate={isLoaded ? 'visible' : 'hidden'}>
+          <motion.div
+            className="overflow-hidden rounded-md shadow-lg"
+            style={{
+              position: 'relative',
+              maxWidth: '800px',
+              maxHeight: '534px',
+            }}
+            variants={variants}
+          >
+            <Image
+              alt={data.name}
+              src={data.imgsrc}
+              width={800}
+              height={534}
+              quality={100}
+              layout="responsive"
+              className={`cursor-pointer overflow-hidden rounded-md transition-all duration-300 ease-in-out hover:scale-105 ${
+                !isLoaded && 'animate-pulse'
+              }`}
+              onLoad={() => setIsLoaded(true)}
+            />
+          </motion.div>
         </motion.div>
       </a>
 
