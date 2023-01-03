@@ -8,35 +8,56 @@ const About = () => {
     <div className="container mx-auto my-20 flex h-full max-w-xl items-center justify-center px-4 lg:my-0 lg:h-screen lg:max-w-5xl">
       <div className="item-center flex flex-col-reverse text-center lg:mx-4 lg:flex-row lg:items-center lg:text-left">
         <div className="lg:px-4">
-          <h1 className="text-2xl font-semibold text-gray-900 dark:text-white lg:text-5xl">
+          <motion.h1
+            className="text-4xl font-semibold text-gray-900 dark:text-white lg:text-5xl"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 4.5 }}
+          >
             Hi there, I'm Gavin.
-          </h1>
-          <div className="mt-6 text-gray-800 dark:text-white">
+          </motion.h1>
+          <motion.div
+            className="mt-2 lg:mt-6 text-gray-800 dark:text-white"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 4.75 }}
+          >
             <p className="mb-4">
               I'm a software engineer leveraging my architecture background to
               utilize JavaScript, TypeScript, React, Next.js, Node.js, Express,
               and other modern web development frameworks.
             </p>
-          </div>
-          <motion.button
-            className="btn-primary mt-2"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 5 }}
           >
-            <a href="/projects">View Projects</a>
-          </motion.button>
+            <motion.button
+              className="btn-primary lg:mt-2"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <a href="/projects">View Projects</a>
+            </motion.button>
+          </motion.div>
         </div>
-        <div className="mb-10 flex-shrink-0 lg:mt-12 lg:pl-10">
+        <motion.div
+          className="mb-6 lg:mb-10 flex-shrink-0 lg:mt-12 lg:pl-4"
+          initial={{ opacity: 0, x: 60 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ delay: 5.25 }}
+        >
           <Image
             src={profile}
             alt="Profile"
             priority={true}
             className="rounded-full"
-            width={250}
-            height={250}
+            width={260}
+            height={260}
             placeholder="blur"
           />
-        </div>
+        </motion.div>
       </div>
     </div>
   )
