@@ -16,9 +16,7 @@ const testimonials = [
   {
     name: 'Spencer Skeen',
     title: 'Lead Developer at AndAlways',
-    quote: `"Over the past year and a half, working with Gavin has been an absolute pleasure. As soon as he joined our team, he wasted no time in providing creative, yet analytical solutions to various arising problems where several of these solutions lead to increased conversions rates for the Company's e-commerce platform. Gavin's attention to detail while still maintaining a macro-level view of a problem is a unique trait within any software developer."
-
-    His radiating energy and enthusiasm when working on any project seeps motivation into his peers and even superiors. This, along with being a skillful communicator led to creating an invaluable and positive working environment across the team.`,
+    quote: `"Over the past year and a half, working with Gavin has been an absolute pleasure. As soon as he joined our team, he wasted no time in providing creative, yet analytical solutions to various arising problems where several of these solutions lead to increased conversions rates for the Company's e-commerce platform. Gavin's attention to detail while still maintaining a macro-level view of a problem is a unique trait within any software developer. His radiating energy and enthusiasm when working on any project seeps motivation into his peers and even superiors. This, along with being a skillful communicator led to creating an invaluable and positive working environment across the team."`,
   },
 ]
 
@@ -53,9 +51,9 @@ const Testimonials = () => {
   }
 
   return (
-    <div className="relative mt-24 lg:mt-64 h-screen w-screen text-center lg:ml-4 lg:text-left">
+    <div className="relative mt-24 h-screen w-screen text-center lg:mt-64 lg:ml-4 lg:text-left">
       <motion.h2
-        className="mb-8 lg:mb-12 text-3xl font-semibold text-gray-900 dark:text-white lg:text-4xl"
+        className="mb-8 text-3xl font-semibold text-gray-900 dark:text-white lg:mb-12 lg:text-4xl"
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
       >
