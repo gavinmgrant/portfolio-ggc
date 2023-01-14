@@ -16,7 +16,7 @@
     @apply rounded-full border border-gray-300 py-2 px-4 hover:shadow-md dark:border-gray-700;
   }
   .card {
-    @apply rounded-lg border border-gray-300 p-5 shadow-md dark:border-gray-700;
+    @apply rounded-lg border border-gray-300 p-3 lg:p-5 shadow-md dark:border-gray-700;
   }
 }
 
