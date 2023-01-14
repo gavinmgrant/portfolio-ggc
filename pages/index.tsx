@@ -1,14 +1,15 @@
-import { useState } from 'react';
+import { useState } from 'react'
 import Head from 'next/head'
-import Logo from '../components/Logo';
+import Logo from '../components/Logo'
 import About from '../components/About'
+import Testimonials from '../components/Testimonials'
 
 export default function Home() {
-  const [isVisible, setIsVisible] = useState(true);
+  const [isVisible, setIsVisible] = useState(true)
 
   setTimeout(() => {
-    setIsVisible(false);
-  }, 5000);
+    setIsVisible(false)
+  }, 5000)
 
   return (
     <div>
@@ -25,6 +26,7 @@ export default function Home() {
       <main className="mx-auto max-w-6xl antialiased">
         {isVisible && <Logo />}
         <About />
+        <Testimonials />
       </main>
     </div>
   )

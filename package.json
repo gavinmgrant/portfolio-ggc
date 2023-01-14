@@ -10,6 +10,7 @@
     "framer-motion": "^8.0.2",
     "next": "^12.3.3",
     "next-themes": "^0.0.15",
+    "popmotion": "^11.0.5",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-spring": "^9.4.4",
