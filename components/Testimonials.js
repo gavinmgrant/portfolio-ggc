@@ -51,7 +51,7 @@ const Testimonials = () => {
   }
 
   return (
-    <div className="relative mt-24 h-screen w-screen text-center lg:mt-64 lg:ml-4 lg:text-left">
+    <div className="relative w-screen text-center lg:ml-4 lg:text-left" style={{ height: "65vh" }}>
       <motion.h2
         className="mb-8 text-3xl font-semibold text-gray-900 dark:text-white lg:mb-12 lg:text-4xl"
         initial={{ opacity: 0, y: 20 }}
