@@ -22,7 +22,7 @@
 
 #intro {
   opacity: 1;
-  animation: scale-anim 0.5s ease forwards 4.5s;
+  animation: scale-anim 1s ease forwards 4.5s;
 }
 
 #logo {
@@ -97,6 +97,7 @@
 
 @keyframes scale-anim {
   to {
-    scale: 125;
+    opacity: 0;
+    transform: scale3d(4, 4, 4);
   }
 }
