@@ -12,7 +12,7 @@ const About = () => {
             className="text-4xl font-semibold text-gray-900 dark:text-white lg:text-5xl"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 5 }}
+            transition={{ delay: 4 }}
           >
             Hi there, I'm Gavin.
           </motion.h1>
@@ -20,7 +20,7 @@ const About = () => {
             className="mt-2 lg:mt-6 text-gray-800 dark:text-white"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 5.25 }}
+            transition={{ delay: 4.25 }}
           >
             <p className="mb-4">
               I'm a software engineer leveraging my architecture background to
@@ -31,7 +31,7 @@ const About = () => {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 5.5 }}
+            transition={{ delay: 4.5 }}
           >
             <motion.button
               className="btn-primary lg:mt-2"
@@ -46,7 +46,7 @@ const About = () => {
           className="mb-6 lg:mb-10 flex-shrink-0 lg:mt-12 lg:pl-4"
           initial={{ opacity: 0, x: 60 }}
           animate={{ opacity: 1, x: 0 }}
-          transition={{ delay: 5.75 }}
+          transition={{ delay: 4.75 }}
         >
           <Image
             src={profile}
