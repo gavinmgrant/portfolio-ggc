@@ -16,77 +16,84 @@
     @apply rounded-full border border-gray-300 py-2 px-4 hover:shadow-md dark:border-gray-700;
   }
   .card {
-    @apply rounded-lg border border-gray-300 p-3 lg:p-5 shadow-md dark:border-gray-700;
+    @apply rounded-lg border border-gray-300 p-3 shadow-md dark:border-gray-700 lg:p-5;
   }
 }
 
 #intro {
   opacity: 1;
-  animation: scale-anim 1s ease forwards 3.5s;
+  animation: scale-anim 1.5s ease forwards 3s;
 }
 
 #logo {
   margin: 1rem;
 }
 
+#logo path {
+  stroke: white;
+  stroke-width: 3;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+}
+
 #logo path:nth-child(1) {
   stroke-dasharray: 424;
   stroke-dashoffset: 424;
-  animation: line-anim 1s ease forwards;
+  animation: line-anim 0.7s ease forwards;
 }
 
 #logo path:nth-child(2) {
   stroke-dasharray: 327;
   stroke-dashoffset: 327;
-  animation: line-anim 1s ease forwards 0.15s;
+  animation: line-anim 0.7s ease forwards 0.15s;
 }
 
 #logo path:nth-child(3) {
   stroke-dasharray: 295;
   stroke-dashoffset: 295;
-  animation: line-anim 1s ease forwards 0.3s;
+  animation: line-anim 0.7s ease forwards 0.3s;
 }
 
 #logo path:nth-child(4) {
   stroke-dasharray: 151;
   stroke-dashoffset: 151;
-  animation: line-anim 1s ease forwards 0.45s;
+  animation: line-anim 0.7s ease forwards 0.45s;
 }
 
 #logo path:nth-child(5) {
   stroke-dasharray: 403;
   stroke-dashoffset: 403;
-  animation: line-anim 1s ease forwards 0.6s;
+  animation: line-anim 0.7s ease forwards 0.6s;
 }
 
 #logo path:nth-child(6) {
   stroke-dasharray: 424;
   stroke-dashoffset: 424;
-  animation: line-anim 1s ease forwards 0.75s;
+  animation: line-anim 0.7s ease forwards 0.75s;
 }
 
 #logo path:nth-child(7) {
   stroke-dasharray: 366;
   stroke-dashoffset: 366;
-  animation: line-anim 1s ease forwards 0.9s;
+  animation: line-anim 0.7s ease forwards 0.9s;
 }
 
 #logo path:nth-child(8) {
   stroke-dasharray: 327;
   stroke-dashoffset: 327;
-  animation: line-anim 1s ease forwards 1.05s;
+  animation: line-anim 0.7s ease forwards 1.05s;
 }
 
 #logo path:nth-child(9) {
   stroke-dasharray: 403;
   stroke-dashoffset: 403;
-  animation: line-anim 1s ease forwards 1.2s;
+  animation: line-anim 0.7s ease forwards 1.2s;
 }
 
 #logo path:nth-child(10) {
   stroke-dasharray: 225;
   stroke-dashoffset: 225;
-  animation: line-anim 1s ease forwards 1.35s;
+  animation: line-anim 0.7s ease forwards 1.35s;
 }
 
 @keyframes line-anim {
@@ -98,6 +105,6 @@
 @keyframes scale-anim {
   to {
     opacity: 0;
-    transform: scale3d(4, 4, 4);
+    transform: scale3d(6, 6, 6);
   }
 }
