@@ -1,9 +1,11 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
 
 const ProjectCard = ({ index, slug, imgsrc, title, name, description }) => {
+  const [isLoaded, setIsLoaded] = useState(false)
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -21,12 +23,16 @@ const ProjectCard = ({ index, slug, imgsrc, title, name, description }) => {
               maxHeight: '400px',
             }}
           >
+            {!isLoaded && (
+              <div className="z-10 h-[400px] w-[600px] animate-pulse bg-slate-300"></div>
+            )}
             <Image
               alt={title}
               src={imgsrc}
               width={600}
               height={400}
               layout="responsive"
+              onLoad={() => setIsLoaded(true)}
               className="cursor-pointer overflow-hidden rounded-md transition-all duration-300 ease-in-out hover:scale-105"
             />
           </div>
