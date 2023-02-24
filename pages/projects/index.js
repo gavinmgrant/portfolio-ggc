@@ -1,10 +1,8 @@
 import React from 'react'
 import useSWR from 'swr'
 import Head from 'next/head'
-import Link from 'next/link'
-import Image from 'next/image'
 import Loader from '../../components/Loader'
-import { motion } from 'framer-motion'
+import ProjectCard from '../../components/ProjectCard'
 
 const fetcher = (url) => fetch(url).then((res) => res.json())
 
@@ -24,15 +22,6 @@ export default function Projects() {
       </div>
     )
 
-  const itemVariants = {
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { type: 'spring', stiffness: 300, damping: 24 },
-    },
-    hidden: { opacity: 0, y: 20, transition: { duration: 0.2 } },
-  }
-
   return (
     <div>
       <Head>
@@ -43,67 +32,21 @@ export default function Projects() {
         <link rel="icon" href="/icon.png" />
       </Head>
 
-      <motion.div initial="hidden" animate="visible">
-        <motion.div
-          className="container mx-auto grid grid-cols-1 gap-x-6 gap-y-14 px-4 pt-20 lg:max-w-6xl lg:grid-cols-2 lg:pt-24"
-          variants={{
-            visible: {
-              transition: {
-                type: 'spring',
-                bounce: 0,
-                duration: 0.7,
-                delayChildren: 0.1,
-                staggerChildren: 0.2,
-              },
-            },
-            hidden: {
-              transition: {
-                type: 'spring',
-                bounce: 0,
-                duration: 0.3,
-              },
-            },
-          }}
-        >
-          {data.map((project) => {
-            return (
-              <motion.div key={project.slug} variants={itemVariants}>
-                <Link href={`/projects/${encodeURIComponent(project.slug)}`}>
-                  <div key={project.slug}>
-                    <div
-                      className="overflow-hidden rounded-md shadow-lg"
-                      style={{
-                        position: 'relative',
-                        maxWidth: '600px',
-                        maxHeight: '400px',
-                      }}
-                    >
-                      {!project.imgsrc ? (
-                        <Loader />
-                      ) : (
-                        <Image
-                          alt={project.title}
-                          src={project.imgsrc}
-                          width={600}
-                          height={400}
-                          layout="responsive"
-                          className="cursor-pointer overflow-hidden rounded-md transition-all duration-300 ease-in-out hover:scale-105"
-                        />
-                      )}
-                    </div>
-                    <div className="cursor-pointer">
-                      <h2 className="my-4 text-2xl font-semibold">
-                        {project.name}
-                      </h2>
-                      <p>{project.description}</p>
-                    </div>
-                  </div>
-                </Link>
-              </motion.div>
-            )
-          })}
-        </motion.div>
-      </motion.div>
+      <div className="container mx-auto grid grid-cols-1 gap-x-6 gap-y-14 px-4 pt-20 lg:max-w-6xl lg:grid-cols-2 lg:pt-24">
+        {data.map((project, index) => {
+          return (
+            <ProjectCard
+              index={index}
+              key={project.slug}
+              slug={project.slug}
+              imgsrc={project.imgsrc}
+              title={project.title}
+              name={project.name}
+              description={project.description}
+            />
+          )
+        })}
+      </div>
     </div>
   )
 }
