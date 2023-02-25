@@ -13,7 +13,7 @@
 
 @layer components {
   .btn-primary {
-    @apply rounded-full border border-gray-300 py-2 px-4 hover:shadow-md dark:border-gray-700;
+    @apply rounded-full border border-gray-300 py-2 px-4 transition-colors duration-500 hover:border-yellow-600 hover:text-yellow-600 hover:shadow-md dark:border-gray-700 hover:dark:border-yellow-500 dark:hover:text-yellow-500;
   }
   .card {
     @apply rounded-lg border border-gray-300 p-3 shadow-md dark:border-gray-700 lg:p-5;
@@ -94,6 +94,31 @@
   stroke-dasharray: 225;
   stroke-dashoffset: 225;
   animation: line-anim 0.7s ease forwards 1.35s;
+}
+
+.link-underline {
+  border-bottom-width: 0;
+  background-image: linear-gradient(transparent, transparent),
+    linear-gradient(#fff, #fff);
+  background-size: 0 3px;
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  transition: background-size 0.5s ease-in-out;
+}
+
+.link-underline-dark {
+  background-image: linear-gradient(transparent, transparent),
+    linear-gradient(#eab308, #eab308);
+}
+
+.link-underline-light {
+  background-image: linear-gradient(transparent, transparent),
+    linear-gradient(#ca8a04, #ca8a04);
+}
+
+.link-underline:hover {
+  background-size: 100% 3px;
+  background-position: 0 100%;
 }
 
 @keyframes line-anim {

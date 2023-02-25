@@ -12,7 +12,7 @@ const Footer = () => {
           <div className="flex flex-wrap space-x-2 pt-2 sm:space-x-4 lg:pt-0">
             <a
               href="https://twitter.com/higavingrant"
-              className={'transition-colors hover:text-yellow-500'}
+              className="transition-colors duration-500 hover:text-yellow-600 dark:hover:text-yellow-500"
               target="_blank"
               rel="noreferrer"
             >
@@ -20,7 +20,7 @@ const Footer = () => {
             </a>
             <a
               href="https://www.linkedin.com/in/gavinmgrant/"
-              className={'transition-colors hover:text-yellow-500'}
+              className="transition-colors duration-500 hover:text-yellow-600 dark:hover:text-yellow-500"
               target="_blank"
               rel="noreferrer"
             >
@@ -28,7 +28,7 @@ const Footer = () => {
             </a>
             <a
               href="https://github.com/gavinmgrant"
-              className={'transition-colors hover:text-yellow-500'}
+              className="transition-colors duration-500 hover:text-yellow-600 dark:hover:text-yellow-500"
               target="_blank"
               rel="noreferrer"
             >
@@ -36,7 +36,7 @@ const Footer = () => {
             </a>
             <a
               href="mailto:gavin@gavingrant.co?subject=Hi Gavin!"
-              className={'transition-colors hover:text-yellow-500'}
+              className="transition-colors duration-500 hover:text-yellow-600 dark:hover:text-yellow-500"
             >
               Email
             </a>
@@ -46,7 +46,7 @@ const Footer = () => {
               href="/privacy"
               target="_blank"
             >
-              <a className="transition-colors hover:text-yellow-500">Privacy Policy</a>
+              <a className="transition-colors duration-500 hover:text-yellow-600 dark:hover:text-yellow-500">Privacy Policy</a>
             </Link>
             <p className="ml-3">© {year} Gavin Grant Consulting</p>
           </div>
