@@ -34,6 +34,7 @@ const ProjectCard = ({ index, slug, imgsrc, title, name, description }) => {
               layout="responsive"
               onLoad={() => setIsLoaded(true)}
               className="cursor-pointer overflow-hidden rounded-md transition-all duration-300 ease-in-out hover:scale-105"
+              priority={index === 0 || index === 1}
             />
           </div>
           <div className="cursor-pointer">
