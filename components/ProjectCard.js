@@ -10,13 +10,13 @@ const ProjectCard = ({ index, slug, imgsrc, title, name, description }) => {
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
-      transition={{ delay: 0 + index * 0.1 }}
+      transition={{ delay: 0 + index * 0.05 }}
       viewport={{ once: true }}
     >
       <Link href={`/projects/${encodeURIComponent(slug)}`}>
         <div key={slug}>
           <div
-            className="overflow-hidden rounded-md shadow-lg"
+            className="relative overflow-hidden rounded-md shadow-lg"
             style={{
               position: 'relative',
               maxWidth: '600px',
@@ -24,7 +24,7 @@ const ProjectCard = ({ index, slug, imgsrc, title, name, description }) => {
             }}
           >
             {!isLoaded && (
-              <div className="z-10 h-[400px] w-[600px] animate-pulse bg-slate-300"></div>
+              <div className="absolute top-0 left-0 z-10 overflow-hidden rounded-md aspect-[3/2] w-[600px] h-[400px] animate-pulse bg-slate-300"></div>
             )}
             <Image
               alt={title}
