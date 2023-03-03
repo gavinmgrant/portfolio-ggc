@@ -10,10 +10,11 @@ const Navigation = () => {
   return (
     <div className="fixed top-0 z-20 mx-auto w-screen bg-white dark:bg-black">
       <div className="mx-auto flex items-center justify-between py-3 pl-4 pr-3 lg:max-w-6xl lg:py-6">
-        <Link href="/">
-          <a className="transition-colors duration-500 hover:text-yellow-600 dark:hover:text-yellow-500">
-            <LogoHeader />
-          </a>
+        <Link
+          href="/"
+          className="transition-colors duration-500 hover:text-yellow-600 dark:hover:text-yellow-500"
+        >
+          <LogoHeader />
         </Link>
         <div className="flex items-center">
           <a

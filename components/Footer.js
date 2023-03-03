@@ -5,7 +5,7 @@ const Footer = () => {
   const year = new Date().getFullYear()
 
   return (
-    <div className="mx-auto py-12 mt-56 sm:mt-20 md:mt-0">
+    <div className="mx-auto mt-56 py-12 sm:mt-20 md:mt-0">
       <div className="mx-auto px-4 text-gray-800 dark:text-white lg:max-w-6xl">
         <div className="dark:border-white-300 mb-4 border-t-2 border-gray-300"></div>
         <div className="flex flex-col items-center justify-between lg:flex-row">
@@ -41,12 +41,13 @@ const Footer = () => {
               Email
             </a>
           </div>
-          <div className="mt-6 flex flex-col items-center text-sm lg:flex-row lg:mt-0">
+          <div className="mt-6 flex flex-col items-center text-sm lg:mt-0 lg:flex-row">
             <Link
               href="/privacy"
               target="_blank"
+              className="transition-colors duration-500 hover:text-yellow-600 dark:hover:text-yellow-500"
             >
-              <a className="transition-colors duration-500 hover:text-yellow-600 dark:hover:text-yellow-500">Privacy Policy</a>
+              Privacy Policy
             </Link>
             <p className="ml-3">© {year} Gavin Grant Consulting</p>
           </div>
