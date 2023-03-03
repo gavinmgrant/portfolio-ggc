@@ -52,7 +52,7 @@ const Testimonials = () => {
 
   return (
     <div
-      className="relative w-full text-center lg:ml-4 lg:text-left"
+      className="relative w-full text-center mb-56 sm:mb-0 lg:ml-4 lg:text-left lg:h-screen lg:max-w-5xl "
       style={{ height: '65vh' }}
     >
       <motion.h2
