@@ -53,33 +53,53 @@ export default function Projects() {
         <title>Gavin Grant Consulting | {data.name}</title>
         <meta name="description" content={data.description} />
       </Head>
-      <a href={data.url} target="_blank">
-        <motion.div initial="hidden" animate={isLoaded ? 'visible' : 'hidden'}>
+      <section className="flex flex-col justify-start lg:flex-row lg:justify-between">
+        <a href={data.url} target="_blank" className="grow">
           <motion.div
-            className="overflow-hidden rounded-md shadow-lg"
-            style={{
-              position: 'relative',
-              maxWidth: '800px',
-              maxHeight: '534px',
-            }}
-            variants={variants}
+            initial="hidden"
+            animate={isLoaded ? 'visible' : 'hidden'}
           >
-            <Image
-              alt={data.name}
-              src={data.imgsrc}
-              width={800}
-              height={534}
-              quality={100}
-              layout="responsive"
-              className={`cursor-pointer overflow-hidden rounded-md transition-all duration-300 ease-in-out hover:scale-105 ${
-                !isLoaded && 'animate-pulse'
-              }`}
-              onLoad={() => setIsLoaded(true)}
-            />
+            <motion.div
+              className="overflow-hidden rounded-md shadow-lg"
+              style={{
+                position: 'relative',
+                maxWidth: '800px',
+                maxHeight: '534px',
+              }}
+              variants={variants}
+            >
+              <Image
+                alt={data.name}
+                src={data.imgsrc}
+                width={800}
+                height={534}
+                quality={100}
+                layout="responsive"
+                className={`cursor-pointer overflow-hidden rounded-md transition-all duration-300 ease-in-out hover:scale-105 ${
+                  !isLoaded && 'animate-pulse'
+                }`}
+                onLoad={() => setIsLoaded(true)}
+              />
+            </motion.div>
           </motion.div>
-        </motion.div>
-      </a>
-
+        </a>
+        <div className="mt-6 flex flex-row flex-wrap lg:mt-0 lg:flex-col">
+          {data.technologies.map((tech, i) => {
+            return (
+              <motion.span
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0 + i * 0.25 }}
+                viewport={{ once: true }}
+                key={i}
+                class="mr-2 mt-0 mb-3 rounded bg-gray-100 px-3 py-1 text-xs font-medium text-gray-800 dark:bg-gray-700 dark:text-gray-300 lg:text-sm"
+              >
+                {tech.split(' - ')[0]}
+              </motion.span>
+            )
+          })}
+        </div>
+      </section>
       <div className="my-4 flex items-center justify-between lg:my-8">
         <h1 className="text-3xl font-semibold lg:text-4xl">{data.name}</h1>
         <a href={data.url} target="_blank">
