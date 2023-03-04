@@ -60,7 +60,7 @@ export default function Projects() {
             animate={isLoaded ? 'visible' : 'hidden'}
           >
             <motion.div
-              className="overflow-hidden rounded-md shadow-lg"
+              className="overflow-hidden rounded-md shadow-lg shadow-gray-300 dark:shadow-gray-600"
               style={{
                 position: 'relative',
                 maxWidth: '800px',
