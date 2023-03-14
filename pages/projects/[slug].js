@@ -3,8 +3,8 @@ import { useRouter } from 'next/router'
 import Image from 'next/image'
 import useSWR from 'swr'
 import Head from 'next/head'
-import { LinkIcon } from '../../public/LinkIcon'
 import Loader from '../../components/Loader'
+import { IconExternalLink } from '@tabler/icons'
 import { motion } from 'framer-motion'
 
 const fetcher = async (url) => {
@@ -102,9 +102,14 @@ export default function Projects() {
       </section>
       <div className="my-4 flex items-center justify-between lg:my-8">
         <h1 className="text-3xl font-semibold lg:text-4xl">{data.name}</h1>
-        <a href={data.url} target="_blank">
-          <LinkIcon />
-        </a>
+        <motion.a
+          href={data.url}
+          target="_blank"
+          whileHover={{ scale: 1.1 }}
+          className="transition-colors duration-500 hover:text-yellow-600 dark:hover:text-yellow-500"
+        >
+          <IconExternalLink size="32px" />
+        </motion.a>
       </div>
       <p className="mb-4">{data.description}</p>
       <ul className="list-disc">
