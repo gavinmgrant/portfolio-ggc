@@ -86,16 +86,23 @@ export default function Projects() {
         <div className="mt-6 flex flex-row flex-wrap lg:mt-0 lg:flex-col">
           {data.technologies.map((tech, i) => {
             return (
-              <motion.span
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0 + i * 0.25 }}
-                viewport={{ once: true }}
+              <motion.div
                 key={i}
-                class="mr-2 mt-0 mb-3 rounded bg-gray-100 px-3 py-1 text-xs font-medium text-gray-800 dark:bg-gray-700 dark:text-gray-300 lg:text-sm"
+                whileHover={{ scale: 1.1 }}
+                className="mr-2 mt-0 mb-3 "
               >
-                {tech.split(' - ')[0]}
-              </motion.span>
+                <motion.a
+                  href={tech.url}
+                  target="_blank"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0 + i * 0.25 }}
+                  viewport={{ once: true }}
+                  className="rounded bg-gray-100 px-3 py-1 text-xs font-medium text-gray-800 dark:bg-gray-700 dark:text-gray-300 lg:text-sm"
+                >
+                  {tech.description.split(' - ')[0]}
+                </motion.a>
+              </motion.div>
             )
           })}
         </div>
@@ -127,7 +134,7 @@ export default function Projects() {
         {data.technologies.map((tech, i) => {
           return (
             <li key={i} className="ml-6">
-              {tech}
+              {tech.description}
             </li>
           )
         })}

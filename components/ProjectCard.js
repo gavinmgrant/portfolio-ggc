@@ -3,7 +3,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
 
-const ProjectCard = ({ index, slug, imgsrc, title, name, description }) => {
+const ProjectCard = ({ index, slug, imgsrc, name, description }) => {
   const [isLoaded, setIsLoaded] = useState(false)
 
   return (
@@ -24,10 +24,10 @@ const ProjectCard = ({ index, slug, imgsrc, title, name, description }) => {
             }}
           >
             {!isLoaded && (
-              <div className="absolute top-0 left-0 z-10 overflow-hidden rounded-md aspect-[3/2] w-[600px] h-[400px] animate-pulse bg-slate-300"></div>
+              <div className="absolute top-0 left-0 z-10 aspect-[3/2] h-[400px] w-[600px] animate-pulse overflow-hidden rounded-md bg-slate-300"></div>
             )}
             <Image
-              alt={title}
+              alt={name}
               src={imgsrc}
               width={600}
               height={400}

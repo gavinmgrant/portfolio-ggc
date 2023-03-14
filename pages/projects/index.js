@@ -40,7 +40,6 @@ export default function Projects() {
               key={project.slug}
               slug={project.slug}
               imgsrc={project.imgsrc}
-              title={project.title}
               name={project.name}
               description={project.description}
             />
