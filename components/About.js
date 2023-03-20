@@ -9,7 +9,7 @@ const About = () => {
       <div className="flex flex-col-reverse items-center justify-center text-center lg:mx-4 lg:flex-row lg:text-left">
         <div className="lg:px-4">
           <motion.h1
-            className="text-4xl font-semibold text-gray-900 dark:text-white lg:text-5xl"
+            className="text-4xl font-semibold text-stone-900 dark:text-white lg:text-5xl"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 3.75 }}

@@ -56,7 +56,7 @@ const Testimonials = () => {
       style={{ height: '65vh' }}
     >
       <motion.h2
-        className="mb-8 text-3xl font-semibold text-gray-900 dark:text-white lg:mb-12 lg:text-4xl"
+        className="mb-8 text-3xl font-semibold text-stone-900 dark:text-white lg:mb-12 lg:text-4xl"
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
       >
@@ -75,7 +75,7 @@ const Testimonials = () => {
             x: { type: 'spring', stiffness: 300, damping: 30 },
           }}
         >
-          <div className="card absolute m-4 mt-12 text-gray-900 dark:text-white lg:m-0 lg:mt-12 lg:max-w-4xl">
+          <div className="card absolute m-4 mt-12 text-stone-900 dark:text-white lg:m-0 lg:mt-12 lg:max-w-4xl">
             <p className="mb-4 text-left">
               {testimonials[testimonialIndex].quote}
             </p>
