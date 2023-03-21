@@ -4,7 +4,7 @@ const Logo = () => {
   return (
     <div
       id="intro"
-      className="top-0 left-0 right-0 z-30 flex h-screen w-screen items-center justify-center bg-stone-800"
+      className="absolute top-0 left-0 right-0 z-30 flex h-screen w-screen items-center justify-center bg-neutral-800"
     >
       <svg
         id="logo"

@@ -52,7 +52,7 @@ const Testimonials = () => {
 
   return (
     <div
-      className="relative w-full text-center mb-56 sm:mb-0 lg:ml-4 lg:text-left lg:h-screen lg:max-w-5xl "
+      className="relative mb-56 w-full text-center sm:mb-0 lg:ml-4 lg:h-screen lg:max-w-5xl lg:text-left "
       style={{ height: '65vh' }}
     >
       <motion.h2
@@ -75,7 +75,7 @@ const Testimonials = () => {
             x: { type: 'spring', stiffness: 300, damping: 30 },
           }}
         >
-          <div className="card absolute m-4 mt-12 text-stone-900 dark:text-white lg:m-0 lg:mt-12 lg:max-w-4xl">
+          <div className="card absolute m-4 mt-12 text-neutral-900 shadow-lg shadow-neutral-300 dark:text-white dark:shadow-neutral-700 lg:m-0 lg:mt-12 lg:max-w-4xl">
             <p className="mb-4 text-left">
               {testimonials[testimonialIndex].quote}
             </p>

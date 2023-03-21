@@ -13,8 +13,8 @@ const Footer = () => {
 
   return (
     <div className="mx-auto mt-0 py-12">
-      <div className="mx-auto px-4 text-sm text-gray-800 dark:text-white lg:max-w-6xl">
-        <div className="dark:border-white-300 mb-4 border-t-2 border-gray-300"></div>
+      <div className="mx-auto px-4 text-sm text-neutral-800 dark:text-white lg:max-w-6xl">
+        <div className="dark:border-white-300 mb-4 border-t-2 border-neutral-300"></div>
         <div className="flex flex-col items-center justify-between lg:flex-row">
           <div className="flex flex-col space-y-2 space-x-0 pt-2 sm:flex-row sm:space-y-0 sm:space-x-4 sm:pt-0">
             <motion.a

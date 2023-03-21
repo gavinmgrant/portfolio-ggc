@@ -60,7 +60,7 @@ export default function Projects() {
             animate={isLoaded ? 'visible' : 'hidden'}
           >
             <motion.div
-              className="overflow-hidden rounded-md shadow-lg shadow-gray-300 dark:shadow-gray-600"
+              className="overflow-hidden rounded-md shadow-lg shadow-neutral-300 dark:shadow-neutral-700"
               style={{
                 position: 'relative',
                 maxWidth: '800px',
@@ -98,7 +98,7 @@ export default function Projects() {
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0 + i * 0.25 }}
                   viewport={{ once: true }}
-                  className="rounded bg-gray-100 px-3 py-1 text-xs font-medium text-gray-800 dark:bg-gray-700 dark:text-gray-300 lg:text-sm"
+                  className="rounded bg-neutral-100 px-3 py-1 text-xs font-medium text-neutral-800 dark:bg-neutral-700 dark:text-neutral-300 lg:text-sm"
                 >
                   {tech.description.split(' - ')[0]}
                 </motion.a>

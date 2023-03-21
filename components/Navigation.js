@@ -8,7 +8,7 @@ const Navigation = () => {
   const { theme } = useTheme()
 
   return (
-    <div className="fixed top-0 z-20 mx-auto w-screen bg-white dark:bg-stone-900">
+    <div className="fixed top-0 z-20 mx-auto w-screen bg-white dark:bg-neutral-900">
       <div className="mx-auto flex items-center justify-between py-3 pl-4 pr-3 lg:max-w-6xl lg:py-6">
         <Link
           href="/"
