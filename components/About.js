@@ -25,7 +25,7 @@ const About = () => {
           >
             <p className="mb-4">
               I'm a software engineer leveraging my architecture background to
-              utilize JavaScript, TypeScript, React, Next.js, Node.js, Express,
+              utilize JavaScript, TypeScript, React, Next.js, Vue.js, Nuxt.js, Node.js, Express,
               and other modern web development frameworks.
             </p>
           </motion.div>
