@@ -3,19 +3,10 @@ import useSWR from 'swr'
 import Head from 'next/head'
 import Loader from '../../components/Loader'
 import ProjectCard from '../../components/ProjectCard'
+import sanity from '../../lib/sanity'
 
-const fetcher = (url) => fetch(url).then((res) => res.json())
-
-export default function Projects() {
-  const { data, error } = useSWR('/api/projects', fetcher)
-
-  if (error)
-    return (
-      <div className="flex h-screen items-center justify-center">
-        <p>Failed to load projects.</p>
-      </div>
-    )
-  if (!data)
+export default function Projects({ projects }) {
+  if (!projects.length)
     return (
       <div className="flex h-screen items-center justify-center">
         <Loader />
@@ -33,7 +24,7 @@ export default function Projects() {
       </Head>
 
       <div className="container mx-auto grid grid-cols-1 gap-x-6 gap-y-14 px-4 pt-20 lg:max-w-6xl lg:grid-cols-2 lg:pt-24">
-        {data.map((project, index) => {
+        {projects.map((project, index) => {
           return (
             <ProjectCard
               index={index}
@@ -48,4 +39,16 @@ export default function Projects() {
       </div>
     </div>
   )
+}
+
+export async function getStaticProps() {
+  const projects = await sanity.fetch(
+    `*[_type == "project"] | order(_createdAt asc)`
+  )
+
+  return {
+    props: {
+      projects,
+    },
+  }
 }

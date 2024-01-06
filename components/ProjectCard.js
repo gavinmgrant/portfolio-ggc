@@ -31,7 +31,6 @@ const ProjectCard = ({ index, slug, imgsrc, name, description }) => {
               src={imgsrc}
               width={600}
               height={400}
-              layout="responsive"
               onLoad={() => setIsLoaded(true)}
               className="cursor-pointer overflow-hidden rounded-md transition-all duration-300 ease-in-out hover:scale-105"
               priority={index === 0 || index === 1}
