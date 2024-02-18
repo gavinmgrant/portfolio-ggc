@@ -35,6 +35,9 @@ export default function Project({ project, technologies }) {
       <Head>
         <title>Gavin Grant Consulting | {p.name}</title>
         <meta name="description" content={p.description} />
+        <meta charSet="utf-8" />
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+        <link rel="icon" href="/icon.png" />
       </Head>
       <section className="flex flex-col justify-start lg:flex-row lg:justify-between">
         <a href={p.url} target="_blank" className="grow">
