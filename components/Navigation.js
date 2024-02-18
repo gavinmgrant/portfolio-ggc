@@ -1,11 +1,20 @@
 import Link from 'next/link'
-import React from 'react'
+import { useEffect, useState } from 'react'
 import ThemeSwitch from './ThemeSwitch'
 import LogoHeader from './LogoHeader'
 import { useTheme } from 'next-themes'
 
 const Navigation = () => {
   const { theme } = useTheme()
+  const [underlineClass, setUnderlineClass] = useState('link-underline link-underline-light')
+
+  useEffect(() => {
+    if (theme === 'dark') {
+      setUnderlineClass('link-underline link-underline-dark')
+    } else {
+      setUnderlineClass('link-underline link-underline-light')
+    }
+  }, [theme])
 
   return (
     <div className="fixed top-0 z-20 mx-auto w-screen bg-white dark:bg-neutral-900">
@@ -22,13 +31,7 @@ const Navigation = () => {
             className="transition-colors duration-500 hover:text-yellow-600 dark:hover:text-yellow-500"
             rel="noreferrer"
           >
-            <span
-              className={`link-underline ${
-                theme === 'dark'
-                  ? 'link-underline-dark'
-                  : 'link-underline-light'
-              }`}
-            >
+            <span className={underlineClass}>
               Projects
             </span>
           </a>

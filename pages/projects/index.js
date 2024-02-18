@@ -1,5 +1,4 @@
 import React from 'react'
-import useSWR from 'swr'
 import Head from 'next/head'
 import Loader from '../../components/Loader'
 import ProjectCard from '../../components/ProjectCard'
