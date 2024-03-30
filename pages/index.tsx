@@ -21,6 +21,15 @@ export default function Home() {
         />
         <meta charSet="utf-8" />
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+        <meta property="og:title" content="Gavin Grant Consulting" />
+        <meta
+          property="og:description"
+          content="Web Design and Development Services"
+        />
+        <meta
+          property="og:image"
+          content="https://www.gavingrant.com/public/images/gavin-grant-og.png"
+        />
         <link rel="icon" href="/icon.png" />
       </Head>
       <main className="mx-auto max-w-6xl antialiased">

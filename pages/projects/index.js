@@ -19,6 +19,15 @@ export default function Projects({ projects }) {
         <meta name="description" content="Projects" />
         <meta charSet="utf-8" />
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+        <meta property="og:title" content="Projects" />
+        <meta
+          property="og:description"
+          content="Projects designed and developed by software engineer Gavin Grant"
+        />
+        <meta
+          property="og:image"
+          content="https://www.gavingrant.com/public/images/gavin-grant-og.png"
+        />
         <link rel="icon" href="/icon.png" />
       </Head>
 

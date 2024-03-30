@@ -37,6 +37,9 @@ export default function Project({ project, technologies }) {
         <meta name="description" content={p.description} />
         <meta charSet="utf-8" />
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+        <meta property="og:title" content={p.name} />
+        <meta property="og:description" content={p.description} />
+        <meta property="og:image" content={p.imgsrc} />
         <link rel="icon" href="/icon.png" />
       </Head>
       <section className="flex flex-col justify-start lg:flex-row lg:justify-between">
