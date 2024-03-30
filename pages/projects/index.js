@@ -3,6 +3,7 @@ import Head from 'next/head'
 import Loader from '../../components/Loader'
 import ProjectCard from '../../components/ProjectCard'
 import sanity from '../../lib/sanity'
+import ogImage from '../../public/images/gavin-grant-og.png'
 
 export default function Projects({ projects }) {
   if (!projects.length)
@@ -24,10 +25,7 @@ export default function Projects({ projects }) {
           property="og:description"
           content="Projects designed and developed by software engineer Gavin Grant"
         />
-        <meta
-          property="og:image"
-          content="https://www.gavingrant.com/public/images/gavin-grant-og.png"
-        />
+        <meta property="og:image" content={ogImage.src} />
         <link rel="icon" href="/icon.png" />
       </Head>
 

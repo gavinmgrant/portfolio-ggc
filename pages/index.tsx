@@ -3,6 +3,7 @@ import Head from 'next/head'
 import Logo from '../components/Logo'
 import About from '../components/About'
 import Testimonials from '../components/Testimonials'
+import ogImage from '../public/images/gavin-grant-og.png'
 
 export default function Home() {
   const [isVisible, setIsVisible] = useState(true)
@@ -26,10 +27,7 @@ export default function Home() {
           property="og:description"
           content="Web Design and Development Services"
         />
-        <meta
-          property="og:image"
-          content="https://www.gavingrant.com/public/images/gavin-grant-og.png"
-        />
+        <meta property="og:image" content={ogImage.src} />
         <link rel="icon" href="/icon.png" />
       </Head>
       <main className="mx-auto max-w-6xl antialiased">
