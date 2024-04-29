@@ -1,0 +1,4 @@
+User-Agent: *
+Allow: /
+
+Sitemap: https://gavingrant.com/sitemap.xml
