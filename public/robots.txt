@@ -1,4 +1,10 @@
-User-Agent: *
+User-agent: facebookexternalhit
 Allow: /
+
+User-agent: LinkedInBot
+Allow: /
+
+User-agent: *
+Disallow: 
 
 Sitemap: https://gavingrant.com/sitemap.xml

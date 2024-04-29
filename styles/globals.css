@@ -4,7 +4,7 @@
 
 @layer base {
   p {
-    @apply py-2;
+    @apply py-2 leading-7;
   }
   li {
     @apply ml-8 list-disc py-1;
