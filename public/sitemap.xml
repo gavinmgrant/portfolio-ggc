@@ -1,12 +1,12 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://gavingrant.com</loc>
+    <loc>https://www.gavingrant.com</loc>
     <lastmod>2024-04-28T00:00:00.000Z</lastmod>
     <changefreq>yearly</changefreq>
     <priority>1</priority>
   </url>
   <url>
-    <loc>https://gavingrant.com/projects</loc>
+    <loc>https://www.gavingrant.com/projects</loc>
     <lastmod>2024-04-28T00:00:00.000Z</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.8</priority>
