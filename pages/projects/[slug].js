@@ -2,7 +2,7 @@ import { useState } from 'react'
 import Image from 'next/image'
 import Head from 'next/head'
 import Loader from '../../components/Loader'
-import { IconExternalLink } from '@tabler/icons'
+import { IconExternalLink, IconBrandGithub } from '@tabler/icons'
 import { motion } from 'framer-motion'
 import sanity from '../../lib/sanity'
 
@@ -137,8 +137,9 @@ export default function Project({ project, technologies }) {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            <a href={p.github} target="_blank">
-              GitHub Repo
+            <a className='flex items-center gap-2' href={p.github} target="_blank">
+              <IconBrandGithub size="24px" />
+              <span>GitHub Repo</span>
             </a>
           </motion.button>
         </div>
