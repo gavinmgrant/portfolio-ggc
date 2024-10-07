@@ -29,6 +29,7 @@ export default function Home() {
         />
         <meta property="og:image" content={ogImage.src} />
         <link rel="icon" href="/icon.png" />
+        <link rel="canonical" href="https://www.gavingrant.com" />
       </Head>
       <main className="mx-auto max-w-6xl antialiased">
         {isVisible && <Logo />}

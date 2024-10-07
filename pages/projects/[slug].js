@@ -2,12 +2,14 @@ import { useState } from 'react'
 import Image from 'next/image'
 import Head from 'next/head'
 import Loader from '../../components/Loader'
+import Carousel from '../../components/Carousel'
 import { IconExternalLink, IconBrandGithub } from '@tabler/icons'
 import { motion } from 'framer-motion'
 import sanity from '../../lib/sanity'
 
 export default function Project({ project, technologies }) {
   const p = project[0]
+
   const technologiesUsed = technologies.filter((tech) => {
     return p.technologies?.some((t) => t._ref === tech._id)
   })
@@ -30,10 +32,12 @@ export default function Project({ project, technologies }) {
       </div>
     )
 
+  const pageTitle = `Gavin Grant Consulting | ${p.isArray ? '' : p.name}`
+
   return (
     <div className="container mx-auto px-4 pt-16 lg:max-w-6xl lg:pt-24">
       <Head>
-        <title>Gavin Grant Consulting | {p.name}</title>
+        <title>{ pageTitle }</title>
         <meta name="description" content={p.description} />
         <meta charSet="utf-8" />
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
@@ -42,39 +46,48 @@ export default function Project({ project, technologies }) {
         <meta property="og:image" content={p.imgsrc} />
         <link rel="icon" href="/icon.png" />
       </Head>
-      <section className="flex flex-col justify-start lg:flex-row lg:justify-between">
-        <a href={p.url} target="_blank" className="grow">
-          <motion.div
-            initial="hidden"
-            animate={isLoaded ? 'visible' : 'hidden'}
-          >
+      <section className="flex flex-col justify-start gap-4 lg:flex-row lg:justify-between">
+        {!!p.projectImages ? (
+          <Carousel
+            sanityImages={p.projectImages}
+            projectUrl={p.url}
+            projectName={p.name}
+          />
+        ) : (
+          <a href={p.url} target="_blank" className="grow">
             <motion.div
-              className="overflow-hidden rounded-md shadow-lg shadow-neutral-300 dark:shadow-neutral-700"
-              style={{
-                position: 'relative',
-                maxWidth: '800px',
-                maxHeight: '534px',
-              }}
-              variants={variants}
+              initial="hidden"
+              animate={isLoaded ? 'visible' : 'hidden'}
             >
-              {p.imgsrc && (
-                <Image
-                  alt={p.name}
-                  src={p.imgsrc}
-                  width={800}
-                  height={534}
-                  quality={100}
-                  className={`cursor-pointer overflow-hidden rounded-md transition-all duration-300 ease-in-out hover:scale-105 ${
-                    !isLoaded && 'animate-pulse'
-                  }`}
-                  onLoad={() => setIsLoaded(true)}
-                  priority={true}
-                />
-              )}
+              <motion.div
+                className="overflow-hidden rounded-md shadow-lg shadow-neutral-300 dark:shadow-neutral-700"
+                style={{
+                  position: 'relative',
+                  maxWidth: '800px',
+                  maxHeight: '534px',
+                }}
+                variants={variants}
+              >
+                {p.imgsrc && (
+                  <Image
+                    alt={p.name}
+                    src={p.imgsrc}
+                    width={800}
+                    height={534}
+                    quality={100}
+                    className={`cursor-pointer overflow-hidden rounded-md transition-all duration-300 ease-in-out hover:scale-105 ${
+                      !isLoaded && 'animate-pulse'
+                    }`}
+                    onLoad={() => setIsLoaded(true)}
+                    priority={true}
+                  />
+                )}
+              </motion.div>
             </motion.div>
-          </motion.div>
-        </a>
-        <div className="mt-6 flex flex-row flex-wrap lg:mt-0 lg:flex-col">
+          </a>
+        )}
+
+        <div className="mt-10 flex shrink-0 flex-row flex-wrap lg:mt-0 lg:flex-col">
           {technologiesUsed.map((tech, i) => {
             return (
               <motion.div
@@ -98,8 +111,15 @@ export default function Project({ project, technologies }) {
           })}
         </div>
       </section>
-      <div className="my-4 flex items-center justify-between lg:my-8">
-        <h1 className="text-3xl font-semibold lg:text-4xl">{p.name}</h1>
+
+      <div className="my-6 flex items-center justify-between lg:mt-12 lg:mb-8">
+        <a
+          href={p.url}
+          target="_blank"
+          className="transition-colors duration-500 hover:text-yellow-600 dark:hover:text-yellow-500"
+        >
+          <h1 className="text-3xl font-semibold lg:text-4xl">{p.name}</h1>
+        </a>
         <motion.a
           href={p.url}
           target="_blank"
@@ -137,7 +157,11 @@ export default function Project({ project, technologies }) {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            <a className='flex items-center gap-2' href={p.github} target="_blank">
+            <a
+              className="flex items-center gap-2"
+              href={p.github}
+              target="_blank"
+            >
               <IconBrandGithub size="24px" />
               <span>GitHub Repo</span>
             </a>
