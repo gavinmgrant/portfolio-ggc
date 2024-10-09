@@ -1,6 +1,7 @@
 import { motion, AnimatePresence } from 'framer-motion'
 import { useState, useEffect } from 'react'
 import Image from 'next/image'
+import Loader from './Loader'
 import { getSanityImageUrl } from '../utils/getSanityImageUrl'
 import { IconArrowNarrowLeft, IconArrowNarrowRight } from '@tabler/icons'
 
@@ -25,10 +26,12 @@ const Carousel = ({ sanityImages, projectUrl, projectName }) => {
   }, [sanityImages])
 
   const nextSlide = () => {
+    setIsLoaded(false)
     setCurrent((prev) => (prev === images.length - 1 ? 0 : prev + 1))
   }
 
   const prevSlide = () => {
+    setIsLoaded(false)
     setCurrent((prev) => (prev === 0 ? images.length - 1 : prev - 1))
   }
 
@@ -45,7 +48,7 @@ const Carousel = ({ sanityImages, projectUrl, projectName }) => {
         animate={isLoaded ? 'visible' : 'hidden'}
         className="relative"
       >
-        <AnimatePresence exitBeforeEnter>
+        <AnimatePresence mode='wait'>
           <motion.div
             key={current}
             initial="hidden"
@@ -69,12 +72,13 @@ const Carousel = ({ sanityImages, projectUrl, projectName }) => {
           </motion.div>
         </AnimatePresence>
       </motion.div>
+      {!isLoaded && <div className='aspect-[2860/1614] w-full lg:w-[900px] lg:h-[508px] z-10 bg-neutral-300 animate-pulse rounded-md absolute left-0 top-0 flex items-center justify-center'><Loader className="z-20" /></div>}
    
 
       {/* Left arrow */}
       <button
         onClick={prevSlide}
-        className="absolute top-1/2 left-2 -translate-y-1/2 transform rounded-full bg-neutral-900 bg-opacity-50 p-2 text-white hover:bg-opacity-70 focus:outline-none"
+        className="absolute top-1/2 left-2 -translate-y-1/2 transform rounded-full bg-neutral-900 bg-opacity-50 p-2 text-white hover:bg-opacity-70 focus:outline-none z-20 transition-all duration-300 ease-in-out hover:scale-105"
       >
         <IconArrowNarrowLeft />
       </button>
@@ -82,7 +86,7 @@ const Carousel = ({ sanityImages, projectUrl, projectName }) => {
       {/* Right arrow */}
       <button
         onClick={nextSlide}
-        className="absolute top-1/2 right-2 -translate-y-1/2 transform rounded-full bg-neutral-900 bg-opacity-50 p-2 text-white hover:bg-opacity-70 focus:outline-none"
+        className="absolute top-1/2 right-2 -translate-y-1/2 transform rounded-full bg-neutral-900 bg-opacity-50 p-2 text-white hover:bg-opacity-70 focus:outline-none z-20 transition-all duration-300 ease-in-out hover:scale-105"
       >
         <IconArrowNarrowRight />
       </button>
