@@ -24,7 +24,7 @@ const About = () => {
             transition={{ delay: 4 }}
           >
             <p className="mb-4">
-              Hi, I'm a forward-thinking software engineer,
+              I'm a forward-thinking software engineer,
               specializing in front-end development. With a background in
               architecture, I bring a unique perspective to crafting captivating
               digital experiences. Armed with expertise in JavaScript,
