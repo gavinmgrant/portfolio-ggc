@@ -6,8 +6,8 @@ import { motion } from 'framer-motion'
 
 const About = () => {
   return (
-    <div className="container mx-auto my-20 flex h-full max-w-xl items-center justify-center px-4 lg:my-0 lg:h-screen lg:max-w-5xl">
-      <div className="flex flex-col-reverse items-center justify-center text-center lg:mx-4 lg:flex-row lg:text-left">
+    <div className="container mx-auto my-20 flex h-full max-w-3xl items-center justify-center px-4 lg:my-0 lg:h-screen lg:max-w-6xl">
+      <div className="flex flex-col-reverse items-center justify-center text-center lg:mx-4 lg:flex-row lg:text-left gap-8">
         <div className="lg:px-4">
           <motion.h1
             className="text-4xl font-semibold text-neutral-900 dark:text-white lg:text-5xl"
@@ -24,12 +24,15 @@ const About = () => {
             transition={{ delay: 4 }}
           >
             <p className="mb-4">
-              Hey there! 👋 I'm a forward-thinking software engineer,
+              Hi, I'm a forward-thinking software engineer,
               specializing in front-end development. With a background in
               architecture, I bring a unique perspective to crafting captivating
               digital experiences. Armed with expertise in JavaScript,
               TypeScript, React, Next.js, Vue.js, Nuxt.js, Node.js, Express, and
-              more. Currently, I'm the driving force behind front-end
+              more.
+            </p>
+            <p className="mb-4">
+              Currently, I'm the driving force behind front-end
               engineering at{' '}
               <a
                 className="font-medium transition-colors duration-500 hover:text-yellow-600 dark:hover:text-yellow-500"
