@@ -15,8 +15,8 @@ const Footer = () => {
     <div className="mx-auto mt-0 py-12">
       <div className="mx-auto px-4 text-sm text-neutral-800 dark:text-white lg:max-w-6xl">
         <div className="dark:border-white-300 mb-4 border-t-2 border-neutral-300"></div>
-        <div className="flex flex-col items-center justify-between lg:flex-row">
-          <div className="flex flex-col space-y-2 space-x-0 pt-2 sm:flex-row sm:space-y-0 sm:space-x-4 sm:pt-0">
+        <div className="flex flex-col items-center justify-between lg:flex-row gap-4">
+          <div className="flex flex-col space-y-3 space-x-0 pt-2 sm:flex-row sm:space-y-0 sm:space-x-4 sm:pt-0">
             <motion.a
               href="https://twitter.com/higavingrant"
               className="flex items-center space-x-1 transition-colors duration-500 hover:text-yellow-600 dark:hover:text-yellow-500"
@@ -101,7 +101,7 @@ const Footer = () => {
             >
               Privacy Policy
             </Link>
-            <p className="ml-3">© {year} Gavin Grant Consulting</p>
+            <p className="lg:ml-3">© {year} Gavin Grant Consulting</p>
           </div>
         </div>
       </div>

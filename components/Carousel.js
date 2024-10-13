@@ -12,7 +12,7 @@ const Carousel = ({ sanityImages, projectUrl, projectName }) => {
 
   if (!Array.isArray(sanityImages) || sanityImages.length === 0) {
     return (
-      <div className="flex aspect-[2860/1614] w-[900px] items-center justify-center rounded-md bg-gray-200 shadow-lg">
+      <div className="flex aspect-[2860/1614] w-[900px] items-center justify-center rounded-lg bg-gray-200 shadow-lg">
         <p className="text-gray-500">No images available for this project</p>
       </div>
     )
@@ -42,11 +42,11 @@ const Carousel = ({ sanityImages, projectUrl, projectName }) => {
   }
 
   return (
-    <div className="relative aspect-[2860/1614] w-full rounded-md object-contain shadow-lg shadow-neutral-300 dark:shadow-neutral-700 lg:w-[900px]">
+    <div className="relative aspect-[4/3] sm:aspect-[2860/1614] w-full rounded-lg object-contain shadow-lg shadow-neutral-300 dark:shadow-neutral-700 lg:w-[900px]">
       <motion.div
         initial="hidden"
         animate={isLoaded ? 'visible' : 'hidden'}
-        className="relative"
+        className="relative w-full h-full"
       >
         <AnimatePresence mode='wait'>
           <motion.div
@@ -55,7 +55,7 @@ const Carousel = ({ sanityImages, projectUrl, projectName }) => {
             animate="visible"
             exit="exit"
             variants={variants}
-            className="overflow-hidden"
+            className="overflow-hidden w-full h-full"
           >
             <Image
               alt={projectName}
@@ -63,7 +63,7 @@ const Carousel = ({ sanityImages, projectUrl, projectName }) => {
               width={900}
               height={508}
               quality={100}
-              className={`overflow-hidden rounded-md ${
+              className={`overflow-hidden rounded-lg object-cover w-full h-full ${
                 !isLoaded && 'animate-pulse'
               }`}
               onLoad={() => setIsLoaded(true)}
@@ -72,7 +72,7 @@ const Carousel = ({ sanityImages, projectUrl, projectName }) => {
           </motion.div>
         </AnimatePresence>
       </motion.div>
-      {!isLoaded && <div className='aspect-[2860/1614] w-full lg:w-[900px] lg:h-[508px] z-10 bg-neutral-300 animate-pulse rounded-md absolute left-0 top-0 flex items-center justify-center'><Loader className="z-20" /></div>}
+      {!isLoaded && <div className='aspect-[4/3] sm:aspect-[2860/1614] w-full lg:w-[900px] lg:h-[508px] z-10 bg-neutral-300 dark:bg-neutral-700 animate-pulse rounded-lg absolute left-0 top-0 flex items-center justify-center'><Loader className="z-20" /></div>}
    
 
       {/* Left arrow */}
@@ -92,7 +92,7 @@ const Carousel = ({ sanityImages, projectUrl, projectName }) => {
       </button>
 
       {/* Pagination */}
-      <div className="absolute -bottom-7 left-1/2 flex -translate-x-1/2 transform space-x-2">
+      <div className="absolute -bottom-8 left-1/2 flex -translate-x-1/2 transform space-x-2">
         {images.map((_, idx) => (
           <button
             key={idx}
