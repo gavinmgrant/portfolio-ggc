@@ -37,7 +37,7 @@ export default function Project({ project, technologies }) {
   return (
     <div className="container mx-auto px-4 pt-16 lg:max-w-6xl lg:pt-24">
       <Head>
-        <title>{ pageTitle }</title>
+        <title>{pageTitle}</title>
         <meta name="description" content={p.description} />
         <meta charSet="utf-8" />
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
@@ -46,6 +46,7 @@ export default function Project({ project, technologies }) {
         <meta property="og:image" content={p.imgsrc} />
         <link rel="icon" href="/icon.png" />
       </Head>
+
       <section className="flex flex-col justify-start gap-4 lg:flex-row lg:justify-between">
         {!!p.projectImages ? (
           <Carousel
@@ -112,14 +113,17 @@ export default function Project({ project, technologies }) {
         </div>
       </section>
 
-      <div className="my-6 flex items-center justify-between lg:mt-12 lg:mb-8">
-        <a
-          href={p.url}
-          target="_blank"
-          className="transition-colors duration-500 hover:text-yellow-600 dark:hover:text-yellow-500"
-        >
-          <h1 className="text-3xl font-semibold lg:text-4xl">{p.name}</h1>
-        </a>
+      <div className="my-6 flex items-start lg:items-center justify-between lg:mt-12 lg:mb-8 gap-4">
+        <div className='flex flex-col lg:flex-row justify-start items-start lg:items-center gap-2 lg:gap-4'>
+          <a
+            href={p.url}
+            target="_blank"
+            className="transition-colors duration-500 hover:text-yellow-600 dark:hover:text-yellow-500"
+          >
+            <h1 className="text-3xl font-semibold lg:text-4xl">{p.name}</h1>
+          </a>
+          {p.inactive && <p className='text-sm px-3 py-2 rounded-lg bg-amber-700 text-white'>{p.inactiveMessage}</p>}
+        </div>
         <motion.a
           href={p.url}
           target="_blank"

@@ -5,7 +5,7 @@ import Loader from './Loader'
 import { getSanityImageUrl } from '../utils/getSanityImageUrl'
 import { IconArrowNarrowLeft, IconArrowNarrowRight } from '@tabler/icons'
 
-const Carousel = ({ sanityImages, projectUrl, projectName }) => {
+const Carousel = ({ sanityImages, projectName }) => {
   const [current, setCurrent] = useState(0)
   const [isLoaded, setIsLoaded] = useState(false)
   const [images, setImages] = useState([])
