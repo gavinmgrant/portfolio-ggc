@@ -3,7 +3,11 @@ import Image from 'next/image'
 import Head from 'next/head'
 import Loader from '../../components/Loader'
 import Carousel from '../../components/Carousel'
-import { IconExternalLink, IconBrandGithub } from '@tabler/icons'
+import {
+  IconExternalLink,
+  IconBrandGithub,
+  IconAlertTriangle,
+} from '@tabler/icons'
 import { motion } from 'framer-motion'
 import sanity from '../../lib/sanity'
 
@@ -113,8 +117,8 @@ export default function Project({ project, technologies }) {
         </div>
       </section>
 
-      <div className="my-6 flex items-start lg:items-center justify-between lg:mt-12 lg:mb-8 gap-4">
-        <div className='flex flex-col lg:flex-row justify-start items-start lg:items-center gap-2 lg:gap-4'>
+      <div className="my-6 flex items-start justify-between gap-4 lg:mt-12 lg:mb-8 lg:items-center">
+        <div className="flex flex-col items-start justify-start gap-4 lg:flex-row lg:items-center lg:gap-5">
           <a
             href={p.url}
             target="_blank"
@@ -122,7 +126,12 @@ export default function Project({ project, technologies }) {
           >
             <h1 className="text-3xl font-semibold lg:text-4xl">{p.name}</h1>
           </a>
-          {p.inactive && <p className='text-sm px-3 py-2 rounded-lg bg-amber-700 text-white'>{p.inactiveMessage}</p>}
+          {p.inactive && (
+            <div className="flex items-center gap-2 rounded-lg bg-amber-700 px-2 py-0.5 text-white md:px-3.5 md:py-1.5">
+              <IconAlertTriangle size="24px" className="shrink-0" />
+              <p className="text-sm">{p.inactiveMessage}</p>
+            </div>
+          )}
         </div>
         <motion.a
           href={p.url}

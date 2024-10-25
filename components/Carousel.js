@@ -8,7 +8,9 @@ import { IconArrowNarrowLeft, IconArrowNarrowRight } from '@tabler/icons'
 const Carousel = ({ sanityImages, projectName }) => {
   const [current, setCurrent] = useState(0)
   const [isLoaded, setIsLoaded] = useState(false)
+  const [isInitialLoaded, setIsInitialLoaded] = useState(false)
   const [images, setImages] = useState([])
+  const [isHovered, setIsHovered] = useState(false)
 
   if (!Array.isArray(sanityImages) || sanityImages.length === 0) {
     return (
@@ -19,10 +21,12 @@ const Carousel = ({ sanityImages, projectName }) => {
   }
 
   useEffect(() => {
+    setIsInitialLoaded(false)
     let imageUrls = sanityImages.map((image) =>
       getSanityImageUrl(image.asset._ref)
     )
     setImages(imageUrls)
+    setTimeout(() => setIsLoaded(true), 3000)
   }, [sanityImages])
 
   const nextSlide = () => {
@@ -41,21 +45,35 @@ const Carousel = ({ sanityImages, projectName }) => {
     exit: { opacity: 0, transition: { duration: 0.2 } },
   }
 
+  const arrowVariants = {
+    hidden: { opacity: 0 },
+    visible: { opacity: 1, transition: { duration: 0.3 } },
+  }
+
+  const handleInitialLoad = () => {
+    setIsInitialLoaded(true)
+    setIsLoaded(true)
+  }
+
+  const handleLoaded = () => {
+    setIsLoaded(true)
+  }
+
   return (
-    <div className="relative aspect-[4/3] sm:aspect-[2860/1614] w-full rounded-lg object-contain shadow-lg shadow-neutral-300 dark:shadow-neutral-700 lg:w-[900px]">
-      <motion.div
-        initial="hidden"
-        animate={isLoaded ? 'visible' : 'hidden'}
-        className="relative w-full h-full"
-      >
-        <AnimatePresence mode='wait'>
+    <div
+      className="relative aspect-[2860/1614] w-full rounded-lg object-contain shadow-lg shadow-neutral-300 dark:shadow-neutral-700 lg:w-[900px]"
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
+      <div className="relative h-full w-full">
+        <AnimatePresence mode="wait">
           <motion.div
             key={current}
             initial="hidden"
             animate="visible"
             exit="exit"
             variants={variants}
-            className="overflow-hidden w-full h-full"
+            className="h-full w-full overflow-hidden"
           >
             <Image
               alt={projectName}
@@ -63,33 +81,63 @@ const Carousel = ({ sanityImages, projectName }) => {
               width={900}
               height={508}
               quality={100}
-              className={`overflow-hidden rounded-lg object-cover w-full h-full ${
+              className={`h-full w-full overflow-hidden rounded-lg object-cover ${
                 !isLoaded && 'animate-pulse'
               }`}
-              onLoad={() => setIsLoaded(true)}
+              onLoadingComplete={
+                current === 0 ? handleInitialLoad : handleLoaded
+              }
               priority={true}
             />
           </motion.div>
         </AnimatePresence>
-      </motion.div>
-      {!isLoaded && <div className='aspect-[4/3] sm:aspect-[2860/1614] w-full lg:w-[900px] lg:h-[508px] z-10 bg-neutral-300 dark:bg-neutral-700 animate-pulse rounded-lg absolute left-0 top-0 flex items-center justify-center'><Loader className="z-20" /></div>}
-   
+      </div>
+
+      {(!isInitialLoaded || !isLoaded) && (
+        <div className="absolute left-0 top-0 z-10 flex aspect-[2860/1614] w-full animate-pulse items-center justify-center rounded-lg bg-neutral-300 dark:bg-neutral-700 lg:h-[508px] lg:w-[900px]">
+          <Loader className="z-20" />
+        </div>
+      )}
 
       {/* Left arrow */}
-      <button
-        onClick={prevSlide}
-        className="absolute top-1/2 left-2 -translate-y-1/2 transform rounded-full bg-neutral-900 bg-opacity-50 p-2 text-white hover:bg-opacity-70 focus:outline-none z-20 transition-all duration-300 ease-in-out hover:scale-105"
-      >
-        <IconArrowNarrowLeft />
-      </button>
+      <AnimatePresence>
+        {isHovered && (
+          <motion.div
+            initial="hidden"
+            animate="visible"
+            exit="hidden"
+            variants={arrowVariants}
+            className="absolute top-1/2 left-4 z-20 -translate-y-1/2 transform"
+          >
+            <button
+              onClick={prevSlide}
+              className="rounded-full bg-neutral-900 bg-opacity-50 p-2 text-white transition-all duration-300 ease-in-out hover:scale-105 hover:bg-opacity-70 focus:outline-none active:scale-75"
+            >
+              <IconArrowNarrowLeft />
+            </button>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       {/* Right arrow */}
-      <button
-        onClick={nextSlide}
-        className="absolute top-1/2 right-2 -translate-y-1/2 transform rounded-full bg-neutral-900 bg-opacity-50 p-2 text-white hover:bg-opacity-70 focus:outline-none z-20 transition-all duration-300 ease-in-out hover:scale-105"
-      >
-        <IconArrowNarrowRight />
-      </button>
+      <AnimatePresence>
+        {isHovered && (
+          <motion.div
+            initial="hidden"
+            animate="visible"
+            exit="hidden"
+            variants={arrowVariants}
+            className="absolute top-1/2 right-4 z-20 -translate-y-1/2 transform"
+          >
+            <button
+              onClick={nextSlide}
+              className="rounded-full bg-neutral-900 bg-opacity-50 p-2 text-white transition-all duration-300 ease-in-out hover:scale-105 hover:bg-opacity-70 focus:outline-none active:scale-75"
+            >
+              <IconArrowNarrowRight />
+            </button>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       {/* Pagination */}
       <div className="absolute -bottom-8 left-1/2 flex -translate-x-1/2 transform space-x-2">
