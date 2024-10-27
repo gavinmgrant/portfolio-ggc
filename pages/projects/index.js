@@ -4,6 +4,7 @@ import Loader from '../../components/Loader'
 import ProjectCard from '../../components/ProjectCard'
 import sanity from '../../lib/sanity'
 import ogImage from '../../public/images/gavin-grant-og.png'
+import { getSanityImageUrl } from '../../utils/getSanityImageUrl'
 
 export default function Projects({ projects }) {
   if (!projects.length)
@@ -36,7 +37,7 @@ export default function Projects({ projects }) {
               index={index}
               key={project.slug}
               slug={project.slug}
-              imgsrc={project.imgsrc}
+              imgsrc={getSanityImageUrl(project.projectImages[0].asset._ref)}
               name={project.name}
               description={project.description}
             />

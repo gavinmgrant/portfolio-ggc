@@ -19,12 +19,12 @@ const ProjectCard = ({ index, slug, imgsrc, name, description }) => {
             className="relative overflow-hidden rounded-md shadow-lg shadow-neutral-300 dark:shadow-neutral-700"
             style={{
               position: 'relative',
-              maxWidth: '600px',
-              maxHeight: '400px',
+              maxWidth: '548px',
+              maxHeight: '310px',
             }}
           >
             {!isLoaded && (
-              <div className="absolute top-0 left-0 z-10 aspect-[3/2] h-[400px] w-[600px] animate-pulse overflow-hidden rounded-md bg-slate-300"></div>
+              <div className="absolute top-0 left-0 z-10 aspect-[3/2] h-[310px] w-[548px] animate-pulse overflow-hidden rounded-md bg-slate-300"></div>
             )}
             <Image
               alt={name}

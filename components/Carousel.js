@@ -101,7 +101,7 @@ const Carousel = ({ sanityImages, projectName }) => {
 
       {/* Left arrow */}
       <AnimatePresence>
-        {isHovered && (
+        {(isHovered && sanityImages.length > 1) && (
           <motion.div
             initial="hidden"
             animate="visible"
@@ -121,7 +121,7 @@ const Carousel = ({ sanityImages, projectName }) => {
 
       {/* Right arrow */}
       <AnimatePresence>
-        {isHovered && (
+        {(isHovered && sanityImages.length > 1) && (
           <motion.div
             initial="hidden"
             animate="visible"
@@ -140,7 +140,8 @@ const Carousel = ({ sanityImages, projectName }) => {
       </AnimatePresence>
 
       {/* Pagination */}
-      <div className="absolute -bottom-8 left-1/2 flex -translate-x-1/2 transform space-x-2">
+      {sanityImages.length > 1 && (
+        <div className="absolute -bottom-8 left-1/2 flex -translate-x-1/2 transform space-x-2">
         {images.map((_, idx) => (
           <button
             key={idx}
@@ -151,6 +152,8 @@ const Carousel = ({ sanityImages, projectName }) => {
           />
         ))}
       </div>
+      )}
+      
     </div>
   )
 }
