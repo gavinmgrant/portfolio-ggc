@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Head from 'next/head'
 import Logo from '../components/Logo'
 import About from '../components/About'
@@ -11,6 +11,10 @@ export default function Home() {
   setTimeout(() => {
     setIsVisible(false)
   }, 5000)
+
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
 
   return (
     <div>
@@ -31,7 +35,7 @@ export default function Home() {
         <link rel="icon" href="/icon.png" />
         <link rel="canonical" href="https://www.gavingrant.com" />
       </Head>
-      <main className="mx-auto max-w-6xl antialiased">
+      <main className="mx-auto max-w-6xl antialiased flex items-center justify-center flex-col">
         {isVisible && <Logo />}
         <About />
         <Testimonials />

@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { wrap } from 'popmotion'
+import { IconArrowNarrowLeft, IconArrowNarrowRight } from '@tabler/icons'
 
 const testimonials = [
   {
@@ -51,9 +52,9 @@ const Testimonials = () => {
   }
 
   return (
-    <div className="relative h-[800px] w-full text-center sm:h-[600px] lg:ml-4 lg:h-[65vh] lg:max-w-5xl lg:text-left">
+    <div className="relative h-[800px] w-full text-center sm:h-[600px] lg:h-[65vh] lg:text-left">
       <motion.h2
-        className="mb-8 text-3xl font-semibold text-stone-900 dark:text-white lg:mb-12 lg:text-4xl"
+        className="mb-6 text-3xl font-semibold text-stone-900 dark:text-white lg:mb-8 lg:text-4xl lg:ml-4"
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
       >
@@ -72,7 +73,7 @@ const Testimonials = () => {
             x: { type: 'spring', stiffness: 300, damping: 30 },
           }}
         >
-          <div className="card absolute m-4 mt-12 text-neutral-900 shadow-lg shadow-neutral-300 dark:text-white dark:shadow-neutral-700 lg:absolute lg:m-0 lg:mt-12 lg:max-w-4xl">
+          <div className="card absolute m-4 mt-16 text-neutral-900 shadow-lg shadow-neutral-300 dark:text-white dark:shadow-neutral-700">
             <p className="mb-4 text-left">
               {testimonials[testimonialIndex].quote}
             </p>
@@ -87,11 +88,19 @@ const Testimonials = () => {
           </div>
         </motion.div>
       </AnimatePresence>
-      <button className="mr-6 text-2xl" onClick={() => paginate(1)}>
-        &#9664;
+
+      <button
+        onClick={() => paginate(1)}
+        className="absolute left-4 z-10 rounded-full bg-neutral-100 bg-opacity-50 p-2 text-stone-900 transition-all duration-300 ease-in-out hover:scale-105 hover:bg-opacity-70 focus:outline-none active:scale-75"
+      >
+        <IconArrowNarrowLeft />
       </button>
-      <button className="ml-6 text-2xl" onClick={() => paginate(-1)}>
-        &#9654;
+
+      <button
+        onClick={() => paginate(-1)}
+        className="absolute right-4 z-10 rounded-full bg-neutral-100 bg-opacity-50 p-2 text-stone-900 transition-all duration-300 ease-in-out hover:scale-105 hover:bg-opacity-70 focus:outline-none active:scale-75"
+      >
+        <IconArrowNarrowRight />
       </button>
     </div>
   )
