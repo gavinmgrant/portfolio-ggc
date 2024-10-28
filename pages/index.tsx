@@ -8,12 +8,14 @@ import ogImage from '../public/images/gavin-grant-og.png'
 export default function Home() {
   const [isVisible, setIsVisible] = useState(true)
 
-  setTimeout(() => {
-    setIsVisible(false)
-  }, 5000)
-
   useEffect(() => {
     window.scrollTo(0, 0)
+
+    const timer = setTimeout(() => {
+      setIsVisible(false)
+    }, 5000)
+
+    return () => clearTimeout(timer)
   }, [])
 
   return (
@@ -35,7 +37,7 @@ export default function Home() {
         <link rel="icon" href="/icon.png" />
         <link rel="canonical" href="https://www.gavingrant.com" />
       </Head>
-      <main className="mx-auto max-w-6xl antialiased flex items-center justify-center flex-col">
+      <main className="mx-auto flex max-w-6xl flex-col items-center justify-center antialiased">
         {isVisible && <Logo />}
         <About />
         <Testimonials />
