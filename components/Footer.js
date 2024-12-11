@@ -57,7 +57,7 @@ const Footer = () => {
             </motion.a>
 
             <motion.a
-              href="mailto:gavin@gavingrant.co?subject=Hi Gavin!"
+              href="mailto:gavin@gavingrant.com?subject=Hi Gavin!"
               className="flex items-center space-x-1 transition-colors duration-500 hover:text-yellow-600 dark:hover:text-yellow-500"
               whileHover={{ scale: 1.05 }}
             >

@@ -2,8 +2,8 @@ import React from 'react'
 
 const PrivacyPolicy = () => {
   return (
-    <div className="pt-20 m-4">
-      <h1 className="text-3xl py-1">Privacy Policy</h1>
+    <div className="m-4 pt-20">
+      <h1 className="pt-4 pb-2 text-3xl">Privacy Policy</h1>
       <p>Last updated: March 15, 2022</p>
       <p>
         This Privacy Policy describes Our policies and procedures on the
@@ -24,15 +24,15 @@ const PrivacyPolicy = () => {
         </a>
         .
       </p>
-      <h1 className="text-3xl py-1">Interpretation and Definitions</h1>
-      <h2 className="text-2xl py-1">Interpretation</h2>
+      <h1 className="pt-4 pb-2 text-3xl">Interpretation and Definitions</h1>
+      <h2 className="pt-4 pb-2 text-2xl">Interpretation</h2>
       <p>
         The words of which the initial letter is capitalized have meanings
         defined under the following conditions. The following definitions shall
         have the same meaning regardless of whether they appear in singular or
         in plural.
       </p>
-      <h2 className="text-2xl py-1">Definitions</h2>
+      <h2 className="pt-4 pb-2 text-2xl">Definitions</h2>
       <p>For the purposes of this Privacy Policy:</p>
       <ul>
         <li>
@@ -100,11 +100,11 @@ const PrivacyPolicy = () => {
             <strong>Website</strong> refers to Gavin Grant Consulting,
             accessible from{' '}
             <a
-              href="https://www.gavingrant.co/"
+              href="https://www.gavingrant.com/"
               rel="external nofollow noopener"
               target="_blank"
             >
-              https://www.gavingrant.co/
+              https://www.gavingrant.com/
             </a>
           </p>
         </li>
@@ -116,8 +116,10 @@ const PrivacyPolicy = () => {
           </p>
         </li>
       </ul>
-      <h1 className="text-3xl py-1">Collecting and Using Your Personal Data</h1>
-      <h2 className="text-2xl py-1">Types of Data Collected</h2>
+      <h1 className="pt-4 pb-2 text-3xl">
+        Collecting and Using Your Personal Data
+      </h1>
+      <h2 className="pt-4 pb-2 text-2xl">Types of Data Collected</h2>
       <h3>Personal Data</h3>
       <p>
         While using Our Service, We may ask You to provide Us with certain
@@ -178,14 +180,15 @@ const PrivacyPolicy = () => {
           Flash Cookies are not managed by the same browser settings as those
           used for Browser Cookies. For more information on how You can delete
           Flash Cookies, please read &quot;Where can I change the settings for
-          disabling, or deleting local shared objects?&quot; available {' '}
+          disabling, or deleting local shared objects?&quot; available{' '}
           <a
             href="https://helpx.adobe.com/flash-player/kb/disable-local-shared-objects-flash.html#main_Where_can_I_change_the_settings_for_disabling__or_deleting_local_shared_objects_"
             rel="external nofollow noopener"
             target="_blank"
           >
             here
-         </a>.
+          </a>
+          .
         </li>
         <li>
           <strong>Web Beacons.</strong> Certain sections of our Service and our
@@ -261,7 +264,7 @@ const PrivacyPolicy = () => {
         cookies, please visit our Cookies Policy or the Cookies section of our
         Privacy Policy.
       </p>
-      <h2 className="text-2xl py-1">Use of Your Personal Data</h2>
+      <h2 className="pt-4 pb-2 text-2xl">Use of Your Personal Data</h2>
       <p>The Company may use Personal Data for the following purposes:</p>
       <ul>
         <li>
@@ -368,7 +371,7 @@ const PrivacyPolicy = () => {
           information for any other purpose with Your consent.
         </li>
       </ul>
-      <h2 className="text-2xl py-1">Retention of Your Personal Data</h2>
+      <h2 className="pt-4 pb-2 text-2xl">Retention of Your Personal Data</h2>
       <p>
         The Company will retain Your Personal Data only for as long as is
         necessary for the purposes set out in this Privacy Policy. We will
@@ -384,7 +387,7 @@ const PrivacyPolicy = () => {
         functionality of Our Service, or We are legally obligated to retain this
         data for longer time periods.
       </p>
-      <h2 className="text-2xl py-1">Transfer of Your Personal Data</h2>
+      <h2 className="pt-4 pb-2 text-2xl">Transfer of Your Personal Data</h2>
       <p>
         Your information, including Personal Data, is processed at the Company's
         operating offices and in any other places where the parties involved in
@@ -404,7 +407,7 @@ const PrivacyPolicy = () => {
         a country unless there are adequate controls in place including the
         security of Your data and other personal information.
       </p>
-      <h2 className="text-2xl py-1">Disclosure of Your Personal Data</h2>
+      <h2 className="pt-4 pb-2 text-2xl">Disclosure of Your Personal Data</h2>
       <h3>Business Transactions</h3>
       <p>
         If the Company is involved in a merger, acquisition or asset sale, Your
@@ -435,7 +438,7 @@ const PrivacyPolicy = () => {
         </li>
         <li>Protect against legal liability</li>
       </ul>
-      <h2 className="text-2xl py-1">Security of Your Personal Data</h2>
+      <h2 className="pt-4 pb-2 text-2xl">Security of Your Personal Data</h2>
       <p>
         The security of Your Personal Data is important to Us, but remember that
         no method of transmission over the Internet, or method of electronic
@@ -443,7 +446,7 @@ const PrivacyPolicy = () => {
         means to protect Your Personal Data, We cannot guarantee its absolute
         security.
       </p>
-      <h1 className="text-3xl py-1">Children's Privacy</h1>
+      <h1 className="pt-4 pb-2 text-3xl">Children's Privacy</h1>
       <p>
         Our Service does not address anyone under the age of 13. We do not
         knowingly collect personally identifiable information from anyone under
@@ -459,7 +462,7 @@ const PrivacyPolicy = () => {
         require Your parent's consent before We collect and use that
         information.
       </p>
-      <h1 className="text-3xl py-1">Links to Other Websites</h1>
+      <h1 className="pt-4 pb-2 text-3xl">Links to Other Websites</h1>
       <p>
         Our Service may contain links to other websites that are not operated by
         Us. If You click on a third party link, You will be directed to that
@@ -470,7 +473,7 @@ const PrivacyPolicy = () => {
         We have no control over and assume no responsibility for the content,
         privacy policies or practices of any third party sites or services.
       </p>
-      <h1 className="text-3xl py-1">Changes to this Privacy Policy</h1>
+      <h1 className="pt-4 pb-2 text-3xl">Changes to this Privacy Policy</h1>
       <p>
         We may update Our Privacy Policy from time to time. We will notify You
         of any changes by posting the new Privacy Policy on this page.
@@ -485,15 +488,15 @@ const PrivacyPolicy = () => {
         changes. Changes to this Privacy Policy are effective when they are
         posted on this page.
       </p>
-      <h1 className="text-3xl py-1">Contact Us</h1>
+      <h1 className="pt-4 pb-2 text-3xl">Contact Us</h1>
       <p>
         If you have any questions about this Privacy Policy, You can contact us:
       </p>
       <ul>
-        <li>By email: gavin@gavingrant.co</li>
+        <li>By email: gavin@gavingrant.com</li>
       </ul>
     </div>
   )
 }
 
-export default PrivacyPolicy;
+export default PrivacyPolicy
