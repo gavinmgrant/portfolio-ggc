@@ -50,7 +50,7 @@ export default function Projects({ projects }) {
 
 export async function getStaticProps() {
   const projects = await sanity.fetch(
-    `*[_type == "project"] | order(_createdAt asc)`
+    `*[_type == "project"] | order(order asc)`
   )
 
   return {
