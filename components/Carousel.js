@@ -14,7 +14,7 @@ const Carousel = ({ sanityImages, projectName }) => {
 
   if (!Array.isArray(sanityImages) || sanityImages.length === 0) {
     return (
-      <div className="flex aspect-[2860/1614] w-[900px] items-center justify-center rounded-lg bg-gray-200 shadow-lg">
+      <div className="flex aspect-[2860/1614] w-[940px] items-center justify-center rounded-lg bg-gray-200 shadow-lg">
         <p className="text-gray-500">No images available for this project</p>
       </div>
     )
@@ -61,7 +61,7 @@ const Carousel = ({ sanityImages, projectName }) => {
 
   return (
     <div
-      className="relative aspect-[2860/1614] w-full rounded-lg object-contain shadow-lg shadow-neutral-300 dark:shadow-neutral-700 lg:w-[900px]"
+      className="relative aspect-[2860/1614] w-full rounded-lg object-contain shadow-lg shadow-neutral-300 dark:shadow-neutral-700 lg:w-[940px]"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
@@ -78,8 +78,8 @@ const Carousel = ({ sanityImages, projectName }) => {
             <Image
               alt={projectName}
               src={images[current]}
-              width={900}
-              height={508}
+              width={940}
+              height={531}
               quality={100}
               className={`h-full w-full overflow-hidden rounded-lg object-cover ${
                 !isLoaded && 'animate-pulse'
@@ -94,14 +94,14 @@ const Carousel = ({ sanityImages, projectName }) => {
       </div>
 
       {(!isInitialLoaded || !isLoaded) && (
-        <div className="absolute left-0 top-0 z-10 flex aspect-[2860/1614] w-full animate-pulse items-center justify-center rounded-lg bg-neutral-300 dark:bg-neutral-700 lg:h-[508px] lg:w-[900px]">
+        <div className="absolute left-0 top-0 z-10 flex aspect-[2860/1614] w-full animate-pulse items-center justify-center rounded-lg bg-neutral-300 dark:bg-neutral-700 lg:h-[531px] lg:w-[940px]">
           <Loader className="z-20" />
         </div>
       )}
 
       {/* Left arrow */}
       <AnimatePresence>
-        {(isHovered && sanityImages.length > 1) && (
+        {isHovered && sanityImages.length > 1 && (
           <motion.div
             initial="hidden"
             animate="visible"
@@ -121,7 +121,7 @@ const Carousel = ({ sanityImages, projectName }) => {
 
       {/* Right arrow */}
       <AnimatePresence>
-        {(isHovered && sanityImages.length > 1) && (
+        {isHovered && sanityImages.length > 1 && (
           <motion.div
             initial="hidden"
             animate="visible"
@@ -142,18 +142,17 @@ const Carousel = ({ sanityImages, projectName }) => {
       {/* Pagination */}
       {sanityImages.length > 1 && (
         <div className="absolute -bottom-8 left-1/2 flex -translate-x-1/2 transform space-x-2">
-        {images.map((_, idx) => (
-          <button
-            key={idx}
-            onClick={() => setCurrent(idx)}
-            className={`h-3 w-3 rounded-full ${
-              current === idx ? 'bg-black dark:bg-white' : 'bg-neutral-400'
-            }`}
-          />
-        ))}
-      </div>
+          {images.map((_, idx) => (
+            <button
+              key={idx}
+              onClick={() => setCurrent(idx)}
+              className={`h-3 w-3 rounded-full ${
+                current === idx ? 'bg-black dark:bg-white' : 'bg-neutral-400'
+              }`}
+            />
+          ))}
+        </div>
       )}
-      
     </div>
   )
 }

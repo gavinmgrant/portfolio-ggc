@@ -51,7 +51,7 @@ export default function Project({ project, technologies }) {
         <link rel="icon" href="/icon.png" />
       </Head>
 
-      <section className="flex flex-col justify-start gap-4 lg:flex-row lg:justify-between">
+      <section className="flex flex-col justify-start gap-4 lg:flex-row lg:gap-6">
         {!!p.projectImages ? (
           <Carousel
             sanityImages={p.projectImages}
