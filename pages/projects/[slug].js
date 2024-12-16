@@ -10,6 +10,7 @@ import {
 } from '@tabler/icons'
 import { motion } from 'framer-motion'
 import sanity from '../../lib/sanity'
+import { getSanityImageUrl } from '../../utils/getSanityImageUrl'
 
 export default function Project({ project, technologies }) {
   const p = project[0]
@@ -47,7 +48,10 @@ export default function Project({ project, technologies }) {
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
         <meta property="og:title" content={p.name} />
         <meta property="og:description" content={p.description} />
-        <meta property="og:image" content={p.imgsrc} />
+        <meta
+          property="og:image"
+          content={getSanityImageUrl(p.projectImages[0].asset._ref)}
+        />
         <link rel="icon" href="/icon.png" />
       </Head>
 
