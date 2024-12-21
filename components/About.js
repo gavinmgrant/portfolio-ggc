@@ -14,7 +14,7 @@ import { urls } from '../configs/urls.config'
 const About = () => {
   return (
     <div className="container mx-auto my-20 flex h-full max-w-3xl items-center justify-center px-4 lg:my-0 lg:h-screen lg:max-w-6xl">
-      <div className="flex flex-col-reverse items-center justify-center gap-8 text-center lg:mx-4 lg:flex-row lg:text-left">
+      <div className="flex flex-col-reverse items-center justify-center gap-8 text-center lg:mx-4 lg:flex-row lg:gap-20 lg:text-left">
         <div className="lg:px-4">
           <motion.h1
             className="text-4xl font-semibold text-neutral-900 dark:text-white lg:text-5xl"
@@ -30,14 +30,14 @@ const About = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 4 }}
           >
-            <p className="mb-4">
+            <p className="mb-4 text-justify">
               I'm a forward-thinking software engineer, specializing in
               front-end development. With a background in architecture, I bring
               a unique perspective to crafting captivating digital experiences.
               Armed with expertise in JavaScript, TypeScript, React, Next.js,
               Vue.js, Nuxt.js, Node.js, Express, and more.
             </p>
-            <p className="mb-4">
+            <p className="mb-4 text-justify">
               Currently, I'm the driving force behind front-end engineering at{' '}
               <a
                 className="font-medium transition-colors duration-500 hover:text-yellow-600 dark:hover:text-yellow-500"
