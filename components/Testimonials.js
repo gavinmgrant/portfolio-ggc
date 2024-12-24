@@ -22,83 +22,73 @@ const testimonials = [
 ]
 
 const variants = {
-  enter: (direction) => {
-    return {
-      x: direction > 0 ? 1000 : -1000,
-      opacity: 0,
-    }
-  },
+  enter: (direction) => ({
+    x: direction > 0 ? 1000 : -1000,
+    opacity: 0,
+  }),
   center: {
     zIndex: 1,
     x: 0,
     opacity: 1,
   },
-  exit: (direction) => {
-    return {
-      zIndex: 0,
-      x: direction < 0 ? 1000 : -1000,
-      opacity: 0,
-    }
-  },
+  exit: (direction) => ({
+    zIndex: 0,
+    x: direction < 0 ? 1000 : -1000,
+    opacity: 0,
+  }),
 }
 
 const Testimonials = () => {
   const [[page, direction], setPage] = useState([0, 0])
-
   const testimonialIndex = wrap(0, testimonials.length, page)
 
-  const paginate = (newDirection) => {
+  const paginate = (newDirection) =>
     setPage([page + newDirection, newDirection])
-  }
 
   return (
-    <div className="relative h-[800px] w-full text-center sm:h-[600px] lg:h-[65vh] lg:text-left">
+    <div className="relative flex min-h-[800px] w-full items-center justify-center md:min-h-[700px] lg:min-h-[600px]">
       <motion.h2
-        className="mb-6 text-3xl font-semibold text-stone-900 dark:text-white lg:mb-8 lg:text-4xl lg:ml-4"
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
+        className="absolute top-8 text-3xl font-semibold text-stone-900 dark:text-white lg:text-4xl"
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
       >
         Testimonials
       </motion.h2>
-
-      <AnimatePresence initial={false} custom={direction}>
-        <motion.div
-          key={testimonials[testimonialIndex].name}
-          custom={direction}
-          variants={variants}
-          initial="enter"
-          animate="center"
-          exit="exit"
-          transition={{
-            x: { type: 'spring', stiffness: 300, damping: 30 },
-          }}
-        >
-          <div className="card absolute m-4 mt-16 text-neutral-900 shadow-lg shadow-neutral-300 dark:text-white dark:shadow-neutral-700">
-            <p className="mb-4 text-left">
-              {testimonials[testimonialIndex].quote}
-            </p>
-            <div className="relative bottom-0">
-              <h5 className="text-right text-xl font-semibold">
-                {testimonials[testimonialIndex].name}
-              </h5>
-              <p className="m-0 p-0 text-right">
-                {testimonials[testimonialIndex].title}
-              </p>
-            </div>
-          </div>
-        </motion.div>
-      </AnimatePresence>
-
       <button
-        onClick={() => paginate(1)}
-        className="absolute left-4 z-10 rounded-full bg-neutral-100 bg-opacity-50 p-2 text-stone-900 transition-all duration-300 ease-in-out hover:scale-105 hover:bg-opacity-70 focus:outline-none active:scale-75"
+        onClick={() => paginate(-1)}
+        className="absolute top-7 left-4 z-10 flex h-12 w-12 items-center justify-center rounded-full bg-neutral-200 bg-opacity-50 text-stone-900 shadow-md transition-all duration-300 ease-in-out hover:scale-110 hover:bg-opacity-70 focus:outline-none active:scale-90 sm:top-auto lg:left-8"
       >
         <IconArrowNarrowLeft />
       </button>
-
+      <div className="relative flex w-full max-w-3xl items-center justify-center">
+        <AnimatePresence initial={false} custom={direction}>
+          <motion.div
+            key={testimonials[testimonialIndex].name}
+            custom={direction}
+            variants={variants}
+            initial="enter"
+            animate="center"
+            exit="exit"
+            transition={{
+              x: { type: 'spring', stiffness: 300, damping: 30 },
+            }}
+            className="absolute w-full px-4 text-neutral-900 dark:text-white sm:px-20 lg:px-0"
+          >
+            <p className="mb-4 text-justify">
+              {testimonials[testimonialIndex].quote}
+            </p>
+            <div className="mt-4 text-center lg:text-right">
+              <h5 className="text-lg font-semibold">
+                {testimonials[testimonialIndex].name}
+              </h5>
+              <p className="text-sm">{testimonials[testimonialIndex].title}</p>
+            </div>
+          </motion.div>
+        </AnimatePresence>
+      </div>
       <button
-        onClick={() => paginate(-1)}
-        className="absolute right-4 z-10 rounded-full bg-neutral-100 bg-opacity-50 p-2 text-stone-900 transition-all duration-300 ease-in-out hover:scale-105 hover:bg-opacity-70 focus:outline-none active:scale-75"
+        onClick={() => paginate(1)}
+        className="absolute right-4 top-7 z-10 flex h-12 w-12 items-center justify-center rounded-full bg-neutral-200 bg-opacity-50 text-stone-900 shadow-md transition-all duration-300 ease-in-out hover:scale-110 hover:bg-opacity-70 focus:outline-none active:scale-90 sm:top-auto lg:right-8"
       >
         <IconArrowNarrowRight />
       </button>

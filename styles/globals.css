@@ -9,6 +9,15 @@
   li {
     @apply ml-8 list-disc py-1;
   }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply !font-semibold;
+  }
 }
 
 @layer components {
