@@ -46,7 +46,7 @@ const Testimonials = () => {
     setPage([page + newDirection, newDirection])
 
   return (
-    <div className="relative flex min-h-[800px] w-full items-center justify-center md:min-h-[700px] lg:min-h-[600px]">
+    <div className="relative flex min-h-[800px] w-full items-center justify-center overflow-hidden md:min-h-[700px] lg:min-h-[600px]">
       <motion.h2
         className="absolute top-8 text-3xl font-semibold text-stone-900 dark:text-white lg:text-4xl"
         initial={{ opacity: 0, y: -20 }}
@@ -70,7 +70,7 @@ const Testimonials = () => {
             animate="center"
             exit="exit"
             transition={{
-              x: { type: 'spring', stiffness: 300, damping: 30 },
+              x: { stiffness: 100, damping: 30, ease: 'linear', duration: 0.4 },
             }}
             className="absolute w-full px-4 text-neutral-900 dark:text-white sm:px-20 lg:px-0"
           >
