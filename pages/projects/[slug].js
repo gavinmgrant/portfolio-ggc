@@ -46,6 +46,7 @@ export default function Project({ project, technologies }) {
         <meta name="description" content={p.description} />
         <meta charSet="utf-8" />
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+        <meta name="author" content="Gavin Grant" />
         <meta property="og:title" content={p.name} />
         <meta property="og:description" content={p.description} />
         <meta

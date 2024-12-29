@@ -13,9 +13,9 @@ import { urls } from '../configs/urls.config'
 
 const About = () => {
   return (
-    <div className="container mx-auto my-20 flex h-full max-w-3xl items-center justify-center px-4 lg:my-0 lg:h-screen lg:max-w-6xl">
+    <div className="container mx-auto my-20 flex h-full max-w-3xl items-center justify-center px-4 lg:my-0 lg:h-screen lg:max-w-6xl lg:px-0">
       <div className="flex flex-col-reverse items-center justify-center gap-8 text-center lg:mx-4 lg:flex-row lg:gap-20 lg:text-left">
-        <div className="lg:px-4">
+        <div className="lg:max-w-[660px] lg:px-4">
           <motion.h1
             className="text-4xl font-semibold text-neutral-900 dark:text-white lg:text-5xl"
             initial={{ opacity: 0, y: 20 }}
@@ -30,15 +30,16 @@ const About = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 4 }}
           >
-            <p className="mb-4 text-justify">
-              I'm a forward-thinking software engineer, specializing in
-              front-end development. With a background in architecture, I bring
-              a unique perspective to crafting captivating digital experiences.
-              Armed with expertise in JavaScript, TypeScript, React, Next.js,
-              Vue.js, Nuxt.js, Node.js, Express, and more.
+            <p className="text-left sm:text-justify">
+              As a forward-thinking front-end software engineer with a
+              background in architecture, I bring a unique perspective to
+              building engaging, user-centric digital experiences. Specializing
+              in JavaScript, TypeScript, React, Next.js, Vue.js, Nuxt.js, and
+              more, I help businesses create modern, scalable web applications
+              that stand out.
             </p>
-            <p className="mb-4 text-justify">
-              Currently, I'm the driving force behind front-end engineering at{' '}
+            <p className="text-left sm:text-justify">
+              Currently, I'm leading front-end engineering at{' '}
               <a
                 className="font-medium transition-colors duration-500 hover:text-yellow-600 dark:hover:text-yellow-500"
                 href="https://happycompanies.com/"
@@ -46,11 +47,11 @@ const About = () => {
               >
                 Happy Companies
               </a>
-              , where I'm dedicated to delivering top-notch solutions that
-              delight users.
+              , where I'm committed to delivering high-quality solutions that
+              engage and delight users.
             </p>
           </motion.div>
-          <div className="flex w-full flex-col items-center justify-center gap-4 sm:flex-row lg:mt-6 lg:justify-start">
+          <div className="flex w-full flex-col items-center justify-center gap-4 mt-4 sm:flex-row lg:mt-6 lg:justify-start">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}

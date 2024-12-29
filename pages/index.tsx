@@ -18,21 +18,19 @@ export default function Home() {
     return () => clearTimeout(timer)
   }, [])
 
+  const description =
+    'Explore the portfolio of a front-end engineer specializing in Vue & React, offering expert web development and consulting services for modern, scalable apps.'
+
   return (
     <div>
       <Head>
         <title>Gavin Grant Consulting</title>
-        <meta
-          name="description"
-          content="Web Design and Development Services"
-        />
+        <meta name="description" content={description} />
         <meta charSet="utf-8" />
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+        <meta name="author" content="Gavin Grant" />
         <meta property="og:title" content="Gavin Grant Consulting" />
-        <meta
-          property="og:description"
-          content="Web Design and Development Services"
-        />
+        <meta property="og:description" content={description} />
         <meta property="og:image" content={ogImage.src} />
         <link rel="icon" href="/icon.png" />
         <link rel="canonical" href="https://www.gavingrant.com" />
