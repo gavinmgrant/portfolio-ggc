@@ -1,10 +1,8 @@
-import React from 'react'
-
 const Logo = () => {
   return (
     <div
       id="intro"
-      className="absolute top-0 left-0 right-0 z-30 flex h-screen w-screen items-center justify-center bg-neutral-800"
+      className="absolute left-0 right-0 top-0 z-30 flex h-screen w-screen items-center justify-center bg-neutral-800"
     >
       <svg
         id="logo"

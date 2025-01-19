@@ -6,17 +6,22 @@ import Testimonials from '../components/Testimonials'
 import ogImage from '../public/images/gavin-grant-og.png'
 
 export default function Home() {
-  const [isVisible, setIsVisible] = useState(true)
+  const [isIntro, setIsIntro] = useState(true)
+  const [showContent, setShowContent] = useState(false)
 
   useEffect(() => {
-    window.scrollTo(0, 0)
+    const timerIntro = setTimeout(() => {
+      setIsIntro(false)
+    }, 3500)
+    const timerContent = setTimeout(() => {
+      setShowContent(true)
+    }, 2750)
 
-    const timer = setTimeout(() => {
-      setIsVisible(false)
-    }, 5000)
-
-    return () => clearTimeout(timer)
-  }, [])
+    return () => {
+      clearTimeout(timerIntro)
+      clearTimeout(timerContent)
+    }
+  }, [isIntro, showContent])
 
   const description =
     'Explore the portfolio of a front-end engineer specializing in Vue & React, offering expert web development and consulting services for modern, scalable apps.'
@@ -35,11 +40,19 @@ export default function Home() {
         <link rel="icon" href="/icon.png" />
         <link rel="canonical" href="https://www.gavingrant.com" />
       </Head>
-      <main className="mx-auto flex max-w-6xl flex-col items-center justify-center antialiased">
-        {isVisible && <Logo />}
-        <About />
-        <Testimonials />
-      </main>
+      {isIntro && (
+        <div className="fixed bottom-0 left-0 right-0 top-0 z-50 flex items-center justify-center overflow-clip">
+          <div className="min-h-screen">
+            <Logo />
+          </div>
+        </div>
+      )}
+      {showContent && (
+        <div className="mx-auto flex max-w-6xl flex-col items-center justify-center antialiased">
+          <About />
+          <Testimonials />
+        </div>
+      )}
     </div>
   )
 }

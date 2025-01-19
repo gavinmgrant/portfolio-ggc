@@ -1,13 +1,11 @@
 import React from 'react'
 import Image from 'next/image'
 import headshotDark from '../public/images/headshot-dark.jpg'
-import headshotLight from '../public/images/headshot-light.jpg'
 import { motion } from 'framer-motion'
 import {
   IconBrandLinkedin,
   IconBrandGithub,
   IconMail,
-  IconBrandGit,
 } from '@tabler/icons'
 import { urls } from '../configs/urls.config'
 
@@ -20,7 +18,7 @@ const About = () => {
             className="text-4xl font-semibold text-neutral-900 dark:text-white lg:text-5xl"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 3.75 }}
+            transition={{ delay: 0.25 }}
           >
             Hi, I'm Gavin.
           </motion.h1>
@@ -28,7 +26,7 @@ const About = () => {
             className="mt-2 text-neutral-800 dark:text-white lg:mt-6"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 4 }}
+            transition={{ delay: 0.5 }}
           >
             <p className="text-left sm:text-justify">
               As a forward-thinking front-end software engineer with a
@@ -55,7 +53,7 @@ const About = () => {
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 4.3 }}
+              transition={{ delay: 0.6 }}
             >
               <a href="/projects">
                 <motion.button
@@ -71,7 +69,7 @@ const About = () => {
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 4.4 }}
+                transition={{ delay: 0.8 }}
               >
                 <a href={urls.linkedin} target="_blank">
                   <motion.button
@@ -86,7 +84,7 @@ const About = () => {
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 4.5 }}
+                transition={{ delay: 1 }}
               >
                 <a href={urls.github} target="_blank">
                   <motion.button
@@ -101,7 +99,7 @@ const About = () => {
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 4.6 }}
+                transition={{ delay: 1.2 }}
               >
                 <a href={urls.email} target="_blank">
                   <motion.button
@@ -120,22 +118,13 @@ const About = () => {
           className="mb-6 flex-shrink-0 lg:mb-10 lg:mt-12 lg:pl-4"
           initial={{ opacity: 0, scale: 0 }}
           animate={{ opacity: 1, scale: 1 }}
-          transition={{ delay: 3.5 }}
+          transition={{ delay: 0.25 }}
         >
           <Image
             src={headshotDark}
             alt="Headshot of Gavin Grant"
             priority={true}
-            className="block rounded-full shadow-lg shadow-neutral-700 dark:hidden"
-            width={260}
-            height={260}
-            placeholder="blur"
-          />
-          <Image
-            src={headshotLight}
-            alt="Headshot of Gavin Grant"
-            priority={true}
-            className="hidden rounded-full shadow-lg shadow-neutral-400 dark:block"
+            className="rounded-full shadow-lg shadow-neutral-700"
             width={260}
             height={260}
             placeholder="blur"

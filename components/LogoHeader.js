@@ -2,7 +2,7 @@ import React from 'react'
 
 const LogoHeader = () => {
   return (
-    <div className="w-[160px] sm:w-[198px]">
+    <div className="w-[160px] lg:w-[198px]">
       <svg
         className="w-full h-full"
         width="198"

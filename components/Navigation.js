@@ -27,10 +27,10 @@ const Navigation = () => {
         >
           <LogoHeader />
         </Link>
-        <div className="flex items-center gap-4 sm:gap-5">
+        <div className="flex items-center gap-4 lg:gap-5">
           <Link
             href="/projects"
-            className="text-sm transition-colors duration-500 hover:text-yellow-600 dark:hover:text-yellow-500 sm:text-base"
+            className="text-sm transition-colors duration-500 hover:text-yellow-600 dark:hover:text-yellow-500 lg:text-base"
           >
             <span className={underlineClass}>Projects</span>
           </Link>

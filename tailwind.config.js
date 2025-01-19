@@ -15,7 +15,11 @@ module.exports = {
       display: ['Oswald'],
       body: ['Open Sans'],
     },
-    extend: {},
+    extend: {
+      screens: {
+        'xs': '420px',
+      },
+    },
   },
   plugins: [heroui()],
 }

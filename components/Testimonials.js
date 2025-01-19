@@ -46,52 +46,60 @@ const Testimonials = () => {
     setPage([page + newDirection, newDirection])
 
   return (
-    <div className="relative flex min-h-[800px] w-full items-center justify-center overflow-hidden md:min-h-[700px] lg:min-h-[600px]">
-      <motion.h2
-        className="absolute top-8 text-3xl font-semibold text-stone-900 dark:text-white lg:text-4xl"
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-      >
+    <div className="flex h-[750px] w-full max-w-6xl flex-col items-center justify-center px-4 py-12 xs:h-[650px] sm:h-[575px] md:h-[500px] lg:h-[600px] lg:py-20">
+      <h2 className="text-3xl font-semibold text-stone-900 dark:text-white lg:text-4xl">
         Testimonials
-      </motion.h2>
-      <button
-        onClick={() => paginate(-1)}
-        className="absolute top-7 left-4 z-10 flex h-12 w-12 items-center justify-center rounded-full bg-neutral-200 bg-opacity-50 text-stone-900 shadow-md transition-all duration-300 ease-in-out hover:scale-110 hover:bg-opacity-70 focus:outline-none active:scale-90 sm:top-auto lg:left-8"
-      >
-        <IconArrowNarrowLeft />
-      </button>
-      <div className="relative flex w-full max-w-3xl items-center justify-center">
-        <AnimatePresence initial={false} custom={direction}>
-          <motion.div
-            key={testimonials[testimonialIndex].name}
-            custom={direction}
-            variants={variants}
-            initial="enter"
-            animate="center"
-            exit="exit"
-            transition={{
-              x: { stiffness: 100, damping: 30, ease: 'linear', duration: 0.4 },
-            }}
-            className="absolute w-full px-4 text-neutral-900 dark:text-white sm:px-20 lg:px-0"
-          >
-            <p className="mb-4 text-justify">
-              {testimonials[testimonialIndex].quote}
-            </p>
-            <div className="mt-4 text-center lg:text-right">
-              <h5 className="text-lg font-semibold">
-                {testimonials[testimonialIndex].name}
-              </h5>
-              <p className="text-sm">{testimonials[testimonialIndex].title}</p>
-            </div>
-          </motion.div>
-        </AnimatePresence>
+      </h2>
+
+      <div className="flex h-full w-full items-center justify-center gap-4 sm:gap-6 md:gap-8 lg:gap-12 xl:gap-36">
+        <button
+          onClick={() => paginate(-1)}
+          className="z-10 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-neutral-200 bg-opacity-50 text-stone-900 shadow-md transition-all duration-300 ease-in-out hover:scale-110 hover:bg-opacity-70 focus:outline-none active:scale-90 sm:h-12 sm:w-12"
+        >
+          <IconArrowNarrowLeft />
+        </button>
+
+        <div className="relative flex h-full w-full items-center justify-center overflow-hidden">
+          <AnimatePresence initial={false} custom={direction}>
+            <motion.div
+              key={testimonials[testimonialIndex].name}
+              custom={direction}
+              variants={variants}
+              initial="enter"
+              animate="center"
+              exit="exit"
+              transition={{
+                x: {
+                  stiffness: 100,
+                  damping: 30,
+                  ease: 'linear',
+                  duration: 0.4,
+                },
+              }}
+              className="absolute w-full text-neutral-900 dark:text-white"
+            >
+              <p className="mb-4 text-justify text-sm leading-relaxed lg:text-base">
+                {testimonials[testimonialIndex].quote}
+              </p>
+              <div className="mt-4 text-center lg:text-right">
+                <h5 className="text-lg font-semibold">
+                  {testimonials[testimonialIndex].name}
+                </h5>
+                <p className="text-sm">
+                  {testimonials[testimonialIndex].title}
+                </p>
+              </div>
+            </motion.div>
+          </AnimatePresence>
+        </div>
+
+        <button
+          onClick={() => paginate(1)}
+          className="z-10 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-neutral-200 bg-opacity-50 text-stone-900 shadow-md transition-all duration-300 ease-in-out hover:scale-110 hover:bg-opacity-70 focus:outline-none active:scale-90 sm:h-12 sm:w-12"
+        >
+          <IconArrowNarrowRight />
+        </button>
       </div>
-      <button
-        onClick={() => paginate(1)}
-        className="absolute right-4 top-7 z-10 flex h-12 w-12 items-center justify-center rounded-full bg-neutral-200 bg-opacity-50 text-stone-900 shadow-md transition-all duration-300 ease-in-out hover:scale-110 hover:bg-opacity-70 focus:outline-none active:scale-90 sm:top-auto lg:right-8"
-      >
-        <IconArrowNarrowRight />
-      </button>
     </div>
   )
 }
