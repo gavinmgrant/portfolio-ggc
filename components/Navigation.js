@@ -37,7 +37,7 @@ const Navigation = () => {
           onClick={onOpen}
         />
         <Drawer
-          placement="bottom"
+          placement="right"
           backdrop="blur"
           isOpen={isOpen}
           onOpenChange={onOpenChange}
