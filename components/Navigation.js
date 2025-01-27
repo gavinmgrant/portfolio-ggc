@@ -54,6 +54,14 @@ const Navigation = () => {
                       Projects
                     </span>
                   </Link>
+                  <Link
+                    href="/contact"
+                    className="transition-colors duration-500 hover:text-yellow-600 dark:hover:text-yellow-500"
+                  >
+                    <span className={underlineClass} onClickCapture={onClose}>
+                      Contact
+                    </span>
+                  </Link>
                   <ThemeSwitch />
                 </div>
               </DrawerBody>
@@ -70,6 +78,12 @@ const Navigation = () => {
               className="transition-colors duration-500 hover:text-yellow-600 dark:hover:text-yellow-500"
             >
               <span className={underlineClass}>Projects</span>
+            </Link>
+            <Link
+              href="/contact"
+              className="transition-colors duration-500 hover:text-yellow-600 dark:hover:text-yellow-500"
+            >
+              <span className={underlineClass}>Contact</span>
             </Link>
             <ThemeSwitch />
           </div>

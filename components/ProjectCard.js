@@ -18,19 +18,18 @@ const ProjectCard = ({ index, slug, imgsrc, name, description }) => {
           <div
             className="relative overflow-hidden rounded-md shadow-lg shadow-neutral-300 dark:shadow-neutral-700"
             style={{
-              position: 'relative',
-              maxWidth: '548px',
-              maxHeight: '310px',
+              maxWidth: '735px',
+              maxHeight: '490px',
             }}
           >
             {!isLoaded && (
-              <div className="absolute top-0 left-0 z-10 aspect-[3/2] h-[310px] w-[548px] animate-pulse overflow-hidden rounded-md bg-slate-300"></div>
+              <div className="absolute left-0 top-0 z-10 aspect-[3/2] h-[310px] w-[548px] animate-pulse overflow-hidden rounded-md bg-slate-300"></div>
             )}
             <Image
               alt={name}
               src={imgsrc}
-              width={600}
-              height={400}
+              width={735}
+              height={490}
               onLoad={() => setIsLoaded(true)}
               className="cursor-pointer overflow-hidden rounded-md transition-all duration-300 ease-in-out hover:scale-105"
               priority={index === 0 || index === 1}

@@ -30,7 +30,7 @@ export default function Projects({ projects }) {
         <link rel="icon" href="/icon.png" />
       </Head>
 
-      <div className="container mx-auto grid grid-cols-1 gap-x-6 gap-y-14 px-4 pt-20 lg:max-w-6xl lg:grid-cols-2 lg:pt-28">
+      <div className="mx-auto grid grid-cols-1 gap-y-14 px-4 pt-20 sm:gap-x-6 sm:pt-28 lg:max-w-6xl md:grid-cols-2">
         {projects.map((project, index) => {
           return (
             <ProjectCard
