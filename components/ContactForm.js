@@ -69,7 +69,7 @@ export default function ContactForm() {
       <h2 className="mb-4 text-3xl">Contact me</h2>
       <div className="mb-8 space-y-2">
         <p className="p-0">
-          Do you need a website built or web app built? Do you need a front-end
+          Do you need a website or web app built? Do you need a front-end
           software engineer?
         </p>
         <p className="p-0">Send me a message, so we can talk about it.</p>
