@@ -14,19 +14,13 @@ const About = () => {
     <div className="container mx-auto my-20 flex h-full max-w-3xl items-center justify-center px-4 lg:my-0 lg:h-screen lg:max-w-6xl lg:px-0">
       <div className="flex flex-col-reverse items-center justify-center gap-8 text-center lg:mx-4 lg:flex-row lg:gap-20 lg:text-left">
         <div className="lg:max-w-[660px] lg:px-4">
-          <motion.h1
+          <h1
             className="text-4xl font-semibold text-neutral-900 dark:text-white lg:text-5xl"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.25 }}
           >
             Hi, I'm Gavin.
-          </motion.h1>
-          <motion.div
+          </h1>
+          <div
             className="mt-2 text-neutral-800 dark:text-white lg:mt-6"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.5 }}
           >
             <p className="text-left sm:text-justify">
               As a forward-thinking front-end software engineer with a
@@ -48,18 +42,18 @@ const About = () => {
               , where I'm committed to delivering high-quality solutions that
               engage and delight users.
             </p>
-          </motion.div>
+          </div>
           <div className="flex w-full flex-col items-center justify-center gap-4 mt-4 sm:flex-row lg:mt-6 lg:justify-start">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.6 }}
+              transition={{ delay: 2.6 }}
             >
               <a href="/projects">
                 <motion.button
                   className="btn-primary"
                   whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
+                  whileTap={{ scale: 2.95 }}
                 >
                   View Projects
                 </motion.button>
@@ -69,7 +63,7 @@ const About = () => {
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.8 }}
+                transition={{ delay: 2.8 }}
               >
                 <a href={urls.linkedin} target="_blank">
                   <motion.button
@@ -84,7 +78,7 @@ const About = () => {
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 1 }}
+                transition={{ delay: 3 }}
               >
                 <a href={urls.github} target="_blank">
                   <motion.button
@@ -99,7 +93,7 @@ const About = () => {
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 1.2 }}
+                transition={{ delay: 3.2 }}
               >
                 <a href={urls.email} target="_blank">
                   <motion.button
@@ -114,11 +108,8 @@ const About = () => {
             </div>
           </div>
         </div>
-        <motion.div
+        <div
           className="mb-6 flex-shrink-0 lg:mb-10 lg:mt-12 lg:pl-4"
-          initial={{ opacity: 0, scale: 0 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ delay: 0.25 }}
         >
           <Image
             src={headshotDark}
@@ -129,7 +120,7 @@ const About = () => {
             height={260}
             placeholder="blur"
           />
-        </motion.div>
+        </div>
       </div>
     </div>
   )

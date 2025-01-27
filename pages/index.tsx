@@ -7,21 +7,16 @@ import ogImage from '../public/images/gavin-grant-og.png'
 
 export default function Home() {
   const [isIntro, setIsIntro] = useState(true)
-  const [showContent, setShowContent] = useState(false)
 
   useEffect(() => {
     const timerIntro = setTimeout(() => {
       setIsIntro(false)
     }, 3500)
-    const timerContent = setTimeout(() => {
-      setShowContent(true)
-    }, 2750)
 
     return () => {
       clearTimeout(timerIntro)
-      clearTimeout(timerContent)
     }
-  }, [isIntro, showContent])
+  }, [isIntro])
 
   const description =
     'Explore the portfolio of a front-end engineer specializing in Vue & React, offering expert web development and consulting services for modern, scalable apps.'
@@ -47,12 +42,11 @@ export default function Home() {
           </div>
         </div>
       )}
-      {showContent && (
-        <div className="mx-auto flex max-w-6xl flex-col items-center justify-center antialiased">
-          <About />
-          <Testimonials />
-        </div>
-      )}
-    </div>
+
+      <div className="mx-auto flex max-w-6xl flex-col items-center justify-center antialiased">
+        <About />
+        <Testimonials />
+      </div>
+  </div>
   )
 }
