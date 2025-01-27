@@ -78,7 +78,7 @@ export default function ContactForm() {
       <Form className="space-y-3" onSubmit={handleSubmit}>
         <div className="grid w-full grid-cols-1 gap-5 md:grid-cols-2">
           <Input
-            className=""
+            className="hidden"
             label="Honeypot"
             name="honeypot"
             value={formData.honeypot}
