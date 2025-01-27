@@ -23,7 +23,7 @@ const ProjectCard = ({ index, slug, imgsrc, name, description }) => {
             }}
           >
             {!isLoaded && (
-              <div className="absolute left-0 top-0 z-10 aspect-[3/2] h-[310px] w-[548px] animate-pulse overflow-hidden rounded-md bg-slate-300"></div>
+              <div className="absolute left-0 top-0 z-10 aspect-[735/490] h-[490px] w-[735px] animate-pulse overflow-hidden rounded-md bg-slate-300"></div>
             )}
             <Image
               alt={name}
