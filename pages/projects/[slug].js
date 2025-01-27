@@ -37,7 +37,7 @@ export default function Project({ project, technologies }) {
       </div>
     )
 
-  const pageTitle = `Gavin Grant Consulting | ${p.isArray ? '' : p.name}`
+  const pageTitle = `${p.isArray ? '' : p.name} | Gavin Grant Consulting`
 
   return (
     <div className="container mx-auto px-4 pt-[72px] lg:max-w-6xl sm:pt-28">

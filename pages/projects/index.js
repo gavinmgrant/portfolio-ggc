@@ -16,10 +16,11 @@ export default function Projects({ projects }) {
 
   const description =
     'Explore projects designed and developed by front-end engineer Gavin Grant, featuring innovative web solutions built with Vue.js, React, and modern tech.'
+
   return (
     <div>
       <Head>
-        <title>Gavin Grant Consulting | Projects</title>
+        <title>Projects | Gavin Grant Consulting</title>
         <meta name="description" content={description} />
         <meta charSet="utf-8" />
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
@@ -30,7 +31,7 @@ export default function Projects({ projects }) {
         <link rel="icon" href="/icon.png" />
       </Head>
 
-      <div className="mx-auto grid grid-cols-1 gap-y-14 px-4 pt-20 sm:gap-x-6 sm:pt-28 lg:max-w-6xl md:grid-cols-2">
+      <div className="mx-auto grid grid-cols-1 gap-y-14 px-4 pt-20 sm:gap-x-6 sm:pt-28 md:grid-cols-2 lg:max-w-6xl">
         {projects.map((project, index) => {
           return (
             <ProjectCard

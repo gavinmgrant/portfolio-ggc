@@ -25,6 +25,16 @@ export default function ContactForm() {
     e.preventDefault()
     setStatus({ success: null, message: '' })
 
+    const requiredFields = ['firstName', 'lastName', 'email', 'message']
+    const isFormValid = requiredFields.every((field) => formData[field].trim())
+    if (!isFormValid) {
+      setStatus({
+        success: false,
+        message: 'Please fill in all of the fields above.',
+      })
+      return
+    }
+
     try {
       const response = await fetch('/api/send', {
         method: 'POST',
@@ -67,11 +77,18 @@ export default function ContactForm() {
       <Form className="space-y-3" onSubmit={handleSubmit}>
         <div className="grid w-full grid-cols-1 gap-5 md:grid-cols-2">
           <Input
+            type="text"
+            name="honeypot"
+            style={{ display: 'none' }}
+            onChange={handleChange}
+          />
+
+          <Input
             label="First Name"
             name="firstName"
             value={formData.firstName}
             onChange={handleChange}
-            required
+            isRequired
             fullWidth
             radius="sm"
           />
@@ -80,7 +97,7 @@ export default function ContactForm() {
             name="lastName"
             value={formData.lastName}
             onChange={handleChange}
-            required
+            isRequired
             fullWidth
             radius="sm"
           />
@@ -91,7 +108,7 @@ export default function ContactForm() {
           name="email"
           value={formData.email}
           onChange={handleChange}
-          required
+          isRequired
           fullWidth
           radius="sm"
         />
@@ -101,7 +118,7 @@ export default function ContactForm() {
           value={formData.message}
           minRows={6}
           onChange={handleChange}
-          required
+          isRequired
           fullWidth
           radius="sm"
         />
@@ -122,13 +139,15 @@ export default function ContactForm() {
           </Button>
         </motion.div>
         {status.success !== null && (
-          <p
-            className={`mt-4 text-sm ${
-              status.success ? 'text-green-600' : 'text-red-600'
-            }`}
-          >
-            {status.message}
-          </p>
+          <div className="mt-2 flex w-full items-center justify-center">
+            <p
+              className={`text-sm ${
+                status.success ? 'text-green-600' : 'text-red-600'
+              }`}
+            >
+              {status.message}
+            </p>
+          </div>
         )}
       </Form>
     </div>

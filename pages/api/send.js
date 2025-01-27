@@ -2,8 +2,17 @@ import { ContactEmailTemplate } from '../../components/ContactEmailTemplate'
 import { Resend } from 'resend'
 
 const resend = new Resend(process.env.RESEND_API_KEY)
+const domain = 'gavingrant.com'
 
 export default async (req, res) => {
+  if (req.body.honeypot) {
+    return res.status(400).json({ message: 'Spam detected.' })
+  }
+
+  if (!req.headers.referer || !req.headers.referer.includes(domain)) {
+    return res.status(400).json({ message: 'Invalid referer.' })
+  }
+
   const firstName = req.body.firstName
   const lastName = req.body.lastName
   const email = req.body.email
