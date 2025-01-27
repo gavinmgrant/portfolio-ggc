@@ -6,6 +6,7 @@ import { motion } from 'framer-motion'
 
 export default function ContactForm() {
   const [formData, setFormData] = useState({
+    honeypot: '',
     firstName: '',
     lastName: '',
     email: '',
@@ -77,9 +78,10 @@ export default function ContactForm() {
       <Form className="space-y-3" onSubmit={handleSubmit}>
         <div className="grid w-full grid-cols-1 gap-5 md:grid-cols-2">
           <Input
-            type="text"
+            className=""
+            label="Honeypot"
             name="honeypot"
-            style={{ display: 'none' }}
+            value={formData.honeypot}
             onChange={handleChange}
           />
 
