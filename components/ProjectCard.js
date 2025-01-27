@@ -15,13 +15,7 @@ const ProjectCard = ({ index, slug, imgsrc, name, description }) => {
     >
       <Link href={`/projects/${encodeURIComponent(slug)}`}>
         <div key={slug}>
-          <div
-            className="relative overflow-hidden rounded-md shadow-lg shadow-neutral-300 dark:shadow-neutral-700"
-            style={{
-              maxWidth: '735px',
-              maxHeight: '490px',
-            }}
-          >
+          <div className="aspect-[548/300] relative max-h-[490px] max-w-[735px] overflow-hidden rounded-md shadow-lg shadow-neutral-300 dark:shadow-neutral-700">
             {!isLoaded && (
               <div className="absolute left-0 top-0 z-10 h-[490px] w-[735px] animate-pulse overflow-hidden rounded-md bg-slate-300"></div>
             )}
