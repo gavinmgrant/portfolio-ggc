@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import { Input, Textarea, Button, Form } from '@heroui/react'
+import { motion } from 'framer-motion'
 
 export default function ContactForm() {
   const [formData, setFormData] = useState({
@@ -104,7 +105,12 @@ export default function ContactForm() {
           fullWidth
           radius="sm"
         />
-        <div className="mx-auto !mt-6">
+        <motion.div
+          className="mx-auto !mt-6"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.25 }}
+        >
           <Button
             type="submit"
             className="w-full sm:w-auto"
@@ -114,7 +120,7 @@ export default function ContactForm() {
           >
             Send Message
           </Button>
-        </div>
+        </motion.div>
         {status.success !== null && (
           <p
             className={`mt-4 text-sm ${
