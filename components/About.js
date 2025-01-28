@@ -1,4 +1,3 @@
-import React from 'react'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
 import headshotDark from '../public/images/headshot-dark.jpg'
@@ -39,11 +38,11 @@ const About = () => {
               engage and delight users.
             </p>
           </div>
-          <div className="mt-4 flex w-full flex-col items-center justify-center gap-5 sm:flex-row lg:mt-6 lg:justify-start">
+          <div className="mt-4 flex h-12 w-full flex-col items-center justify-center gap-5 sm:flex-row lg:mt-6 lg:justify-start">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 2.5 }}
+              transition={{ delay: 0.25 }}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 2.95 }}
             >
@@ -59,7 +58,7 @@ const About = () => {
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 2.75 }}
+              transition={{ delay: 0.5 }}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 2.95 }}
             >
@@ -78,7 +77,7 @@ const About = () => {
                 target="_blank"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 3 }}
+                transition={{ delay: 0.75 }}
               >
                 <IconBrandLinkedin className="hover-color h-7 w-7" />
               </motion.a>
@@ -87,7 +86,7 @@ const About = () => {
                 target="_blank"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 3.25 }}
+                transition={{ delay: 1 }}
               >
                 <IconBrandGithub className="hover-color h-7 w-7" />
               </motion.a>
@@ -96,7 +95,7 @@ const About = () => {
                 target="_blank"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 3.5 }}
+                transition={{ delay: 1.25 }}
               >
                 <IconMail className="hover-color h-7 w-7" />
               </motion.a>

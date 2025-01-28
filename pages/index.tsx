@@ -9,14 +9,16 @@ export default function Home() {
   const [isIntro, setIsIntro] = useState(true)
 
   useEffect(() => {
-    const timerIntro = setTimeout(() => {
+    const intro = sessionStorage.getItem('intro')
+    if (intro) {
       setIsIntro(false)
-    }, 3500)
-
-    return () => {
-      clearTimeout(timerIntro)
+    } else {
+      setTimeout(() => {
+        setIsIntro(false)
+        sessionStorage.setItem('intro', 'shown')
+      }, 3000)
     }
-  }, [isIntro])
+  }, [])
 
   const description =
     'Explore the portfolio of a front-end engineer specializing in Vue & React, offering expert web development and consulting services for modern, scalable apps.'
@@ -47,6 +49,6 @@ export default function Home() {
         <About />
         <Testimonials />
       </div>
-  </div>
+    </div>
   )
 }
