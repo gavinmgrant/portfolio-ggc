@@ -46,7 +46,7 @@ const About = () => {
             >
               <motion.div
                 whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 2.95 }}
+                whileTap={{ scale: 0.95 }}
               >
                 <Button
                   onPress={() => router.push('/contact')}
@@ -65,7 +65,7 @@ const About = () => {
             >
               <motion.div
                 whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 2.95 }}
+                whileTap={{ scale: 0.95 }}
               >
                 <Button
                   onPress={() => router.push('/projects')}
@@ -87,7 +87,7 @@ const About = () => {
               >
                 <motion.div
                   whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 2.95 }}
+                  whileTap={{ scale: 0.95 }}
                 >
                   <Button isIconOnly radius="sm" size="lg" variant="bordered">
                     <IconBrandLinkedin className="h-7 w-7" />
@@ -103,7 +103,7 @@ const About = () => {
               >
                 <motion.div
                   whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 2.95 }}
+                  whileTap={{ scale: 0.95 }}
                 >
                   <Button isIconOnly radius="sm" size="lg" variant="bordered">
                     <IconBrandGithub className="h-7 w-7" />
