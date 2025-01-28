@@ -7,8 +7,10 @@ import {
   IconExternalLink,
   IconBrandGithub,
   IconAlertTriangle,
+  IconEyeOff,
 } from '@tabler/icons'
 import { motion } from 'framer-motion'
+import { Button } from '@heroui/react'
 import sanity from '../../lib/sanity'
 import { getSanityImageUrl } from '../../utils/getSanityImageUrl'
 
@@ -40,7 +42,7 @@ export default function Project({ project, technologies }) {
   const pageTitle = `${p.isArray ? '' : p.name} | Gavin Grant Consulting`
 
   return (
-    <div className="container mx-auto px-4 pt-[72px] lg:max-w-6xl sm:pt-28">
+    <div className="container mx-auto px-4 pt-[72px] sm:pt-28 lg:max-w-6xl">
       <Head>
         <title>{pageTitle}</title>
         <meta name="description" content={p.description} />
@@ -103,7 +105,7 @@ export default function Project({ project, technologies }) {
               <motion.div
                 key={i}
                 whileHover={{ scale: 1.1 }}
-                className="mr-2 mt-0 mb-3 "
+                className="mb-3 mr-2 mt-0 "
               >
                 <motion.a
                   href={tech.url}
@@ -122,7 +124,7 @@ export default function Project({ project, technologies }) {
         </div>
       </section>
 
-      <div className="my-6 flex items-start justify-between gap-4 lg:mt-12 lg:mb-8 lg:items-center">
+      <div className="my-6 flex items-start justify-between gap-4 lg:mb-8 lg:mt-12 lg:items-center">
         <div className="flex flex-col items-start justify-start gap-4 lg:flex-row lg:items-center lg:gap-5">
           <a
             href={p.url}
@@ -158,7 +160,7 @@ export default function Project({ project, technologies }) {
         })}
       </ul>
 
-      <h3 className="mt-6 mb-2 text-2xl">Technology</h3>
+      <h3 className="mb-2 mt-6 text-2xl">Technology</h3>
       <ul className="list-disc">
         {technologiesUsed.map((tech, i) => {
           return (
@@ -168,24 +170,31 @@ export default function Project({ project, technologies }) {
           )
         })}
       </ul>
-      {p.github && (
-        <div className="flex w-full items-center justify-center">
-          <motion.button
-            className="btn-primary mt-6"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            <a
-              className="flex items-center gap-2"
-              href={p.github}
-              target="_blank"
-            >
-              <IconBrandGithub size="24px" />
-              <span>GitHub Repo</span>
+      <div className="mt-6 flex w-full items-center justify-center">
+        {p.github ? (
+          <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+            <a href={p.github} target="_blank">
+              <Button
+                className="flex items-center gap-3"
+                size="lg"
+                color="primary"
+              >
+                <IconBrandGithub size="24px" />
+                <span>GitHub Repo</span>
+              </Button>
             </a>
-          </motion.button>
-        </div>
-      )}
+          </motion.div>
+        ) : (
+          <Button
+            disabled={true}
+            size="lg"
+            className="flex cursor-not-allowed items-center gap-3"
+          >
+            <IconEyeOff size="24px" />
+            <span>Private GitHub repo</span>
+          </Button>
+        )}
+      </div>
     </div>
   )
 }

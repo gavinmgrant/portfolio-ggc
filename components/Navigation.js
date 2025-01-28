@@ -24,10 +24,7 @@ const Navigation = () => {
   return (
     <div className="dark:border-white-300 fixed top-0 z-20 mx-auto mb-12 w-screen border-b-[0.5px] border-neutral-300 bg-white dark:bg-neutral-900">
       <div className="mx-auto flex items-center justify-between px-4 py-4 sm:max-w-6xl sm:py-6">
-        <Link
-          href="/"
-          className="transition-colors duration-500 hover:text-yellow-600 dark:hover:text-yellow-500"
-        >
+        <Link href="/" className="hover-color">
           <LogoHeader />
         </Link>
 
@@ -46,18 +43,12 @@ const Navigation = () => {
             {(onClose) => (
               <DrawerBody className="px-8 py-12">
                 <div className="flex flex-col items-center justify-center gap-6">
-                  <Link
-                    href="/projects"
-                    className="transition-colors duration-500 hover:text-yellow-600 dark:hover:text-yellow-500"
-                  >
+                  <Link href="/projects" className="hover-color">
                     <span className={underlineClass} onClickCapture={onClose}>
                       Projects
                     </span>
                   </Link>
-                  <Link
-                    href="/contact"
-                    className="transition-colors duration-500 hover:text-yellow-600 dark:hover:text-yellow-500"
-                  >
+                  <Link href="/contact" className="hover-color">
                     <span className={underlineClass} onClickCapture={onClose}>
                       Contact
                     </span>
@@ -73,16 +64,10 @@ const Navigation = () => {
         {/* Desktop Menu */}
         <div className="hidden sm:block">
           <div className="flex flex-row items-center justify-center gap-5">
-            <Link
-              href="/projects"
-              className="transition-colors duration-500 hover:text-yellow-600 dark:hover:text-yellow-500"
-            >
+            <Link href="/projects" className="hover-color">
               <span className={underlineClass}>Projects</span>
             </Link>
-            <Link
-              href="/contact"
-              className="transition-colors duration-500 hover:text-yellow-600 dark:hover:text-yellow-500"
-            >
+            <Link href="/contact" className="hover-color">
               <span className={underlineClass}>Contact</span>
             </Link>
             <ThemeSwitch />
