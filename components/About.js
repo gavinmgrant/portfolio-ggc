@@ -11,7 +11,7 @@ const About = () => {
   const router = useRouter()
 
   return (
-    <div className="container mx-auto my-20 flex h-full max-w-3xl items-center justify-center px-4 lg:my-0 lg:h-screen lg:max-w-6xl lg:px-0">
+    <div className="container mx-auto my-20 flex h-full max-w-3xl items-center justify-center px-4 sm:my-28 lg:my-0 lg:h-screen lg:max-w-6xl lg:px-0">
       <div className="flex flex-col-reverse items-center justify-center gap-8 text-center lg:mx-4 lg:flex-row lg:gap-20 lg:text-left">
         <div className="lg:max-w-[660px] lg:px-4">
           <h1 className="text-4xl font-semibold text-neutral-900 dark:text-white lg:text-5xl">
