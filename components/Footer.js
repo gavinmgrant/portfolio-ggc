@@ -9,7 +9,7 @@ const Footer = () => {
 
   return (
     <>
-      <hr className="dark:border-white-300 border-t-[0.5px] border-neutral-300 mt-12" />
+      <hr className="dark:border-white-300 mt-12 border-t-[0.5px] border-neutral-300" />
 
       <div className="mx-auto mt-0 py-6">
         <div className="relative mx-auto px-4 text-sm text-neutral-800 dark:text-white lg:max-w-6xl">
@@ -50,24 +50,6 @@ const Footer = () => {
                     viewport={{ once: true }}
                   >
                     GitHub
-                  </motion.div>
-                </div>
-              </motion.a>
-
-              <motion.a
-                href={urls.email}
-                className="flex items-center space-x-1 transition-colors duration-500 hover:text-yellow-600 dark:hover:text-yellow-500"
-                whileHover={{ scale: 1.05 }}
-              >
-                <IconMail />
-                <div className="overflow-hidden text-clip">
-                  <motion.div
-                    initial={{ x: -30, opacity: 0 }}
-                    whileInView={{ x: 0, opacity: 1 }}
-                    transition={{ delay: 0.6, type: 'spring', bounce: 0.1 }}
-                    viewport={{ once: true }}
-                  >
-                    Email
                   </motion.div>
                 </div>
               </motion.a>

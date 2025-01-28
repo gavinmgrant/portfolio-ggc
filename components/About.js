@@ -38,40 +38,46 @@ const About = () => {
               engage and delight users.
             </p>
           </div>
-          <div className="mt-4 flex h-12 w-full flex-col items-center justify-center gap-5 sm:flex-row lg:mt-6 lg:justify-start">
+          <div className="mt-4 flex w-full flex-col items-center justify-center gap-5 sm:h-12 sm:flex-row lg:mt-6 lg:justify-start">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.25 }}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 2.95 }}
             >
-              <Button
-                onPress={() => router.push('/contact')}
-                color="primary"
-                radius="sm"
-                size="lg"
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 2.95 }}
               >
-                Contact Me
-              </Button>
+                <Button
+                  onPress={() => router.push('/contact')}
+                  color="primary"
+                  radius="sm"
+                  size="lg"
+                >
+                  Contact Me
+                </Button>
+              </motion.div>
             </motion.div>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.5 }}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 2.95 }}
             >
-              <Button
-                onPress={() => router.push('/projects')}
-                radius="sm"
-                size="lg"
-                variant="bordered"
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 2.95 }}
               >
-                View Projects
-              </Button>
+                <Button
+                  onPress={() => router.push('/projects')}
+                  radius="sm"
+                  size="lg"
+                  variant="bordered"
+                >
+                  View Projects
+                </Button>
+              </motion.div>
             </motion.div>
-            <div className="flex items-center justify-center gap-6">
+            <div className="flex items-center justify-center gap-5">
               <motion.a
                 href={urls.linkedin}
                 target="_blank"
@@ -79,7 +85,14 @@ const About = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.75 }}
               >
-                <IconBrandLinkedin className="hover-color h-7 w-7" />
+                <motion.div
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 2.95 }}
+                >
+                  <Button isIconOnly radius="sm" size="lg" variant="bordered">
+                    <IconBrandLinkedin className="h-7 w-7" />
+                  </Button>
+                </motion.div>
               </motion.a>
               <motion.a
                 href={urls.github}
@@ -88,16 +101,14 @@ const About = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 1 }}
               >
-                <IconBrandGithub className="hover-color h-7 w-7" />
-              </motion.a>
-              <motion.a
-                href={urls.email}
-                target="_blank"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 1.25 }}
-              >
-                <IconMail className="hover-color h-7 w-7" />
+                <motion.div
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 2.95 }}
+                >
+                  <Button isIconOnly radius="sm" size="lg" variant="bordered">
+                    <IconBrandGithub className="h-7 w-7" />
+                  </Button>
+                </motion.div>
               </motion.a>
             </div>
           </div>
