@@ -2,7 +2,7 @@ const Logo = () => {
   return (
     <div
       id="intro"
-      className="absolute left-0 right-0 top-0 z-30 flex h-screen w-screen items-center justify-center bg-neutral-900"
+      className="absolute left-0 right-0 top-0 z-30 flex h-screen w-screen items-center justify-center bg-neutral-900 p-4"
     >
       <svg
         id="logo"
