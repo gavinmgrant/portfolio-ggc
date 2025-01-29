@@ -11,8 +11,8 @@ const About = () => {
 
   return (
     <div className="my-20 flex h-full max-w-[1536px] items-center justify-center sm:my-28 lg:my-0 lg:h-screen">
-      <div className="flex flex-col-reverse items-center justify-center gap-8 text-center lg:mx-4 lg:flex-row lg:gap-20 lg:text-left">
-        <div className="lg:max-w-[660px] lg:px-4">
+      <div className="flex max-w-[1000px] flex-col-reverse items-center justify-center gap-8 text-center lg:flex-row lg:gap-20 lg:text-left">
+        <div>
           <h1 className="text-5xl font-semibold text-neutral-900 dark:text-white sm:text-6xl lg:text-7xl">
             Hi, I'm Gavin.
           </h1>

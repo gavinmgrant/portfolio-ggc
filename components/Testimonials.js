@@ -50,7 +50,7 @@ const Testimonials = () => {
       <div className="flex h-[700px] w-full max-w-[1536px] flex-col items-center justify-center px-4 py-12 xs:h-[520px] sm:h-[480px] md:h-[420px] lg:h-[560px] lg:py-20">
         <h2 className="text-4xl font-semibold lg:text-5xl">Testimonials</h2>
 
-        <div className="flex h-full w-full max-w-[1280px] items-center justify-center gap-4 sm:gap-6 md:gap-8 lg:gap-12 xl:gap-36">
+        <div className="flex h-full w-full max-w-[1000px] items-center justify-center gap-4 sm:gap-6 md:gap-8 lg:gap-12 xl:gap-24">
           <button
             onClick={() => paginate(-1)}
             className="z-10 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-neutral-200 bg-opacity-50 shadow-md transition-all duration-300 ease-in-out hover:scale-110 hover:bg-opacity-70 focus:outline-none active:scale-90 sm:h-12 sm:w-12"
