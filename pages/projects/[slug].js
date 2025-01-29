@@ -131,7 +131,7 @@ export default function Project({ project, technologies }) {
             target="_blank"
             className="transition-colors duration-500 hover:text-yellow-600 dark:hover:text-yellow-500"
           >
-            <h1 className="text-3xl font-semibold sm:text-4xl lg:text-5xl">
+            <h1 className="text-2xl font-semibold sm:text-3xl md:text-4xl lg:text-5xl">
               {p.name}
             </h1>
           </a>

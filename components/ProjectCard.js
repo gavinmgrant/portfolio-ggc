@@ -30,7 +30,7 @@ const ProjectCard = ({ index, slug, imgsrc, name, description }) => {
             />
           </div>
           <div className="cursor-pointer">
-            <h2 className="mt-4 text-2xl font-semibold lg:text-3xl">{name}</h2>
+            <h2 className="mt-4 text-xl font-semibold sm:text-2xl">{name}</h2>
             <p className="text-sm lg:text-base">{description}</p>
           </div>
         </div>
