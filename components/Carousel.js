@@ -1,4 +1,4 @@
-import { motion, AnimatePresence } from 'framer-motion'
+import { motion } from 'framer-motion'
 import { useState, useEffect } from 'react'
 import NextImage from 'next/image'
 import Loader from './Loader'
@@ -45,17 +45,6 @@ const Carousel = ({ sanityImages, projectName }) => {
     setCurrent((prev) => (prev - 1 + images.length) % images.length)
   }
 
-  const variants = {
-    hidden: isRight ? { opacity: 0, x: 200 } : { opacity: 0, x: -200 },
-    visible: { opacity: 1, x: 0, transition: { duration: 0.3 } },
-    exit: { opacity: 0, transition: { duration: 0.3 } },
-  }
-
-  const arrowVariants = {
-    hidden: { opacity: 0 },
-    visible: { opacity: 1, transition: { duration: 0.3 } },
-  }
-
   if (!sanityImages || sanityImages.length === 0) {
     return (
       <div className="flex aspect-[2860/1614] w-[940px] items-center justify-center rounded-lg bg-gray-200 shadow-lg">
@@ -74,27 +63,23 @@ const Carousel = ({ sanityImages, projectName }) => {
           {images.map(
             (image, index) =>
               current === index && (
-                <AnimatePresence mode="wait">
-                  <motion.div
-                    key={index}
-                    initial="hidden"
-                    animate="visible"
-                    exit="exit"
-                    variants={variants}
-                    className="relative h-full w-full overflow-hidden"
-                  >
-                    <NextImage
-                      alt={projectName}
-                      src={index === current ? image : images[current]}
-                      width={940}
-                      height={531}
-                      quality={100}
-                      className="absolute left-0 top-0 h-full w-full rounded-lg object-cover"
-                      priority
-                      loading="eager"
-                    />
-                  </motion.div>
-                </AnimatePresence>
+                <motion.div
+                  key={index}
+                  className="relative h-full w-full overflow-hidden"
+                  initial={{ opacity: 0, x: isRight ? 200 : -200 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.25 }}
+                >
+                  <NextImage
+                    alt={projectName}
+                    src={index === current ? image : images[current]}
+                    width={940}
+                    height={531}
+                    quality={100}
+                    className="absolute left-0 top-0 h-full w-full rounded-lg object-cover"
+                    loading="lazy"
+                  />
+                </motion.div>
               )
           )}
         </div>
@@ -103,10 +88,9 @@ const Carousel = ({ sanityImages, projectName }) => {
       {images.length > 1 && (
         <>
           <motion.div
-            initial="hidden"
-            animate="visible"
-            exit="hidden"
-            variants={arrowVariants}
+            intial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.5 }}
             className="absolute left-4 top-1/2 z-20 -translate-y-1/2 transform"
           >
             <button
@@ -117,10 +101,9 @@ const Carousel = ({ sanityImages, projectName }) => {
             </button>
           </motion.div>
           <motion.div
-            initial="hidden"
-            animate="visible"
-            exit="hidden"
-            variants={arrowVariants}
+            intial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.5 }}
             className="absolute right-4 top-1/2 z-20 -translate-y-1/2 transform"
           >
             <button
