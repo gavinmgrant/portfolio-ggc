@@ -1,4 +1,4 @@
-export const getSanityImageUrl = (imgRef, width = 1280, quality = 100) => {
+export const getSanityImageUrl = (imgRef, width = 1280, quality = 50) => {
   const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID
   const dataset = process.env.NEXT_PUBLIC_SANITY_DATASET
   let imageRef

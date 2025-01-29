@@ -15,7 +15,7 @@ const Carousel = ({ sanityImages, projectName }) => {
     if (!Array.isArray(sanityImages) || sanityImages.length === 0) return
 
     const imageUrls = sanityImages.map((image) =>
-      getSanityImageUrl(image.asset._ref, 1600, 75)
+      getSanityImageUrl(image.asset._ref, 1600, 50)
     )
     setImages(imageUrls)
 
@@ -75,7 +75,6 @@ const Carousel = ({ sanityImages, projectName }) => {
                     src={index === current ? image : images[current]}
                     width={940}
                     height={531}
-                    quality={100}
                     className="absolute left-0 top-0 h-full w-full rounded-lg object-cover"
                     loading="lazy"
                   />
