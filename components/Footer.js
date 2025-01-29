@@ -1,7 +1,7 @@
 import React from 'react'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
-import { IconBrandLinkedin, IconBrandGithub, IconMail } from '@tabler/icons'
+import { IconBrandLinkedin, IconBrandGithub, IconPoint } from '@tabler/icons'
 import { urls } from '../configs/urls.config'
 
 const Footer = () => {
@@ -9,7 +9,14 @@ const Footer = () => {
 
   return (
     <div className="w-screen border-t border-neutral-200 dark:border-neutral-600">
-      <div className="side-borders mx-auto max-w-[1536px] p-4 sm:p-6">
+      <div className="side-borders relative mx-auto max-w-[1536px] p-4 sm:p-6">
+        <div className="absolute -left-2 -top-2">
+          <IconPoint
+            size="15px"
+            className="hidden text-neutral-300 dark:text-neutral-500 2xl:block"
+          />
+        </div>
+
         <div className="relative mx-auto text-sm text-neutral-800 dark:text-white">
           <div className="flex flex-col items-center justify-between gap-4 sm:flex-row">
             <div className="flex flex-col space-x-0 space-y-3 pt-2 sm:flex-row sm:space-x-4 sm:space-y-0 sm:pt-0">
@@ -63,6 +70,13 @@ const Footer = () => {
               <p className="py-0.5 lg:ml-3">© {year} Gavin Grant Consulting</p>
             </div>
           </div>
+        </div>
+
+        <div className="absolute -right-2 -top-2">
+          <IconPoint
+            size="15px"
+            className="hidden text-neutral-300 dark:text-neutral-500 2xl:block"
+          />
         </div>
       </div>
     </div>

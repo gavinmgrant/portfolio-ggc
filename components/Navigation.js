@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react'
 import ThemeSwitch from './ThemeSwitch'
 import LogoHeader from './LogoHeader'
 import { useTheme } from 'next-themes'
-import { IconMenu2 } from '@tabler/icons'
+import { IconMenu2, IconPoint } from '@tabler/icons'
 import { Drawer, DrawerContent, DrawerBody, useDisclosure } from '@heroui/react'
 
 const Navigation = () => {
@@ -23,11 +23,17 @@ const Navigation = () => {
 
   return (
     <div className="dark:border-white-300 fixed top-0 z-20 mx-auto mb-12 w-screen border-b-[0.5px] border-neutral-200 bg-white dark:border-neutral-600 dark:bg-neutral-900">
-      <div className="side-borders mx-auto flex max-w-[1536px] items-center justify-between p-4 sm:p-6">
+      <div className="side-borders relative mx-auto flex max-w-[1536px] items-center justify-between p-4 sm:p-6">
+        <div className="absolute -bottom-2 -left-2">
+          <IconPoint
+            size="15px"
+            className="hidden text-neutral-300 dark:text-neutral-500 2xl:block"
+          />
+        </div>
+
         <Link href="/" className="hover-color">
           <LogoHeader />
         </Link>
-
         {/* Mobile Menu */}
         <IconMenu2
           className="block cursor-pointer sm:hidden"
@@ -60,7 +66,6 @@ const Navigation = () => {
           </DrawerContent>
         </Drawer>
         {/* Mobile Menu */}
-
         {/* Desktop Menu */}
         <div className="hidden sm:block">
           <div className="flex flex-row items-center justify-center gap-5">
@@ -72,6 +77,13 @@ const Navigation = () => {
             </Link>
             <ThemeSwitch />
           </div>
+        </div>
+
+        <div className="absolute -bottom-2 -right-2">
+          <IconPoint
+            size="15px"
+            className="hidden text-neutral-300 dark:text-neutral-500 2xl:block"
+          />
         </div>
         {/* Desktop Menu */}
       </div>

@@ -2,7 +2,7 @@ import Image from 'next/image'
 import { useRouter } from 'next/router'
 import headshotDark from '../public/images/headshot-dark.jpg'
 import { motion } from 'framer-motion'
-import { IconBrandLinkedin, IconBrandGithub, IconMail } from '@tabler/icons'
+import { IconBrandLinkedin, IconBrandGithub } from '@tabler/icons'
 import { Button } from '@heroui/react'
 import { urls } from '../configs/urls.config'
 
