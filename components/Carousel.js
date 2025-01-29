@@ -9,6 +9,7 @@ const Carousel = ({ sanityImages, projectName }) => {
   const [current, setCurrent] = useState(0)
   const [images, setImages] = useState([])
   const [isLoading, setIsLoading] = useState(true)
+  const [isRight, setIsRight] = useState(true)
 
   useEffect(() => {
     if (!Array.isArray(sanityImages) || sanityImages.length === 0) return
@@ -36,25 +37,23 @@ const Carousel = ({ sanityImages, projectName }) => {
   }, [sanityImages])
 
   const nextSlide = () => {
-    setTimeout(() => {
-      setCurrent((prev) => (prev + 1) % images.length)
-    }, 500)
+    setIsRight(true)
+    setCurrent((prev) => (prev + 1) % images.length)
   }
   const prevSlide = () => {
-    setTimeout(() => {
-      setCurrent((prev) => (prev - 1 + images.length) % images.length)
-    }, 500)
+    setIsRight(false)
+    setCurrent((prev) => (prev - 1 + images.length) % images.length)
   }
 
   const variants = {
-    hidden: { opacity: 0 },
-    visible: { opacity: 1 },
-    exit: { opacity: 0, transition: { duration: 0.25 } },
+    hidden: isRight ? { opacity: 0, x: 200 } : { opacity: 0, x: -200 },
+    visible: { opacity: 1, x: 0, transition: { duration: 0.3 } },
+    exit: { opacity: 0, transition: { duration: 0.3 } },
   }
 
   const arrowVariants = {
     hidden: { opacity: 0 },
-    visible: { opacity: 1, transition: { duration: 0.25 } },
+    visible: { opacity: 1, transition: { duration: 0.3 } },
   }
 
   if (!sanityImages || sanityImages.length === 0) {
@@ -67,31 +66,37 @@ const Carousel = ({ sanityImages, projectName }) => {
 
   return (
     <div className="relative aspect-[2860/1614] w-full rounded-lg object-contain shadow-lg shadow-neutral-300 dark:shadow-neutral-700 lg:w-[1080px]">
-      <div className="absolute inset-0 flex items-center justify-center rounded-lg bg-neutral-300 dark:bg-neutral-700">
+      <div className="absolute inset-0 flex items-center justify-center rounded-lg bg-neutral-100 dark:bg-neutral-800">
         {isLoading && <Loader />}
       </div>
       {!isLoading && (
-        <div className="relative z-10 h-full w-full">
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={current}
-              initial="hidden"
-              animate="visible"
-              exit="exit"
-              variants={variants}
-              className="h-full w-full overflow-hidden"
-            >
-              <NextImage
-                alt={projectName}
-                src={images[current]}
-                width={940}
-                height={531}
-                quality={100}
-                className="h-full w-full rounded-lg object-cover"
-                priority={current === 0}
-              />
-            </motion.div>
-          </AnimatePresence>
+        <div className="relative z-10 h-full w-full overflow-clip rounded-lg">
+          {images.map(
+            (image, index) =>
+              current === index && (
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={index}
+                    initial="hidden"
+                    animate="visible"
+                    exit="exit"
+                    variants={variants}
+                    className="relative h-full w-full overflow-hidden"
+                  >
+                    <NextImage
+                      alt={projectName}
+                      src={index === current ? image : images[current]}
+                      width={940}
+                      height={531}
+                      quality={100}
+                      className="absolute left-0 top-0 h-full w-full rounded-lg object-cover"
+                      priority
+                      loading="eager"
+                    />
+                  </motion.div>
+                </AnimatePresence>
+              )
+          )}
         </div>
       )}
       {/* Navigation Arrows */}
