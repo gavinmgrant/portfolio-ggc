@@ -65,7 +65,7 @@ export default function ContactForm() {
   }
 
   return (
-    <div className="mt-0 lg:mt-[64px]">
+    <div className="mb-8 w-[900px] lg:mt-20">
       <h2 className="mb-4 text-3xl">Contact me</h2>
       <div className="mb-8 space-y-2">
         <p className="p-0">
@@ -75,7 +75,7 @@ export default function ContactForm() {
         <p className="p-0">Send me a message, so we can talk about it.</p>
       </div>
 
-      <Form className="space-y-3" onSubmit={handleSubmit}>
+      <Form className="relative space-y-3" onSubmit={handleSubmit}>
         <div className="grid w-full grid-cols-1 gap-5 md:grid-cols-2">
           <Input
             className="hidden"
@@ -141,7 +141,11 @@ export default function ContactForm() {
           </Button>
         </motion.div>
         {status.success !== null && (
-          <div className="mt-2 flex w-full items-center justify-center">
+          <motion.div
+            className="absolute -bottom-12 flex w-full items-center justify-center"
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+          >
             <p
               className={`text-sm ${
                 status.success ? 'text-green-600' : 'text-red-600'
@@ -149,7 +153,7 @@ export default function ContactForm() {
             >
               {status.message}
             </p>
-          </div>
+          </motion.div>
         )}
       </Form>
     </div>

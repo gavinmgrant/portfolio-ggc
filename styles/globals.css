@@ -16,7 +16,7 @@
   h4,
   h5,
   h6 {
-    @apply !font-semibold;
+    @apply !font-poppins !font-semibold tracking-wide;
   }
 }
 
@@ -27,6 +27,10 @@
 
   .hover-color {
     @apply transition-colors duration-500 hover:text-yellow-600 dark:hover:text-yellow-500;
+  }
+
+  .side-borders {
+    @apply border-neutral-200 dark:border-neutral-600 2xl:border-x;
   }
 }
 

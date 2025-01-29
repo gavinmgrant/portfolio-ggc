@@ -20,7 +20,7 @@ const Carousel = ({ sanityImages, projectName }) => {
 
   useEffect(() => {
     const imageUrls = sanityImages.map((image) =>
-      getSanityImageUrl(image.asset._ref)
+      getSanityImageUrl(image.asset._ref, 1600, 75)
     )
     setImages(imageUrls)
 
@@ -75,7 +75,7 @@ const Carousel = ({ sanityImages, projectName }) => {
   }
 
   return (
-    <div className="relative aspect-[2860/1614] w-full rounded-lg object-contain shadow-lg shadow-neutral-300 dark:shadow-neutral-700 lg:w-[940px]">
+    <div className="relative aspect-[2860/1614] w-full rounded-lg object-contain shadow-lg shadow-neutral-300 dark:shadow-neutral-700 lg:w-[1080px]">
       <div className="absolute inset-0 flex items-center justify-center rounded-lg bg-neutral-300 dark:bg-neutral-700">
         <Loader />
       </div>

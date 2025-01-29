@@ -8,12 +8,10 @@ const Footer = () => {
   const year = new Date().getFullYear()
 
   return (
-    <>
-      <hr className="dark:border-white-300 mt-12 border-t-[0.5px] border-neutral-300" />
-
-      <div className="mx-auto mt-0 py-6">
-        <div className="relative mx-auto px-4 text-sm text-neutral-800 dark:text-white lg:max-w-6xl">
-          <div className="flex flex-col items-center justify-between gap-4 lg:flex-row">
+    <div className="w-screen border-t border-neutral-200 dark:border-neutral-600">
+      <div className="side-borders mx-auto max-w-[1536px] p-4 sm:p-6">
+        <div className="relative mx-auto text-sm text-neutral-800 dark:text-white">
+          <div className="flex flex-col items-center justify-between gap-4 sm:flex-row">
             <div className="flex flex-col space-x-0 space-y-3 pt-2 sm:flex-row sm:space-x-4 sm:space-y-0 sm:pt-0">
               <motion.a
                 href={urls.linkedin}
@@ -54,7 +52,7 @@ const Footer = () => {
                 </div>
               </motion.a>
             </div>
-            <div className="mt-6 flex flex-col items-center text-sm lg:mt-0 lg:flex-row">
+            <div className="mt-6 flex flex-col items-center text-sm sm:mt-0 sm:flex-row">
               <Link
                 href="/privacy"
                 target="_blank"
@@ -62,12 +60,12 @@ const Footer = () => {
               >
                 Privacy Policy
               </Link>
-              <p className="lg:ml-3">© {year} Gavin Grant Consulting</p>
+              <p className="py-0.5 lg:ml-3">© {year} Gavin Grant Consulting</p>
             </div>
           </div>
         </div>
       </div>
-    </>
+    </div>
   )
 }
 

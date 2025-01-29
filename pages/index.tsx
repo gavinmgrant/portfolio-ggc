@@ -45,7 +45,7 @@ export default function Home() {
         </div>
       )}
 
-      <div className="mx-auto flex max-w-6xl flex-col items-center justify-center antialiased">
+      <div className="side-borders mx-auto flex max-w-[1536px] flex-col items-center justify-center px-4 antialiased">
         <About />
         <Testimonials />
       </div>

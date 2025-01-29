@@ -15,7 +15,7 @@ const ProjectCard = ({ index, slug, imgsrc, name, description }) => {
     >
       <Link href={`/projects/${encodeURIComponent(slug)}`}>
         <div key={slug}>
-          <div className="aspect-[548/300] relative max-h-[490px] max-w-[735px] overflow-hidden rounded-md shadow-lg shadow-neutral-300 dark:shadow-neutral-700">
+          <div className="relative aspect-[548/300] max-h-[490px] max-w-[735px] overflow-hidden rounded-md shadow-lg shadow-neutral-300 dark:shadow-neutral-700">
             {!isLoaded && (
               <div className="absolute left-0 top-0 z-10 h-[490px] w-[735px] animate-pulse overflow-hidden rounded-md bg-slate-300"></div>
             )}
@@ -30,8 +30,8 @@ const ProjectCard = ({ index, slug, imgsrc, name, description }) => {
             />
           </div>
           <div className="cursor-pointer">
-            <h2 className="my-4 text-2xl font-semibold">{name}</h2>
-            <p>{description}</p>
+            <h2 className="mt-4 text-2xl font-semibold lg:text-3xl">{name}</h2>
+            <p className="text-sm lg:text-base">{description}</p>
           </div>
         </div>
       </Link>

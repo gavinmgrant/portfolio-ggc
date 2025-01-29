@@ -7,7 +7,7 @@ export default function Contact() {
     'Contact Gavin Grant Consulting to discuss your project or to learn more about our web development services. We can build your website or web app.'
 
   return (
-    <div className="mx-auto w-full px-4 pt-20 sm:pt-24 lg:min-h-screen lg:max-w-6xl lg:pt-0">
+    <div className="side-borders mx-auto w-full px-4 pt-[72px] sm:min-h-screen sm:pt-[104px] lg:pt-0 2xl:max-w-[1536px]">
       <Head>
         <title>Contact | Gavin Grant Consulting</title>
         <meta name="description" content={description} />

@@ -10,14 +10,14 @@ const About = () => {
   const router = useRouter()
 
   return (
-    <div className="container mx-auto my-20 flex h-full max-w-3xl items-center justify-center px-4 sm:my-28 lg:my-0 lg:h-screen lg:max-w-6xl lg:px-0">
+    <div className="my-20 flex h-full max-w-[1536px] items-center justify-center sm:my-28 lg:my-0 lg:h-screen">
       <div className="flex flex-col-reverse items-center justify-center gap-8 text-center lg:mx-4 lg:flex-row lg:gap-20 lg:text-left">
         <div className="lg:max-w-[660px] lg:px-4">
-          <h1 className="text-4xl font-semibold text-neutral-900 dark:text-white lg:text-5xl">
+          <h1 className="text-5xl font-semibold text-neutral-900 dark:text-white sm:text-6xl lg:text-7xl">
             Hi, I'm Gavin.
           </h1>
           <div className="mt-2 text-neutral-800 dark:text-white lg:mt-6">
-            <p className="text-left sm:text-justify">
+            <p className="text-left text-sm lg:text-base">
               As a forward-thinking front-end software engineer with a
               background in architecture, I bring a unique perspective to
               building engaging, user-centric digital experiences. Specializing
@@ -25,7 +25,7 @@ const About = () => {
               more, I help businesses create modern, scalable web applications
               that stand out.
             </p>
-            <p className="text-left sm:text-justify">
+            <p className="text-left text-sm lg:text-base">
               Currently, I'm leading front-end engineering at{' '}
               <a
                 className="font-medium transition-colors duration-500 hover:text-yellow-600 dark:hover:text-yellow-500"

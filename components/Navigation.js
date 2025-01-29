@@ -22,8 +22,8 @@ const Navigation = () => {
   }, [theme])
 
   return (
-    <div className="dark:border-white-300 fixed top-0 z-20 mx-auto mb-12 w-screen border-b-[0.5px] border-neutral-300 bg-white dark:bg-neutral-900">
-      <div className="mx-auto flex items-center justify-between px-4 py-4 sm:max-w-6xl sm:py-6">
+    <div className="dark:border-white-300 fixed top-0 z-20 mx-auto mb-12 w-screen border-b-[0.5px] border-neutral-200 bg-white dark:border-neutral-600 dark:bg-neutral-900">
+      <div className="side-borders mx-auto flex max-w-[1536px] items-center justify-between p-4 sm:p-6">
         <Link href="/" className="hover-color">
           <LogoHeader />
         </Link>

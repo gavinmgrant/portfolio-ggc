@@ -9,7 +9,8 @@ module.exports = {
   darkMode: 'class',
   theme: {
     fontFamily: {
-      sans: ['Poppins', 'ui-sans-serif'],
+      sans: ['Inter', 'ui-sans-serif'],
+      poppins: ['Poppins', 'ui-sans-serif'],
       serif: ['DM Serif Text', 'ui-serif'],
       mono: ['SFMono-Regular', 'ui-monospace'],
       display: ['Oswald'],

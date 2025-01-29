@@ -42,7 +42,7 @@ export default function Project({ project, technologies }) {
   const pageTitle = `${p.isArray ? '' : p.name} | Gavin Grant Consulting`
 
   return (
-    <div className="container mx-auto px-4 pt-[72px] sm:pt-28 lg:max-w-6xl">
+    <div className="side-borders mx-auto px-4 pt-[72px] sm:px-6 sm:pt-[104px] 2xl:max-w-[1536px]">
       <Head>
         <title>{pageTitle}</title>
         <meta name="description" content={p.description} />
@@ -105,7 +105,7 @@ export default function Project({ project, technologies }) {
               <motion.div
                 key={i}
                 whileHover={{ scale: 1.1 }}
-                className="mb-3 mr-2 mt-0 "
+                className="mb-4 mr-2 mt-0 "
               >
                 <motion.a
                   href={tech.url}
@@ -114,7 +114,7 @@ export default function Project({ project, technologies }) {
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0 + i * 0.25 }}
                   viewport={{ once: true }}
-                  className="rounded bg-neutral-100 px-3 py-1 text-xs font-medium text-neutral-800 dark:bg-neutral-700 dark:text-neutral-300 lg:text-sm"
+                  className="rounded bg-neutral-100 px-3 py-2 text-xs font-medium text-neutral-800 dark:bg-neutral-700 dark:text-neutral-300 lg:text-sm"
                 >
                   {tech.description?.split(' - ')[0]}
                 </motion.a>
@@ -124,14 +124,16 @@ export default function Project({ project, technologies }) {
         </div>
       </section>
 
-      <div className="my-6 flex items-start justify-between gap-4 lg:mb-8 lg:mt-12 lg:items-center">
+      <div className="my-4 flex items-start justify-between gap-4 lg:mb-4 lg:mt-12 lg:items-center">
         <div className="flex flex-col items-start justify-start gap-4 lg:flex-row lg:items-center lg:gap-5">
           <a
             href={p.url}
             target="_blank"
             className="transition-colors duration-500 hover:text-yellow-600 dark:hover:text-yellow-500"
           >
-            <h1 className="text-3xl font-semibold lg:text-4xl">{p.name}</h1>
+            <h1 className="text-3xl font-semibold sm:text-4xl lg:text-5xl">
+              {p.name}
+            </h1>
           </a>
           {p.inactive && (
             <div className="flex items-center gap-2 rounded-lg bg-amber-700 px-2 py-0.5 text-white md:px-3.5 md:py-1.5">
@@ -170,7 +172,7 @@ export default function Project({ project, technologies }) {
           )
         })}
       </ul>
-      <div className="mt-6 flex w-full items-center justify-center">
+      <div className="flex w-full items-center justify-center py-8">
         {p.github ? (
           <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
             <a href={p.github} target="_blank">

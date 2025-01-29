@@ -8,9 +8,13 @@ import { HeroUIProvider } from '@heroui/react'
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <div className="min-h-screen pt-2 dark:bg-neutral-900">
+    <div className="relative min-h-screen dark:bg-neutral-900">
       <HeroUIProvider>
-        <ThemeProvider attribute="class" enableSystem={false}>
+        <ThemeProvider
+          attribute="class"
+          enableSystem={false}
+          defaultTheme="dark"
+        >
           <Navigation />
           <Component {...pageProps} />
           <Footer />
