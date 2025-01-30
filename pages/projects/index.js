@@ -28,7 +28,6 @@ export default function Projects({ projects }) {
         <meta property="og:title" content="Projects" />
         <meta property="og:description" content={description} />
         <meta property="og:image" content={ogImage.src} />
-        <link rel="icon" href="/icon.png" />
       </Head>
 
       <div className="side-borders mx-auto grid grid-cols-1 gap-6 px-4 pb-12 pt-[72px] sm:px-6 sm:pt-[104px] md:grid-cols-2 2xl:max-w-[1536px] 2xl:grid-cols-3">

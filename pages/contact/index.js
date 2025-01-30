@@ -17,7 +17,6 @@ export default function Contact() {
         <meta property="og:title" content="Contact" />
         <meta property="og:description" content={description} />
         <meta property="og:image" content={ogImage.src} />
-        <link rel="icon" href="/icon.png" />
       </Head>
 
       <div className="flex items-start justify-center lg:h-screen lg:items-center">

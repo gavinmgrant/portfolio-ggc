@@ -34,7 +34,6 @@ export default function Home() {
         <meta property="og:title" content="Gavin Grant Consulting" />
         <meta property="og:description" content={description} />
         <meta property="og:image" content={ogImage.src} />
-        <link rel="icon" href="/icon.png" />
         <link rel="canonical" href="https://www.gavingrant.com" />
       </Head>
       {isIntro && (

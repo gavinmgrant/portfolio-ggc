@@ -55,7 +55,6 @@ export default function Project({ project, technologies }) {
           property="og:image"
           content={getSanityImageUrl(p.projectImages[0].asset._ref)}
         />
-        <link rel="icon" href="/icon.png" />
       </Head>
 
       <section className="flex flex-col justify-start gap-4 lg:flex-row lg:gap-6">
@@ -193,7 +192,7 @@ export default function Project({ project, technologies }) {
             className="flex cursor-not-allowed items-center gap-3"
           >
             <IconEyeOff size="24px" />
-            <span>Private GitHub repo</span>
+            <span>Private GitHub Repo</span>
           </Button>
         )}
       </div>

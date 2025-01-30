@@ -1,5 +1,9 @@
 {
-  "private": false,
+  "name": "portfolio-ggc",
+  "version": "1.1.0",
+  "description": "Gavin Grant Consulting portfolio site",
+  "author": "Gavin Grant <gavin@gavingrant.com> (https://www.gavingrant.com)",
+  "license": "ISC",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
