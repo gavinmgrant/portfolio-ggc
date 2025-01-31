@@ -68,7 +68,7 @@ const Carousel = ({ sanityImages, projectName }) => {
                   className="relative h-full w-full overflow-hidden"
                   initial={{ opacity: 0, x: isRight ? 200 : -200 }}
                   animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 0.25 }}
+                  transition={{ delay: 0.25, type: 'spring', stiffness: 100, damping: 20, mass: 0.5 }}
                 >
                   <NextImage
                     alt={projectName}

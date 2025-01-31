@@ -142,7 +142,7 @@ export default function ContactForm() {
         </motion.div>
         {status.success !== null && (
           <motion.div
-            className="absolute -bottom-12 flex w-full items-center justify-center"
+            className="absolute -bottom-10 flex w-full items-center justify-center"
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
           >

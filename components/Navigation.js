@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react'
 import ThemeSwitch from './ThemeSwitch'
 import LogoHeader from './LogoHeader'
 import { useTheme } from 'next-themes'
-import { IconMenu2, IconPoint } from '@tabler/icons'
+import { IconMenu2, IconPoint, IconX } from '@tabler/icons'
 import { Drawer, DrawerContent, DrawerBody, useDisclosure } from '@heroui/react'
 
 const Navigation = () => {
@@ -20,6 +20,12 @@ const Navigation = () => {
       setUnderlineClass('link-underline link-underline-light')
     }
   }, [theme])
+
+  const CustomCloseButton = (
+    <div>
+      <IconX className="text-neutral-900 dark:text-white" />
+    </div>
+  )
 
   return (
     <div className="dark:border-white-300 fixed top-0 z-50 mx-auto mb-12 w-screen border-b-[0.5px] border-neutral-200 bg-white dark:border-neutral-600 dark:bg-neutral-900">
@@ -44,6 +50,7 @@ const Navigation = () => {
           backdrop="blur"
           isOpen={isOpen}
           onOpenChange={onOpenChange}
+          closeButton={CustomCloseButton}
         >
           <DrawerContent>
             {(onClose) => (

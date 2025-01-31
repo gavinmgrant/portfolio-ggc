@@ -8,6 +8,7 @@ const ProjectCard = ({ index, slug, imgsrc, name, description }) => {
 
   return (
     <motion.div
+      className="rounded-[20px] p-4 border-[0.5px] border-neutral-200 dark:border-neutral-600"
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ delay: 0 + index * 0.05 }}
@@ -15,9 +16,9 @@ const ProjectCard = ({ index, slug, imgsrc, name, description }) => {
     >
       <Link href={`/projects/${encodeURIComponent(slug)}`}>
         <div key={slug}>
-          <div className="relative aspect-[548/300] max-h-[490px] max-w-[735px] overflow-hidden rounded-md shadow-lg shadow-neutral-300 dark:shadow-neutral-700">
+          <div className="relative aspect-[548/300] max-h-[490px] max-w-[735px] overflow-hidden rounded-xl shadow-lg shadow-neutral-300 dark:shadow-neutral-700">
             {!isLoaded && (
-              <div className="absolute left-0 top-0 z-10 h-[490px] w-[735px] animate-pulse overflow-hidden rounded-md bg-slate-300"></div>
+              <div className="absolute left-0 top-0 z-10 h-[490px] w-[735px] animate-pulse overflow-hidden rounded-xl bg-slate-300"></div>
             )}
             <Image
               alt={name}
@@ -25,7 +26,7 @@ const ProjectCard = ({ index, slug, imgsrc, name, description }) => {
               width={735}
               height={490}
               onLoad={() => setIsLoaded(true)}
-              className="cursor-pointer overflow-hidden rounded-md transition-all duration-300 ease-in-out hover:scale-105"
+              className="cursor-pointer overflow-hidden rounded-xl transition-all duration-300 ease-in-out hover:scale-105"
               priority={index === 0 || index === 1}
             />
           </div>

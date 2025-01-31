@@ -71,7 +71,7 @@ export default function Project({ project, technologies }) {
               animate={isLoaded ? 'visible' : 'hidden'}
             >
               <motion.div
-                className="overflow-hidden rounded-md shadow-lg shadow-neutral-300 dark:shadow-neutral-700"
+                className="overflow-hidden rounded-xl shadow-lg shadow-neutral-300 dark:shadow-neutral-700"
                 style={{
                   position: 'relative',
                   maxWidth: '800px',
@@ -86,7 +86,7 @@ export default function Project({ project, technologies }) {
                     width={800}
                     height={534}
                     quality={100}
-                    className={`cursor-pointer overflow-hidden rounded-md transition-all duration-300 ease-in-out hover:scale-105 ${
+                    className={`cursor-pointer overflow-hidden rounded-xl transition-all duration-300 ease-in-out hover:scale-105 ${
                       !isLoaded && 'animate-pulse'
                     }`}
                     onLoad={() => setIsLoaded(true)}
