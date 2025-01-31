@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useLayoutEffect } from 'react'
 import Image from 'next/image'
 import Head from 'next/head'
 import Loader from '../../components/Loader'
@@ -23,7 +23,7 @@ export default function Project({ project, technologies }) {
 
   const [isLoaded, setIsLoaded] = useState(false)
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     window.scrollTo(0, 0)
   }, [])
 
