@@ -71,7 +71,7 @@ export default function Project({ project, technologies }) {
               animate={isLoaded ? 'visible' : 'hidden'}
             >
               <motion.div
-                className="overflow-hidden rounded-xl shadow-lg shadow-neutral-300 dark:shadow-neutral-700"
+                className="overflow-hidden rounded-xl border-[0.5px] light-border"
                 style={{
                   position: 'relative',
                   maxWidth: '800px',
@@ -150,11 +150,11 @@ export default function Project({ project, technologies }) {
           <IconExternalLink size="32px" />
         </motion.a>
       </div>
-      <p className="mb-4">{p.description}</p>
+      <p className="mb-4 text-sm lg:text-base">{p.description}</p>
       <ul className="list-disc">
         {p.bullets?.map((bullet, i) => {
           return (
-            <li key={i} className="ml-6">
+            <li key={i} className="ml-6 text-sm lg:text-base">
               {bullet}
             </li>
           )
@@ -165,7 +165,7 @@ export default function Project({ project, technologies }) {
       <ul className="list-disc">
         {technologiesUsed.map((tech, i) => {
           return (
-            <li key={i} className="ml-6">
+            <li key={i} className="ml-6 text-sm lg:text-base">
               {tech.description}
             </li>
           )

@@ -30,7 +30,7 @@ export default function Projects({ projects }) {
         <meta property="og:image" content={ogImage.src} />
       </Head>
 
-      <div className="side-borders mx-auto grid grid-cols-1 gap-6 px-4 pb-12 pt-[72px] sm:px-6 sm:pt-[104px] md:grid-cols-2 2xl:max-w-[1536px] 2xl:grid-cols-3">
+      <div className="side-borders mx-auto grid grid-cols-1 gap-4 px-4 pb-4 pt-[72px] sm:gap-6 sm:px-6 sm:pb-6 sm:pt-[104px] md:grid-cols-2 2xl:max-w-[1536px] 2xl:grid-cols-3">
         {projects.map((project, index) => {
           return (
             <ProjectCard

@@ -65,14 +65,14 @@ export default function ContactForm() {
   }
 
   return (
-    <div className="mb-8 w-[900px] lg:mt-20">
+    <div className="light-border w-[900px] rounded-xl border-[0.5px] px-4 pb-14 pt-4 sm:px-6 sm:pt-6 lg:mt-20">
       <h2 className="mb-4 text-3xl">Contact me</h2>
-      <div className="mb-8 space-y-2">
-        <p className="p-0">
+      <div className="mb-6 sm:mb-8 space-y-2">
+        <p className="p-0 text-sm lg:text-base">
           Do you need a website or web app built? Do you need a front-end
           software engineer?
         </p>
-        <p className="p-0">Send me a message, so we can talk about it.</p>
+        <p className="p-0 text-sm lg:text-base">Send me a message, so we can talk about it.</p>
       </div>
 
       <Form className="relative space-y-3" onSubmit={handleSubmit}>
@@ -124,22 +124,24 @@ export default function ContactForm() {
           fullWidth
           radius="sm"
         />
-        <motion.div
-          className="mx-auto !mt-6"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.25 }}
-        >
-          <Button
-            type="submit"
-            className="w-full sm:w-auto"
-            color="primary"
-            radius="sm"
-            size="lg"
+        <div className="h-12 w-full flex items-center justify-center mt-4">
+          <motion.div
+            className="mx-auto"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.25 }}
           >
-            Send Message
-          </Button>
-        </motion.div>
+            <Button
+              type="submit"
+              className="w-full sm:w-auto"
+              color="primary"
+              radius="sm"
+              size="lg"
+            >
+              Send Message
+            </Button>
+          </motion.div>
+        </div>
         {status.success !== null && (
           <motion.div
             className="absolute -bottom-10 flex w-full items-center justify-center"

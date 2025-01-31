@@ -53,7 +53,7 @@ const Testimonials = () => {
         <div className="flex h-full w-full max-w-[1000px] items-center justify-center gap-4 sm:gap-6 md:gap-8 lg:gap-12 xl:gap-24">
           <button
             onClick={() => paginate(-1)}
-            className="z-10 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-neutral-200 bg-opacity-50 shadow-md transition-all duration-300 ease-in-out hover:scale-110 hover:bg-opacity-70 focus:outline-none active:scale-90 sm:h-12 sm:w-12"
+            className="z-10 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-neutral-200 bg-opacity-50 transition-all duration-300 ease-in-out hover:scale-110 hover:bg-opacity-70 focus:outline-none active:scale-90 sm:h-12 sm:w-12"
           >
             <IconArrowNarrowLeft />
           </button>
@@ -94,7 +94,7 @@ const Testimonials = () => {
 
           <button
             onClick={() => paginate(1)}
-            className="z-10 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-neutral-200 bg-opacity-50 shadow-md transition-all duration-300 ease-in-out hover:scale-110 hover:bg-opacity-70 focus:outline-none active:scale-90 sm:h-12 sm:w-12"
+            className="z-10 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-neutral-200 bg-opacity-50 transition-all duration-300 ease-in-out hover:scale-110 hover:bg-opacity-70 focus:outline-none active:scale-90 sm:h-12 sm:w-12"
           >
             <IconArrowNarrowRight />
           </button>

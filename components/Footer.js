@@ -8,7 +8,7 @@ const Footer = () => {
   const year = new Date().getFullYear()
 
   return (
-    <div className="w-screen border-t border-neutral-200 dark:border-neutral-600">
+    <div className="light-border w-screen border-t-[0.5px]">
       <div className="side-borders relative mx-auto max-w-[1536px] p-4 sm:p-6">
         <div className="absolute -left-2 -top-2">
           <IconPoint

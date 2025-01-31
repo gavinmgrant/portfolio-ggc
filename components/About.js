@@ -118,7 +118,7 @@ const About = () => {
             src={headshotDark}
             alt="Headshot of Gavin Grant"
             priority={true}
-            className="rounded-full shadow-lg shadow-neutral-700"
+            className="rounded-full"
             width={260}
             height={260}
             placeholder="blur"

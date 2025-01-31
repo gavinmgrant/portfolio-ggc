@@ -47,14 +47,14 @@ const Carousel = ({ sanityImages, projectName }) => {
 
   if (!sanityImages || sanityImages.length === 0) {
     return (
-      <div className="flex aspect-[2860/1614] w-[940px] items-center justify-center rounded-lg bg-gray-200 shadow-lg">
+      <div className="flex aspect-[2860/1614] w-[940px] items-center justify-center rounded-lg bg-gray-200">
         <p className="text-gray-500">No images available for this project</p>
       </div>
     )
   }
 
   return (
-    <div className="relative aspect-[2860/1614] w-full rounded-lg object-contain shadow-lg shadow-neutral-300 dark:shadow-neutral-700 lg:w-[1080px]">
+    <div className="light-border relative aspect-[2860/1614] w-full rounded-lg border-[0.5px] object-contain lg:w-[1080px]">
       <div className="absolute inset-0 flex items-center justify-center rounded-lg bg-neutral-100 dark:bg-neutral-800">
         {isLoading && <Loader />}
       </div>
@@ -68,7 +68,13 @@ const Carousel = ({ sanityImages, projectName }) => {
                   className="relative h-full w-full overflow-hidden"
                   initial={{ opacity: 0, x: isRight ? 200 : -200 }}
                   animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 0.25, type: 'spring', stiffness: 100, damping: 20, mass: 0.5 }}
+                  transition={{
+                    delay: 0.25,
+                    type: 'spring',
+                    stiffness: 100,
+                    damping: 20,
+                    mass: 0.5,
+                  }}
                 >
                   <NextImage
                     alt={projectName}
