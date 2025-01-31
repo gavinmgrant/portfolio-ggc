@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Image from 'next/image'
 import Head from 'next/head'
 import Loader from '../../components/Loader'
@@ -22,6 +22,10 @@ export default function Project({ project, technologies }) {
   })
 
   const [isLoaded, setIsLoaded] = useState(false)
+
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
 
   const variants = {
     visible: {
@@ -71,7 +75,7 @@ export default function Project({ project, technologies }) {
               animate={isLoaded ? 'visible' : 'hidden'}
             >
               <motion.div
-                className="overflow-hidden rounded-xl border-[0.5px] light-border"
+                className="light-border overflow-hidden rounded-xl border-[0.5px]"
                 style={{
                   position: 'relative',
                   maxWidth: '800px',

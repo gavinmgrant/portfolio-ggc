@@ -113,7 +113,7 @@ const About = () => {
             </div>
           </div>
         </div>
-        <div className="mb-6 flex-shrink-0 lg:mb-10 lg:mt-12 lg:pl-4">
+        <div className="mb-0 flex-shrink-0 lg:mb-10 lg:mt-12 lg:pl-4">
           <Image
             src={headshotDark}
             alt="Headshot of Gavin Grant"
