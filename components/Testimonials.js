@@ -11,7 +11,7 @@ const testimonials = [
   },
   {
     name: 'Alex Kambeitz',
-    title: 'Senior Software Engineer at Sessions',
+    title: 'Staff Software Engineer at NBCUniversal',
     quote: `"Working with Gavin was one of the highlights of my time at Sessions. His dedication to building solid UI components and his attention to detail made him stand out as a developer on my team, and I knew I could rely on him to tackle whatever task I sent his way. He brought with him the talent and experience needed to make his mark on the engineering team in the best way. Gavin is also a delightful person just to get to know! Even in a full remote world, Gavin was kind and thoughtful in every interaction I had with him. The one time I finally got to meet him in person, it felt like seeing a friend I'd known for years. Any team would be beyond fortunate to work alongside him."`,
   },
   {
