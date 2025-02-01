@@ -24,11 +24,16 @@ export default function Project({ project, technologies }) {
   const [isLoaded, setIsLoaded] = useState(false)
 
   useEffect(() => {
-    if (document.readyState === 'complete') {
-      window.scrollTo(0, 0)
-    } else {
-      window.onload = () => window.scrollTo(0, 0)
+    const handleResize = () => {
+      setTimeout(() => {
+        window.scrollTo(0, 0)
+      }, 50)
     }
+
+    window.addEventListener('resize', handleResize)
+    handleResize()
+
+    return () => window.removeEventListener('resize', handleResize)
   }, [])
 
   const variants = {
