@@ -9,7 +9,7 @@ import {
   IconAlertTriangle,
   IconEyeOff,
 } from '@tabler/icons'
-import { motion } from 'framer-motion'
+import { motion } from 'motion/react'
 import { Button } from '@heroui/react'
 import sanity from '../../lib/sanity'
 import { getSanityImageUrl } from '../../utils/getSanityImageUrl'

@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import { Input, Textarea, Button, Form } from '@heroui/react'
-import { motion } from 'framer-motion'
+import { motion } from 'motion/react'
 
 export default function ContactForm() {
   const [formData, setFormData] = useState({
@@ -67,12 +67,14 @@ export default function ContactForm() {
   return (
     <div className="light-border w-[900px] rounded-xl border-[0.5px] px-4 pb-14 pt-4 sm:px-6 sm:pt-6 lg:mt-20">
       <h2 className="mb-4 text-3xl">Contact me</h2>
-      <div className="mb-6 sm:mb-8 space-y-2">
+      <div className="mb-6 space-y-2 sm:mb-8">
         <p className="p-0 text-sm lg:text-base">
           Do you need a website or web app built? Do you need a front-end
           software engineer?
         </p>
-        <p className="p-0 text-sm lg:text-base">Send me a message, so we can talk about it.</p>
+        <p className="p-0 text-sm lg:text-base">
+          Send me a message, so we can talk about it.
+        </p>
       </div>
 
       <Form className="relative space-y-3" onSubmit={handleSubmit}>
@@ -124,7 +126,7 @@ export default function ContactForm() {
           fullWidth
           radius="sm"
         />
-        <div className="h-12 w-full flex items-center justify-center mt-4">
+        <div className="mt-4 flex h-12 w-full items-center justify-center">
           <motion.div
             className="mx-auto"
             initial={{ opacity: 0, y: 20 }}

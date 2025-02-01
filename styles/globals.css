@@ -26,7 +26,7 @@
 
 @layer components {
   .light-border {
-    @apply border-neutral-200 dark:border-neutral-600;
+    @apply border-neutral-300 dark:border-neutral-600;
   }
   .card {
     @apply rounded-lg border border-neutral-300 p-3 dark:border-neutral-700 lg:p-5;
@@ -37,7 +37,7 @@
   }
 
   .side-borders {
-    @apply border-neutral-200 dark:border-neutral-600 2xl:border-x;
+    @apply border-neutral-300 dark:border-neutral-600 2xl:border-x-[0.5px];
   }
 }
 

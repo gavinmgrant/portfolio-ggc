@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion'
+import { motion } from 'motion/react'
 import { useState, useEffect } from 'react'
 import NextImage from 'next/image'
 import Loader from './Loader'
