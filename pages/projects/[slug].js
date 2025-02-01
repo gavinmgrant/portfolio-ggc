@@ -24,7 +24,7 @@ export default function Project({ project, technologies }) {
   const [isLoaded, setIsLoaded] = useState(false)
 
   useEffect(() => {
-    if (isLoaded && window.scrollY !== 0) window.scrollTo(0, 0)
+    window.scrollTo(0, 0)
   }, [isLoaded])
 
   const variants = {
