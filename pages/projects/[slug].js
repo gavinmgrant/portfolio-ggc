@@ -1,4 +1,4 @@
-import { useState, useLayoutEffect } from 'react'
+import { useState, useEffect } from 'react'
 import Image from 'next/image'
 import Head from 'next/head'
 import Loader from '../../components/Loader'
@@ -23,9 +23,9 @@ export default function Project({ project, technologies }) {
 
   const [isLoaded, setIsLoaded] = useState(false)
 
-  useLayoutEffect(() => {
-    window.scrollTo(0, 0)
-  }, [])
+  useEffect(() => {
+    if (isLoaded && window.scrollY !== 0) window.scrollTo(0, 0)
+  }, [isLoaded])
 
   const variants = {
     visible: {
