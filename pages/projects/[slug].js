@@ -24,8 +24,12 @@ export default function Project({ project, technologies }) {
   const [isLoaded, setIsLoaded] = useState(false)
 
   useEffect(() => {
-    window.scrollTo(0, 0)
-  }, [isLoaded])
+    if (document.readyState === 'complete') {
+      window.scrollTo(0, 0)
+    } else {
+      window.onload = () => window.scrollTo(0, 0)
+    }
+  }, [])
 
   const variants = {
     visible: {
