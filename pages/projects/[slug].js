@@ -15,23 +15,21 @@ import sanity from '../../lib/sanity'
 import { getSanityImageUrl } from '../../utils/getSanityImageUrl'
 
 export default function Project({ project, technologies }) {
+  const [isLoaded, setIsLoaded] = useState(false)
+
   const p = project[0]
 
   const technologiesUsed = technologies.filter((tech) => {
     return p.technologies?.some((t) => t._ref === tech._id)
   })
 
-  const [isLoaded, setIsLoaded] = useState(false)
-
   useEffect(() => {
     const handleResize = () => {
       setTimeout(() => {
         window.scrollTo(0, 0)
-      }, 50)
+      }, 100)
     }
-
     window.addEventListener('resize', handleResize)
-    handleResize()
 
     return () => window.removeEventListener('resize', handleResize)
   }, [])

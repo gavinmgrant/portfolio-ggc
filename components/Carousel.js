@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react'
 import NextImage from 'next/image'
 import Loader from './Loader'
 import { getSanityImageUrl } from '../utils/getSanityImageUrl'
+import useDebounce from '../hooks/useDebounce'
 import { IconArrowNarrowLeft, IconArrowNarrowRight } from '@tabler/icons'
 
 const Carousel = ({ sanityImages, projectName }) => {
@@ -10,6 +11,11 @@ const Carousel = ({ sanityImages, projectName }) => {
   const [images, setImages] = useState([])
   const [isLoading, setIsLoading] = useState(true)
   const [isRight, setIsRight] = useState(true)
+  const [showArrows, setShowArrows] = useState(false)
+
+  const handleMouseEnter = () => setShowArrows(true)
+  const handleMouseLeave = () => setShowArrows(false)
+  const debouncedShowArrows = useDebounce(showArrows, 500)
 
   useEffect(() => {
     if (!Array.isArray(sanityImages) || sanityImages.length === 0) return
@@ -59,7 +65,11 @@ const Carousel = ({ sanityImages, projectName }) => {
         {isLoading && <Loader />}
       </div>
       {!isLoading && (
-        <div className="relative z-10 h-full w-full overflow-clip rounded-lg">
+        <div
+          className="relative z-10 h-full w-full overflow-clip rounded-lg"
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
+        >
           {images.map(
             (image, index) =>
               current === index && (
@@ -91,34 +101,28 @@ const Carousel = ({ sanityImages, projectName }) => {
       )}
       {/* Navigation Arrows */}
       {images.length > 1 && (
-        <>
-          <motion.div
-            intial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.5 }}
-            className="absolute left-4 top-1/2 z-20 -translate-y-1/2 transform"
-          >
+        <motion.div
+          animate={{ opacity: debouncedShowArrows ? 1 : 0 }}
+          transition={{ duration: 0.3, ease: 'easeInOut' }}
+          onMouseEnter={handleMouseEnter}
+        >
+          <div className="absolute left-2 sm:left-4 top-1/2 z-20 -translate-y-1/2 transform">
             <button
               onClick={prevSlide}
               className="rounded-full bg-neutral-900 bg-opacity-50 p-2 text-white transition-all duration-300 ease-in-out hover:scale-105 hover:bg-opacity-70 focus:outline-none active:scale-75"
             >
-              <IconArrowNarrowLeft />
+              <IconArrowNarrowLeft className="size-6 sm:size-7" />
             </button>
-          </motion.div>
-          <motion.div
-            intial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.5 }}
-            className="absolute right-4 top-1/2 z-20 -translate-y-1/2 transform"
-          >
+          </div>
+          <div className="absolute right-2 sm:right-4 top-1/2 z-20 -translate-y-1/2 transform">
             <button
               onClick={nextSlide}
               className="rounded-full bg-neutral-900 bg-opacity-50 p-2 text-white transition-all duration-300 ease-in-out hover:scale-105 hover:bg-opacity-70 focus:outline-none active:scale-75"
             >
-              <IconArrowNarrowRight />
+              <IconArrowNarrowRight className="size-6 sm:size-7" />
             </button>
-          </motion.div>
-        </>
+          </div>
+        </motion.div>
       )}
       {/* Pagination */}
       {images.length > 1 && (
