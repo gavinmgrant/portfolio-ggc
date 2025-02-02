@@ -1,5 +1,4 @@
 import Document, { Html, Head, Main, NextScript } from 'next/document'
-import Script from 'next/script'
 
 class MyDocument extends Document {
   static async getInitialProps(ctx) {
@@ -8,8 +7,6 @@ class MyDocument extends Document {
   }
 
   render() {
-    const measurementId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID
-
     return (
       <Html>
         <Head>
@@ -33,20 +30,6 @@ class MyDocument extends Document {
           />
           <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
           <link rel="manifest" href="/site.webmanifest" />
-          <Script
-            async
-            src={`https://www.googletagmanager.com/gtag/js?id=${measurementId}`}
-          />
-          <Script
-            dangerouslySetInnerHTML={{
-              __html: `
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-              gtag('config', '${measurementId}');
-            `,
-            }}
-          />
         </Head>
         <body>
           <Main />
