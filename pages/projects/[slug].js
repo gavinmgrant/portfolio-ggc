@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { useRouter } from 'next/router'
 import Image from 'next/image'
 import Head from 'next/head'
 import Loader from '../../components/Loader'
@@ -15,6 +16,7 @@ import sanity from '../../lib/sanity'
 import { getSanityImageUrl } from '../../utils/getSanityImageUrl'
 
 export default function Project({ project, technologies }) {
+  const router = useRouter()
   const [isLoaded, setIsLoaded] = useState(false)
 
   const p = project[0]
@@ -24,15 +26,17 @@ export default function Project({ project, technologies }) {
   })
 
   useEffect(() => {
-    const handleResize = () => {
-      setTimeout(() => {
-        window.scrollTo(0, 0)
-      }, 100)
-    }
-    window.addEventListener('resize', handleResize)
+    router.events.on('routeChangeComplete', () => {
+      window.scrollTo({
+        top: 0,
+        left: 0,
+      })
+    })
 
-    return () => window.removeEventListener('resize', handleResize)
-  }, [])
+    return () => {
+      router.events.off('routeChangeComplete', () => {})
+    }
+  }, [router.events])
 
   const variants = {
     visible: {
