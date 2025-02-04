@@ -206,7 +206,7 @@ export default function Project({ project, technologies }) {
 
 const projectsQuery = `*[_type == "project"] { slug }`
 const singleProjectQuery = `*[_type == "project" && slug == $slug]`
-const technologiesQuery = `*[_type == "technology"]`
+const technologiesQuery = `*[_type == "technology"] | order(description)`
 
 export const getStaticPaths = async () => {
   // Get the paths we want to pre-render based on projects
