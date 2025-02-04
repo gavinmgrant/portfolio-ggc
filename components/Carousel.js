@@ -60,7 +60,7 @@ const Carousel = ({ sanityImages, projectName }) => {
   }
 
   return (
-    <div className="light-border relative aspect-[2860/1614] w-full rounded-lg border-[0.5px] object-contain lg:w-[1080px]">
+    <div className="light-border relative aspect-[2860/1614] w-full rounded-lg border-[0.5px] object-contain lg:w-[1240px]">
       <div className="absolute inset-0 flex items-center justify-center rounded-lg bg-neutral-100 dark:bg-neutral-800">
         {isLoading && <Loader />}
       </div>

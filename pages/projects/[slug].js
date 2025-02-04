@@ -61,54 +61,20 @@ export default function Project({ project, technologies }) {
         />
       </Head>
 
-      <section className="flex flex-col justify-start gap-4 lg:flex-row lg:gap-6">
-        {!!proj.projectImages ? (
-          <Carousel
-            sanityImages={proj.projectImages}
-            projectUrl={proj.url}
-            projectName={proj.name}
-          />
-        ) : (
-          <a href={proj.url} target="_blank" className="grow">
-            <motion.div
-              initial="hidden"
-              animate={isLoaded ? 'visible' : 'hidden'}
-            >
-              <motion.div
-                className="light-border overflow-hidden rounded-xl border-[0.5px]"
-                style={{
-                  position: 'relative',
-                  maxWidth: '800px',
-                  maxHeight: '534px',
-                }}
-                variants={variants}
-              >
-                {proj.imgsrc && (
-                  <Image
-                    alt={proj.name}
-                    src={proj.imgsrc}
-                    width={800}
-                    height={534}
-                    quality={100}
-                    className={`cursor-pointer overflow-hidden rounded-xl transition-all duration-300 ease-in-out hover:scale-105 ${
-                      !isLoaded && 'animate-pulse'
-                    }`}
-                    onLoad={() => setIsLoaded(true)}
-                    priority={true}
-                  />
-                )}
-              </motion.div>
-            </motion.div>
-          </a>
-        )}
+      <section className="flex flex-col justify-start gap-4 lg:flex-row lg:justify-between lg:gap-6">
+        <Carousel
+          sanityImages={proj.projectImages}
+          projectUrl={proj.url}
+          projectName={proj.name}
+        />
 
-        <div className="mt-10 flex shrink-0 flex-row flex-wrap lg:mt-0 lg:flex-col">
+        <div className="mt-10 flex shrink-0 flex-row flex-wrap lg:mt-0 lg:flex-col lg:items-end">
           {technologiesUsed.map((tech, i) => {
             return (
               <motion.div
                 key={i}
                 whileHover={{ scale: 1.1 }}
-                className="mb-4 mr-2 mt-0 "
+                className="mb-4 mr-2 mt-0 lg:mr-0"
               >
                 <motion.a
                   href={tech.url}
