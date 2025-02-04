@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react'
-import { useRouter } from 'next/router'
 import Image from 'next/image'
 import Head from 'next/head'
 import Loader from '../../components/Loader'
@@ -16,27 +15,17 @@ import sanity from '../../lib/sanity'
 import { getSanityImageUrl } from '../../utils/getSanityImageUrl'
 
 export default function Project({ project, technologies }) {
-  const router = useRouter()
+  const proj = project[0]
+
   const [isLoaded, setIsLoaded] = useState(false)
 
-  const p = project[0]
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
 
   const technologiesUsed = technologies.filter((tech) => {
-    return p.technologies?.some((t) => t._ref === tech._id)
+    return proj.technologies?.some((t) => t._ref === tech._id)
   })
-
-  useEffect(() => {
-    router.events.on('routeChangeComplete', () => {
-      window.scrollTo({
-        top: 0,
-        left: 0,
-      })
-    })
-
-    return () => {
-      router.events.off('routeChangeComplete', () => {})
-    }
-  }, [router.events])
 
   const variants = {
     visible: {
@@ -47,40 +36,40 @@ export default function Project({ project, technologies }) {
     hidden: { opacity: 0, y: 20, transition: { duration: 0.2 } },
   }
 
-  if (!p)
+  if (!proj)
     return (
       <div className="flex h-screen items-center justify-center">
         <Loader />
       </div>
     )
 
-  const pageTitle = `${p.isArray ? '' : p.name} | Gavin Grant Consulting`
+  const pageTitle = `${proj.isArray ? '' : proj.name} | Gavin Grant Consulting`
 
   return (
     <div className="side-borders mx-auto px-4 pt-[72px] sm:px-6 sm:pt-[104px] 2xl:max-w-[1536px]">
       <Head>
         <title>{pageTitle}</title>
-        <meta name="description" content={p.description} />
+        <meta name="description" content={proj.description} />
         <meta charSet="utf-8" />
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
         <meta name="author" content="Gavin Grant" />
-        <meta property="og:title" content={p.name} />
-        <meta property="og:description" content={p.description} />
+        <meta property="og:title" content={proj.name} />
+        <meta property="og:description" content={proj.description} />
         <meta
           property="og:image"
-          content={getSanityImageUrl(p.projectImages[0].asset._ref)}
+          content={getSanityImageUrl(proj.projectImages[0].asset._ref)}
         />
       </Head>
 
       <section className="flex flex-col justify-start gap-4 lg:flex-row lg:gap-6">
-        {!!p.projectImages ? (
+        {!!proj.projectImages ? (
           <Carousel
-            sanityImages={p.projectImages}
-            projectUrl={p.url}
-            projectName={p.name}
+            sanityImages={proj.projectImages}
+            projectUrl={proj.url}
+            projectName={proj.name}
           />
         ) : (
-          <a href={p.url} target="_blank" className="grow">
+          <a href={proj.url} target="_blank" className="grow">
             <motion.div
               initial="hidden"
               animate={isLoaded ? 'visible' : 'hidden'}
@@ -94,10 +83,10 @@ export default function Project({ project, technologies }) {
                 }}
                 variants={variants}
               >
-                {p.imgsrc && (
+                {proj.imgsrc && (
                   <Image
-                    alt={p.name}
-                    src={p.imgsrc}
+                    alt={proj.name}
+                    src={proj.imgsrc}
                     width={800}
                     height={534}
                     quality={100}
@@ -141,23 +130,23 @@ export default function Project({ project, technologies }) {
       <div className="my-4 flex items-start justify-between gap-4 lg:mb-4 lg:mt-12 lg:items-center">
         <div className="flex flex-col items-start justify-start gap-4 lg:flex-row lg:items-center lg:gap-5">
           <a
-            href={p.url}
+            href={proj.url}
             target="_blank"
             className="transition-colors duration-500 hover:text-yellow-600 dark:hover:text-yellow-500"
           >
             <h1 className="text-2xl font-semibold sm:text-3xl md:text-4xl lg:text-5xl">
-              {p.name}
+              {proj.name}
             </h1>
           </a>
-          {p.inactive && (
+          {proj.inactive && (
             <div className="flex items-center gap-2 rounded-lg bg-amber-700 px-2 py-0.5 text-white md:px-3.5 md:py-1.5">
               <IconAlertTriangle size="24px" className="shrink-0" />
-              <p className="text-sm">{p.inactiveMessage}</p>
+              <p className="text-sm">{proj.inactiveMessage}</p>
             </div>
           )}
         </div>
         <motion.a
-          href={p.url}
+          href={proj.url}
           target="_blank"
           whileHover={{ scale: 1.1 }}
           className="transition-colors duration-500 hover:text-yellow-600 dark:hover:text-yellow-500"
@@ -165,9 +154,9 @@ export default function Project({ project, technologies }) {
           <IconExternalLink size="32px" />
         </motion.a>
       </div>
-      <p className="mb-4 text-sm lg:text-base">{p.description}</p>
+      <p className="mb-4 text-sm lg:text-base">{proj.description}</p>
       <ul className="list-disc">
-        {p.bullets?.map((bullet, i) => {
+        {proj.bullets?.map((bullet, i) => {
           return (
             <li key={i} className="ml-6 text-sm lg:text-base">
               {bullet}
@@ -187,9 +176,9 @@ export default function Project({ project, technologies }) {
         })}
       </ul>
       <div className="flex w-full items-center justify-center py-8">
-        {p.github ? (
+        {proj.github ? (
           <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-            <a href={p.github} target="_blank">
+            <a href={proj.github} target="_blank">
               <Button
                 className="flex items-center gap-3"
                 size="lg"

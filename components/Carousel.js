@@ -92,7 +92,8 @@ const Carousel = ({ sanityImages, projectName }) => {
                     width={940}
                     height={531}
                     className="absolute left-0 top-0 h-full w-full rounded-lg object-cover"
-                    loading="lazy"
+                    loading={index === 0 ? 'eager' : 'lazy'}
+                    priority={index === 0}
                   />
                 </motion.div>
               )
@@ -106,7 +107,7 @@ const Carousel = ({ sanityImages, projectName }) => {
           transition={{ duration: 0.3, ease: 'easeInOut' }}
           onMouseEnter={handleMouseEnter}
         >
-          <div className="absolute left-2 sm:left-4 top-1/2 z-20 -translate-y-1/2 transform">
+          <div className="absolute left-2 top-1/2 z-20 -translate-y-1/2 transform sm:left-4">
             <button
               onClick={prevSlide}
               className="rounded-full bg-neutral-900 bg-opacity-50 p-2 text-white transition-all duration-300 ease-in-out hover:scale-105 hover:bg-opacity-70 focus:outline-none active:scale-75"
@@ -114,7 +115,7 @@ const Carousel = ({ sanityImages, projectName }) => {
               <IconArrowNarrowLeft className="size-6 sm:size-7" />
             </button>
           </div>
-          <div className="absolute right-2 sm:right-4 top-1/2 z-20 -translate-y-1/2 transform">
+          <div className="absolute right-2 top-1/2 z-20 -translate-y-1/2 transform sm:right-4">
             <button
               onClick={nextSlide}
               className="rounded-full bg-neutral-900 bg-opacity-50 p-2 text-white transition-all duration-300 ease-in-out hover:scale-105 hover:bg-opacity-70 focus:outline-none active:scale-75"

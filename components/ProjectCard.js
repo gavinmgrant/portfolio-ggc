@@ -35,7 +35,7 @@ const ProjectCard = ({ index, slug, imgsrc, name, description }) => {
       style={{ perspective: 1200 }}
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
-      transition={{ delay: 0 + index * 0.1 }}
+      transition={{ delay: 0 + index * 0.05 }}
       viewport={{ once: true }}
     >
       <motion.div
@@ -48,7 +48,13 @@ const ProjectCard = ({ index, slug, imgsrc, name, description }) => {
           rotateY,
         }}
       >
-        <Link href={`/projects/${encodeURIComponent(slug)}`}>
+        <Link
+          href={{
+            pathname: '/projects/[slug]',
+            query: { slug },
+          }}
+          as="/projects/[slug]"
+        >
           <div className="light-border !h-full rounded-[20px] border-[0.5px] p-4 transition-all duration-300 ease-in-out hover:border hover:border-black dark:hover:border-white">
             <div key={slug}>
               <div className="light-border relative aspect-[548/300] max-h-[490px] max-w-[735px] overflow-hidden rounded-xl border-[0.5px]">
