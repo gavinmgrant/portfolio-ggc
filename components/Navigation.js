@@ -1,12 +1,15 @@
 import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 import { useEffect, useState } from 'react'
 import ThemeSwitch from './ThemeSwitch'
 import LogoHeader from './LogoHeader'
 import { useTheme } from 'next-themes'
+import { Button } from '@heroui/react'
 import { IconMenu2, IconPoint, IconX } from '@tabler/icons'
 import { Drawer, DrawerContent, DrawerBody, useDisclosure } from '@heroui/react'
 
 const Navigation = () => {
+  const router = useRouter()
   const { theme } = useTheme()
   const [underlineClass, setUnderlineClass] = useState(
     'link-underline link-underline-light'
@@ -54,18 +57,44 @@ const Navigation = () => {
         >
           <DrawerContent>
             {(onClose) => (
-              <DrawerBody className="px-8 py-12">
-                <div className="flex flex-col items-center justify-center gap-6">
-                  <Link href="/projects" className="hover-color">
-                    <span className={underlineClass} onClickCapture={onClose}>
-                      Projects
-                    </span>
-                  </Link>
-                  <Link href="/contact" className="hover-color">
-                    <span className={underlineClass} onClickCapture={onClose}>
-                      Contact
-                    </span>
-                  </Link>
+              <DrawerBody className="px-8 py-14">
+                <div className="flex flex-col items-center justify-center gap-5">
+                  <Button
+                    className="w-full"
+                    onPress={() => {
+                      onClose()
+                      router.push('/')
+                    }}
+                    variant="bordered"
+                    radius="sm"
+                    size="lg"
+                  >
+                    Home
+                  </Button>
+                  <Button
+                    className="w-full"
+                    onPress={() => {
+                      onClose()
+                      router.push('/projects')
+                    }}
+                    variant="bordered"
+                    radius="sm"
+                    size="lg"
+                  >
+                    Projects
+                  </Button>
+                  <Button
+                    className="w-full"
+                    onPress={() => {
+                      onClose()
+                      router.push('/')
+                    }}
+                    variant="bordered"
+                    radius="sm"
+                    size="lg"
+                  >
+                    Contact
+                  </Button>
                   <ThemeSwitch />
                 </div>
               </DrawerBody>
