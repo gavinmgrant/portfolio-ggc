@@ -1,8 +1,10 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import { getCalApi } from '@calcom/embed-react'
 import { Input, Textarea, Button, Form } from '@heroui/react'
 import { motion } from 'motion/react'
+import { IconCalendarEvent } from '@tabler/icons'
 
 export default function ContactForm() {
   const [formData, setFormData] = useState({
@@ -13,6 +15,21 @@ export default function ContactForm() {
     message: '',
   })
   const [status, setStatus] = useState({ success: null, message: '' })
+
+  useEffect(() => {
+    const getCal = async () => {
+      const cal = await getCalApi({ namespace: '30min' })
+      cal('ui', {
+        cssVarsPerTheme: {
+          light: { 'cal-brand': '#171717' },
+          dark: { 'cal-brand': '#ffffff' },
+        },
+        hideEventTypeDetails: false,
+        layout: 'month_view',
+      })
+    }
+    getCal()
+  }, [])
 
   const handleChange = (e) => {
     const { name, value } = e.target
@@ -66,15 +83,31 @@ export default function ContactForm() {
 
   return (
     <div className="light-border w-[900px] rounded-xl border-[0.5px] px-4 pb-14 pt-4 sm:px-6 sm:pt-6 lg:mt-20">
-      <h2 className="mb-4 text-3xl">Contact me</h2>
-      <div className="mb-6 space-y-2 sm:mb-8">
-        <p className="p-0 text-sm lg:text-base">
-          Do you need a website or web app built? Do you need a front-end
-          software engineer?
-        </p>
-        <p className="p-0 text-sm lg:text-base">
-          Send me a message, so we can talk about it.
-        </p>
+      <div className="mb-3 flex flex-col items-center justify-center gap-3 sm:flex-row sm:justify-between lg:mb-4">
+        <h2 className="pb-1.5 text-3xl">Contact me</h2>
+        <button
+          className="hover-color"
+          data-cal-namespace="30min"
+          data-cal-link="gavingrant/30min"
+          data-cal-config='{"layout":"month_view"}'
+        >
+          <div className="link-underline link-underline-light dark:link-underline-dark flex items-center gap-2">
+            <IconCalendarEvent className="shrink-0" />{' '}
+            <span className="font-semibold">Book a meeting</span>
+          </div>
+        </button>
+      </div>
+
+      <div className="mb-6">
+        <div className="space-y-2">
+          <p className="p-0 text-sm lg:text-base">
+            Do you need a website or web app built? Do you need a front-end
+            software engineer?
+          </p>
+          <p className="p-0 text-sm lg:text-base">
+            Send me a message, so we can talk about it.
+          </p>
+        </div>
       </div>
 
       <Form className="relative space-y-3" onSubmit={handleSubmit}>

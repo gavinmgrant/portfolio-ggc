@@ -106,10 +106,14 @@ const Navigation = () => {
         <div className="hidden sm:block">
           <div className="flex flex-row items-center justify-center gap-5">
             <Link href="/projects" className="hover-color">
-              <span className={underlineClass}>Projects</span>
+              <span className="link-underline link-underline-light dark:link-underline-dark">
+                Projects
+              </span>
             </Link>
             <Link href="/contact" className="hover-color">
-              <span className={underlineClass}>Contact</span>
+              <span className="link-underline link-underline-light dark:link-underline-dark">
+                Contact
+              </span>
             </Link>
             <ThemeSwitch />
           </div>

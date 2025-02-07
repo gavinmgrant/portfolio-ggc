@@ -14,6 +14,26 @@
   dependencies:
     regenerator-runtime "^0.14.0"
 
+"@calcom/embed-core@1.5.2":
+  version "1.5.2"
+  resolved "https://registry.npmjs.org/@calcom/embed-core/-/embed-core-1.5.2.tgz#7f31d7f58913f95b3d70e0c6d7fabbce3be510ab"
+  integrity sha512-y1mpVDfcaVdLJ/CN17c7N2SyJAMiM3u9NYvL5mWFDBe4aa5HLTDc5g/DBbO2oCq859W3bxs11voC/E3KkJH3Iw==
+
+"@calcom/embed-react@^1.5.2":
+  version "1.5.2"
+  resolved "https://registry.npmjs.org/@calcom/embed-react/-/embed-react-1.5.2.tgz#670b4e22bf9711241714a216e18e4a4ac0e63cef"
+  integrity sha512-DgY3RySiXOrbIVX1LiV/ucKilG+TkvqhP4/0nLlKPLOlk642cSO30xSu4nOmVgR60FLqMyp7Vlg/Xd6J5ijETg==
+  dependencies:
+    "@calcom/embed-core" "1.5.2"
+    "@calcom/embed-snippet" "1.3.2"
+
+"@calcom/embed-snippet@1.3.2":
+  version "1.3.2"
+  resolved "https://registry.npmjs.org/@calcom/embed-snippet/-/embed-snippet-1.3.2.tgz#a34f0938a724d9915e408f47b461bd05bbf84be0"
+  integrity sha512-EmW/ZjaQD0HjLI8yFNA5Mtb8zCOQQnj9RhChujuMijUK8EVyE1KtU9t3xIxm1hBMNHr4R1qMaBo2QYaZqQhzsw==
+  dependencies:
+    "@calcom/embed-core" "1.5.2"
+
 "@emnapi/runtime@^1.2.0":
   version "1.3.1"
   resolved "https://registry.yarnpkg.com/@emnapi/runtime/-/runtime-1.3.1.tgz#0fcaa575afc31f455fd33534c19381cfce6c6f60"
