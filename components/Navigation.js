@@ -87,7 +87,7 @@ const Navigation = () => {
                     className="w-full"
                     onPress={() => {
                       onClose()
-                      router.push('/')
+                      router.push('/contact')
                     }}
                     variant="bordered"
                     radius="sm"
