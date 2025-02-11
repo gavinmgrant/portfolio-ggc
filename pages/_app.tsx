@@ -3,6 +3,7 @@ import Script from 'next/script'
 import { useRouter } from 'next/router'
 import Navigation from '../components/Navigation'
 import Footer from '../components/Footer'
+import PageTransition from '../components/PageTransition'
 import '../styles/globals.css'
 import 'tailwindcss/tailwind.css'
 import type { AppProps } from 'next/app'
@@ -55,7 +56,9 @@ function MyApp({ Component, pageProps }: AppProps) {
             }}
           />
           <Navigation />
-          <Component {...pageProps} />
+          <PageTransition>
+            <Component {...pageProps} />
+          </PageTransition>
           <Footer />
         </ThemeProvider>
       </HeroUIProvider>

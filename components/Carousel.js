@@ -1,9 +1,8 @@
-import { motion } from 'motion/react'
+import { motion, AnimatePresence } from 'motion/react'
 import { useState, useEffect } from 'react'
 import NextImage from 'next/image'
 import Loader from './Loader'
 import { getSanityImageUrl } from '../utils/getSanityImageUrl'
-import useDebounce from '../hooks/useDebounce'
 import { IconArrowNarrowLeft, IconArrowNarrowRight } from '@tabler/icons'
 
 const Carousel = ({ sanityImages, projectName }) => {
@@ -15,7 +14,6 @@ const Carousel = ({ sanityImages, projectName }) => {
 
   const handleMouseEnter = () => setShowArrows(true)
   const handleMouseLeave = () => setShowArrows(false)
-  const debouncedShowArrows = useDebounce(showArrows, 500)
 
   useEffect(() => {
     if (!Array.isArray(sanityImages) || sanityImages.length === 0) return
@@ -101,30 +99,44 @@ const Carousel = ({ sanityImages, projectName }) => {
         </div>
       )}
       {/* Navigation Arrows */}
+
       {images.length > 1 && (
-        <motion.div
-          animate={{ opacity: debouncedShowArrows ? 1 : 0 }}
-          transition={{ duration: 0.3, ease: 'easeInOut' }}
-          onMouseEnter={handleMouseEnter}
-        >
+        <div onMouseEnter={handleMouseEnter}>
           <div className="absolute left-2 top-1/2 z-20 -translate-y-1/2 transform sm:left-4">
-            <button
-              onClick={prevSlide}
-              className="rounded-full bg-neutral-900 bg-opacity-50 p-2 text-white transition-all duration-300 ease-in-out hover:scale-105 hover:bg-opacity-70 focus:outline-none active:scale-75"
-            >
-              <IconArrowNarrowLeft className="size-6 sm:size-7" />
-            </button>
+            <AnimatePresence>
+              {showArrows && (
+                <motion.button
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: -20 }}
+                  transition={{ duration: 0.25, ease: 'easeInOut' }}
+                  onClick={prevSlide}
+                  className="rounded-full bg-neutral-900 bg-opacity-50 p-2 text-white transition-all duration-300 ease-in-out hover:scale-105 hover:bg-opacity-70 focus:outline-none active:scale-75"
+                >
+                  <IconArrowNarrowLeft className="size-6 sm:size-7" />
+                </motion.button>
+              )}
+            </AnimatePresence>
           </div>
           <div className="absolute right-2 top-1/2 z-20 -translate-y-1/2 transform sm:right-4">
-            <button
-              onClick={nextSlide}
-              className="rounded-full bg-neutral-900 bg-opacity-50 p-2 text-white transition-all duration-300 ease-in-out hover:scale-105 hover:bg-opacity-70 focus:outline-none active:scale-75"
-            >
-              <IconArrowNarrowRight className="size-6 sm:size-7" />
-            </button>
+            <AnimatePresence>
+              {showArrows && (
+                <motion.button
+                  initial={{ opacity: 0, x: 20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: 20 }}
+                  transition={{ duration: 0.25, ease: 'easeInOut' }}
+                  onClick={nextSlide}
+                  className="rounded-full bg-neutral-900 bg-opacity-50 p-2 text-white transition-all duration-300 ease-in-out hover:scale-105 hover:bg-opacity-70 focus:outline-none active:scale-75"
+                >
+                  <IconArrowNarrowRight className="size-6 sm:size-7" />
+                </motion.button>
+              )}
+            </AnimatePresence>
           </div>
-        </motion.div>
+        </div>
       )}
+
       {/* Pagination */}
       {images.length > 1 && (
         <div className="absolute -bottom-8 left-1/2 flex -translate-x-1/2 transform space-x-2">

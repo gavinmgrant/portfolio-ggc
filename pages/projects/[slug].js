@@ -1,5 +1,4 @@
-import { useState, useEffect } from 'react'
-import Image from 'next/image'
+import { useEffect } from 'react'
 import Head from 'next/head'
 import Loader from '../../components/Loader'
 import Carousel from '../../components/Carousel'
@@ -16,8 +15,6 @@ import { getSanityImageUrl } from '../../utils/getSanityImageUrl'
 
 export default function Project({ project, technologies }) {
   const proj = project[0]
-
-  const [isLoaded, setIsLoaded] = useState(false)
 
   useEffect(() => {
     window.scrollTo(0, 0)
@@ -61,7 +58,7 @@ export default function Project({ project, technologies }) {
         />
       </Head>
 
-      <section className="flex flex-col justify-start gap-4 lg:flex-row lg:justify-between lg:gap-6">
+      <section className="flex flex-col justify-start gap-4 lg:flex-row lg:justify-between lg:gap-20 xl:gap-24">
         <Carousel
           sanityImages={proj.projectImages}
           projectUrl={proj.url}
