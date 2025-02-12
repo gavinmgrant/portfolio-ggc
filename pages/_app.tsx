@@ -56,9 +56,11 @@ function MyApp({ Component, pageProps }: AppProps) {
             }}
           />
           <Navigation />
-          <PageTransition>
-            <Component {...pageProps} />
-          </PageTransition>
+          <div className="side-borders mx-auto 2xl:max-w-[1536px]">
+            <PageTransition>
+              <Component {...pageProps} />
+            </PageTransition>
+          </div>
           <Footer />
         </ThemeProvider>
       </HeroUIProvider>

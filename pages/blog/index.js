@@ -6,8 +6,8 @@ import sanity from '../../lib/sanity'
 import ogImage from '../../public/images/gavin-grant-og.png'
 import { getSanityImageUrl } from '../../utils/getSanityImageUrl'
 
-export default function Projects({ projects }) {
-  if (!projects.length)
+export default function Blog({ blogPosts }) {
+  if (!blogPosts.length)
     return (
       <div className="flex h-screen items-center justify-center">
         <Loader />
@@ -15,31 +15,31 @@ export default function Projects({ projects }) {
     )
 
   const description =
-    'Explore projects designed and developed by front-end engineer Gavin Grant, featuring innovative web solutions built with Vue.js, React, and modern tech.'
+    'Blog posts written by front-end engineer Gavin Grant, sharing insights and experiences in web development, Vue.js, React, and modern technologies.'
 
   return (
     <div>
       <Head>
-        <title>Projects | Gavin Grant Consulting</title>
+        <title>Blog | Gavin Grant Consulting</title>
         <meta name="description" content={description} />
         <meta charSet="utf-8" />
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
         <meta name="author" content="Gavin Grant" />
-        <meta property="og:title" content="Projects" />
+        <meta property="og:title" content="Blog" />
         <meta property="og:description" content={description} />
         <meta property="og:image" content={ogImage.src} />
       </Head>
 
       <div className="mx-auto grid grid-cols-1 gap-4 px-4 pb-4 pt-[72px] sm:gap-6 sm:px-6 sm:pb-6 sm:pt-[104px] md:grid-cols-2 2xl:max-w-[1536px] 2xl:grid-cols-3">
-        {projects.map((project, index) => {
+        {blogPosts.map((post, index) => {
           return (
             <ProjectCard
               index={index}
-              key={project.slug}
-              slug={project.slug}
-              imgsrc={getSanityImageUrl(project.projectImages[0].asset._ref)}
-              name={project.name}
-              description={project.description}
+              key={post.slug}
+              slug={post.slug}
+              imgsrc={getSanityImageUrl(post.projectImages[0].asset._ref)}
+              name={post.title}
+              description={post.description}
             />
           )
         })}
@@ -49,13 +49,11 @@ export default function Projects({ projects }) {
 }
 
 export async function getStaticProps() {
-  const projects = await sanity.fetch(
-    `*[_type == "project"] | order(order asc)`
-  )
+  const blogPosts = await sanity.fetch(`*[_type == "blog"] | order(order asc)`)
 
   return {
     props: {
-      projects,
+      blogPosts,
     },
   }
 }
