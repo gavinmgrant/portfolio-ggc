@@ -56,7 +56,7 @@ function MyApp({ Component, pageProps }: AppProps) {
             }}
           />
           <Navigation />
-          <div className="side-borders mx-auto 2xl:max-w-[1536px]">
+          <div className="side-borders mx-auto min-h-screen 2xl:max-w-[1536px]">
             <PageTransition>
               <Component {...pageProps} />
             </PageTransition>

@@ -1,4 +1,4 @@
-const { heroui } = require('@heroui/react')
+const { heroui, code } = require('@heroui/react')
 
 module.exports = {
   content: [
@@ -20,9 +20,17 @@ module.exports = {
       screens: {
         xs: '420px',
       },
+      typography: {
+        DEFAULT: {
+          css: {
+            maxWidth: '800px',
+          },
+        },
+      },
     },
   },
   plugins: [
+    require('@tailwindcss/typography'),
     heroui({
       prefix: 'heroui', // prefix for themes variables
       addCommonColors: false, // override common colors (e.g. "blue", "green", "pink").

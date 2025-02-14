@@ -35,11 +35,12 @@ export default function Blog({ blogPosts }) {
           return (
             <ProjectCard
               index={index}
-              key={post.slug}
-              slug={post.slug}
-              imgsrc={getSanityImageUrl(post.projectImages[0].asset._ref)}
-              name={post.title}
-              description={post.description}
+              key={post.metadata.slug.current}
+              slug={post.metadata.slug.current}
+              imgsrc={getSanityImageUrl(post.metadata.image.asset._ref)}
+              name={post.metadata.title}
+              description={post.metadata.description}
+              type="blog"
             />
           )
         })}
@@ -49,7 +50,9 @@ export default function Blog({ blogPosts }) {
 }
 
 export async function getStaticProps() {
-  const blogPosts = await sanity.fetch(`*[_type == "blog"] | order(order asc)`)
+  const blogPosts = await sanity.fetch(
+    `*[_type == "blog.post"] | order(order asc)`
+  )
 
   return {
     props: {

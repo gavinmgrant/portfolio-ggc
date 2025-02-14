@@ -31,7 +31,7 @@ const Navigation = () => {
   )
 
   return (
-    <div className="dark:border-white-300 light-border fixed top-0 z-50 mx-auto mb-12 w-screen border-b-[0.5px] bg-white dark:bg-neutral-900">
+    <div className="dark:border-white-300 light-border fixed top-0 z-50 mx-auto mb-6 w-screen border-b-[0.5px] bg-white dark:bg-neutral-900">
       <div className="side-borders relative mx-auto flex max-w-[1536px] items-center justify-between p-4 sm:p-6">
         <div className="absolute -bottom-2 -left-2">
           <IconPoint
@@ -87,6 +87,18 @@ const Navigation = () => {
                     className="w-full"
                     onPress={() => {
                       onClose()
+                      router.push('/blog')
+                    }}
+                    variant="bordered"
+                    radius="sm"
+                    size="lg"
+                  >
+                    Blog
+                  </Button>
+                  <Button
+                    className="w-full"
+                    onPress={() => {
+                      onClose()
                       router.push('/contact')
                     }}
                     variant="bordered"
@@ -108,6 +120,11 @@ const Navigation = () => {
             <Link href="/projects" className="hover-color">
               <span className="link-underline link-underline-light dark:link-underline-dark">
                 Projects
+              </span>
+            </Link>
+            <Link href="/blog" className="hover-color">
+              <span className="link-underline link-underline-light dark:link-underline-dark">
+                Blog
               </span>
             </Link>
             <Link href="/contact" className="hover-color">

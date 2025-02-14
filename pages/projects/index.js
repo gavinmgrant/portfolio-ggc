@@ -40,6 +40,7 @@ export default function Projects({ projects }) {
               imgsrc={getSanityImageUrl(project.projectImages[0].asset._ref)}
               name={project.name}
               description={project.description}
+              type="projects"
             />
           )
         })}

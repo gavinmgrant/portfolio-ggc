@@ -3,7 +3,7 @@ import { useRouter } from 'next/navigation'
 import Image from 'next/image'
 import { motion, useMotionValue, useSpring, useTransform } from 'motion/react'
 
-const ProjectCard = ({ index, slug, imgsrc, name, description }) => {
+const ProjectCard = ({ index, slug, imgsrc, name, description, type }) => {
   const router = useRouter()
   const [isLoaded, setIsLoaded] = useState(false)
 
@@ -51,7 +51,7 @@ const ProjectCard = ({ index, slug, imgsrc, name, description }) => {
       >
         <div
           className="light-border !h-full rounded-[20px] border-[0.5px] p-4 transition-all duration-300 ease-in-out hover:border hover:border-black dark:hover:border-white"
-          onClick={() => router.push(`/projects/${slug}`)}
+          onClick={() => router.push(`/${type}/${slug}`)}
         >
           <div key={slug}>
             <div className="light-border relative aspect-[548/300] max-h-[490px] max-w-[735px] overflow-hidden rounded-xl border-[0.5px]">

@@ -10,8 +10,13 @@
   p {
     @apply py-2 leading-7;
   }
+
   li {
     @apply ml-8 list-disc py-1;
+  }
+
+  code {
+    @apply rounded bg-neutral-100 px-2 py-1 !font-sans text-neutral-900 dark:bg-neutral-800 dark:text-neutral-100;
   }
 
   h1,
