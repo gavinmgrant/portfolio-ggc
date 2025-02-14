@@ -52,7 +52,7 @@ export default function BlogPost({ post }) {
         <meta charSet="utf-8" />
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
         <meta name="author" content={post.authors[0].name} />
-        <meta name="publish" content={post.publishDate} />
+        <meta name="article:published_time" content={`${post.publishDate}T17:00:00Z`} />
         <meta property="og:title" content={post.metadata.title} />
         <meta property="og:description" content={post.metadata.description} />
         <meta
