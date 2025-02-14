@@ -43,11 +43,7 @@ export default function BlogPost({ post }) {
     )
 
   const pageTitle = `${post.metadata.title} | Gavin Grant Consulting`
-  const publishedDate = new Date(post.publishDate).toLocaleDateString('en-US', {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric',
-  })
+  const publishedDate = `${post.publishDate}T17:00:00Z`
 
   return (
     <div className="mx-auto flex items-start justify-center px-4 pt-[72px] sm:px-6 sm:pt-[80px] 2xl:max-w-[1536px]">
@@ -57,14 +53,17 @@ export default function BlogPost({ post }) {
         <meta charSet="utf-8" />
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
         <meta name="author" content={post.authors[0].name} />
-        <meta name="article:published_time" content={publishedDate} />
+        <meta
+          name="publish_date"
+          property="og:publish_date"
+          content={publishedDate}
+        />
         <meta property="og:title" content={post.metadata.title} />
         <meta property="og:description" content={post.metadata.description} />
         <meta
           property="og:image"
           content={getSanityImageUrl(post.metadata.image.asset._ref)}
         />
-        <meta property="og:publish_date" content={publishedDate} />
       </Head>
 
       <div className="mb-6 flex items-start justify-between gap-4 sm:my-6 lg:max-w-[1148px] lg:items-center">
