@@ -44,6 +44,11 @@ export default function BlogPost({ post }) {
 
   const pageTitle = `${post.metadata.title} | Gavin Grant Consulting`
   const publishedDate = `${post.publishDate}T17:00:00Z`
+  const displayDate = new Date(publishedDate).toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  })
 
   return (
     <div className="mx-auto flex items-start justify-center px-4 pt-[72px] sm:px-6 sm:pt-[80px] 2xl:max-w-[1536px]">
@@ -79,9 +84,13 @@ export default function BlogPost({ post }) {
               priority={true}
             />
 
-            <h1 className="text-xl font-semibold sm:text-2xl md:text-3xl lg:text-4xl">
+            <h1 className="mb-4 text-xl font-semibold sm:text-2xl md:text-3xl lg:mb-6 lg:text-4xl">
               {post.metadata.title}
             </h1>
+
+            <time className="text-sm lg:text-base" datetime={post.publishDate}>
+              {displayDate}
+            </time>
 
             <article className="prose mt-6 !w-full dark:prose-invert">
               <PortableText value={post.body} components={components} />
