@@ -74,23 +74,23 @@ export default function BlogPost({ post }) {
       <div className="mb-6 flex items-start justify-between gap-4 sm:my-6 lg:max-w-[1148px] lg:items-center">
         <div className="grid w-full grid-cols-1 gap-6 lg:grid-cols-[auto_300px]">
           {/* Main Content */}
-          <div className="lg:light-border pr-0 lg:border-r-[0.5px] lg:pr-6">
-            <Image
-              className="mb-6 h-[220px] w-full overflow-hidden rounded-xl object-cover sm:h-[440px]"
-              alt={post.metadata.title}
-              src={getSanityImageUrl(post.metadata.image.asset._ref)}
-              width={800}
-              height={400}
-              priority={true}
-            />
-
-            <h1 className="mb-4 text-xl font-semibold sm:text-2xl md:text-3xl lg:mb-6 lg:text-4xl">
+          <div className="lg:light-border max-w-[800px] pr-0 lg:border-r-[0.5px] lg:pr-6">
+            <h1 className="mb-2 text-xl font-semibold sm:text-2xl md:text-3xl lg:text-4xl">
               {post.metadata.title}
             </h1>
 
             <time className="text-sm lg:text-base" datetime={post.publishDate}>
               {displayDate}
             </time>
+
+            <Image
+              className="my-6 aspect-video overflow-hidden rounded-xl object-cover"
+              alt={post.metadata.title}
+              src={getSanityImageUrl(post.metadata.image.asset._ref)}
+              width={800}
+              height={400}
+              priority={true}
+            />
 
             <article className="prose mt-6 !w-full dark:prose-invert">
               <PortableText value={post.body} components={components} />
