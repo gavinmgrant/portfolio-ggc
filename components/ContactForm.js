@@ -5,6 +5,7 @@ import { getCalApi } from '@calcom/embed-react'
 import { Input, Textarea, Button, Form } from '@heroui/react'
 import { motion } from 'motion/react'
 import { IconCalendarEvent } from '@tabler/icons'
+import { useTagManager } from '@/hooks/useTagManager'
 
 export default function ContactForm() {
   const [formData, setFormData] = useState({
@@ -15,6 +16,8 @@ export default function ContactForm() {
     message: '',
   })
   const [status, setStatus] = useState({ success: null, message: '' })
+
+  const { fireEvent } = useTagManager()
 
   useEffect(() => {
     const getCal = async () => {
@@ -68,6 +71,11 @@ export default function ContactForm() {
           success: true,
           message:
             'Thank you, your message has been sent! I will get back to you as soon as possible.',
+        })
+        fireEvent('contact_form_submission', {
+          first_name: formData.firstName,
+          last_name: formData.lastName,
+          email: formData.email
         })
       } else {
         const errorData = await response.json()
