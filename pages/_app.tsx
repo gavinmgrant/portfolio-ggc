@@ -11,19 +11,12 @@ import { ThemeProvider } from 'next-themes'
 import { HeroUIProvider } from '@heroui/react'
 
 function MyApp({ Component, pageProps }: AppProps) {
-  const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID
   const GTM_ID = process.env.NEXT_PUBLIC_GTM_ID
 
   const router = useRouter()
 
   useEffect(() => {
     const handleRouteChange = (url: string) => {
-      // Google Analytics
-      if (window.gtag) {
-        window.gtag('config', GA_MEASUREMENT_ID, {
-          page_path: url,
-        })
-      }
       // Google Tag Manager
       window.dataLayer = window.dataLayer || [];
       window.dataLayer.push({ event: "pageview", page: url });
@@ -42,25 +35,6 @@ function MyApp({ Component, pageProps }: AppProps) {
           enableSystem={false}
           defaultTheme="dark"
         >
-          {/* Google Analytics */}
-          <Script
-            strategy="afterInteractive"
-            src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
-          />
-          <Script
-            id="google-analytics"
-            strategy="afterInteractive"
-            dangerouslySetInnerHTML={{
-              __html: `
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', '${GA_MEASUREMENT_ID}', {
-              page_path: window.location.pathname,
-            });
-          `,
-            }}
-          />
           {/* Google Tag Manger */}
           <Script
             id="gtm-script"
