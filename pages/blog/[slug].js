@@ -79,7 +79,7 @@ export default function BlogPost({ post }) {
               {post.metadata.title}
             </h1>
 
-            <time className="text-sm lg:text-base" datetime={post.publishDate}>
+            <time className="text-sm lg:text-base" dateTime={post.publishDate}>
               {displayDate}
             </time>
 
