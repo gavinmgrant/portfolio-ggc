@@ -18,7 +18,7 @@ const About = () => {
           className="flex max-w-[1000px] flex-col-reverse items-center justify-center gap-8 text-center lg:flex-row lg:gap-20 lg:text-left"
         >
           <div>
-            <h1 className="text-5xl font-semibold text-neutral-900 dark:text-white sm:text-6xl lg:text-7xl">
+            <h1 className="heading-size-xl font-semibold text-neutral-900 dark:text-white">
               Hi, I'm Gavin.
             </h1>
             <div className="mt-2 text-neutral-800 dark:text-white lg:mt-6">
@@ -29,18 +29,6 @@ const About = () => {
                 Specializing in JavaScript, TypeScript, React, Next.js, Vue.js,
                 Nuxt.js, and more, I help businesses create modern, scalable web
                 applications that stand out.
-              </p>
-              <p className="text-left text-sm lg:text-base">
-                Currently, I'm leading front-end engineering at{' '}
-                <a
-                  className="font-medium transition-colors duration-500 hover:text-yellow-600 dark:hover:text-yellow-500"
-                  href="https://happycompanies.com/"
-                  target="_blank"
-                >
-                  Happy Companies
-                </a>
-                , where I'm committed to delivering high-quality solutions that
-                engage and delight users.
               </p>
             </div>
             <div className="mt-4 flex w-full flex-col items-center justify-center gap-5 sm:h-12 sm:flex-row lg:mt-6 lg:justify-start">

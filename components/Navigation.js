@@ -5,7 +5,7 @@ import ThemeSwitch from './ThemeSwitch'
 import LogoHeader from './LogoHeader'
 import { useTheme } from 'next-themes'
 import { Button } from '@heroui/react'
-import { IconMenu2, IconPoint, IconX } from '@tabler/icons'
+import { IconMenu2, IconPlus, IconX } from '@tabler/icons'
 import { Drawer, DrawerContent, DrawerBody, useDisclosure } from '@heroui/react'
 
 const Navigation = () => {
@@ -33,8 +33,8 @@ const Navigation = () => {
   return (
     <div className="dark:border-white-300 light-border fixed top-0 z-50 mx-auto mb-6 w-screen border-b-[0.5px] bg-white dark:bg-neutral-900">
       <div className="side-borders relative mx-auto flex max-w-[1536px] items-center justify-between p-4 sm:p-6">
-        <div className="absolute -bottom-2 -left-2">
-          <IconPoint
+        <div className="bg-standard absolute -bottom-2 -left-2">
+          <IconPlus
             size="15px"
             className="hidden text-neutral-300 dark:text-neutral-500 2xl:block"
           />
@@ -136,8 +136,8 @@ const Navigation = () => {
           </div>
         </div>
 
-        <div className="absolute -bottom-2 -right-2">
-          <IconPoint
+        <div className="bg-standard absolute -bottom-2 -right-2">
+          <IconPlus
             size="15px"
             className="hidden text-neutral-300 dark:text-neutral-500 2xl:block"
           />

@@ -48,7 +48,7 @@ const Testimonials = () => {
   return (
     <div className="flex w-screen items-center justify-center lg:h-[calc(100vh-160px)]">
       <div className="flex h-[700px] w-full max-w-[1536px] flex-col items-center justify-center px-4 py-12 xs:h-[520px] sm:h-[480px] md:h-[420px] lg:h-[560px] lg:py-20">
-        <h2 className="text-4xl font-semibold lg:text-5xl">Testimonials</h2>
+        <h2 className="heading-size-lg font-semibold">Testimonials</h2>
 
         <div className="flex h-full w-full max-w-[1000px] items-center justify-center gap-4 sm:gap-6 md:gap-8 lg:gap-12 xl:gap-24">
           <button

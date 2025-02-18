@@ -27,6 +27,22 @@
   h6 {
     @apply !font-poppins !font-semibold tracking-wide;
   }
+
+  .bg-standard {
+    @apply bg-white dark:bg-neutral-900;
+  }
+
+  .heading-size {
+    @apply text-2xl !leading-tight sm:text-3xl md:text-4xl;
+  }
+
+  .heading-size-lg {
+    @apply text-3xl !leading-tight sm:text-4xl md:text-5xl;
+  }
+
+  .heading-size-xl {
+    @apply text-4xl !leading-tight sm:text-5xl md:text-6xl;
+  }
 }
 
 @layer components {

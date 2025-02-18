@@ -75,7 +75,7 @@ export default function BlogPost({ post }) {
         <div className="grid w-full grid-cols-1 gap-6 lg:grid-cols-[auto_300px]">
           {/* Main Content */}
           <div className="lg:light-border max-w-[800px] pr-0 lg:border-r-[0.5px] lg:pr-6">
-            <h1 className="mb-2 text-xl font-semibold sm:text-2xl md:text-3xl lg:text-4xl">
+            <h1 className="heading-size-lg mb-2 font-semibold">
               {post.metadata.title}
             </h1>
 

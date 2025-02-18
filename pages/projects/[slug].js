@@ -97,9 +97,7 @@ export default function Project({ project, technologies }) {
             target="_blank"
             className="transition-colors duration-500 hover:text-yellow-600 dark:hover:text-yellow-500"
           >
-            <h1 className="text-2xl font-semibold sm:text-3xl md:text-4xl lg:text-5xl">
-              {proj.name}
-            </h1>
+            <h1 className="heading-size-lg font-semibold">{proj.name}</h1>
           </a>
           {proj.inactive && (
             <div className="flex items-center gap-2 rounded-lg bg-amber-700 px-2 py-0.5 text-white md:px-3.5 md:py-1.5">

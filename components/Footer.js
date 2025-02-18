@@ -1,7 +1,7 @@
 import React from 'react'
 import Link from 'next/link'
 import { motion } from 'motion/react'
-import { IconBrandLinkedin, IconBrandGithub, IconPoint } from '@tabler/icons'
+import { IconBrandLinkedin, IconBrandGithub, IconPlus } from '@tabler/icons'
 import { urls } from '../configs/urls.config'
 
 const Footer = () => {
@@ -10,8 +10,8 @@ const Footer = () => {
   return (
     <div className="light-border w-screen border-t-[0.5px]">
       <div className="side-borders relative mx-auto max-w-[1536px] p-4 sm:p-6">
-        <div className="absolute -left-2 -top-2">
-          <IconPoint
+        <div className="bg-standard absolute -left-2 -top-2">
+          <IconPlus
             size="15px"
             className="hidden text-neutral-300 dark:text-neutral-500 2xl:block"
           />
@@ -72,8 +72,8 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="absolute -right-2 -top-2">
-          <IconPoint
+        <div className="bg-standard absolute -right-2 -top-2">
+          <IconPlus
             size="15px"
             className="hidden text-neutral-300 dark:text-neutral-500 2xl:block"
           />

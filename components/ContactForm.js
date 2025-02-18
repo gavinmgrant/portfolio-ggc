@@ -75,7 +75,7 @@ export default function ContactForm() {
         fireEvent('contact_form_submission', {
           first_name: formData.firstName,
           last_name: formData.lastName,
-          email: formData.email
+          email: formData.email,
         })
       } else {
         const errorData = await response.json()
@@ -90,16 +90,16 @@ export default function ContactForm() {
   }
 
   return (
-    <div className="light-border w-[900px] rounded-xl border-[0.5px] px-4 pb-14 pt-4 sm:px-6 sm:pt-6 lg:mt-20">
+    <div className="light-border w-[900px] rounded-xl border-[0.5px] px-4 pb-4 pt-4 sm:px-6 sm:py-6 lg:mt-20">
       <div className="mb-3 flex flex-col items-center justify-center gap-3 sm:flex-row sm:justify-between lg:mb-4">
-        <h2 className="pb-1.5 text-3xl">Contact me</h2>
+        <h2 className="heading-size">Contact me</h2>
         <button
-          className="hover-color"
+          className="light-border rounded-lg border-2 px-3 py-2.5 transition-all duration-300 ease-in-out hover:scale-105"
           data-cal-namespace="30min"
           data-cal-link="gavingrant/30min"
           data-cal-config='{"layout":"month_view"}'
         >
-          <div className="link-underline link-underline-light dark:link-underline-dark flex items-center gap-2">
+          <div className="flex items-center gap-2">
             <IconCalendarEvent className="shrink-0" />{' '}
             <span className="font-semibold">Book a meeting</span>
           </div>
@@ -187,7 +187,7 @@ export default function ContactForm() {
         </div>
         {status.success !== null && (
           <motion.div
-            className="absolute -bottom-10 flex w-full items-center justify-center"
+            className="!mt-0 flex w-full items-center justify-center !pt-0"
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
           >
