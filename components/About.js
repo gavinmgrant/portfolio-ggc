@@ -22,7 +22,7 @@ const About = () => {
               Hi, I'm Gavin.
             </h1>
             <div className="mt-2 text-neutral-800 dark:text-white lg:mt-6">
-              <p className="text-left text-sm lg:text-base">
+              <p className="text-justify text-sm lg:text-base">
                 As a forward-thinking front-end software engineer with a
                 background in architecture, I bring a unique perspective to
                 building engaging, user-centric digital experiences.

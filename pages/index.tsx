@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import About from '../components/About'
 import Testimonials from '../components/Testimonials'
+import Divider from '../components/Divider'
 import ogImage from '../public/images/gavin-grant-og.png'
 
 export default function Home() {
@@ -22,6 +23,7 @@ export default function Home() {
       </Head>
       <div className="mx-auto flex max-w-[1536px] flex-col items-center justify-center px-4 antialiased sm:px-6">
         <About />
+        <Divider />
         <Testimonials />
       </div>
     </div>
