@@ -81,14 +81,14 @@ const ProjectCard = ({
             <div className="cursor-pointer">
               <h2 className="mt-4 text-xl font-semibold sm:text-2xl">{name}</h2>
               {publishDate && (
-                <div className="flex items-center justify-between text-sm opacity-60">
-                  <p>{getDisplayDate(publishDate)}</p>
+                <div className="my-2 flex items-center justify-between text-sm opacity-60 sm:my-3">
+                  <p className="py-0">{getDisplayDate(publishDate)}</p>
                   <p className="light-border rounded-full border px-3 py-0">
                     {readingTime} min read
                   </p>
                 </div>
               )}
-              <p className="p-0 text-sm lg:text-base">{description}</p>
+              <p className="mt-3 p-0 text-sm lg:text-base">{description}</p>
             </div>
           </div>
         </div>

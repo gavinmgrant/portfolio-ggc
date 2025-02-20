@@ -71,17 +71,12 @@ export default function BlogPost({ post }) {
         <div className="grid w-full grid-cols-1 gap-6 lg:grid-cols-[auto_300px]">
           {/* Main Content */}
           <div className="lg:light-border max-w-[800px] pr-0 lg:border-r-[0.5px] lg:pr-6">
-            <h1 className="heading-size-lg mb-4 font-semibold">
+            <h1 className="heading-size-lg mb-6 font-semibold">
               {post.metadata.title}
             </h1>
 
-            <div className="flex items-center justify-between">
-              <time
-                className="text-sm lg:text-base"
-                dateTime={post.publishDate}
-              >
-                {displayDate}
-              </time>
+            <div className="flex items-center justify-between text-sm opacity-60 lg:text-base">
+              <time dateTime={post.publishDate}>{displayDate}</time>
               <p className="light-border rounded-full border px-3 py-0">
                 {post.estimatedReadingTime} min read
               </p>
