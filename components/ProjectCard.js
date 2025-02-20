@@ -2,8 +2,18 @@ import React, { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import Image from 'next/image'
 import { motion, useMotionValue, useSpring, useTransform } from 'motion/react'
+import { getDisplayDate } from '../utils/getDisplayDate'
 
-const ProjectCard = ({ index, slug, imgsrc, name, description, type }) => {
+const ProjectCard = ({
+  index,
+  slug,
+  imgsrc,
+  name,
+  description,
+  type,
+  publishDate,
+  readingTime,
+}) => {
   const router = useRouter()
   const [isLoaded, setIsLoaded] = useState(false)
 
@@ -70,7 +80,15 @@ const ProjectCard = ({ index, slug, imgsrc, name, description, type }) => {
             </div>
             <div className="cursor-pointer">
               <h2 className="mt-4 text-xl font-semibold sm:text-2xl">{name}</h2>
-              <p className="text-sm lg:text-base">{description}</p>
+              {publishDate && (
+                <div className="flex items-center justify-between text-sm opacity-60">
+                  <p>{getDisplayDate(publishDate)}</p>
+                  <p className="light-border rounded-full border px-3 py-0">
+                    {readingTime} min read
+                  </p>
+                </div>
+              )}
+              <p className="p-0 text-sm lg:text-base">{description}</p>
             </div>
           </div>
         </div>

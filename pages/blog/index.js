@@ -16,7 +16,7 @@ export default function Blog({ blogPosts }) {
 
   const description =
     'Blog posts written by front-end engineer Gavin Grant, sharing insights and experiences in web development, Vue.js, React, and modern technologies.'
-
+  console.log('==>', blogPosts)
   return (
     <div>
       <Head>
@@ -41,6 +41,8 @@ export default function Blog({ blogPosts }) {
               name={post.metadata.title}
               description={post.metadata.description}
               type="blog"
+              publishDate={post.publishDate}
+              readingTime={post.estimatedReadingTime}
             />
           )
         })}
@@ -51,7 +53,13 @@ export default function Blog({ blogPosts }) {
 
 export async function getStaticProps() {
   const blogPosts = await sanity.fetch(
-    `*[_type == "blog.post"] | order(order asc)`
+    `*[_type == "blog.post"]
+      {
+        publishDate,
+        metadata,
+        "estimatedReadingTime": round(length(pt::text(body)) / 5 / 180 )
+      } | order(order asc)
+    `
   )
 
   return {

@@ -7,6 +7,7 @@ import { PortableText } from '@portabletext/react'
 import Loader from '../../components/Loader'
 import sanity from '../../lib/sanity'
 import { getSanityImageUrl } from '../../utils/getSanityImageUrl'
+import { getDisplayDate } from '../../utils/getDisplayDate'
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
 import {
   materialDark,
@@ -43,12 +44,7 @@ export default function BlogPost({ post }) {
     )
 
   const pageTitle = `${post.metadata.title} | Gavin Grant Consulting`
-  const publishedDate = `${post.publishDate}T17:00:00Z`
-  const displayDate = new Date(publishedDate).toLocaleDateString('en-US', {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric',
-  })
+  const displayDate = getDisplayDate(post.publishDate)
 
   return (
     <div className="mx-auto flex items-start justify-center px-4 pt-[72px] sm:px-6 sm:pt-[80px] 2xl:max-w-[1536px]">
@@ -61,7 +57,7 @@ export default function BlogPost({ post }) {
         <meta
           name="publish_date"
           property="og:publish_date"
-          content={publishedDate}
+          content={post.publishDate}
         />
         <meta property="og:title" content={post.metadata.title} />
         <meta property="og:description" content={post.metadata.description} />
@@ -75,13 +71,21 @@ export default function BlogPost({ post }) {
         <div className="grid w-full grid-cols-1 gap-6 lg:grid-cols-[auto_300px]">
           {/* Main Content */}
           <div className="lg:light-border max-w-[800px] pr-0 lg:border-r-[0.5px] lg:pr-6">
-            <h1 className="heading-size-lg mb-2 font-semibold">
+            <h1 className="heading-size-lg mb-4 font-semibold">
               {post.metadata.title}
             </h1>
 
-            <time className="text-sm lg:text-base" dateTime={post.publishDate}>
-              {displayDate}
-            </time>
+            <div className="flex items-center justify-between">
+              <time
+                className="text-sm lg:text-base"
+                dateTime={post.publishDate}
+              >
+                {displayDate}
+              </time>
+              <p className="light-border rounded-full border px-3 py-0">
+                {post.estimatedReadingTime} min read
+              </p>
+            </div>
 
             <Image
               className="my-6 aspect-video overflow-hidden rounded-xl object-cover"
@@ -147,7 +151,8 @@ const postQuery = `*[_type == "blog.post" && metadata.slug.current == $slug][0]{
   authors[]->{
     name,
     image
-  }
+  },
+  "estimatedReadingTime": round(length(pt::text(body)) / 5 / 180 )
 }`
 
 export const getStaticPaths = async () => {
