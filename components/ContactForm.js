@@ -16,6 +16,7 @@ export default function ContactForm() {
     message: '',
   })
   const [status, setStatus] = useState({ success: null, message: '' })
+  const [isLoading, setIsLoading] = useState(false)
 
   const { fireEvent } = useTagManager()
 
@@ -44,6 +45,7 @@ export default function ContactForm() {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
+    setIsLoading(true)
     setStatus({ success: null, message: '' })
 
     const requiredFields = ['firstName', 'lastName', 'email', 'message']
@@ -53,6 +55,7 @@ export default function ContactForm() {
         success: false,
         message: 'Please fill in all of the fields above.',
       })
+      setIsLoading(false)
       return
     }
 
@@ -86,6 +89,8 @@ export default function ContactForm() {
       }
     } catch (error) {
       setStatus({ success: false, message: 'An unexpected error occurred.' })
+    } finally {
+      setIsLoading(false)
     }
   }
 
@@ -180,6 +185,7 @@ export default function ContactForm() {
               color="primary"
               radius="sm"
               size="lg"
+              isLoading={isLoading}
             >
               Send Message
             </Button>
