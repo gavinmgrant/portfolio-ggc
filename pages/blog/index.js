@@ -58,7 +58,7 @@ export async function getStaticProps() {
         publishDate,
         metadata,
         "estimatedReadingTime": round(length(pt::text(body)) / 5 / 180 )
-      } | order(order asc)
+      } | order(publishDate desc)
     `
   )
 
