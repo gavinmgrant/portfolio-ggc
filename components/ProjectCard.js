@@ -81,7 +81,7 @@ const ProjectCard = ({
             <div className="cursor-pointer">
               <h2 className="mt-4 text-xl font-semibold sm:text-2xl">{name}</h2>
               {publishDate && (
-                <div className="my-2 flex items-center justify-between text-sm opacity-60 sm:my-3">
+                <div className="my-2 flex items-center justify-between text-sm opacity-70 sm:my-3">
                   <p className="py-0">{getDisplayDate(publishDate)}</p>
                   <p className="light-border rounded-full border px-3 py-0">
                     {readingTime} min read

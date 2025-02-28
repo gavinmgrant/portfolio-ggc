@@ -23,7 +23,7 @@ module.exports = {
       typography: {
         DEFAULT: {
           css: {
-            maxWidth: '800px',
+            maxWidth: '1024px',
           },
         },
       },
