@@ -60,7 +60,7 @@ const ProjectCard = ({
         }}
       >
         <div
-          className="light-border !h-full rounded-[20px] border-[0.5px] p-4 transition-all duration-300 ease-in-out hover:border hover:border-black dark:hover:border-white"
+          className="light-border !h-full rounded-[20px] border-[0.5px] p-4 lg:p-5 transition-all duration-300 ease-in-out hover:border hover:border-black dark:hover:border-white"
           onClick={() => router.push(`/${type}/${slug}`)}
         >
           <div key={slug}>

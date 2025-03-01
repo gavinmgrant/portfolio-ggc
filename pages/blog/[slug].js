@@ -15,6 +15,7 @@ import {
   materialDark,
   materialLight,
 } from 'react-syntax-highlighter/dist/cjs/styles/prism'
+import urlBuilder from '@sanity/image-url'
 
 export default function BlogPost({ post }) {
   const scrollHeight = useScrollHeight()
@@ -22,6 +23,22 @@ export default function BlogPost({ post }) {
 
   const components = {
     types: {
+      image: ({ value }) => {
+        return (
+          <Image
+            className="my-6 overflow-hidden rounded-xl"
+            alt=""
+            src={urlBuilder({
+              projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID,
+              dataset: process.env.NEXT_PUBLIC_SANITY_DATASET,
+            })
+              .image(value)
+              .url()}
+            width={1024}
+            height={512}
+          />
+        )
+      },
       code: ({ value }) => {
         return (
           <SyntaxHighlighter
@@ -73,7 +90,7 @@ export default function BlogPost({ post }) {
       <div className="mb-6 flex items-start justify-between gap-4 sm:my-6 lg:max-w-[1148px] lg:items-center">
         <div className="grid w-full grid-cols-1 gap-6 xl:grid-cols-[auto_300px]">
           {/* Main Content */}
-          <div className="lg:light-border pr-0 lg:max-w-[800px] xl:border-r-[0.5px] lg:pr-6">
+          <div className="lg:light-border pr-0 lg:max-w-[800px] lg:pr-6 xl:border-r-[0.5px]">
             <h1 className="heading-size-lg mb-5 font-semibold">
               {post.metadata.title}
             </h1>
@@ -112,10 +129,10 @@ export default function BlogPost({ post }) {
               <AnimatePresence>
                 {scrollHeight > 240 && (
                   <motion.h2
-                    className="pb-5 text-lg"
-                    initial={{ y: -180 }}
-                    animate={{ y: 0 }}
-                    exit={{ y: -180 }}
+                    className="text-lg"
+                    initial={{ y: -180, height: 0 }}
+                    animate={{ y: 0, height: 'auto' }}
+                    exit={{ y: -180, height: 0 }}
                     transition={{
                       type: 'spring',
                       stiffness: 320,
@@ -127,7 +144,7 @@ export default function BlogPost({ post }) {
                 )}
               </AnimatePresence>
 
-              <div className="light-border border-b-[0.5px] pb-6">
+              <div className="light-border border-b-[0.5px] py-6">
                 <Author
                   photoUrl={getSanityImageUrl(post.authors[0].image.asset._ref)}
                   name={post.authors[0].name}
@@ -135,7 +152,7 @@ export default function BlogPost({ post }) {
               </div>
 
               {post.categories?.length > 0 && (
-                <div className='pt-4'>
+                <div className="pt-4">
                   {post.categories.map((category, index) => (
                     <p key={index} className="text-sm">
                       {category.title}
