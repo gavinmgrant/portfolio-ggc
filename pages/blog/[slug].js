@@ -27,7 +27,7 @@ export default function BlogPost({ post }) {
         return (
           <Image
             className="my-6 overflow-hidden rounded-xl"
-            alt=""
+            alt={value.alt}
             src={urlBuilder({
               projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID,
               dataset: process.env.NEXT_PUBLIC_SANITY_DATASET,
