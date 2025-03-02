@@ -66,8 +66,8 @@ const ShareButtons = ({ postTitle, postUrl }) => {
         icon={<IconBrandThreads size={24} />}
         urls={{
           web: `https://www.threads.net/intent/post?text=${encodedTitleAndUrl}`,
-          ios: `threads://post?text=${encodedTitleAndUrl}`,
-          android: `threads://post?text=${encodedTitleAndUrl}`,
+          ios: `barcelona://create?text=${encodedTitleAndUrl}`,
+          android: `barcelona://create?text=${encodedTitleAndUrl}`,
         }}
       />
       <ShareButton
