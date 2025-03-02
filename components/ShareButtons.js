@@ -66,16 +66,16 @@ const ShareButtons = ({ postTitle, postUrl }) => {
         icon={<IconBrandThreads size={24} />}
         urls={{
           web: `https://www.threads.net/intent/post?text=${encodedTitleAndUrl}`,
-          ios: `instagram://sharesheet?text=${encodedTitleAndUrl}`,
-          android: `instagram://sharesheet?text=${encodedTitleAndUrl}`,
+          ios: `threads://post?text=${encodedTitleAndUrl}`,
+          android: `threads://post?text=${encodedTitleAndUrl}`,
         }}
       />
       <ShareButton
         icon={<IconBrandBluesky size={24} />}
         urls={{
           web: `https://bsky.app/intent/compose?text=${postUrl}`,
-          ios: `bsky://composer?text=${postUrl}`,
-          android: `atproto://composer?text=${postUrl}`,
+          ios: `https://bsky.app/intent/compose?text=${postUrl}`,
+          android: `https://bsky.app/intent/compose?text=${postUrl}`,
         }}
       />
     </div>
