@@ -56,7 +56,7 @@ export default function BlogPost({ post }) {
     setComponents(components)
   }, [])
 
-  if (!post)
+  if (!post || !components)
     return (
       <div className="flex h-screen items-center justify-center">
         <Loader />
