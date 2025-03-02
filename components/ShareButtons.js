@@ -5,7 +5,7 @@ import {
   IconBrandBluesky,
 } from '@tabler/icons-react'
 
-const ShareButtons = ({ postUrl }) => {
+const ShareButtons = ({ postTitle, postUrl }) => {
   const ShareButton = ({ icon, url }) => {
     return (
       <a href={url} target="_blank" rel="noopener noreferrer">
@@ -16,6 +16,9 @@ const ShareButtons = ({ postUrl }) => {
     )
   }
 
+  const titleAndUrl = `${postTitle}\n${postUrl}`
+  const encodedTitleAndUrl = encodeURIComponent(titleAndUrl)
+
   return (
     <div className="flex items-center gap-2">
       <ShareButton
@@ -24,7 +27,7 @@ const ShareButtons = ({ postUrl }) => {
       />
       <ShareButton
         icon={<IconBrandThreads size={24} />}
-        url={`https://www.threads.net/intent/post?text=${postUrl}`}
+        url={`https://www.threads.net/intent/post?text=${encodedTitleAndUrl}`}
       />
       <ShareButton
         icon={<IconBrandBluesky size={24} />}

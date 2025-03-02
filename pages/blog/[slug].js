@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import Head from 'next/head'
 import Image from 'next/image'
 import { useTheme } from 'next-themes'
@@ -16,45 +16,44 @@ import {
   materialDark,
   materialLight,
 } from 'react-syntax-highlighter/dist/cjs/styles/prism'
-import urlBuilder from '@sanity/image-url'
+import imageUrlBuilder from '@sanity/image-url'
 
 export default function BlogPost({ post }) {
+  const [components, setComponents] = useState(null)
   const scrollHeight = useScrollHeight()
   const { theme } = useTheme()
 
-  const components = {
-    types: {
-      image: ({ value }) => {
-        return (
-          <Image
-            className="my-6 overflow-hidden rounded-xl"
-            alt={value.alt}
-            src={urlBuilder({
-              projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID,
-              dataset: process.env.NEXT_PUBLIC_SANITY_DATASET,
-            })
-              .image(value)
-              .url()}
-            width={1024}
-            height={512}
-          />
-        )
-      },
-      code: ({ value }) => {
-        return (
-          <SyntaxHighlighter
-            language={value.language || 'javascript'}
-            style={theme === 'dark' ? materialDark : materialLight}
-          >
-            {value.code}
-          </SyntaxHighlighter>
-        )
-      },
-    },
-  }
+  const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID
+  const dataset = process.env.NEXT_PUBLIC_SANITY_DATASET
+  const urlBuilder = imageUrlBuilder({ projectId, dataset })
 
   useEffect(() => {
-    window.scrollTo(0, 0)
+    const components = {
+      types: {
+        image: ({ value }) => {
+          return (
+            <Image
+              className="my-6 overflow-hidden rounded-xl"
+              alt={value.alt}
+              src={urlBuilder.image(value).url()}
+              width={1024}
+              height={512}
+            />
+          )
+        },
+        code: ({ value }) => {
+          return (
+            <SyntaxHighlighter
+              language={value.language || 'javascript'}
+              style={theme === 'dark' ? materialDark : materialLight}
+            >
+              {value.code}
+            </SyntaxHighlighter>
+          )
+        },
+      },
+    }
+    setComponents(components)
   }, [])
 
   if (!post)
@@ -66,6 +65,7 @@ export default function BlogPost({ post }) {
 
   const pageTitle = `${post.metadata.title} | Gavin Grant Consulting`
   const displayDate = getDisplayDate(post.publishDate)
+  const postTitle = post.metadata.title
   const postUrl = `https://gavingrant.com/blog/${post.metadata.slug.current}`
 
   return (
@@ -111,7 +111,7 @@ export default function BlogPost({ post }) {
                 photoUrl={getSanityImageUrl(post.authors[0].image.asset._ref)}
                 name={post.authors[0].name}
               />
-              <ShareButtons postUrl={postUrl} />
+              <ShareButtons postTitle={postTitle} postUrl={postUrl} />
             </div>
 
             <Image
@@ -154,7 +154,7 @@ export default function BlogPost({ post }) {
                   photoUrl={getSanityImageUrl(post.authors[0].image.asset._ref)}
                   name={post.authors[0].name}
                 />
-                <ShareButtons postUrl={postUrl} />
+                <ShareButtons postTitle={postTitle} postUrl={postUrl} />
               </div>
 
               {post.categories?.length > 0 && (
