@@ -6,23 +6,35 @@ import {
 } from '@tabler/icons-react'
 
 const ShareButtons = ({ postTitle, postUrl }) => {
-  const getMobileUrl = (platform, urls) => {
-    if (platform === 'iOS') return urls.ios
-    if (platform === 'Android') return urls.android
-    return urls.web // fallback to web url
-  }
-
   const getPlatform = () => {
     if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) return 'iOS'
     if (/Android/i.test(navigator.userAgent)) return 'Android'
     return 'Desktop'
   }
 
+  const getMobileUrl = (platform, urls) => {
+    if (platform === 'iOS') return urls.ios
+    if (platform === 'Android') return urls.android
+    return urls.web // fallback to web url
+  }
+
   const ShareButton = ({ icon, urls }) => {
     const handleClick = () => {
       const platform = getPlatform()
       const url = getMobileUrl(platform, urls)
-      window.open(url, '_blank', 'noopener,noreferrer')
+
+      const newWindow = window.open(url, '_blank')
+
+      // fallback: if the app doesn’t open, redirect to the web URL after 1 second
+      setTimeout(() => {
+        if (
+          !newWindow ||
+          newWindow.closed ||
+          typeof newWindow.closed === 'undefined'
+        ) {
+          window.location.href = urls.web
+        }
+      }, 1000)
     }
 
     return (
