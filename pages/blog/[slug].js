@@ -6,6 +6,7 @@ import { AnimatePresence, motion } from 'motion/react'
 import { PortableText } from '@portabletext/react'
 import { useScrollHeight } from '../../hooks/useScrollHeight'
 import Author from '../../components/Author'
+import ShareButtons from '../../components/ShareButtons'
 import Loader from '../../components/Loader'
 import sanity from '../../lib/sanity'
 import { getSanityImageUrl } from '../../utils/getSanityImageUrl'
@@ -65,6 +66,7 @@ export default function BlogPost({ post }) {
 
   const pageTitle = `${post.metadata.title} | Gavin Grant Consulting`
   const displayDate = getDisplayDate(post.publishDate)
+  const postUrl = `https://gavingrant.com/blog/${post.metadata.slug.current}`
 
   return (
     <div className="mx-auto flex items-start justify-center px-4 pt-[72px] sm:px-6 sm:pt-[80px] 2xl:max-w-[1536px]">
@@ -96,17 +98,20 @@ export default function BlogPost({ post }) {
             </h1>
 
             <div className="flex items-center justify-between text-sm opacity-70 lg:text-base">
-              <time dateTime={post.publishDate}>{displayDate}</time>
-              <p className="light-border rounded-full border px-3 py-0">
+              <time dateTime={post.publishDate} className="text-sm">
+                {displayDate}
+              </time>
+              <p className="light-border rounded-full border px-3 py-1 text-sm">
                 {post.estimatedReadingTime} min read
               </p>
             </div>
 
-            <div className="my-6 block xl:hidden">
+            <div className="my-6 flex items-center justify-between xl:hidden">
               <Author
                 photoUrl={getSanityImageUrl(post.authors[0].image.asset._ref)}
                 name={post.authors[0].name}
               />
+              <ShareButtons postUrl={postUrl} />
             </div>
 
             <Image
@@ -144,11 +149,12 @@ export default function BlogPost({ post }) {
                 )}
               </AnimatePresence>
 
-              <div className="light-border border-b-[0.5px] py-6">
+              <div className="light-border flex items-center justify-between border-b-[0.5px] py-6">
                 <Author
                   photoUrl={getSanityImageUrl(post.authors[0].image.asset._ref)}
                   name={post.authors[0].name}
                 />
+                <ShareButtons postUrl={postUrl} />
               </div>
 
               {post.categories?.length > 0 && (

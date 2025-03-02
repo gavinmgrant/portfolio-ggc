@@ -5,7 +5,7 @@ import ThemeSwitch from './ThemeSwitch'
 import LogoHeader from './LogoHeader'
 import { useTheme } from 'next-themes'
 import { Button } from '@heroui/react'
-import { IconMenu2, IconPlus, IconX } from '@tabler/icons'
+import { IconMenu2, IconPlus, IconX } from '@tabler/icons-react'
 import { Drawer, DrawerContent, DrawerBody, useDisclosure } from '@heroui/react'
 
 const Navigation = () => {

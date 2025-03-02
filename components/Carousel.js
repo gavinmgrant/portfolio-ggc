@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react'
 import NextImage from 'next/image'
 import Loader from './Loader'
 import { getSanityImageUrl } from '../utils/getSanityImageUrl'
-import { IconArrowNarrowLeft, IconArrowNarrowRight } from '@tabler/icons'
+import { IconArrowNarrowLeft, IconArrowNarrowRight } from '@tabler/icons-react'
 
 const Carousel = ({ sanityImages, projectName }) => {
   const [current, setCurrent] = useState(0)

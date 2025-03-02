@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react'
 import { getCalApi } from '@calcom/embed-react'
 import { Input, Textarea, Button, Form } from '@heroui/react'
 import { motion } from 'motion/react'
-import { IconCalendarEvent } from '@tabler/icons'
+import { IconCalendarEvent } from '@tabler/icons-react'
 import { useTagManager } from '@/hooks/useTagManager'
 
 export default function ContactForm() {

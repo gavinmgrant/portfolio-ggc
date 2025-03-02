@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import { useRouter } from 'next/router'
 import { Button } from '@heroui/react'
-import { IconAlertTriangle } from '@tabler/icons'
+import { IconAlertTriangle } from '@tabler/icons-react'
 
 export default function NotFound() {
   const router = useRouter()

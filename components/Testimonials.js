@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { motion, AnimatePresence } from 'motion/react'
 import { wrap } from 'popmotion'
-import { IconArrowNarrowLeft, IconArrowNarrowRight } from '@tabler/icons'
+import { IconArrowNarrowLeft, IconArrowNarrowRight } from '@tabler/icons-react'
 
 const testimonials = [
   {

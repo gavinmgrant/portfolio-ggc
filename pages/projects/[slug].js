@@ -7,7 +7,7 @@ import {
   IconBrandGithub,
   IconAlertTriangle,
   IconEyeOff,
-} from '@tabler/icons'
+} from '@tabler/icons-react'
 import { motion } from 'motion/react'
 import { Button } from '@heroui/react'
 import sanity from '../../lib/sanity'
