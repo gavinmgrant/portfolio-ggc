@@ -87,6 +87,15 @@ export default function BlogPost({ post }) {
           property="og:image"
           content={getSanityImageUrl(post.metadata.image.asset._ref)}
         />
+        <meta property="og:url" content={postUrl} />
+        <meta property="og:type" content="article" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={post.metadata.title} />
+        <meta name="twitter:description" content={post.metadata.description} />
+        <meta
+          name="twitter:image"
+          content={getSanityImageUrl(post.metadata.image.asset._ref)}
+        />
       </Head>
 
       <div className="mb-6 flex items-start justify-between gap-4 sm:my-6 lg:max-w-[1148px] lg:items-center">
