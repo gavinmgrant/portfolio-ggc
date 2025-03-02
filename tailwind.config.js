@@ -24,6 +24,9 @@ module.exports = {
         DEFAULT: {
           css: {
             maxWidth: '1024px',
+            ul: {
+              padding: '0',
+            },
           },
         },
       },
