@@ -36,7 +36,13 @@ module.exports = {
       addCommonColors: false, // override common colors (e.g. "blue", "green", "pink").
       defaultTheme: 'light', // default theme from the themes object
       defaultExtendTheme: 'light', // default theme to extend on custom themes
-      layout: {}, // common layout tokens (applied to all themes)
+      layout: {
+        borderWidth: {
+          small: '1px', // border-small
+          medium: '1px', // border-medium
+          large: '2px', // border-large
+        },
+      }, // common layout tokens (applied to all themes)
       themes: {
         light: {
           layout: {}, // light theme layout tokens
