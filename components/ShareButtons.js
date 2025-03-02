@@ -8,11 +8,14 @@ import {
 const ShareButtons = ({ postTitle, postUrl }) => {
   const ShareButton = ({ icon, url }) => {
     return (
-      <a href={url} target="_blank" rel="noopener noreferrer">
-        <Button isIconOnly variant="bordered" className="rounded-full">
-          {icon}
-        </Button>
-      </a>
+      <Button
+        isIconOnly
+        variant="bordered"
+        className="rounded-full transition-all duration-300 ease-in-out hover:scale-105 active:scale-75"
+        onPress={() => window.open(url, '_blank', 'noopener,noreferrer')}
+      >
+        {icon}
+      </Button>
     )
   }
 
