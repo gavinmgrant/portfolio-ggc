@@ -26,10 +26,20 @@ export default async function handler(req, res) {
       lastmod: new Date().toISOString(),
     }))
 
+    const convertDateToISO = (date) => {
+      let d
+      if (!date) {
+        d = Date()
+      } else {
+        d = new Date(date)
+      }
+      return d.toISOString()
+    }
+
     // Generate blog post URLs
     const blogPostUrls = blogPosts.map((post) => ({
       loc: `${baseUrl}/blog/${post.slug}`,
-      lastmod: post.publishDate.toISOString() || new Date().toISOString(),
+      lastmod: convertDateToISO(post.publishDate),
     }))
 
     // Combine static pages, project pages, and blog posts
