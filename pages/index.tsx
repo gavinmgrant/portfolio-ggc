@@ -2,6 +2,7 @@ import Head from 'next/head'
 import About from '../components/About'
 import Testimonials from '../components/Testimonials'
 import Divider from '../components/Divider'
+import ContactForm from '../components/ContactForm'
 import ogImage from '../public/images/gavin-grant-og.png'
 
 export default function Home() {
@@ -25,6 +26,10 @@ export default function Home() {
         <About />
         <Divider />
         <Testimonials />
+        <Divider />
+        <div className="flex items-center justify-center lg:min-h-[calc(100vh-160px)] pb-8 lg:pb-28 w-full">
+          <ContactForm />
+        </div>
       </div>
     </div>
   )

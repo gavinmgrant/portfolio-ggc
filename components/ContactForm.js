@@ -1,12 +1,10 @@
 'use client'
 
-import { useState, useEffect } from 'react'
-import { getCalApi } from '@calcom/embed-react'
+import { useState } from 'react'
 import { Input, Textarea, Button, Form } from '@heroui/react'
 import { motion } from 'motion/react'
-import { IconCalendarEvent } from '@tabler/icons-react'
 import { useTagManager } from '@/hooks/useTagManager'
-import { useTheme } from 'next-themes'
+import BookAMeetingButton from './BookAMeetingButton'
 
 export default function ContactForm() {
   const [formData, setFormData] = useState({
@@ -20,24 +18,6 @@ export default function ContactForm() {
   const [isLoading, setIsLoading] = useState(false)
 
   const { fireEvent } = useTagManager()
-  const { theme } = useTheme()
-
-  useEffect(() => {
-    const getCal = async () => {
-      const cal = await getCalApi({ namespace: '30min' })
-      cal('ui', {
-        theme,
-        backgroundColor: 'transparent',
-        cssVarsPerTheme: {
-          light: { 'cal-brand': '#171717' },
-          dark: { 'cal-brand': '#ffffff' },
-        },
-        hideEventTypeDetails: false,
-        layout: 'month_view',
-      })
-    }
-    getCal()
-  }, [theme])
 
   const handleChange = (e) => {
     const { name, value } = e.target
@@ -102,17 +82,7 @@ export default function ContactForm() {
     <div className="light-border w-[900px] rounded-xl border-[0.5px] px-4 pb-4 pt-4 sm:px-6 sm:py-6 lg:mt-20">
       <div className="mb-3 flex flex-col items-center justify-center gap-3 sm:flex-row sm:justify-between lg:mb-4">
         <h2 className="heading-size">Contact me</h2>
-        <button
-          className="light-border rounded-lg border-2 px-3 py-2.5 transition-all duration-300 ease-in-out hover:scale-105"
-          data-cal-namespace="30min"
-          data-cal-link="gavingrant/30min"
-          data-cal-config='{"layout":"month_view"}'
-        >
-          <div className="flex items-center gap-2">
-            <IconCalendarEvent className="shrink-0" />{' '}
-            <span className="font-semibold">Book a meeting</span>
-          </div>
-        </button>
+        <BookAMeetingButton />
       </div>
 
       <div className="mb-6">
