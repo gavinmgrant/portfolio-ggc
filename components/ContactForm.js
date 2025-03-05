@@ -6,6 +6,7 @@ import { Input, Textarea, Button, Form } from '@heroui/react'
 import { motion } from 'motion/react'
 import { IconCalendarEvent } from '@tabler/icons-react'
 import { useTagManager } from '@/hooks/useTagManager'
+import { useTheme } from 'next-themes'
 
 export default function ContactForm() {
   const [formData, setFormData] = useState({
@@ -19,11 +20,14 @@ export default function ContactForm() {
   const [isLoading, setIsLoading] = useState(false)
 
   const { fireEvent } = useTagManager()
+  const { theme } = useTheme()
 
   useEffect(() => {
     const getCal = async () => {
       const cal = await getCalApi({ namespace: '30min' })
       cal('ui', {
+        theme,
+        backgroundColor: 'transparent',
         cssVarsPerTheme: {
           light: { 'cal-brand': '#171717' },
           dark: { 'cal-brand': '#ffffff' },
@@ -33,7 +37,7 @@ export default function ContactForm() {
       })
     }
     getCal()
-  }, [])
+  }, [theme])
 
   const handleChange = (e) => {
     const { name, value } = e.target

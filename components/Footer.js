@@ -22,7 +22,7 @@ const Footer = () => {
             <div className="flex flex-col space-x-0 space-y-3 pt-2 sm:flex-row sm:space-x-4 sm:space-y-0 sm:pt-0">
               <motion.a
                 href={urls.linkedin}
-                className="flex items-center space-x-1 transition-colors duration-500 hover:text-yellow-600 dark:hover:text-yellow-500"
+                className="flex items-center space-x-1 hover-color"
                 target="_blank"
                 rel="noreferrer"
                 whileHover={{ scale: 1.05 }}
@@ -41,7 +41,7 @@ const Footer = () => {
               </motion.a>
               <motion.a
                 href={urls.github}
-                className="flex items-center space-x-1 transition-colors duration-500 hover:text-yellow-600 dark:hover:text-yellow-500"
+                className="flex items-center space-x-1 hover-color"
                 target="_blank"
                 rel="noreferrer"
                 whileHover={{ scale: 1.05 }}
@@ -63,7 +63,7 @@ const Footer = () => {
               <Link
                 href="/privacy"
                 target="_blank"
-                className="transition-colors duration-500 hover:text-yellow-600 dark:hover:text-yellow-500"
+                className="hover-color"
               >
                 Privacy Policy
               </Link>

@@ -41,7 +41,7 @@ const ShareButtons = ({ postTitle, postUrl }) => {
       <Button
         isIconOnly
         variant="bordered"
-        className="rounded-full transition-all duration-300 ease-in-out hover:scale-105 active:scale-75"
+        className="hover-color rounded-full transition-all duration-300 ease-in-out hover:scale-105 active:scale-75"
         onPress={handleClick}
       >
         {icon}

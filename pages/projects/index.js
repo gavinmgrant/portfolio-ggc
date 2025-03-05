@@ -2,7 +2,8 @@ import React from 'react'
 import Head from 'next/head'
 import Loader from '../../components/Loader'
 import ProjectCard from '../../components/ProjectCard'
-import sanity from '../../lib/sanity'
+import { getClient } from '../../lib/sanity'
+import { PROJECTS_QUERY } from '../../lib/queries'
 import ogImage from '../../public/images/gavin-grant-og.png'
 import { getSanityImageUrl } from '../../utils/getSanityImageUrl'
 
@@ -50,9 +51,8 @@ export default function Projects({ projects }) {
 }
 
 export async function getStaticProps() {
-  const projects = await sanity.fetch(
-    `*[_type == "project"] | order(order asc)`
-  )
+  const client = getClient()
+  const projects = await client.fetch(PROJECTS_QUERY)
 
   return {
     props: {

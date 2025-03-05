@@ -10,10 +10,16 @@ import {
 } from '@tabler/icons-react'
 import { motion } from 'motion/react'
 import { Button } from '@heroui/react'
-import sanity from '../../lib/sanity'
+import { getClient } from '../../lib/sanity'
+import {
+  PROJECTS_SLUG_QUERY,
+  PROJECT_QUERY,
+  TECHNOLOGIES_QUERY,
+} from '../../lib/queries'
+import { token } from '../../lib/token'
 import { getSanityImageUrl } from '../../utils/getSanityImageUrl'
 
-export default function Project({ project, technologies }) {
+export default function ProjectPage({ project, technologies }) {
   const proj = project[0]
 
   useEffect(() => {
@@ -23,15 +29,6 @@ export default function Project({ project, technologies }) {
   const technologiesUsed = technologies.filter((tech) => {
     return proj.technologies?.some((t) => t._ref === tech._id)
   })
-
-  const variants = {
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { type: 'spring', stiffness: 300, damping: 24 },
-    },
-    hidden: { opacity: 0, y: 20, transition: { duration: 0.2 } },
-  }
 
   if (!proj)
     return (
@@ -54,6 +51,15 @@ export default function Project({ project, technologies }) {
         <meta property="og:description" content={proj.description} />
         <meta
           property="og:image"
+          content={getSanityImageUrl(proj.projectImages[0].asset._ref)}
+        />
+        <meta property="og:url" content={proj.url} />
+        <meta property="og:type" content="article" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={proj.name} />
+        <meta name="twitter:description" content={proj.description} />
+        <meta
+          name="twitter:image"
           content={getSanityImageUrl(proj.projectImages[0].asset._ref)}
         />
       </Head>
@@ -95,7 +101,7 @@ export default function Project({ project, technologies }) {
           <a
             href={proj.url}
             target="_blank"
-            className="transition-colors duration-500 hover:text-yellow-600 dark:hover:text-yellow-500"
+            className="hover-color"
           >
             <h1 className="heading-size-lg font-semibold">{proj.name}</h1>
           </a>
@@ -110,7 +116,7 @@ export default function Project({ project, technologies }) {
           href={proj.url}
           target="_blank"
           whileHover={{ scale: 1.1 }}
-          className="transition-colors duration-500 hover:text-yellow-600 dark:hover:text-yellow-500"
+          className="hover-color"
         >
           <IconExternalLink size="32px" />
         </motion.a>
@@ -165,13 +171,10 @@ export default function Project({ project, technologies }) {
   )
 }
 
-const projectsQuery = `*[_type == "project"] { slug }`
-const singleProjectQuery = `*[_type == "project" && slug == $slug]`
-const technologiesQuery = `*[_type == "technology"] | order(description)`
-
 export const getStaticPaths = async () => {
+  const client = getClient()
   // Get the paths we want to pre-render based on projects
-  const projects = await sanity.fetch(projectsQuery)
+  const projects = await client.fetch(PROJECTS_SLUG_QUERY)
   const paths = projects.map((project) => ({
     params: { slug: project.slug },
   }))
@@ -182,8 +185,11 @@ export const getStaticPaths = async () => {
 }
 
 // This function gets called at build time on server-side.
-export const getStaticProps = async ({ params }) => {
-  const project = await sanity.fetch(singleProjectQuery, { slug: params.slug })
-  const technologies = await sanity.fetch(technologiesQuery)
-  return { props: { project, technologies } }
+export const getStaticProps = async ({ params, draftMode = false }) => {
+  const client = getClient(draftMode ? token : undefined)
+  const project = await client.fetch(PROJECT_QUERY, { slug: params.slug })
+  const technologies = await client.fetch(TECHNOLOGIES_QUERY)
+  return {
+    props: { project, technologies, draftMode, token: draftMode ? token : '' },
+  }
 }

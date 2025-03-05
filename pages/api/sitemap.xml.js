@@ -1,19 +1,18 @@
-import sanity from '../../lib/sanity'
+import { getClient } from '../../lib/sanity'
+import {
+  SITEMAP_PROJECTS_QUERY,
+  SITEMAP_BLOG_POSTS_QUERY,
+} from '../../lib/queries'
 
 const baseUrl = 'https://www.gavingrant.com'
 
-// Query to fetch project slugs from Sanity
-const projectsQuery = `*[_type == "project"]{ slug }`
-
-// Query to fetch blog post slugs from Sanity
-const blogPostsQuery = `*[_type == "blog.post"]{ "slug": metadata.slug.current, publishDate }`
-
 export default async function handler(req, res) {
+  const client = getClient()
   try {
     // Fetch projects from Sanity
-    const projects = await sanity.fetch(projectsQuery)
+    const projects = await client.fetch(SITEMAP_PROJECTS_QUERY)
     // Fetch blog posts from Sanity
-    const blogPosts = await sanity.fetch(blogPostsQuery)
+    const blogPosts = await client.fetch(SITEMAP_BLOG_POSTS_QUERY)
 
     // Define static pages
     const staticPages = ['', 'projects', 'blog', 'contact'].map((page) => ({
@@ -30,7 +29,7 @@ export default async function handler(req, res) {
     // Generate blog post URLs
     const blogPostUrls = blogPosts.map((post) => ({
       loc: `${baseUrl}/blog/${post.slug}`,
-      lastmod: post.publishDate || new Date().toISOString(),
+      lastmod: post.publishDate.toISOString() || new Date().toISOString(),
     }))
 
     // Combine static pages, project pages, and blog posts

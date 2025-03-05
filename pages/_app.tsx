@@ -1,16 +1,26 @@
-import { useEffect } from 'react'
+import { useEffect, lazy, Suspense } from 'react'
 import Script from 'next/script'
 import { useRouter } from 'next/router'
 import Navigation from '../components/Navigation'
 import Footer from '../components/Footer'
 import PageTransition from '../components/PageTransition'
-import '../styles/globals.css'
-import 'tailwindcss/tailwind.css'
 import type { AppProps } from 'next/app'
 import { ThemeProvider } from 'next-themes'
 import { HeroUIProvider } from '@heroui/react'
+import { VisualEditing } from '@sanity/visual-editing/next-pages-router'
+import '../styles/globals.css'
+import 'tailwindcss/tailwind.css'
 
-function MyApp({ Component, pageProps }: AppProps) {
+export interface SharedPageProps {
+  draftMode: boolean
+  token: string
+}
+
+const PreviewProvider = lazy(() => import('@/components/PreviewProvider'))
+
+function MyApp({ Component, pageProps }: AppProps<SharedPageProps>) {
+  const { draftMode, token } = pageProps
+
   const GTM_ID = process.env.NEXT_PUBLIC_GTM_ID
 
   const router = useRouter()
@@ -18,8 +28,8 @@ function MyApp({ Component, pageProps }: AppProps) {
   useEffect(() => {
     const handleRouteChange = (url: string) => {
       // Google Tag Manager
-      window.dataLayer = window.dataLayer || [];
-      window.dataLayer.push({ event: "pageview", page: url });
+      window.dataLayer = window.dataLayer || []
+      window.dataLayer.push({ event: 'pageview', page: url })
     }
     router.events.on('routeChangeComplete', handleRouteChange)
     return () => {
@@ -50,7 +60,16 @@ function MyApp({ Component, pageProps }: AppProps) {
           <Navigation />
           <div className="side-borders mx-auto min-h-screen 2xl:max-w-[1536px]">
             <PageTransition>
-              <Component {...pageProps} />
+              {draftMode ? (
+                <PreviewProvider token={token}>
+                  <Component {...pageProps} />
+                  <Suspense>
+                    <VisualEditing />
+                  </Suspense>
+                </PreviewProvider>
+              ) : (
+                <Component {...pageProps} />
+              )}
             </PageTransition>
           </div>
           <Footer />
