@@ -30,7 +30,7 @@ const Navigation = () => {
 
         {/* Mobile Menu */}
         <IconMenu2
-          className="block cursor-pointer sm:hidden"
+          className="block shrink-0 cursor-pointer sm:hidden"
           onClick={onOpen}
         />
         <Drawer
@@ -100,7 +100,7 @@ const Navigation = () => {
         </Drawer>
         {/* Mobile Menu */}
         {/* Desktop Menu */}
-        <div className="hidden sm:block">
+        <div className="hidden shrink-0 sm:block">
           <div className="flex flex-row items-center justify-center gap-5">
             <Link href="/projects" className="hover-color">
               <span className="link-underline link-underline-light dark:link-underline-dark">
