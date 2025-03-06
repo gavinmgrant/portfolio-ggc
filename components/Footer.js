@@ -1,7 +1,7 @@
 import React from 'react'
 import Link from 'next/link'
 import { motion } from 'motion/react'
-import { IconBrandLinkedin, IconBrandGithub, IconPlus } from '@tabler/icons-react'
+import { IconBrandLinkedin, IconBrandGithub, IconPlus, IconMail } from '@tabler/icons-react'
 import { urls } from '../configs/urls.config'
 
 const Footer = () => {
@@ -18,7 +18,7 @@ const Footer = () => {
         </div>
 
         <div className="relative mx-auto text-sm text-neutral-800 dark:text-white">
-          <div className="flex flex-col items-center justify-between gap-4 sm:flex-row">
+          <div className="flex flex-col items-center justify-between gap-4 md:flex-row">
             <div className="flex flex-col space-x-0 space-y-3 pt-2 sm:flex-row sm:space-x-4 sm:space-y-0 sm:pt-0">
               <motion.a
                 href={urls.linkedin}
@@ -55,6 +55,23 @@ const Footer = () => {
                     viewport={{ once: true }}
                   >
                     GitHub
+                  </motion.div>
+                </div>
+              </motion.a>
+              <motion.a
+                href={urls.email}
+                className="flex items-center space-x-1 hover-color"
+                whileHover={{ scale: 1.05 }}
+              >
+                <IconMail />
+                <div className="overflow-hidden text-clip">
+                  <motion.div
+                    initial={{ x: -30, opacity: 0 }}
+                    whileInView={{ x: 0, opacity: 1 }}
+                    transition={{ delay: 0.4, type: 'spring', bounce: 0.1 }}
+                    viewport={{ once: true }}
+                  >
+                    gavin@gavingrant.com
                   </motion.div>
                 </div>
               </motion.a>
