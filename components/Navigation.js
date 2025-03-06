@@ -1,28 +1,14 @@
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
-import { useEffect, useState } from 'react'
 import ThemeSwitch from './ThemeSwitch'
 import LogoHeader from './LogoHeader'
-import { useTheme } from 'next-themes'
 import { Button } from '@heroui/react'
 import { IconMenu2, IconPlus, IconX } from '@tabler/icons-react'
 import { Drawer, DrawerContent, DrawerBody, useDisclosure } from '@heroui/react'
 
 const Navigation = () => {
   const router = useRouter()
-  const { theme } = useTheme()
-  const [underlineClass, setUnderlineClass] = useState(
-    'link-underline link-underline-light'
-  )
   const { isOpen, onOpen, onOpenChange } = useDisclosure()
-
-  useEffect(() => {
-    if (theme === 'dark') {
-      setUnderlineClass('link-underline link-underline-dark')
-    } else {
-      setUnderlineClass('link-underline link-underline-light')
-    }
-  }, [theme])
 
   const CustomCloseButton = (
     <div>
@@ -40,9 +26,8 @@ const Navigation = () => {
           />
         </div>
 
-        <Link href="/" className="hover-color">
-          <LogoHeader />
-        </Link>
+        <LogoHeader />
+
         {/* Mobile Menu */}
         <IconMenu2
           className="block cursor-pointer sm:hidden"

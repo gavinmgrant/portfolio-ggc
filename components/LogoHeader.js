@@ -1,8 +1,9 @@
 import React from 'react'
+import Link from 'next/link'
 
 const LogoHeader = () => {
   return (
-    <div className="flex items-center gap-3 sm:gap-4">
+    <Link className="hover-color flex items-center gap-3 sm:gap-4" href="/">
       <div className="h-[24px] sm:h-[32px]">
         <svg
           className="h-full w-full"
@@ -35,7 +36,7 @@ const LogoHeader = () => {
       <h2 className="m-0 flex h-6 items-center p-0 text-[18px] !font-medium sm:h-[32px] sm:text-[22px]">
         GAVIN GRANT
       </h2>
-    </div>
+    </Link>
   )
 }
 
