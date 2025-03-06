@@ -5,8 +5,8 @@ import { AnimatePresence, motion } from 'motion/react'
 const LogoHeader = () => {
   return (
     <Link href="/">
-      <div className="hover-color flex items-center gap-3 sm:gap-4">
-        <div className="h-[24px] sm:h-[32px]">
+      <div className="hover-color flex items-center justify-start gap-3 sm:gap-4">
+        <div className="h-[24px] w-[24px] sm:h-[32px] sm:w-[32px]">
           <svg
             className="h-full w-full"
             width="389"
@@ -35,7 +35,7 @@ const LogoHeader = () => {
             />
           </svg>
         </div>
-        <h2 className="m-0 flex h-6 items-center gap-1.5 p-0 text-[18px] !font-medium sm:h-[32px] sm:text-[22px]">
+        <h2 className="m-0 line-clamp-1 flex h-6 shrink-0 items-center gap-1.5 p-0 text-[18px] !font-medium sm:h-[32px] sm:text-[22px]">
           <span className="z-10 bg-white dark:bg-neutral-900">GAVIN GRANT</span>
           <motion.span
             className="hidden !font-thin md:block"
