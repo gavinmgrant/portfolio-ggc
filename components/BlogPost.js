@@ -10,6 +10,7 @@ import { useScrollHeight } from '../hooks/useScrollHeight'
 import Author from '../components/Author'
 import ShareButtons from '../components/ShareButtons'
 import Loader from '../components/Loader'
+import ContactForm from '../components/ContactForm'
 import { getSanityImageUrl } from '../utils/getSanityImageUrl'
 import { getDisplayDate } from '../utils/getDisplayDate'
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
@@ -136,6 +137,10 @@ export default function BlogPost({ post }) {
             <article className="prose mt-6 w-full dark:prose-invert">
               <PortableText value={post.body} components={components} />
             </article>
+
+            <div className="mt-8 lg:mt-0">
+              <ContactForm />
+            </div>
           </div>
 
           {/* Sidebar */}

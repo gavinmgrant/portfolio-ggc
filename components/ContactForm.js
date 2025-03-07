@@ -79,9 +79,9 @@ export default function ContactForm() {
   }
 
   return (
-    <div className="light-border w-[900px] rounded-xl border-[0.5px] px-4 pb-4 pt-4 sm:px-6 sm:py-6 lg:mt-20">
+    <div className="light-border w-full max-w-[900px] rounded-xl border-[0.5px] px-4 pb-4 pt-4 sm:px-6 sm:py-6 lg:mt-20">
       <div className="mb-3 flex flex-col items-center justify-center gap-3 sm:flex-row sm:justify-between lg:mb-4">
-        <h2 className="heading-size">Contact me</h2>
+        <h2 className="heading-size-lg">Contact me</h2>
         <BookAMeetingButton />
       </div>
 
