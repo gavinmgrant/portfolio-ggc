@@ -7,7 +7,7 @@ import ogImage from '../public/images/gavin-grant-og.png'
 
 export default function Home() {
   const description =
-    'Explore the portfolio of a front-end engineer specializing in Vue & React, offering expert web development and consulting services for modern, scalable apps.'
+    'Gavin Grant Consulting specializes in building fast, scalable websites and web applications that stand out.'
 
   return (
     <div>
@@ -27,7 +27,7 @@ export default function Home() {
         <Divider />
         <Testimonials />
         <Divider />
-        <div className="flex items-center justify-center lg:min-h-[calc(100vh-160px)] pb-8 lg:pb-28 w-full">
+        <div className="flex w-full items-center justify-center pb-8 lg:min-h-[calc(100vh-160px)] lg:pb-28">
           <ContactForm />
         </div>
       </div>

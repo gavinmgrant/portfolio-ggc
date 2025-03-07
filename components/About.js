@@ -15,20 +15,21 @@ const About = () => {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="flex max-w-[1000px] flex-col-reverse items-center justify-center gap-8 text-center lg:flex-row lg:gap-20 lg:text-left"
+          className="flex max-w-[1000px] flex-col-reverse items-center justify-center gap-4 text-center sm:gap-6 md:gap-8 lg:flex-row lg:gap-20 lg:text-left"
         >
           <div>
-            <h1 className="heading-size-xl font-semibold text-neutral-900 dark:text-white">
-              Hi, I'm Gavin.
+            <h1 className="heading-size-lg font-semibold text-neutral-900 dark:text-white">
+              Building fast, scalable websites and web apps
             </h1>
-            <div className="mt-2 text-neutral-800 dark:text-white lg:mt-6">
+            <div className="mt-2 text-neutral-800 dark:text-white lg:mt-4">
               <p className="text-justify text-sm lg:text-base">
-                As a forward-thinking front-end software engineer with a
-                background in architecture, I bring a unique perspective to
-                building engaging, user-centric digital experiences.
-                Specializing in JavaScript, TypeScript, React, Next.js, Vue.js,
-                Nuxt.js, and more, I help businesses create modern, scalable web
-                applications that stand out.
+                Gavin Grant Consulting specializes in building fast, scalable
+                websites and web applications that stand out. Using modern
+                technologies like Next.js, Vercel, Sanity, and Shopify, we
+                create high-performance, dynamic digital experiences tailored to
+                your business needs. Whether it’s a sleek marketing site, a
+                powerful ecommerce store, or a complex web app, we deliver
+                solutions that are both innovative and user-friendly.
               </p>
             </div>
             <div className="mt-4 flex w-full flex-col items-center justify-center gap-5 sm:h-12 sm:flex-row lg:mt-6 lg:justify-start">
@@ -106,7 +107,7 @@ const About = () => {
               </div>
             </div>
           </div>
-          <div className="mb-0 flex-shrink-0 lg:mb-10 lg:mt-12 lg:pl-4">
+          <div className="mb-0 w-[148px] flex-shrink-0 sm:w-[200px] md:w-[224px] lg:mb-10 lg:mt-12 lg:w-[264px] lg:pl-2">
             <Image
               src={headshotDark}
               alt="Headshot of Gavin Grant"
