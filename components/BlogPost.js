@@ -11,8 +11,10 @@ import Author from '../components/Author'
 import ShareButtons from '../components/ShareButtons'
 import Loader from '../components/Loader'
 import ContactForm from '../components/ContactForm'
+import TableOfContents from './TableOfContents'
 import { getSanityImageUrl } from '../utils/getSanityImageUrl'
 import { getDisplayDate } from '../utils/getDisplayDate'
+import { parseChildrenToSlug } from '../utils/handleSlugs'
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
 import {
   materialDark,
@@ -31,6 +33,17 @@ export default function BlogPost({ post }) {
 
   useEffect(() => {
     const components = {
+      block: {
+        normal: ({ children }) => <p>{children}</p>,
+        h2: ({ children, value }) => {
+          const slug = parseChildrenToSlug(value.children)
+          return (
+            <h2 id={slug} className="scroll-m-[104px] first:mt-0">
+              {children}
+            </h2>
+          )
+        },
+      },
       types: {
         image: ({ value }) => {
           return (
@@ -144,8 +157,8 @@ export default function BlogPost({ post }) {
           </div>
 
           {/* Sidebar */}
-          <div className="hidden h-full w-full text-center xl:block xl:w-[300px] xl:text-left">
-            <div className="xl:sticky xl:top-[104px]">
+          <aside className="hidden h-full w-full text-center xl:block xl:w-[300px] xl:text-left">
+            <div className="xl:sticky xl:top-[104px] overflow-y-auto">
               <AnimatePresence>
                 {scrollHeight > 240 && (
                   <motion.h2
@@ -172,17 +185,23 @@ export default function BlogPost({ post }) {
                 <ShareButtons postTitle={postTitle} postUrl={postUrl} />
               </div>
 
-              {post.categories?.length > 0 && (
-                <div className="pt-4">
-                  {post.categories.map((category, index) => (
-                    <p key={index} className="text-sm">
-                      {category.title}
-                    </p>
-                  ))}
+              {/* {post.categories?.length > 0 && (
+                <div className="light-border border-b-[0.5px] pb-4 pt-4">
+                  <div className="space-y-3">
+                    {post.categories.map((category, index) => (
+                      <p key={index} className="text-sm">
+                        {category.title}
+                      </p>
+                    ))}
+                  </div>
                 </div>
-              )}
+              )} */}
+
+              <div className="mt-6">
+                <TableOfContents richText={post.body} />
+              </div>
             </div>
-          </div>
+          </aside>
         </div>
       </div>
     </div>

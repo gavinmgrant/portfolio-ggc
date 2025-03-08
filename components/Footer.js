@@ -1,7 +1,12 @@
 import React from 'react'
 import Link from 'next/link'
 import { motion } from 'motion/react'
-import { IconBrandLinkedin, IconBrandGithub, IconPlus, IconMail } from '@tabler/icons-react'
+import {
+  IconBrandLinkedin,
+  IconBrandGithub,
+  IconPlus,
+  IconMail,
+} from '@tabler/icons-react'
 import { urls } from '../configs/urls.config'
 
 const Footer = () => {
@@ -22,7 +27,7 @@ const Footer = () => {
             <div className="flex flex-col space-x-0 space-y-3 pt-2 sm:flex-row sm:space-x-4 sm:space-y-0 sm:pt-0">
               <motion.a
                 href={urls.linkedin}
-                className="flex items-center space-x-1 hover-color"
+                className="hover-color flex items-center space-x-1"
                 target="_blank"
                 rel="noreferrer"
                 whileHover={{ scale: 1.05 }}
@@ -41,7 +46,7 @@ const Footer = () => {
               </motion.a>
               <motion.a
                 href={urls.github}
-                className="flex items-center space-x-1 hover-color"
+                className="hover-color flex items-center space-x-1"
                 target="_blank"
                 rel="noreferrer"
                 whileHover={{ scale: 1.05 }}
@@ -60,7 +65,7 @@ const Footer = () => {
               </motion.a>
               <motion.a
                 href={urls.email}
-                className="flex items-center space-x-1 hover-color"
+                className="hover-color flex items-center space-x-1"
                 whileHover={{ scale: 1.05 }}
               >
                 <IconMail />
@@ -77,11 +82,7 @@ const Footer = () => {
               </motion.a>
             </div>
             <div className="mt-6 flex flex-col items-center text-sm sm:mt-0 sm:flex-row">
-              <Link
-                href="/privacy"
-                target="_blank"
-                className="hover-color"
-              >
+              <Link href="/privacy" target="_blank" className="hover-color">
                 Privacy Policy
               </Link>
               <p className="py-0.5 lg:ml-3">© {year} Gavin Grant Consulting</p>
