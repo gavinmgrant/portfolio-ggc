@@ -79,6 +79,7 @@ export default function BlogPost({ post }) {
 
   const displayDate = getDisplayDate(post.publishDate)
   const postTitle = post.metadata.title
+  const postUrl = `https://gavingrant.com/blog/${post.metadata.slug.current}`
 
   return (
     <div className="mb-6 flex items-start justify-between gap-4 sm:my-6 lg:max-w-[1148px] lg:items-center">
