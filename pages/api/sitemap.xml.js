@@ -4,7 +4,7 @@ import {
   SITEMAP_BLOG_POSTS_QUERY,
 } from '../../lib/queries'
 
-const baseUrl = 'https://www.gavingrant.com'
+const baseUrl = process.env.NEXT_PUBLIC_SITE_URL
 
 export default async function handler(req, res) {
   const client = getClient()
@@ -56,7 +56,7 @@ export default async function handler(req, res) {
           <lastmod>${lastmod}</lastmod>
           <changefreq>weekly</changefreq>
           <priority>${
-            loc === 'https://www.gavingrant.com/' ? '1.0' : '0.8'
+            loc === `${baseUrl}/` ? '1.0' : '0.8'
           }</priority>
         </url>
       `

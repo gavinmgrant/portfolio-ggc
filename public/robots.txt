@@ -7,4 +7,4 @@ Allow: /
 User-agent: *
 Disallow: 
 
-Sitemap: https://gavingrant.com/sitemap.xml
+Sitemap: https://www.gavingrant.com/sitemap.xml

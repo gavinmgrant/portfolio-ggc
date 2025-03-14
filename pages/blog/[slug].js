@@ -11,8 +11,9 @@ const BlogPostPreview = dynamic(() =>
 )
 
 export default function BlogPostPage({ post, params, draftMode }) {
+  const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL
   const pageTitle = `${post.metadata.title} | Gavin Grant Consulting`
-  const postUrl = `https://gavingrant.com/blog/${post.metadata.slug.current}`
+  const postUrl = `${SITE_URL}/blog/${post.metadata.slug.current}`
 
   return (
     <div className="mx-auto flex items-start justify-center px-4 pt-[72px] sm:px-6 sm:pt-[80px] 2xl:max-w-[1536px]">

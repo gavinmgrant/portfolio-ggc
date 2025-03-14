@@ -1,6 +1,8 @@
 import React from 'react'
 
 const PrivacyPolicy = () => {
+  const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL
+
   return (
     <div className="m-4 pt-20">
       <h1 className="pt-4 pb-2 text-3xl">Privacy Policy</h1>
@@ -100,11 +102,11 @@ const PrivacyPolicy = () => {
             <strong>Website</strong> refers to Gavin Grant Consulting,
             accessible from{' '}
             <a
-              href="https://www.gavingrant.com/"
+              href={SITE_URL}
               rel="external nofollow noopener"
               target="_blank"
             >
-              https://www.gavingrant.com/
+              {SITE_URL}
             </a>
           </p>
         </li>

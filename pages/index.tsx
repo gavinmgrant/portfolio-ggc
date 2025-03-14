@@ -6,6 +6,7 @@ import ContactForm from '../components/ContactForm'
 import ogImage from '../public/images/gavin-grant-og.png'
 
 export default function Home() {
+  const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL
   const description =
     'Gavin Grant Consulting specializes in building fast, scalable websites and web applications that stand out.'
 
@@ -21,7 +22,7 @@ export default function Home() {
         <meta property="og:title" content="Gavin Grant Consulting" />
         <meta property="og:description" content={description} />
         <meta property="og:image" content={ogImage.src} />
-        <link rel="canonical" href="https://www.gavingrant.com" />
+        <link rel="canonical" href={SITE_URL} />
       </Head>
       <div className="mx-auto flex max-w-[1536px] flex-col items-center justify-center px-4 antialiased sm:px-6">
         <About />
