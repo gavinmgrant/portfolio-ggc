@@ -16,7 +16,7 @@ export default function Blog({ blogPosts }) {
     )
 
   const description =
-    'Blog posts written by front-end engineer Gavin Grant, sharing insights and experiences in web development, Vue.js, React, and modern technologies.'
+    'Blog posts written by front-end engineer Gavin Grant, sharing insights and experiences in web development, Next.js, and modern technologies.'
 
   return (
     <div>

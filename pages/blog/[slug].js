@@ -1,19 +1,20 @@
-import dynamic from "next/dynamic";
+// import dynamic from "next/dynamic";
 import BlogPost from '../../components/BlogPost'
 import { getClient } from '../../lib/sanity'
 import { token } from '../../lib/token'
 import { BLOG_POSTS_SLUG_QUERY, BLOG_POST_QUERY } from '../../lib/queries'
 
-const BlogPostPreview = dynamic(() =>
-  import('../../components/BlogPostPreview')
-)
+// const BlogPostPreview = dynamic(() =>
+//   import('../../components/BlogPostPreview')
+// )
 
-export default function BlogPostPage({ post, params, draftMode }) {
-  return draftMode ? (
-    <BlogPostPreview post={post} params={params} />
-  ) : (
-    <BlogPost post={post} />
-  )
+export default function BlogPostPage({ post }) {
+  // return draftMode ? (
+  //   <BlogPostPreview post={post} params={params} />
+  // ) : (
+  //   <BlogPost post={post} />
+  // )
+  return <BlogPost post={post} />
 }
 
 export const getStaticPaths = async () => {
