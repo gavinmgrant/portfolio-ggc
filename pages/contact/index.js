@@ -14,6 +14,7 @@ export default function Contact() {
         <meta charSet="utf-8" />
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
         <meta name="author" content="Gavin Grant" />
+        <meta property="og:site_name" content="Gavin Grant Consulting" />
         <meta property="og:title" content="Contact" />
         <meta property="og:description" content={description} />
         <meta property="og:image" content={ogImage.src} />
