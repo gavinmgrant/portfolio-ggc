@@ -32,6 +32,20 @@ export default function BlogPost({ post }) {
 
   useEffect(() => {
     const components = {
+      marks: {
+        link: ({ value, children }) => {
+          const { href } = value
+          return (
+            <a
+              href={href}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {children}
+            </a>
+          )
+        },
+      },
       block: {
         normal: ({ children }) => <p>{children}</p>,
         h2: ({ children, value }) => {
