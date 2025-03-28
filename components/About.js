@@ -23,13 +23,15 @@ const About = () => {
             </h1>
             <div className="mt-2 text-neutral-800 dark:text-white lg:mt-4">
               <p className="text-justify text-sm lg:text-base">
-                Gavin Grant Consulting specializes in building fast, scalable
-                websites and web applications that stand out. Using modern
-                technologies like Next.js, Vercel, Sanity, and Shopify, we
-                create high-performance, dynamic digital experiences tailored to
-                your business needs. Whether it’s a sleek marketing site, a
-                powerful ecommerce store, or a complex web app, we deliver
-                solutions that are both innovative and user-friendly.
+                I specialize in creating high-performance, scalable websites and
+                web applications that deliver exceptional digital experiences.
+                With expertise in modern frontend technologies like Next.js,
+                Vue.js, TypeScript, and Sanity, I build fast, dynamic solutions
+                tailored to your business needs. Whether you're looking for a
+                sleek marketing site, a powerful web application, or anything in
+                between, I focus on delivering innovative, user-friendly
+                solutions that not only meet your goals but also ensure
+                seamless, engaging experiences for your users.
               </p>
             </div>
             <div className="mt-4 flex w-full flex-col items-center justify-center gap-5 sm:h-12 sm:flex-row lg:mt-6 lg:justify-start">
