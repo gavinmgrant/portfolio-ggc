@@ -88,11 +88,13 @@ export default function ContactForm() {
       <div className="mb-6">
         <div className="space-y-2">
           <p className="p-0 text-sm lg:text-base">
-            Do you need a website or web app built? Do you need a front-end
-            software engineer?
+            Need a skilled front-end engineer to enhance your team? I specialize
+            in building fast, responsive, and user-friendly interfaces. Looking
+            for a professional website or web app? I can design and develop a
+            custom solution tailored to your needs.
           </p>
           <p className="p-0 text-sm lg:text-base">
-            Send me a message, so we can talk about it.
+            Send me a message below or check my availability to book a meeting.
           </p>
         </div>
       </div>

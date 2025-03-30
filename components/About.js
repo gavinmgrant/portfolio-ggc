@@ -15,14 +15,14 @@ const About = () => {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="flex max-w-[1000px] flex-col-reverse items-center justify-center gap-4 text-center sm:gap-6 md:gap-8 lg:flex-row lg:gap-20 lg:text-left"
+          className="flex max-w-[965px] flex-col-reverse items-center justify-center gap-4 text-center sm:gap-6 md:gap-8 lg:flex-row lg:gap-20 lg:text-left"
         >
           <div>
             <h1 className="heading-size-lg font-semibold text-neutral-900 dark:text-white">
               Building fast, scalable websites and web apps
             </h1>
             <div className="mt-2 text-neutral-800 dark:text-white lg:mt-4">
-              <p className="text-justify text-sm lg:text-base">
+              <p className="ftext-sm lg:text-base">
                 I specialize in creating high-performance, scalable websites and
                 web applications that deliver exceptional digital experiences.
                 With expertise in modern frontend technologies like Next.js,

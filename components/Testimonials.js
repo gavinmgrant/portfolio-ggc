@@ -77,7 +77,7 @@ const Testimonials = () => {
                 }}
                 className="absolute w-full"
               >
-                <p className="mb-4 text-justify text-sm lg:text-base">
+                <p className="mb-4 text-sm lg:text-base">
                   {testimonials[testimonialIndex].quote}
                 </p>
                 <div className="mt-4 text-center lg:text-right">
