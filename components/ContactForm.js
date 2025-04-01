@@ -85,7 +85,7 @@ export default function ContactForm() {
         <BookAMeetingButton />
       </div>
 
-      <div className="mb-6">
+      <div className="mb-6 text-center md:text-left">
         <div className="space-y-2">
           <p className="p-0 text-sm lg:text-base">
             Need a skilled front-end engineer to enhance your team? I specialize

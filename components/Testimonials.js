@@ -1,9 +1,14 @@
 import React, { useState } from 'react'
 import { motion, AnimatePresence } from 'motion/react'
 import { wrap } from 'popmotion'
-import { IconArrowNarrowLeft, IconArrowNarrowRight } from '@tabler/icons-react'
+import { IconChevronLeft, IconChevronRight } from '@tabler/icons-react'
 
 const testimonials = [
+  {
+    name: 'James Lawrence',
+    title: 'CEO at POWER Automotive Media',
+    quote: `"I had the pleasure of working with Gavin Grant as an engineer at Happy Companies, and I can say without hesitation that he was one of the most professional, reliable, and downright good human beings I’ve had the chance to work alongside. Gavin brought a calm, focused energy to every project — always dependable, always thoughtful, and always two steps ahead in anticipating what was needed. He consistently delivered high-quality work, communicated clearly, and was the kind of teammate who made everyone around him better. Whether navigating complex systems or collaborating cross-functionally, Gavin handled it all with grace, humility, and sharp technical insight. Beyond his engineering chops, Gavin’s character stood out even more. He showed up every day with a great attitude, genuine kindness, and a sense of integrity that you don’t come across often enough."`,
+  },
   {
     name: 'Cyd La Luz',
     title: 'Software Engineer at Google',
@@ -47,18 +52,25 @@ const Testimonials = () => {
 
   return (
     <div className="flex w-screen items-center justify-center lg:h-[calc(100vh-160px)]">
-      <div className="flex h-[750px] w-full max-w-[1536px] flex-col items-center justify-center px-4 py-20 xs:h-[640px] sm:h-[560px] md:h-[520px] lg:h-[560px]">
-        <h2 className="heading-size-lg font-semibold">Testimonials</h2>
-
-        <div className="flex h-full w-full max-w-[1000px] items-center justify-center gap-4 sm:gap-6 md:gap-8 lg:gap-12 xl:gap-24">
+      <div className="flex h-[600px] w-full max-w-[1536px] flex-col items-center justify-center gap-4 px-4 py-8 xs:h-[560px] sm:h-[580px] sm:py-20 lg:gap-10">
+        <div className="flex w-full max-w-[900px] items-center justify-between">
           <button
             onClick={() => paginate(-1)}
-            className="z-10 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-neutral-200 bg-opacity-50 transition-all duration-300 ease-in-out hover:scale-110 hover:bg-opacity-70 focus:outline-none active:scale-90 sm:h-12 sm:w-12"
+            className="z-10 flex shrink-0 items-center justify-center hover:scale-110 hover:bg-opacity-70 active:scale-90 transition-all ease-in-out"
           >
-            <IconArrowNarrowLeft />
+            <IconChevronLeft className="h-10 w-10 lg:h-12 lg:w-12" />
           </button>
+          <h2 className="heading-size-lg font-semibold">Testimonials</h2>
+          <button
+            onClick={() => paginate(1)}
+            className="z-10 flex shrink-0 items-center justify-center hover:scale-110 hover:bg-opacity-70 active:scale-90 transition-all ease-in-out"
+          >
+            <IconChevronRight className="h-10 w-10 lg:h-12 lg:w-12" />
+          </button>
+        </div>
 
-          <div className="relative flex h-full w-full items-center justify-center overflow-hidden">
+        <div className="flex h-full w-full max-w-[900px] items-start justify-center gap-2 sm:gap-6 md:gap-8 lg:gap-12 xl:gap-24">
+          <div className="relative flex h-full w-full items-start justify-center overflow-hidden">
             <AnimatePresence initial={false} custom={direction}>
               <motion.div
                 key={testimonials[testimonialIndex].name}
@@ -75,12 +87,12 @@ const Testimonials = () => {
                     duration: 0.4,
                   },
                 }}
-                className="absolute w-full"
+                className="absolute w-full text-center lg:text-left"
               >
-                <p className="mb-4 text-sm lg:text-base">
+                <p className="mb-6 text-sm lg:text-base">
                   {testimonials[testimonialIndex].quote}
                 </p>
-                <div className="mt-4 text-center lg:text-right">
+                <div className="mt-4 text-center lg:text-left">
                   <h5 className="text-lg font-semibold">
                     {testimonials[testimonialIndex].name}
                   </h5>
@@ -91,13 +103,6 @@ const Testimonials = () => {
               </motion.div>
             </AnimatePresence>
           </div>
-
-          <button
-            onClick={() => paginate(1)}
-            className="z-10 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-neutral-200 bg-opacity-50 transition-all duration-300 ease-in-out hover:scale-110 hover:bg-opacity-70 focus:outline-none active:scale-90 sm:h-12 sm:w-12"
-          >
-            <IconArrowNarrowRight />
-          </button>
         </div>
       </div>
     </div>
