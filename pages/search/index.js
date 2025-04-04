@@ -21,6 +21,7 @@ export const SearchPage = () => {
   async function getResponse() {
     if (!searchString || searchString.trim() === '') return
 
+    setShowResults(true)
     setIsLoading(true)
     try {
       const response = await fetch(
@@ -49,7 +50,6 @@ export const SearchPage = () => {
   }
 
   const handleChange = (e) => {
-    if (showResults) setShowResults(false)
     setSearchString(e.target.value)
     if (e.target.value === '') {
       setShowResults(false)
@@ -77,7 +77,7 @@ export const SearchPage = () => {
       {showResults ? (
         <div className="col-span-full">
           {isLoading ? (
-            <div className="col-span-full flex flex-col items-center justify-center min-h-24 text-center">
+            <div className="col-span-full flex min-h-24 flex-col items-center justify-center text-center">
               <Loader />
             </div>
           ) : searchResults.length > 0 ? (
@@ -98,7 +98,7 @@ export const SearchPage = () => {
           )}
         </div>
       ) : (
-        <div className="col-span-full flex flex-col items-center justify-center min-h-24 text-center">
+        <div className="col-span-full flex min-h-24 flex-col items-center justify-center text-center">
           <p>Enter your query above to search for projects or blog posts.</p>
         </div>
       )}
