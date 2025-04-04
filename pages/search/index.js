@@ -94,7 +94,9 @@ export const SearchPage = () => {
               ))}
             </div>
           ) : (
-            <p>No results found for "{searchString}"</p>
+            <div className="col-span-full flex min-h-24 flex-col items-center justify-center text-center">
+              <p>No results found for "{searchString}"</p>
+            </div>
           )}
         </div>
       ) : (
