@@ -90,6 +90,7 @@ export const SearchPage = () => {
                   imgsrc={null}
                   name={result.name || result.title}
                   description={result.description}
+                  type={result.type}
                 />
               ))}
             </div>

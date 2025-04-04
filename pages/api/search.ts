@@ -48,6 +48,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
         if (item._type === 'blog.post') {
           return {
             _type: item._type,
+            type: 'blog',
             title: item.metadata?.title || '',
             name: '',
             slug: item.metadata?.slug?.current || '',
@@ -56,6 +57,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
         } else {
           return {
             _type: item._type,
+            type: 'projects',
             title: '',
             name: item.name || '',
             slug: item.slug || '',
