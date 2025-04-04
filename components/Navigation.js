@@ -84,6 +84,15 @@ const Navigation = () => {
                     className="w-full"
                     onPress={() => {
                       onClose()
+                      router.push('/search')
+                    }}
+                  >
+                    Search
+                  </Button>
+                  <Button
+                    className="w-full"
+                    onPress={() => {
+                      onClose()
                       router.push('/contact')
                     }}
                     variant="bordered"
@@ -110,6 +119,11 @@ const Navigation = () => {
             <Link href="/blog" className="hover-color">
               <span className="link-underline link-underline-light dark:link-underline-dark">
                 Blog
+              </span>
+            </Link>
+            <Link href="/search" className="hover-color">
+              <span className="link-underline link-underline-light dark:link-underline-dark">
+                Search
               </span>
             </Link>
             <Link href="/contact" className="hover-color">

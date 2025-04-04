@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import Link from 'next/link'
-import { useRouter } from 'next/navigation'
 import Image from 'next/image'
 import { motion, useMotionValue, useSpring, useTransform } from 'motion/react'
 import { getDisplayDate } from '../utils/getDisplayDate'
@@ -15,7 +14,6 @@ const ProjectCard = ({
   publishDate,
   readingTime,
 }) => {
-  const router = useRouter()
   const [isLoaded, setIsLoaded] = useState(false)
 
   const x = useMotionValue(0)
@@ -63,22 +61,24 @@ const ProjectCard = ({
         <Link href={`/${type}/${slug}`}>
           <div className="light-border !h-full rounded-[20px] border-[0.5px] p-4 transition-all duration-300 ease-in-out hover:border hover:border-black dark:hover:border-white lg:p-5">
             <div key={slug}>
-              <div className="light-border relative aspect-[548/300] max-h-[490px] max-w-[735px] overflow-hidden rounded-xl border-[0.5px]">
-                {!isLoaded && (
-                  <div className="absolute left-0 top-0 z-10 h-[490px] w-[735px] animate-pulse overflow-hidden rounded-xl bg-slate-300"></div>
-                )}
-                <Image
-                  className="cursor-pointer overflow-hidden rounded-xl"
-                  alt={name}
-                  src={imgsrc}
-                  width={735}
-                  height={490}
-                  onLoad={() => setIsLoaded(true)}
-                  priority={index === 0 || index === 1 || index === 2}
-                />
-              </div>
+              {imgsrc && (
+                <div className="light-border relative aspect-[548/300] max-h-[490px] max-w-[735px] overflow-hidden rounded-xl border-[0.5px] mb-4">
+                  {!isLoaded && (
+                    <div className="absolute left-0 top-0 z-10 h-[490px] w-[735px] animate-pulse overflow-hidden rounded-xl bg-slate-300"></div>
+                  )}
+                  <Image
+                    className="cursor-pointer overflow-hidden rounded-xl"
+                    alt={name}
+                    src={imgsrc}
+                    width={735}
+                    height={490}
+                    onLoad={() => setIsLoaded(true)}
+                    priority={index === 0 || index === 1 || index === 2}
+                  />
+                </div>
+              )}
               <div className="cursor-pointer">
-                <h2 className="mt-4 text-xl font-semibold sm:text-2xl">
+                <h2 className="text-xl font-semibold sm:text-2xl">
                   {name}
                 </h2>
                 {publishDate && (
