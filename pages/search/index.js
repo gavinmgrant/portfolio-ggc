@@ -1,10 +1,12 @@
 'use client'
 
+import Head from 'next/head'
 import { Form, Input, Button } from '@heroui/react'
 import { useRouter } from 'next/router'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import ProjectCard from '../../components/ProjectCard'
 import Loader from '../../components/Loader'
+import ogImage from '../../public/images/gavin-grant-og.png'
 
 export const SearchPage = () => {
   const {
@@ -56,55 +58,74 @@ export const SearchPage = () => {
     }
   }
 
-  return (
-    <div className="mx-auto grid grid-cols-1 gap-4 px-4 pb-4 pt-[72px] sm:gap-6 sm:px-6 sm:pb-6 sm:pt-[104px] 2xl:max-w-[1536px]">
-      <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
-        <h1 className="heading-size-lg col-span-1 lg:col-span-2">Search</h1>
-        <Form
-          onSubmit={handleSubmit}
-          className="col-span-1 flex flex-row items-center gap-3"
-        >
-          <Input
-            value={searchString}
-            onChange={handleChange}
-            placeholder="Search for projects or blog posts..."
-            className="flex-1"
-          />
-          <Button type="submit">Search</Button>
-        </Form>
-      </div>
+  const description =
+    'Search for projects and blog posts created by Gavin Grant Consulting.'
 
-      {showResults ? (
-        <div className="col-span-full">
-          {isLoading ? (
-            <div className="col-span-full flex min-h-24 flex-col items-center justify-center text-center">
-              <Loader />
-            </div>
-          ) : searchResults.length > 0 ? (
-            <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
-              {searchResults.map((result, index) => (
-                <ProjectCard
-                  key={result.slug}
-                  index={index}
-                  slug={result.slug}
-                  imgsrc={null}
-                  name={result.name || result.title}
-                  description={result.description}
-                  type={result.type}
-                />
-              ))}
-            </div>
-          ) : (
-            <div className="col-span-full flex min-h-24 flex-col items-center justify-center text-center">
-              <p>No results found for "{searchString}"</p>
-            </div>
-          )}
+  const noResultsClass =
+    'col-span-full flex flex-col items-center justify-center text-center min-h-[calc(100vh-224px)]'
+
+  return (
+    <div>
+      <Head>
+        <title>Search | Gavin Grant Consulting</title>
+        <meta name="description" content={description} />
+        <meta charSet="utf-8" />
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+        <meta name="author" content="Gavin Grant" />
+        <meta property="og:site_name" content="Gavin Grant Consulting" />
+        <meta property="og:title" content="Search" />
+        <meta property="og:description" content={description} />
+        <meta property="og:image" content={ogImage.src} />
+      </Head>
+      <div className="mx-auto grid grid-cols-1 gap-4 px-4 pb-4 pt-[72px] sm:gap-6 sm:px-6 sm:pb-6 sm:pt-[104px] 2xl:max-w-[1536px]">
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+          <h1 className="heading-size-lg col-span-1">Search</h1>
+          <Form
+            onSubmit={handleSubmit}
+            className="col-span-1 flex flex-row items-center gap-3 lg:col-span-2"
+          >
+            <Input
+              value={searchString}
+              onChange={handleChange}
+              placeholder="Search for projects or blog posts..."
+              className="flex-1"
+            />
+            <Button type="submit">Search</Button>
+          </Form>
         </div>
-      ) : (
-        <div className="col-span-full flex min-h-24 flex-col items-center justify-center text-center">
-          <p>Enter your query above to search for projects or blog posts.</p>
-        </div>
-      )}
+
+        {showResults ? (
+          <div className="col-span-full">
+            {isLoading ? (
+              <div className={noResultsClass}>
+                <Loader />
+              </div>
+            ) : searchResults.length > 0 ? (
+              <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+                {searchResults.map((result, index) => (
+                  <ProjectCard
+                    key={result.slug}
+                    index={index}
+                    slug={result.slug}
+                    imgsrc={null}
+                    name={result.name || result.title}
+                    description={result.description}
+                    type={result.type}
+                  />
+                ))}
+              </div>
+            ) : (
+              <div className={noResultsClass}>
+                <p>No results found for "{searchString}"</p>
+              </div>
+            )}
+          </div>
+        ) : (
+          <div className={noResultsClass}>
+            <p>Enter your query above to search for projects or blog posts.</p>
+          </div>
+        )}
+      </div>
     </div>
   )
 }
