@@ -1,13 +1,6 @@
 import { getClient } from '../../lib/sanity'
 import type { NextApiRequest, NextApiResponse } from 'next'
-
-// Define a type for the content items
-interface ContentItem {
-  _type: string
-  title?: string
-  name?: string
-  slug?: string
-}
+import { SEARCH_QUERY } from '../../lib/queries'
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   try {
@@ -38,48 +31,14 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     const formattedQuery = queryString.toLowerCase().trim()
 
     try {
-      const blogPosts = await client.fetch(`*[_type == "blog.post"]`)
-      const projects = await client.fetch(`*[_type == "project"]`)
-
-      const allContent = [...blogPosts, ...projects]
-
-      // Process the results to extract the fields we need
-      const processedContent = allContent.map((item) => {
-        if (item._type === 'blog.post') {
-          return {
-            _type: item._type,
-            type: 'blog',
-            title: item.metadata?.title || '',
-            name: '',
-            slug: item.metadata?.slug?.current || '',
-            description: item.metadata?.description || '',
-          }
-        } else {
-          return {
-            _type: item._type,
-            type: 'projects',
-            title: '',
-            name: item.name || '',
-            slug: item.slug || '',
-            description: item.description || '',
-          }
-        }
+      // Use a GROQ query that filters at the database level
+      const results = await client.fetch(SEARCH_QUERY, {
+        query: formattedQuery,
       })
 
-      // Now filter the results in JavaScript
-      const filteredResults = processedContent.filter((item: ContentItem) => {
-        if (item._type === 'blog.post' && item.title) {
-          return item.title.toLowerCase().includes(formattedQuery)
-        }
-        if (item._type === 'project' && item.name) {
-          return item.name.toLowerCase().includes(formattedQuery)
-        }
-        return false
-      })
-
-      return res.status(200).json(filteredResults)
+      return res.status(200).json(results)
     } catch (error) {
-      console.error('Error with simple query:', error)
+      console.error('Error with search query:', error)
       throw error // Re-throw to be caught by the outer try/catch
     }
   } catch (error) {

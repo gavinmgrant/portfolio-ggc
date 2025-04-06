@@ -7,6 +7,7 @@ import { useState } from 'react'
 import ProjectCard from '../../components/ProjectCard'
 import Loader from '../../components/Loader'
 import ogImage from '../../public/images/gavin-grant-og.png'
+import { IconSearch } from '@tabler/icons-react'
 
 export const SearchPage = () => {
   const {
@@ -90,7 +91,9 @@ export const SearchPage = () => {
               placeholder="Search for projects or blog posts..."
               className="flex-1"
             />
-            <Button type="submit">Search</Button>
+            <Button type="submit">
+              <IconSearch size={20} /> Search
+            </Button>
           </Form>
         </div>
 

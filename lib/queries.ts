@@ -38,3 +38,25 @@ export const TECHNOLOGIES_QUERY = `*[_type == "technology"] | order(description)
 // Sitemap queries
 export const SITEMAP_PROJECTS_QUERY = `*[_type == "project"]{ slug }`
 export const SITEMAP_BLOG_POSTS_QUERY = `*[_type == "blog.post"]{ "slug": metadata.slug.current, publishDate }`
+
+// Search queries
+export const SEARCH_QUERY = `*[
+  (_type == "blog.post" && (
+    metadata.title match $query + "*" || 
+    metadata.description match $query + "*"
+  )) || 
+  (_type == "project" && (
+    name match $query + "*" || 
+    description match $query + "*"
+  ))
+  ]{
+  _type,
+  "type": select(
+    _type == "blog.post" => "blog",
+    _type == "project" => "projects"
+  ),
+  "title": select(_type == "blog.post" => metadata.title),
+  "name": select(_type == "project" => name),
+  "slug": select(_type == "blog.post" => metadata.slug.current, _type == "project" => slug),
+  "description": select(_type == "blog.post" => metadata.description, _type == "project" => description)
+  }[0...20]`

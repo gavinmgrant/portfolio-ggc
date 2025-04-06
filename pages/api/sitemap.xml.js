@@ -15,10 +15,12 @@ export default async function handler(req, res) {
     const blogPosts = await client.fetch(SITEMAP_BLOG_POSTS_QUERY)
 
     // Define static pages
-    const staticPages = ['', 'projects', 'blog', 'contact'].map((page) => ({
-      loc: `${baseUrl}/${page}`,
-      lastmod: new Date().toISOString(),
-    }))
+    const staticPages = ['', 'projects', 'blog', 'contact', 'search'].map(
+      (page) => ({
+        loc: `${baseUrl}/${page}`,
+        lastmod: new Date().toISOString(),
+      })
+    )
 
     // Generate project URLs
     const projectUrls = projects.map((project) => ({
