@@ -76,18 +76,24 @@ export const SearchPage = () => {
               <Loader />
             </div>
           ) : searchResults.length > 0 ? (
-            <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
-              {searchResults.map((result, index) => (
-                <ProjectCard
-                  key={result.slug}
-                  index={index}
-                  slug={result.slug}
-                  imgsrc={getSanityImageUrl(result.image.asset._ref)}
-                  name={result.name || result.title}
-                  description={result.description}
-                  type={result.type}
-                />
-              ))}
+            <div className="space-y-4">
+              <p>
+                Search results for "{queryFromUrl}". {searchResults.length}{' '}
+                {searchResults.length === 1 ? 'result' : 'results'} found.
+              </p>
+              <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+                {searchResults.map((result, index) => (
+                  <ProjectCard
+                    key={result.slug}
+                    index={index}
+                    slug={result.slug}
+                    imgsrc={getSanityImageUrl(result.image.asset._ref)}
+                    name={result.name || result.title}
+                    description={result.description}
+                    type={result.type}
+                  />
+                ))}
+              </div>
             </div>
           ) : queryFromUrl ? (
             <div className={noResultsClass}>
