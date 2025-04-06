@@ -1,14 +1,20 @@
+'use client'
+
+import { useState } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import ThemeSwitch from './ThemeSwitch'
 import LogoHeader from './LogoHeader'
-import { Button } from '@heroui/react'
-import { IconMenu2, IconPlus, IconX } from '@tabler/icons-react'
+import { Button, Form, Input } from '@heroui/react'
+import { IconMenu2, IconPlus, IconX, IconSearch } from '@tabler/icons-react'
 import { Drawer, DrawerContent, DrawerBody, useDisclosure } from '@heroui/react'
+import { AnimatePresence, motion } from 'motion/react'
 
 const Navigation = () => {
   const router = useRouter()
   const { isOpen, onOpen, onOpenChange } = useDisclosure()
+  const [searchString, setSearchString] = useState('')
+  const [showSearch, setShowSearch] = useState(false)
 
   const CustomCloseButton = (
     <div>
@@ -30,7 +36,7 @@ const Navigation = () => {
 
         {/* Mobile Menu */}
         <IconMenu2
-          className="block shrink-0 cursor-pointer sm:hidden"
+          className="block shrink-0 cursor-pointer lg:hidden"
           onClick={onOpen}
         />
         <Drawer
@@ -84,15 +90,6 @@ const Navigation = () => {
                     className="w-full"
                     onPress={() => {
                       onClose()
-                      router.push('/search')
-                    }}
-                  >
-                    Search
-                  </Button>
-                  <Button
-                    className="w-full"
-                    onPress={() => {
-                      onClose()
                       router.push('/contact')
                     }}
                     variant="bordered"
@@ -101,6 +98,33 @@ const Navigation = () => {
                   >
                     Contact
                   </Button>
+                  <Form
+                    className="w-full"
+                    onSubmit={(e) => {
+                      e.preventDefault()
+                      if (searchString.trim()) {
+                        onClose()
+                        router.push(
+                          `/search?query=${encodeURIComponent(
+                            searchString.trim()
+                          )}`
+                        )
+                        setSearchString('')
+                      }
+                    }}
+                  >
+                    <div className="flex w-full flex-row gap-2">
+                      <Input
+                        value={searchString}
+                        onChange={(e) => setSearchString(e.target.value)}
+                        placeholder="Search projects and blogs..."
+                        className="flex-1"
+                      />
+                      <Button type="submit" isIconOnly>
+                        <IconSearch size={20} />
+                      </Button>
+                    </div>
+                  </Form>
                   <ThemeSwitch />
                 </div>
               </DrawerBody>
@@ -109,8 +133,52 @@ const Navigation = () => {
         </Drawer>
         {/* Mobile Menu */}
         {/* Desktop Menu */}
-        <div className="hidden shrink-0 sm:block">
+        <div className="hidden shrink-0 lg:block">
           <div className="flex flex-row items-center justify-center gap-5">
+            <div className="relative">
+              <Button
+                variant="light"
+                isIconOnly
+                className="hover-color"
+                onPress={() => setShowSearch(!showSearch)}
+              >
+                <IconSearch size={20} />
+              </Button>
+              {showSearch && (
+                <AnimatePresence>
+                  <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    <Form
+                      onSubmit={(e) => {
+                        e.preventDefault()
+                        if (searchString.trim()) {
+                          router.push(
+                            `/search?query=${encodeURIComponent(
+                              searchString.trim()
+                            )}`
+                          )
+                          setShowSearch(false)
+                          setSearchString('')
+                        }
+                      }}
+                      className="absolute -top-1 right-12 z-50 flex w-64 flex-row items-center gap-2 rounded-lg bg-white p-2 shadow-lg dark:bg-neutral-800"
+                    >
+                      <Input
+                        value={searchString}
+                        onChange={(e) => setSearchString(e.target.value)}
+                        placeholder="Search projects and blogs..."
+                        className="flex-1"
+                        size="sm"
+                      />
+                    </Form>
+                  </motion.div>
+                </AnimatePresence>
+              )}
+            </div>
             <Link href="/projects" className="hover-color">
               <span className="link-underline link-underline-light dark:link-underline-dark">
                 Projects
@@ -119,11 +187,6 @@ const Navigation = () => {
             <Link href="/blog" className="hover-color">
               <span className="link-underline link-underline-light dark:link-underline-dark">
                 Blog
-              </span>
-            </Link>
-            <Link href="/search" className="hover-color">
-              <span className="link-underline link-underline-light dark:link-underline-dark">
-                Search
               </span>
             </Link>
             <Link href="/contact" className="hover-color">

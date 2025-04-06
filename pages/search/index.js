@@ -1,34 +1,30 @@
 'use client'
 
 import Head from 'next/head'
-import { Form, Input, Button } from '@heroui/react'
 import { useRouter } from 'next/router'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import ProjectCard from '../../components/ProjectCard'
 import Loader from '../../components/Loader'
 import ogImage from '../../public/images/gavin-grant-og.png'
-import { IconSearch } from '@tabler/icons-react'
+import { getSanityImageUrl } from '../../utils/getSanityImageUrl'
 
 export const SearchPage = () => {
-  const {
-    query: { query: queryFromUrl },
-  } = useRouter()
+  const router = useRouter()
+  const { query: { query: queryFromUrl } } = router
 
-  const [searchString, setSearchString] = useState(
-    typeof queryFromUrl === 'string' ? queryFromUrl : ''
-  )
   const [searchResults, setSearchResults] = useState([])
   const [isLoading, setIsLoading] = useState(false)
-  const [showResults, setShowResults] = useState(false)
 
-  async function getResponse() {
-    if (!searchString || searchString.trim() === '') return
+  async function getResponse(query) {
+    if (!query || query.trim() === '') {
+      setSearchResults([])
+      return
+    }
 
-    setShowResults(true)
     setIsLoading(true)
     try {
       const response = await fetch(
-        `/api/search?query=${encodeURIComponent(searchString)}`,
+        `/api/search?query=${encodeURIComponent(query)}`,
         {
           method: 'GET',
         }
@@ -36,34 +32,26 @@ export const SearchPage = () => {
 
       const data = await response.json()
       setSearchResults(data)
+      console.log('Search results:', data)
     } catch (error) {
       console.error('Search error:', error)
       setSearchResults([])
     } finally {
       setIsLoading(false)
-      setShowResults(true)
     }
   }
 
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    setShowResults(false)
-    if (searchString === '' || searchString.trim() === '') return
-    getResponse()
-  }
-
-  const handleChange = (e) => {
-    setSearchString(e.target.value)
-    if (e.target.value === '') {
-      setShowResults(false)
-    }
-  }
+  // Trigger search when URL query changes
+  useEffect(() => {
+    console.log('Query changed:', queryFromUrl)
+    getResponse(queryFromUrl)
+  }, [queryFromUrl])
 
   const description =
     'Search for projects and blog posts created by Gavin Grant Consulting.'
 
   const noResultsClass =
-    'col-span-full flex flex-col items-center justify-center text-center min-h-[calc(100vh-224px)]'
+    'col-span-full flex flex-col items-center justify-center text-center min-h-[calc(100vh-80px)]'
 
   return (
     <div>
@@ -79,55 +67,35 @@ export const SearchPage = () => {
         <meta property="og:image" content={ogImage.src} />
       </Head>
       <div className="mx-auto grid grid-cols-1 gap-4 px-4 pb-4 pt-[72px] sm:gap-6 sm:px-6 sm:pb-6 sm:pt-[104px] 2xl:max-w-[1536px]">
-        <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
-          <h1 className="heading-size-lg col-span-1">Search</h1>
-          <Form
-            onSubmit={handleSubmit}
-            className="col-span-1 flex flex-row items-center gap-3 lg:col-span-2"
-          >
-            <Input
-              value={searchString}
-              onChange={handleChange}
-              placeholder="Search for projects or blog posts..."
-              className="flex-1"
-            />
-            <Button type="submit">
-              <IconSearch size={20} /> Search
-            </Button>
-          </Form>
+        <div className="col-span-full">
+          {isLoading ? (
+            <div className={noResultsClass}>
+              <Loader />
+            </div>
+          ) : searchResults.length > 0 ? (
+            <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+              {searchResults.map((result, index) => (
+                <ProjectCard
+                  key={result.slug}
+                  index={index}
+                  slug={result.slug}
+                  imgsrc={getSanityImageUrl(result.image.asset._ref)}
+                  name={result.name || result.title}
+                  description={result.description}
+                  type={result.type}
+                />
+              ))}
+            </div>
+          ) : queryFromUrl ? (
+            <div className={noResultsClass}>
+              <p>No results found for "{queryFromUrl}"</p>
+            </div>
+          ) : (
+            <div className={noResultsClass}>
+              <p>Enter your query above to search for projects or blog posts.</p>
+            </div>
+          )}
         </div>
-
-        {showResults ? (
-          <div className="col-span-full">
-            {isLoading ? (
-              <div className={noResultsClass}>
-                <Loader />
-              </div>
-            ) : searchResults.length > 0 ? (
-              <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
-                {searchResults.map((result, index) => (
-                  <ProjectCard
-                    key={result.slug}
-                    index={index}
-                    slug={result.slug}
-                    imgsrc={null}
-                    name={result.name || result.title}
-                    description={result.description}
-                    type={result.type}
-                  />
-                ))}
-              </div>
-            ) : (
-              <div className={noResultsClass}>
-                <p>No results found for "{searchString}"</p>
-              </div>
-            )}
-          </div>
-        ) : (
-          <div className={noResultsClass}>
-            <p>Enter your query above to search for projects or blog posts.</p>
-          </div>
-        )}
       </div>
     </div>
   )

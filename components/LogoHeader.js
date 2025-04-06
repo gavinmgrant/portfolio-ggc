@@ -38,7 +38,7 @@ const LogoHeader = () => {
         <h2 className="m-0 line-clamp-1 flex h-6 shrink-0 items-center gap-1.5 p-0 text-[18px] !font-medium sm:h-[32px] sm:text-[22px]">
           <span className="z-10 bg-white dark:bg-neutral-900">GAVIN GRANT</span>
           <motion.span
-            className="hidden !font-thin md:block"
+            className="hidden !font-thin lg:block"
             initial={{ x: -160 }}
             animate={{ x: 0 }}
             exit={{ x: -150 }}

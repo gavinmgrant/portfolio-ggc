@@ -58,5 +58,6 @@ export const SEARCH_QUERY = `*[
   "title": select(_type == "blog.post" => metadata.title),
   "name": select(_type == "project" => name),
   "slug": select(_type == "blog.post" => metadata.slug.current, _type == "project" => slug),
-  "description": select(_type == "blog.post" => metadata.description, _type == "project" => description)
+  "description": select(_type == "blog.post" => metadata.description, _type == "project" => description),
+  "image": select(_type == "blog.post" => metadata.image, _type == "project" => projectImages[0])
   }[0...20]`

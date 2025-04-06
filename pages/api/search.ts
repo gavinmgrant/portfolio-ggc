@@ -3,27 +3,16 @@ import type { NextApiRequest, NextApiResponse } from 'next'
 import { SEARCH_QUERY } from '../../lib/queries'
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
+  if (req.method !== 'GET') {
+    return res.status(405).json({ error: 'Method not allowed' })
+  }
+
   try {
     const client = getClient()
+    const queryString = (req.query.query as string) || ''
 
-    // Get query from either query string or request body
-    let queryString = ''
-    if (req.method === 'GET') {
-      queryString = (req.query.query as string) || ''
-    } else if (req.method === 'POST') {
-      // Only try to parse body for POST requests
-      try {
-        const body =
-          typeof req.body === 'string' ? JSON.parse(req.body) : req.body || {}
-        queryString = body.query || ''
-      } catch (error) {
-        console.error('Error parsing request body:', error)
-        queryString = ''
-      }
-    }
-
-    // Only search if we have a query string
-    if (!queryString || queryString.trim() === '') {
+    // Return empty array if no query string provided
+    if (!queryString.trim()) {
       return res.status(200).json([])
     }
 
