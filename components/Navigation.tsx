@@ -113,17 +113,14 @@ const Navigation = () => {
                       }
                     }}
                   >
-                    <div className="flex w-full flex-row gap-2">
-                      <Input
-                        value={searchString}
-                        onChange={(e) => setSearchString(e.target.value)}
-                        placeholder="Search projects and blog..."
-                        className="flex-1"
-                      />
-                      <Button type="submit" isIconOnly>
-                        <IconSearch size={20} />
-                      </Button>
-                    </div>
+                    <Input
+                      startContent={<IconSearch className="mr-1" />}
+                      value={searchString}
+                      onChange={(e) => setSearchString(e.target.value)}
+                      placeholder="Search projects and blog..."
+                      size="lg"
+                      radius="sm"
+                    />
                   </Form>
                   <ThemeSwitch />
                 </div>

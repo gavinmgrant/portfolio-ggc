@@ -7,10 +7,13 @@ import ProjectCard from '../../components/ProjectCard'
 import Loader from '../../components/Loader'
 import ogImage from '../../public/images/gavin-grant-og.png'
 import { getSanityImageUrl } from '../../utils/getSanityImageUrl'
+import { IconAlertSquareRounded } from '@tabler/icons-react'
 
 export const SearchPage = () => {
   const router = useRouter()
-  const { query: { query: queryFromUrl } } = router
+  const {
+    query: { query: queryFromUrl },
+  } = router
 
   const [searchResults, setSearchResults] = useState([])
   const [isLoading, setIsLoading] = useState(false)
@@ -51,7 +54,7 @@ export const SearchPage = () => {
     'Search for projects and blog posts created by Gavin Grant Consulting.'
 
   const noResultsClass =
-    'col-span-full flex flex-col items-center justify-center text-center min-h-[calc(100vh-80px)]'
+    'col-span-full flex flex-col items-center justify-center text-center min-h-[calc(100vh-88px)] sm:min-h-[calc(100vh-128px)]'
 
   return (
     <div>
@@ -88,11 +91,16 @@ export const SearchPage = () => {
             </div>
           ) : queryFromUrl ? (
             <div className={noResultsClass}>
-              <p>No results found for "{queryFromUrl}"</p>
+              <div className="flex items-center justify-center gap-2">
+                <IconAlertSquareRounded className="size-7" />
+                <p>No results found for "{queryFromUrl}"</p>
+              </div>
             </div>
           ) : (
             <div className={noResultsClass}>
-              <p>Enter your query above to search for projects or blog posts.</p>
+              <p>
+                Enter your query above to search for projects or blog posts.
+              </p>
             </div>
           )}
         </div>
