@@ -117,7 +117,7 @@ const Navigation = () => {
                       <Input
                         value={searchString}
                         onChange={(e) => setSearchString(e.target.value)}
-                        placeholder="Search projects and blogs..."
+                        placeholder="Search projects and blog..."
                         className="flex-1"
                       />
                       <Button type="submit" isIconOnly>
@@ -170,7 +170,7 @@ const Navigation = () => {
                       <Input
                         value={searchString}
                         onChange={(e) => setSearchString(e.target.value)}
-                        placeholder="Search projects and blogs..."
+                        placeholder="Search projects and blog..."
                         className="flex-1"
                         size="sm"
                       />
