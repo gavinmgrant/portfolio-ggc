@@ -97,13 +97,9 @@ export default function ProjectPage({ project, technologies }) {
         </div>
       </section>
 
-      <div className="my-4 flex items-start justify-between gap-4 lg:mb-4 lg:mt-12 lg:items-center">
+      <div className="my-4 flex items-center justify-between gap-4 lg:mb-6 lg:mt-14">
         <div className="flex flex-col items-start justify-start gap-4 lg:flex-row lg:items-center lg:gap-5">
-          <a
-            href={proj.url}
-            target="_blank"
-            className="hover-color"
-          >
+          <a href={proj.url} target="_blank" className="hover-color">
             <h1 className="heading-size-lg font-semibold">{proj.name}</h1>
           </a>
           {proj.inactive && (
@@ -117,9 +113,9 @@ export default function ProjectPage({ project, technologies }) {
           href={proj.url}
           target="_blank"
           whileHover={{ scale: 1.1 }}
-          className="hover-color"
+          className="hover-color flex items-center gap-2"
         >
-          <IconExternalLink size="32px" />
+          <p className="text-sm hidden sm:block lg:text-base">View project</p> <IconExternalLink size="32px" />
         </motion.a>
       </div>
       <p className="mb-4 text-sm lg:text-base">{proj.description}</p>
