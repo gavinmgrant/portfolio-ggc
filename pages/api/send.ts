@@ -1,10 +1,22 @@
 import { ContactEmailTemplate } from '../../components/ContactEmailTemplate'
 import { Resend } from 'resend'
+import type { NextApiRequest, NextApiResponse } from 'next'
+
+interface ContactFormData {
+  honeypot?: string
+  firstName: string
+  lastName: string
+  email: string
+  message: string
+}
 
 const resend = new Resend(process.env.RESEND_API_KEY)
 const domain = 'gavingrant.com'
 
-export default async (req, res) => {
+export default async function handler(
+  req: NextApiRequest,
+  res: NextApiResponse
+) {
   if (req.body.honeypot) {
     return res.status(400).json({ message: 'Spam detected.' })
   }
@@ -13,10 +25,7 @@ export default async (req, res) => {
     return res.status(400).json({ message: 'Invalid referer.' })
   }
 
-  const firstName = req.body.firstName
-  const lastName = req.body.lastName
-  const email = req.body.email
-  const message = req.body.message
+  const { firstName, lastName, email, message } = req.body as ContactFormData
 
   const { data, error } = await resend.emails.send({
     from: 'Gavin Grant Consulting <gavin@gavingrant.com>',
