@@ -154,7 +154,7 @@ const Navigation = () => {
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
-                    transition={{ duration: 0.2 }}
+                    transition={{ duration: 0.3, ease: 'easeInOut' }}
                   >
                     <Form
                       onSubmit={(e) => {
@@ -169,15 +169,14 @@ const Navigation = () => {
                           setSearchString('')
                         }
                       }}
-                      className="absolute -top-1 right-12 z-50 flex w-64 flex-row items-center gap-2 rounded-lg bg-white p-2 shadow-lg dark:bg-neutral-800"
+                      className="absolute top-0 right-12 z-50 flex w-64 flex-row items-center gap-2 rounded-lg bg-white shadow-lg dark:bg-neutral-800"
                     >
                       <Input
                         ref={searchInputRef}
                         value={searchString}
                         onChange={(e) => setSearchString(e.target.value)}
                         placeholder="Search projects and blog..."
-                        className="flex-1"
-                        size="sm"
+                        size="md"
                       />
                     </Form>
                   </motion.div>
