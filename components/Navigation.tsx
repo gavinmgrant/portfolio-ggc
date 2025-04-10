@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import ThemeSwitch from './ThemeSwitch'
@@ -15,6 +15,13 @@ const Navigation = () => {
   const { isOpen, onOpen, onOpenChange } = useDisclosure()
   const [searchString, setSearchString] = useState('')
   const [showSearch, setShowSearch] = useState(false)
+  const searchInputRef = useRef<HTMLInputElement>(null)
+
+  useEffect(() => {
+    if (showSearch && searchInputRef.current) {
+      searchInputRef.current.focus()
+    }
+  }, [showSearch])
 
   const CustomCloseButton = (
     <div>
@@ -165,6 +172,7 @@ const Navigation = () => {
                       className="absolute -top-1 right-12 z-50 flex w-64 flex-row items-center gap-2 rounded-lg bg-white p-2 shadow-lg dark:bg-neutral-800"
                     >
                       <Input
+                        ref={searchInputRef}
                         value={searchString}
                         onChange={(e) => setSearchString(e.target.value)}
                         placeholder="Search projects and blog..."

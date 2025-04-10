@@ -47,12 +47,14 @@ export const SEARCH_QUERY = `*[
   )) || 
   (_type == "project" && (
     name match $query + "*" || 
-    description match $query + "*"
+    description match $query + "*" ||
+    bullets[] match $query + "*" ||
+    technologies[]->description match $query + "*"
   ))
   ]{
   _type,
   "type": select(
-    _type == "blog.post" => "blog",
+    _type == "blog.post" => "blog",    
     _type == "project" => "projects"
   ),
   "title": select(_type == "blog.post" => metadata.title),
