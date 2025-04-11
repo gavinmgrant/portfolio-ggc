@@ -54,7 +54,7 @@ export const SearchPage = () => {
     'Search for projects and blog posts created by Gavin Grant Consulting.'
 
   const noResultsClass =
-    'col-span-full flex flex-col items-center justify-center text-center min-h-[calc(100vh-88px)] sm:min-h-[calc(100vh-128px)]'
+    'col-span-full flex flex-col items-center justify-center text-center min-h-[calc(100vh-88px)] sm:min-h-[calc(100vh-128px)] lg:min-h-[calc(100vh-136px)]'
 
   return (
     <div>

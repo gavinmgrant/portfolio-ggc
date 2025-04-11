@@ -29,7 +29,7 @@ export default function Home() {
         <Divider />
         <Testimonials />
         <Divider />
-        <div className="flex w-full items-center justify-center pb-8 lg:min-h-[calc(100vh-160px)] lg:pb-28">
+        <div className="flex w-full items-center justify-center pb-8 lg:min-h-[calc(100vh-168px)] lg:pb-28">
           <ContactForm />
         </div>
       </div>

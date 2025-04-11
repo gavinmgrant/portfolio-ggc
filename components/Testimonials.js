@@ -51,7 +51,7 @@ const Testimonials = () => {
     setPage([page + newDirection, newDirection])
 
   return (
-    <div className="flex w-screen items-center justify-center lg:h-[calc(100vh-160px)]">
+    <div className="flex w-screen items-center justify-center lg:h-[calc(100vh-168px)]">
       <div className="flex h-[600px] w-full max-w-[1536px] flex-col items-center justify-center gap-4 px-4 py-8 xs:h-[560px] sm:h-[580px] sm:py-20 lg:gap-10">
         <div className="flex w-full max-w-[900px] items-center justify-between">
           <button
