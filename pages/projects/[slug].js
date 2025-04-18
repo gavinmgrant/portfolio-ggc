@@ -40,7 +40,7 @@ export default function ProjectPage({ project, technologies }) {
   const pageTitle = `${proj.isArray ? '' : proj.name} | Gavin Grant Consulting`
 
   return (
-    <div className="mx-auto px-4 pt-[72px] sm:px-6 sm:pt-[104px] 2xl:max-w-[1536px]">
+    <div className="mx-auto px-4 pt-[72px] sm:px-6 sm:pt-[104px] lg:pt-[112px] 2xl:max-w-[1536px]">
       <Head>
         <title>{pageTitle}</title>
         <meta name="description" content={proj.description} />
@@ -72,7 +72,7 @@ export default function ProjectPage({ project, technologies }) {
           projectName={proj.name}
         />
 
-        <div className="mt-10 flex shrink-0 flex-row flex-wrap lg:mt-0 lg:flex-col lg:items-end">
+        <div className="mt-10 flex shrink-0 flex-row flex-wrap lg:mt-1 lg:flex-col lg:items-end">
           {technologiesUsed.map((tech, i) => {
             return (
               <motion.div

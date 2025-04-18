@@ -16,7 +16,7 @@ export default function BlogPostPage({ post, params, draftMode }) {
   const postUrl = `${SITE_URL}/blog/${post.metadata.slug.current}`
 
   return (
-    <div className="mx-auto flex items-start justify-center px-4 pt-[72px] sm:px-6 sm:pt-[80px] 2xl:max-w-[1536px]">
+    <div className="mx-auto flex items-start justify-center px-4 pt-[72px] sm:px-6 sm:pt-[80px] lg:pt-[88px] 2xl:max-w-[1536px]">
       <Head>
         <title>{pageTitle}</title>
         <meta name="description" content={post.metadata.description} />
