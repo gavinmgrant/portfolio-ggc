@@ -59,7 +59,7 @@ const ProjectCard = ({
         }}
       >
         <Link href={`/${type}/${slug}`}>
-          <div className="light-border !h-full rounded-[20px] border-[0.5px] p-4 transition-all duration-300 ease-in-out hover:border hover:border-black dark:hover:border-white lg:p-5">
+          <div className="light-border !h-full rounded-[20px] border-[0.5px] p-4 transition-all duration-300 ease-in-out hover:border-black dark:hover:border-white lg:p-5">
             <div key={slug}>
               {imgsrc && (
                 <div className="light-border relative aspect-[548/300] max-h-[490px] max-w-[735px] overflow-hidden rounded-xl border-[0.5px] mb-4">
