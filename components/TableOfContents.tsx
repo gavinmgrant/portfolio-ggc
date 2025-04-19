@@ -25,7 +25,7 @@ function filterHeadings(
     if (!text) return headings
 
     const slug = convertToSlug(text)
-    headings.push({ href: `#${slug}`, text })
+    headings.push({ href: `${slug}`, text })
     return headings
   }, [])
 }
@@ -34,11 +34,18 @@ const TableOfContents = ({ richText }: { richText?: PortableTextBlock[] }) => {
   const headings = filterHeadings(richText as PortableTextBlock[])
   if (!headings.length) return null
 
+  const handleSmoothScroll = (href: string) => {
+    const targetElement = document.getElementById(href)
+    if (targetElement) {
+      targetElement.scrollIntoView({ behavior: 'smooth' })
+    }
+  }
+
   return (
     <div className="space-y-3 overflow-y-scroll">
       {headings.map(({ href, text }) => (
         <div key={href} className="hover-color text-sm">
-          <Link href={href}>{text}</Link>
+          <button onClick={() => handleSmoothScroll(href)}>{text}</button>
         </div>
       ))}
     </div>
