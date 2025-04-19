@@ -42,12 +42,13 @@ export const SITEMAP_BLOG_POSTS_QUERY = `*[_type == "blog.post"]{ "slug": metada
 // Search queries
 export const SEARCH_QUERY = `*[
   (_type == "blog.post" && (
-    metadata.title match $query + "*" || 
-    metadata.description match $query + "*"
+    lower(metadata.title) match lower($query) + "*" || 
+    lower(metadata.description) match lower($query) + "*" ||
+    authors[]->name match $query + "*"
   )) || 
   (_type == "project" && (
-    name match $query + "*" || 
-    description match $query + "*" ||
+    lower(name) match lower($query) + "*" || 
+    lower(description) match lower($query) + "*" ||
     bullets[] match $query + "*" ||
     technologies[]->description match $query + "*"
   ))
@@ -62,4 +63,4 @@ export const SEARCH_QUERY = `*[
   "slug": select(_type == "blog.post" => metadata.slug.current, _type == "project" => slug),
   "description": select(_type == "blog.post" => metadata.description, _type == "project" => description),
   "image": select(_type == "blog.post" => metadata.image, _type == "project" => projectImages[0])
-  }[0...20]`
+  } | order(_createdAt desc)[0...20]`
