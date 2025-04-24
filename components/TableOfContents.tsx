@@ -44,8 +44,13 @@ const TableOfContents = ({ richText }: { richText?: PortableTextBlock[] }) => {
   return (
     <div className="space-y-3 overflow-y-scroll">
       {headings.map(({ href, text }) => (
-        <div key={href} className="hover-color text-sm">
-          <button onClick={() => handleSmoothScroll(href)}>{text}</button>
+        <div key={href} className="hover-color text-sm ">
+          <button
+            className="text-left"
+            onClick={() => handleSmoothScroll(href)}
+          >
+            {text}
+          </button>
         </div>
       ))}
     </div>
