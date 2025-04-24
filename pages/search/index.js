@@ -54,7 +54,7 @@ export const SearchPage = () => {
     'Search for projects and blog posts created by Gavin Grant Consulting.'
 
   const noResultsClass =
-    'col-span-full flex flex-col items-center justify-center text-center min-h-[calc(100vh-88px)] sm:min-h-[calc(100vh-128px)] lg:min-h-[calc(100vh-136px)]'
+    'min-height-viewport col-span-full flex flex-col items-center justify-center text-center'
 
   return (
     <div>
@@ -69,7 +69,7 @@ export const SearchPage = () => {
         <meta property="og:description" content={description} />
         <meta property="og:image" content={ogImage.src} />
       </Head>
-      <div className="mx-auto grid grid-cols-1 gap-4 px-4 pb-4 pt-[72px] sm:gap-6 sm:px-6 sm:pb-6 sm:pt-[104px] 2xl:max-w-[1536px]">
+      <div className="page-padding grid grid-cols-1 gap-4 sm:gap-6 2xl:max-w-[1536px]">
         <div className="col-span-full">
           {isLoading ? (
             <div className={noResultsClass}>

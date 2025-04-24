@@ -49,6 +49,7 @@
   .light-border {
     @apply border-neutral-300 dark:border-neutral-600;
   }
+
   .card {
     @apply rounded-lg border border-neutral-300 p-3 dark:border-neutral-700 lg:p-5;
   }
@@ -59,6 +60,14 @@
 
   .side-borders {
     @apply border-neutral-300 dark:border-neutral-600 2xl:border-x-[0.5px];
+  }
+
+  .page-padding {
+    @apply mx-auto px-4 pb-4 pt-[72px] sm:px-6 sm:pb-6 sm:pt-[104px] lg:pt-[112px];
+  }
+
+  .min-height-viewport {
+    @apply min-h-[calc(100vh-88px)] sm:min-h-[calc(100vh-128px)] lg:min-h-[calc(100vh-136px)];
   }
 }
 
@@ -78,9 +87,9 @@ html.dark {
 
 #logo path {
   stroke: white;
-  strokeWidth: 3;
-  strokeLinejoin: round;
-  strokeLinecap: round;
+  strokewidth: 3;
+  strokelinejoin: round;
+  strokelinecap: round;
 }
 
 #logo path:nth-child(1) {
