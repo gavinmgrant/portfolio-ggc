@@ -178,6 +178,10 @@ html.dark {
   background-position: 0 100%;
 }
 
+.page-content {
+  animation: fade-in 0.4s ease-out;
+}
+
 @keyframes line-anim {
   to {
     stroke-dashoffset: 0;
@@ -193,5 +197,16 @@ html.dark {
 @keyframes logo-anim {
   to {
     opacity: 0;
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }

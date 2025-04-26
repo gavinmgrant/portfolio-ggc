@@ -4,16 +4,18 @@ import { motion, AnimatePresence } from 'framer-motion'
 
 const PageTransition = ({ children }) => {
   const router = useRouter()
-  const [isReady, setIsReady] = useState(false)
+  const [isClient, setIsClient] = useState(false)
 
   useEffect(() => {
-    // Ensure the page is ready before starting the animation
-    const handleReady = () => setIsReady(true)
-    handleReady()
+    setIsClient(true)
   }, [])
 
-  if (!isReady) return null // Prevent rendering until ready
+  // Apply page-level animation only on first load
+  if (!isClient) {
+    return <div className="page-content">{children}</div>
+  }
 
+  // Use Framer Motion for subsequent navigation
   return (
     <AnimatePresence mode="wait">
       <motion.div
