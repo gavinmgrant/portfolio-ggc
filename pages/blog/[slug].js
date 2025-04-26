@@ -14,7 +14,6 @@ export default function BlogPostPage({ post, params, draftMode }) {
   const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL
   const pageTitle = `${post.metadata.title} | Gavin Grant Consulting`
   const postUrl = `${SITE_URL}/blog/${post.metadata.slug.current}`
-  const ogImageUrl = getSanityImageUrl(post.metadata.image.asset._ref)
 
   return (
     <div className="mx-auto flex items-start justify-center px-4 pt-[72px] sm:px-6 sm:pt-[80px] lg:pt-[88px] 2xl:max-w-[1536px]">
@@ -32,13 +31,19 @@ export default function BlogPostPage({ post, params, draftMode }) {
         <meta property="og:site_name" content="Gavin Grant Consulting" />
         <meta property="og:title" content={post.metadata.title} />
         <meta property="og:description" content={post.metadata.description} />
-        <meta property="og:image" content={ogImageUrl} />
+        <meta
+          property="og:image"
+          content={getSanityImageUrl(post.metadata.image.asset._ref)}
+        />
         <meta property="og:url" content={postUrl} />
         <meta property="og:type" content="article" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={post.metadata.title} />
         <meta name="twitter:description" content={post.metadata.description} />
-        <meta name="twitter:image" content={ogImageUrl} />
+        <meta
+          name="twitter:image"
+          content={getSanityImageUrl(post.metadata.image.asset._ref)}
+        />
       </Head>
       {draftMode ? (
         <BlogPostPreview post={post} params={params} />

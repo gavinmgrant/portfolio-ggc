@@ -1,4 +1,4 @@
-import { NextSeo } from 'next-seo'
+import Head from 'next/head'
 import About from '../components/About'
 import Testimonials from '../components/Testimonials'
 import Divider from '../components/Divider'
@@ -11,24 +11,19 @@ export default function Home() {
     'Gavin Grant Consulting specializes in building fast, scalable websites and web applications that stand out.'
 
   return (
-    <>
-      <NextSeo
-        title="Gavin Grant Consulting"
-        description={description}
-        canonical={SITE_URL}
-        openGraph={{
-          url: SITE_URL,
-          title: 'Gavin Grant Consulting',
-          description: description,
-          images: [
-            {
-              url: ogImage.src,
-              alt: 'Gavin Grant Consulting',
-            },
-          ],
-          site_name: 'Gavin Grant Consulting',
-        }}
-      />
+    <div>
+      <Head>
+        <title>Gavin Grant Consulting</title>
+        <meta name="description" content={description} />
+        <meta charSet="utf-8" />
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+        <meta name="author" content="Gavin Grant" />
+        <meta property="og:site_name" content="Gavin Grant Consulting" />
+        <meta property="og:title" content="Gavin Grant Consulting" />
+        <meta property="og:description" content={description} />
+        <meta property="og:image" content={ogImage.src} />
+        <link rel="canonical" href={SITE_URL} />
+      </Head>
       <div className="mx-auto flex max-w-[1536px] flex-col items-center justify-center px-4 antialiased sm:px-6">
         <About />
         <Divider />
@@ -38,6 +33,6 @@ export default function Home() {
           <ContactForm />
         </div>
       </div>
-    </>
+    </div>
   )
 }
