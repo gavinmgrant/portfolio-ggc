@@ -14,6 +14,7 @@ export default function BlogPostPage({ post, params, draftMode }) {
   const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL
   const pageTitle = `${post.metadata.title} | Gavin Grant Consulting`
   const postUrl = `${SITE_URL}/blog/${post.metadata.slug.current}`
+  const postPublishDate = new Date(post.publishDate).toISOString()
 
   return (
     <div className="mx-auto flex items-start justify-center px-4 pt-[72px] sm:px-6 sm:pt-[80px] lg:pt-[88px] 2xl:max-w-[1536px]">
@@ -26,7 +27,7 @@ export default function BlogPostPage({ post, params, draftMode }) {
         <meta
           name="publish_date"
           property="og:publish_date"
-          content={post.publishDate}
+          content={postPublishDate}
         />
         <meta property="og:site_name" content="Gavin Grant Consulting" />
         <meta property="og:title" content={post.metadata.title} />
