@@ -24,6 +24,7 @@ export default function BlogPostPage({ post, params, draftMode }) {
         <meta charSet="utf-8" />
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
         <meta name="author" content={post.authors[0].name} />
+        <meta property="article:published_time" content={postPublishDate} />
         <meta
           name="publish_date"
           property="og:publish_date"
