@@ -177,9 +177,8 @@ export const getStaticPaths = async () => {
     params: { slug: project.slug },
   }))
 
-  // We'll pre-render only these paths at build time.
-  // { fallback: false } means other routes should 404.
-  return { paths, fallback: false }
+  // New pages wait (block) server-side until ready, then render full page.
+  return { paths, fallback: 'blocking' }
 }
 
 // This function gets called at build time on server-side.
