@@ -6,6 +6,7 @@ import { getClient } from '../../lib/sanity'
 import { BLOG_POSTS_QUERY } from '../../lib/queries'
 import ogImage from '../../public/images/gavin-grant-og.png'
 import { getSanityImageUrl } from '../../utils/getSanityImageUrl'
+import { revalidatePath } from 'next/cache'
 
 export default function Blog({ blogPosts }) {
   if (!blogPosts.length)
@@ -61,5 +62,6 @@ export async function getStaticProps() {
     props: {
       blogPosts,
     },
+    revalidate: 300, // Revalidate every 5 minutes
   }
 }

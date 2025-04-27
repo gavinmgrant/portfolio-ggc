@@ -115,7 +115,8 @@ export default function ProjectPage({ project, technologies }) {
           whileHover={{ scale: 1.1 }}
           className="hover-color flex items-center gap-2"
         >
-          <p className="text-sm hidden sm:block lg:text-base">View project</p> <IconExternalLink size="32px" />
+          <p className="hidden text-sm sm:block lg:text-base">View project</p>{' '}
+          <IconExternalLink size="32px" />
         </motion.a>
       </div>
       <p className="mb-4 text-sm lg:text-base">{proj.description}</p>
@@ -187,6 +188,12 @@ export const getStaticProps = async ({ params, draftMode = false }) => {
   const project = await client.fetch(PROJECT_QUERY, { slug: params.slug })
   const technologies = await client.fetch(TECHNOLOGIES_QUERY)
   return {
-    props: { project, technologies, draftMode, token: draftMode ? token : '' },
+    props: {
+      project,
+      technologies,
+      draftMode,
+      token: draftMode ? token : '',
+    },
+    revalidate: 300, // Revalidate every 5 minutes
   }
 }

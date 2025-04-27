@@ -72,5 +72,13 @@ export const getStaticPaths = async () => {
 export const getStaticProps = async ({ params = {}, draftMode = false }) => {
   const client = getClient(draftMode ? token : undefined)
   const post = await client.fetch(BLOG_POST_QUERY, { slug: params.slug })
-  return { props: { post, params, draftMode, token: draftMode ? token : '' } }
+  return {
+    props: {
+      post,
+      params,
+      draftMode,
+      token: draftMode ? token : '',
+    },
+    revalidate: 300, // Revalidate every 5 minutes
+  }
 }
