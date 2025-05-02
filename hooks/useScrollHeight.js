@@ -5,7 +5,9 @@ export const useScrollHeight = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrollHeight(window.scrollY)
+      setTimeout(() => {
+        setScrollHeight(window.scrollY)
+      }, 1500)
     }
 
     window.addEventListener('scroll', handleScroll)

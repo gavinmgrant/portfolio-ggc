@@ -1,4 +1,3 @@
-import Link from 'next/link'
 import type { PortableTextBlock } from 'next-sanity'
 import { convertToSlug } from '@/utils/handleSlugs'
 
@@ -44,7 +43,7 @@ const TableOfContents = ({ richText }: { richText?: PortableTextBlock[] }) => {
   return (
     <div className="space-y-3 overflow-y-scroll">
       {headings.map(({ href, text }) => (
-        <div key={href} className="hover-color text-sm ">
+        <div key={href} className="hover-color text-sm">
           <button
             className="text-left"
             onClick={() => handleSmoothScroll(href)}
