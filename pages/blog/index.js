@@ -1,23 +1,49 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Head from 'next/head'
 import Loader from '../../components/Loader'
 import ProjectCard from '../../components/ProjectCard'
 import { getClient } from '../../lib/sanity'
-import { BLOG_POSTS_QUERY } from '../../lib/queries'
+import { BLOG_POSTS_QUERY, BLOG_POST_COUNT_QUERY } from '../../lib/queries'
 import ogImage from '../../public/images/gavin-grant-og.png'
 import { getSanityImageUrl } from '../../utils/getSanityImageUrl'
-import { revalidatePath } from 'next/cache'
+import { Button } from '@heroui/react'
 
-export default function Blog({ blogPosts }) {
+export default function Blog({ initialBlogPosts, totalPostCount }) {
+  const [blogPosts, setBlogPosts] = useState(initialBlogPosts)
+  const [isLoading, setIsLoading] = useState(false)
+  const [currentPage, setCurrentPage] = useState(1)
+  const postsPerPage = 9
+  const hasMorePosts = blogPosts.length < totalPostCount
+
+  const loadMorePosts = async () => {
+    if (isLoading) return
+
+    setIsLoading(true)
+    const start = currentPage * postsPerPage
+    const end = start + postsPerPage - 1
+
+    try {
+      const response = await fetch(`/api/blog-posts?start=${start}&end=${end}`)
+      const newPosts = await response.json()
+
+      setBlogPosts([...blogPosts, ...newPosts])
+      setCurrentPage(currentPage + 1)
+    } catch (error) {
+      console.error('Error loading more posts:', error)
+    } finally {
+      setIsLoading(false)
+    }
+  }
+
+  const description =
+    'Blog posts written by front-end engineer Gavin Grant, sharing insights and experiences in web development, Next.js, and modern technologies.'
+
   if (!blogPosts.length)
     return (
       <div className="flex h-screen items-center justify-center">
         <Loader />
       </div>
     )
-
-  const description =
-    'Blog posts written by front-end engineer Gavin Grant, sharing insights and experiences in web development, Next.js, and modern technologies.'
 
   return (
     <div>
@@ -50,17 +76,39 @@ export default function Blog({ blogPosts }) {
           )
         })}
       </div>
+
+      {hasMorePosts && (
+        <div className="mb-10 mt-4 flex items-center justify-center">
+          <Button
+            color="primary"
+            radius="sm"
+            size="lg"
+            onPress={loadMorePosts}
+            disabled={isLoading}
+            isLoading={isLoading}
+          >
+            {isLoading ? 'Loading...' : 'Load More Posts'}
+          </Button>
+        </div>
+      )}
     </div>
   )
 }
 
 export async function getStaticProps() {
   const client = getClient()
-  const blogPosts = await client.fetch(BLOG_POSTS_QUERY)
+  const postsPerPage = 9
+
+  const initialBlogPosts = await client.fetch(BLOG_POSTS_QUERY, {
+    start: 0,
+    end: postsPerPage - 1,
+  })
+  const totalPostCount = await client.fetch(BLOG_POST_COUNT_QUERY)
 
   return {
     props: {
-      blogPosts,
+      initialBlogPosts,
+      totalPostCount,
     },
     revalidate: 300, // Revalidate every 5 minutes
   }

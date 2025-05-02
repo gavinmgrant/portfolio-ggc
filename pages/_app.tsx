@@ -3,7 +3,6 @@ import Script from 'next/script'
 import { useRouter } from 'next/router'
 import Navigation from '../components/Navigation'
 import Footer from '../components/Footer'
-import PageTransition from '../components/PageTransition'
 import type { AppProps } from 'next/app'
 import { ThemeProvider } from 'next-themes'
 import { HeroUIProvider } from '@heroui/react'
@@ -59,18 +58,16 @@ function MyApp({ Component, pageProps }: AppProps<SharedPageProps>) {
           />
           <Navigation />
           <div className="side-borders mx-auto min-h-screen 2xl:max-w-[1536px]">
-            <PageTransition>
-              {draftMode ? (
-                <PreviewProvider token={token}>
-                  <Component {...pageProps} />
-                  <Suspense>
-                    <VisualEditing />
-                  </Suspense>
-                </PreviewProvider>
-              ) : (
+            {draftMode ? (
+              <PreviewProvider token={token}>
                 <Component {...pageProps} />
-              )}
-            </PageTransition>
+                <Suspense>
+                  <VisualEditing />
+                </Suspense>
+              </PreviewProvider>
+            ) : (
+              <Component {...pageProps} />
+            )}
           </div>
           <Footer />
         </ThemeProvider>

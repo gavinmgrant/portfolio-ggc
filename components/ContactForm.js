@@ -1,5 +1,3 @@
-'use client'
-
 import { useState } from 'react'
 import { Input, Textarea, Button, Form } from '@heroui/react'
 import { motion } from 'motion/react'

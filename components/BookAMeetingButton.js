@@ -1,5 +1,3 @@
-'use client'
-
 import { useEffect } from 'react'
 import { getCalApi } from '@calcom/embed-react'
 import { IconCalendarEvent } from '@tabler/icons-react'
