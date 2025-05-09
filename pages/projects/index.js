@@ -76,7 +76,7 @@ export default function Projects({ initialProjects, projectsCount }) {
       </div>
 
       {hasMoreProjects && (
-        <div className="mb-10 mt-4 flex items-center justify-center">
+        <div className="pb-10 pt-4 flex items-center justify-center">
           <Button
             color="primary"
             radius="sm"
