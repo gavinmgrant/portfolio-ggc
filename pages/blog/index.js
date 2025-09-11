@@ -12,7 +12,7 @@ export default function Blog({ initialBlogPosts, totalPostCount }) {
   const [blogPosts, setBlogPosts] = useState(initialBlogPosts)
   const [isLoading, setIsLoading] = useState(false)
   const [currentPage, setCurrentPage] = useState(1)
-  const postsPerPage = 9
+  const postsPerPage = 12
   const hasMorePosts = blogPosts.length < totalPostCount
 
   const loadMorePosts = async () => {
@@ -97,7 +97,7 @@ export default function Blog({ initialBlogPosts, totalPostCount }) {
 
 export async function getStaticProps() {
   const client = getClient()
-  const postsPerPage = 9
+  const postsPerPage = 12
 
   const initialBlogPosts = await client.fetch(BLOG_POSTS_QUERY, {
     start: 0,

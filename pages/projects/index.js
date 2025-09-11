@@ -12,7 +12,7 @@ export default function Projects({ initialProjects, projectsCount }) {
   const [projects, setProjects] = useState(initialProjects)
   const [isLoading, setIsLoading] = useState(false)
   const [currentPage, setCurrentPage] = useState(1)
-  const projectsPerPage = 9
+  const projectsPerPage = 12
   const hasMoreProjects = projects.length < projectsCount
 
   const loadMoreProjects = async () => {
@@ -95,7 +95,7 @@ export default function Projects({ initialProjects, projectsCount }) {
 
 export async function getStaticProps() {
   const client = getClient()
-  const projectsPerPage = 9
+  const projectsPerPage = 12
 
   const initialProjects = await client.fetch(PROJECTS_QUERY, {
     start: 0,
