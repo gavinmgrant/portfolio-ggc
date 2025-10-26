@@ -70,6 +70,7 @@ const ProjectCard = ({
                     className="cursor-pointer overflow-hidden rounded-xl"
                     alt={name}
                     src={imgsrc}
+                    objectFit='cover'
                     fill
                     sizes="(max-width: 735px) 100vw, 735px"
                     onLoad={() => setIsLoaded(true)}
