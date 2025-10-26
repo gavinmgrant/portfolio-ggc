@@ -62,7 +62,7 @@ const ProjectCard = ({
           <div className="light-border !h-full rounded-[20px] border-[0.5px] p-4 transition-all duration-300 ease-in-out hover:border-black dark:hover:border-white lg:p-5">
             <div key={slug}>
               {imgsrc && (
-                <div className="light-border relative aspect-[548/300] max-h-[490px] max-w-[735px] overflow-hidden rounded-xl border-[0.5px] mb-4">
+                <div className="light-border relative mb-4 aspect-[548/300] max-h-[490px] max-w-[735px] overflow-hidden rounded-xl border-[0.5px]">
                   {!isLoaded && (
                     <div className="absolute left-0 top-0 z-10 h-[490px] w-[735px] animate-pulse overflow-hidden rounded-xl bg-slate-300"></div>
                   )}
@@ -70,17 +70,15 @@ const ProjectCard = ({
                     className="cursor-pointer overflow-hidden rounded-xl"
                     alt={name}
                     src={imgsrc}
-                    width={735}
-                    height={490}
+                    fill
+                    sizes="(max-width: 735px) 100vw, 735px"
                     onLoad={() => setIsLoaded(true)}
                     priority={index === 0 || index === 1 || index === 2}
                   />
                 </div>
               )}
               <div className="cursor-pointer">
-                <h2 className="text-xl font-semibold sm:text-2xl">
-                  {name}
-                </h2>
+                <h2 className="text-xl font-semibold sm:text-2xl">{name}</h2>
                 {publishDate && (
                   <div className="my-2 flex items-center justify-between text-sm opacity-70 sm:my-3">
                     <p className="py-0">{getDisplayDate(publishDate)}</p>
