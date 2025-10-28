@@ -17,8 +17,16 @@ export default async function handler(
     // Filter posts with the featured flag set to true
     const featuredPosts = posts.filter((post: any) => post.featured)
 
-    // Return the first featured post or null
-    const featuredPost = featuredPosts.length > 0 ? featuredPosts[0] : null
+    // If no featured posts found, return a 404 error
+    if (featuredPosts.length === 0) {
+      return res.status(404).json({ error: 'No featured blog post found' })
+    }
+
+    // Pick a random featured post if multiple are available or else return the only one
+    const featuredPost =
+      featuredPosts.length === 1
+        ? featuredPosts[0]
+        : featuredPosts[Math.floor(Math.random() * featuredPosts.length)]
 
     res.status(200).json(featuredPost)
   } catch (error) {
