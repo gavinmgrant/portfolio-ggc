@@ -84,17 +84,17 @@ const About = () => {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="flex max-w-[965px] flex-col-reverse items-center justify-center gap-4 text-center sm:gap-6 md:gap-8 lg:flex-row lg:gap-20 lg:text-left"
+          className="flex max-w-[900px] flex-col-reverse items-center justify-center gap-4 text-center sm:gap-6 md:gap-8 lg:flex-row lg:gap-20 lg:text-left"
         >
           <div>
-            <h1 className="heading-size-lg font-semibold leading-snug text-neutral-900 dark:text-white">
-              Building web architecture that performs.
+            <h1 className="heading-size-lg font-semibold !leading-none text-neutral-900 dark:text-white">
+              Architecture Meets Code
             </h1>
             <div className="mt-2 text-neutral-800 dark:text-white lg:mt-4">
-              <p className="ftext-sm lg:text-base">
-                I build fast, scalable web experiences with React, Next.js, Vue,
-                and TypeScript - engineered for performance and tailored to your
-                goals.
+              <p className="text-sm lg:text-base">
+                With roots in architectural design, I bring a designer’s mindset
+                to software — crafting fast, scalable, and beautifully
+                engineered digital experiences.
               </p>
             </div>
             <div className="mt-4 flex w-full flex-col items-center justify-center gap-5 sm:h-12 sm:flex-row lg:mt-6 lg:justify-start">

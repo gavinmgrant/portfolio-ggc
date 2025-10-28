@@ -53,9 +53,9 @@ export default function FeaturedBlogPost() {
 
   return (
     <>
-      <div className="flex flex-col items-center justify-center gap-8 py-8 sm:py-28">
+      <div className="flex flex-col items-center justify-center gap-6 py-8 sm:py-28">
         <h2 className="heading-size-lg font-semibold">Featured Blog Post</h2>
-        <div className="max-w-3xl">
+        <div className="max-w-[900px] w-full">
           <ProjectCard
             index={0}
             key={featuredPost.metadata.slug.current}

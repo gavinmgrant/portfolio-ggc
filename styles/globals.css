@@ -33,15 +33,15 @@
   }
 
   .heading-size {
-    @apply text-2xl !leading-tight sm:text-3xl md:text-4xl;
+    @apply text-2xl !leading-[1.2] sm:text-3xl md:text-4xl;
   }
 
   .heading-size-lg {
-    @apply text-3xl !leading-tight sm:text-4xl md:text-5xl;
+    @apply text-3xl !leading-[1.2] sm:text-4xl md:text-5xl;
   }
 
   .heading-size-xl {
-    @apply text-4xl !leading-tight sm:text-5xl md:text-6xl;
+    @apply text-4xl !leading-[1.2] sm:text-5xl md:text-6xl;
   }
 }
 
