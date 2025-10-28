@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import About from '../components/About'
+import FeaturedBlogPost from '../components/FeaturedBlogPost'
 import Testimonials from '../components/Testimonials'
 import Divider from '../components/Divider'
 import ContactForm from '../components/ContactForm'
@@ -27,6 +28,7 @@ export default function Home() {
       <div className="mx-auto flex max-w-[1536px] flex-col items-center justify-center px-4 antialiased sm:px-6">
         <About />
         <Divider />
+        <FeaturedBlogPost />
         <Testimonials />
         <Divider />
         <div className="flex w-full items-center justify-center pb-8 lg:min-h-[calc(100vh-168px)] lg:pb-28">

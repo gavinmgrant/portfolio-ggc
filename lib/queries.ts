@@ -27,6 +27,17 @@ export const BLOG_POST_QUERY = `*[_type == "blog.post" && metadata.slug.current 
   "estimatedReadingTime": round(length(pt::text(body)) / 5 / 180 )
 }`
 export const BLOG_POST_COUNT_QUERY = `count(*[_type == "blog.post"])`
+export const FEATURED_BLOG_POSTS_QUERY = `*[_type == "blog.post"]{
+  featured,
+  metadata{
+    title,
+    description,
+    slug,
+    image
+  },
+  publishDate,
+  "estimatedReadingTime": round(length(pt::text(body)) / 5 / 180 )
+} | order(publishDate desc)`
 
 // Project queries
 export const PROJECTS_QUERY = `*[_type == "project"] | order(order asc)[$start..$end]`

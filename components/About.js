@@ -32,9 +32,9 @@ const About = () => {
         <path
           d="M194.205 121L21 21V221L194.205 321V221L96.7772 164.75"
           stroke="currentColor"
-          stroke-width="42"
-          stroke-linecap="round"
-          stroke-linejoin="round"
+          strokeWidth="42"
+          strokeLinecap="round"
+          strokeLinejoin="round"
         />
       </svg>
     </motion.div>
@@ -49,9 +49,9 @@ const About = () => {
         <path
           d="M194.205 21.0035L21 121.004V321.004L194.205 221.004"
           stroke="currentColor"
-          stroke-width="42"
-          stroke-linecap="round"
-          stroke-linejoin="round"
+          strokeWidth="42"
+          strokeLinecap="round"
+          strokeLinejoin="round"
         />
       </svg>
     </motion.div>
@@ -66,9 +66,9 @@ const About = () => {
         <path
           d="M367.41 121L194.205 21L21 121L194.205 221L280.808 171L183.38 114.75"
           stroke="currentColor"
-          stroke-width="42"
-          stroke-linecap="round"
-          stroke-linejoin="round"
+          strokeWidth="42"
+          strokeLinecap="round"
+          strokeLinejoin="round"
         />
       </svg>
     </motion.div>
