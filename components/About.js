@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 import { motion } from 'motion/react'
 import { IconBrandLinkedin, IconBrandGithub } from '@tabler/icons-react'
@@ -8,15 +8,19 @@ import { delay } from 'motion'
 
 const About = () => {
   const router = useRouter()
-  const [isHovered, setIsHovered] = useState(false)
+  const [isHovered, setIsHovered] = useState(true)
 
   const logoSpring = {
     type: 'spring',
     stiffness: 300,
     damping: 50,
     ease: 'easeInOut',
-    duration: 1,
+    duration: 500,
   }
+
+  useEffect(() => {
+    setTimeout(() => setIsHovered(false), 3000)
+  }, [])
 
   const LogoLeft = () => (
     <motion.div
@@ -71,11 +75,7 @@ const About = () => {
   )
 
   const handleHover = (hovered) => {
-    if (hovered) {
-      setIsHovered(hovered)
-    } else {
-      setTimeout(() => setIsHovered(hovered), 300)
-    }
+    setIsHovered(hovered)
   }
 
   return (
@@ -87,7 +87,7 @@ const About = () => {
           className="flex max-w-[965px] flex-col-reverse items-center justify-center gap-4 text-center sm:gap-6 md:gap-8 lg:flex-row lg:gap-20 lg:text-left"
         >
           <div>
-            <h1 className="heading-size-lg font-semibold text-neutral-900 dark:text-white leading-snug">
+            <h1 className="heading-size-lg font-semibold leading-snug text-neutral-900 dark:text-white">
               Building web architecture that performs.
             </h1>
             <div className="mt-2 text-neutral-800 dark:text-white lg:mt-4">
