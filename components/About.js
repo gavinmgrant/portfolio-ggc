@@ -1,9 +1,10 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useRef } from 'react'
 import { useRouter } from 'next/router'
-import { motion } from 'motion/react'
+import { motion, useScroll, useTransform } from 'motion/react'
 import { IconBrandLinkedin, IconBrandGithub } from '@tabler/icons-react'
 import { Button } from '@heroui/react'
 import { urls } from '../configs/urls.config'
+import useMediaQuery from '../hooks/useMediaQuery'
 
 const TITLE = 'Crafting performant, modern web apps.'
 const DESCRIPTION =
@@ -12,6 +13,29 @@ const DESCRIPTION =
 const About = () => {
   const router = useRouter()
   const [isHovered, setIsHovered] = useState(true)
+
+  const isDesktop = useMediaQuery('(min-width: 1024px)')
+  const logoRef = useRef(null)
+  const { scrollYProgress } = useScroll({
+    target: logoRef,
+    offset: ['start end', 'end start'],
+  })
+
+  const logoScale = useTransform(
+    scrollYProgress,
+    [0.5, 1],
+    isDesktop ? [1.2, 1.6] : [1, 1]
+  )
+  const logoX = useTransform(
+    scrollYProgress,
+    [0.5, 1],
+    isDesktop ? [0, 500] : [0, 0]
+  )
+  const logoOpacity = useTransform(
+    scrollYProgress,
+    [0.5, 0.8],
+    isDesktop ? [1, 0] : [1, 1]
+  )
 
   const logoSpring = {
     type: 'spring',
@@ -226,13 +250,21 @@ const About = () => {
             onMouseEnter={() => handleHover(true)}
             onMouseLeave={() => handleHover(false)}
           >
-            <div className="relative mt-16 flex flex-col items-center justify-center lg:mt-0">
+            <motion.div
+              ref={logoRef}
+              className="relative mt-16 flex flex-col items-center justify-center lg:mt-0"
+              style={{
+                x: logoX,
+                opacity: logoOpacity,
+                scale: logoScale,
+              }}
+            >
               <LogoTop className="" />
-              <div className="itemce-center flex">
+              <div className="flex items-center">
                 <LogoLeft />
                 <LogoRight />
               </div>
-            </div>
+            </motion.div>
           </div>
         </motion.div>
       </div>

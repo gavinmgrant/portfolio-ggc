@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { getSanityImageUrl } from '../utils/getSanityImageUrl'
 import ProjectCard from './ProjectCard'
 import Divider from './Divider'
+import AnimatedSection from './AnimatedSection'
 
 interface BlogPost {
   featured: boolean
@@ -53,9 +54,9 @@ export default function FeaturedBlogPost() {
 
   return (
     <>
-      <div className="flex flex-col items-center justify-center gap-6 py-8 sm:py-28">
+      <AnimatedSection className="flex flex-col items-center justify-center gap-6 py-8 sm:py-28">
         <h2 className="heading-size-lg font-semibold">Featured Blog Post</h2>
-        <div className="max-w-[900px] w-full">
+        <div className="w-full max-w-[900px]">
           <ProjectCard
             index={0}
             key={featuredPost.metadata.slug.current}
@@ -68,7 +69,7 @@ export default function FeaturedBlogPost() {
             readingTime={featuredPost.estimatedReadingTime}
           />
         </div>
-      </div>
+      </AnimatedSection>
       <Divider />
     </>
   )

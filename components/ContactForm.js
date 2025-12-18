@@ -3,6 +3,7 @@ import { Input, Textarea, Button, Form } from '@heroui/react'
 import { motion } from 'motion/react'
 import { useTagManager } from '@/hooks/useTagManager'
 import BookAMeetingButton from './BookAMeetingButton'
+import AnimatedSection from './AnimatedSection'
 
 export default function ContactForm() {
   const [formData, setFormData] = useState({
@@ -77,7 +78,7 @@ export default function ContactForm() {
   }
 
   return (
-    <div className="light-border w-full max-w-[900px] rounded-xl border-[0.5px] px-4 pb-4 pt-4 sm:px-6 sm:py-6 lg:mt-20">
+    <AnimatedSection className="light-border w-full max-w-[900px] rounded-xl border-[0.5px] px-4 pb-4 pt-4 sm:px-6 sm:py-6 lg:mt-20">
       <div className="mb-3 flex flex-col items-center justify-center gap-3 sm:flex-row sm:justify-between lg:mb-4">
         <h2 className="heading-size-lg">Contact me</h2>
         <BookAMeetingButton />
@@ -181,6 +182,6 @@ export default function ContactForm() {
           </motion.div>
         )}
       </Form>
-    </div>
+    </AnimatedSection>
   )
 }

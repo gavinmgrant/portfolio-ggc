@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { motion, AnimatePresence } from 'motion/react'
 import { wrap } from 'popmotion'
 import { IconChevronLeft, IconChevronRight } from '@tabler/icons-react'
+import AnimatedSection from './AnimatedSection'
 
 const testimonials = [
   {
@@ -52,18 +53,18 @@ const Testimonials = () => {
 
   return (
     <div className="flex w-screen items-center justify-center lg:h-[calc(100vh-168px)]">
-      <div className="flex h-[600px] w-full max-w-[1536px] flex-col items-center justify-center gap-4 px-4 py-8 xs:h-[560px] sm:h-[580px] sm:py-20 lg:gap-10">
+      <AnimatedSection className="flex h-[600px] w-full max-w-[1536px] flex-col items-center justify-center gap-4 px-4 py-8 xs:h-[560px] sm:h-[580px] sm:py-20 lg:gap-10">
         <div className="flex w-full max-w-[900px] items-center justify-between">
           <button
             onClick={() => paginate(-1)}
-            className="z-10 flex shrink-0 items-center justify-center hover:scale-110 hover:bg-opacity-70 active:scale-90 transition-all ease-in-out"
+            className="z-10 flex shrink-0 items-center justify-center transition-all ease-in-out hover:scale-110 hover:bg-opacity-70 active:scale-90"
           >
             <IconChevronLeft className="h-10 w-10 lg:h-12 lg:w-12" />
           </button>
           <h2 className="heading-size-lg font-semibold">Testimonials</h2>
           <button
             onClick={() => paginate(1)}
-            className="z-10 flex shrink-0 items-center justify-center hover:scale-110 hover:bg-opacity-70 active:scale-90 transition-all ease-in-out"
+            className="z-10 flex shrink-0 items-center justify-center transition-all ease-in-out hover:scale-110 hover:bg-opacity-70 active:scale-90"
           >
             <IconChevronRight className="h-10 w-10 lg:h-12 lg:w-12" />
           </button>
@@ -104,7 +105,7 @@ const Testimonials = () => {
             </AnimatePresence>
           </div>
         </div>
-      </div>
+      </AnimatedSection>
     </div>
   )
 }
