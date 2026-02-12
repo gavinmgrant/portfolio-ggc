@@ -26,11 +26,7 @@ const About = () => {
     [0.5, 1],
     isDesktop ? [1.2, 1.6] : [1, 1]
   )
-  const logoX = useTransform(
-    scrollYProgress,
-    [0.5, 1],
-    isDesktop ? [0, 500] : [0, 0]
-  )
+
   const logoOpacity = useTransform(
     scrollYProgress,
     [0.5, 0.8],
@@ -254,7 +250,6 @@ const About = () => {
               ref={logoRef}
               className="relative mt-16 flex flex-col items-center justify-center lg:mt-0"
               style={{
-                x: logoX,
                 opacity: logoOpacity,
                 scale: logoScale,
               }}
