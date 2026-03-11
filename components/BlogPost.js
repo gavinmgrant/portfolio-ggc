@@ -140,7 +140,7 @@ export default function BlogPost({ post }) {
 
         {/* Sidebar */}
         <aside className="hidden h-full w-full text-center xl:block xl:w-[300px] xl:text-left">
-          <div className="overflow-y-auto xl:sticky xl:top-[104px]">
+          <div className="overflow-y-auto xl:sticky xl:top-[112px]">
             <AnimatePresence>
               {scrollHeight > 240 && (
                 <motion.h2
