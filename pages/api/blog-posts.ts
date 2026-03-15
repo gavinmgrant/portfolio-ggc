@@ -1,5 +1,8 @@
 import { getClient } from '../../lib/sanity'
-import { BLOG_POSTS_QUERY } from '../../lib/queries'
+import {
+  BLOG_POSTS_QUERY,
+  BLOG_POSTS_BY_CATEGORY_QUERY,
+} from '../../lib/queries'
 import type { NextApiRequest, NextApiResponse } from 'next'
 
 export default async function handler(
@@ -11,15 +14,21 @@ export default async function handler(
   }
 
   try {
-    const { start, end } = req.query
+    const { start, end, category } = req.query
     const startNum = parseInt(start as string, 10) || 0
     const endNum = parseInt(end as string, 10) || 8
+    const categorySlug =
+      typeof category === 'string' && category.length > 0 ? category : null
 
     const client = getClient()
-    const posts = await client.fetch(BLOG_POSTS_QUERY, {
+    const query = categorySlug ? BLOG_POSTS_BY_CATEGORY_QUERY : BLOG_POSTS_QUERY
+    const params: { start: number; end: number; categorySlug?: string } = {
       start: startNum,
       end: endNum,
-    })
+    }
+    if (categorySlug) params.categorySlug = categorySlug
+
+    const posts = await client.fetch(query, params)
 
     res.status(200).json(posts)
   } catch (error) {

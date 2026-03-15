@@ -1,4 +1,4 @@
-// Blog post queries
+// Blog post queries (unfiltered – use when no category selected)
 export const BLOG_POSTS_QUERY = `*[_type == "blog.post"]
   {
     publishDate,
@@ -6,6 +6,19 @@ export const BLOG_POSTS_QUERY = `*[_type == "blog.post"]
     "estimatedReadingTime": round(length(pt::text(body)) / 5 / 180 )
   } | order(publishDate desc)[$start..$end]
 `
+// Filtered by category slug – use when category is selected
+export const BLOG_POSTS_BY_CATEGORY_QUERY = `*[_type == "blog.post" && $categorySlug in categories[]->slug.current]
+  {
+    publishDate,
+    metadata,
+    "estimatedReadingTime": round(length(pt::text(body)) / 5 / 180 )
+  } | order(publishDate desc)[$start..$end]
+`
+export const BLOG_CATEGORIES_QUERY = `*[_type == "blog.category"] | order(title asc) {
+  _id,
+  title,
+  "slug": slug.current
+}`
 export const BLOG_POSTS_SLUG_QUERY = `*[_type == "blog.post"] { "slug": metadata.slug.current }`
 export const BLOG_POST_QUERY = `*[_type == "blog.post" && metadata.slug.current == $slug][0]{
   metadata{
@@ -18,7 +31,7 @@ export const BLOG_POST_QUERY = `*[_type == "blog.post" && metadata.slug.current 
   publishDate,
   categories[]->{
     title,
-    slug
+    "slug": slug.current
   },
   authors[]->{
     name,
@@ -27,6 +40,7 @@ export const BLOG_POST_QUERY = `*[_type == "blog.post" && metadata.slug.current 
   "estimatedReadingTime": round(length(pt::text(body)) / 5 / 180 )
 }`
 export const BLOG_POST_COUNT_QUERY = `count(*[_type == "blog.post"])`
+export const BLOG_POST_COUNT_BY_CATEGORY_QUERY = `count(*[_type == "blog.post" && $categorySlug in categories[]->slug.current])`
 export const FEATURED_BLOG_POSTS_QUERY = `*[_type == "blog.post"]{
   featured,
   metadata{

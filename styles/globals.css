@@ -66,6 +66,10 @@
     @apply mx-auto px-4 pb-4 pt-[72px] sm:px-6 sm:pb-6 sm:pt-[104px] lg:pt-[112px];
   }
 
+  .page-padding-no-top {
+    @apply mx-auto px-4 pb-4 sm:px-6 sm:pb-6;
+  }
+
   .min-height-viewport {
     @apply min-h-[calc(100vh-88px)] sm:min-h-[calc(100vh-128px)] lg:min-h-[calc(100vh-136px)];
   }

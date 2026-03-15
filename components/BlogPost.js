@@ -18,6 +18,7 @@ import {
 } from 'react-syntax-highlighter/dist/cjs/styles/prism'
 import imageUrlBuilder from '@sanity/image-url'
 import { getDisplayDate } from '../utils/getDisplayDate'
+import Link from 'next/link'
 
 export default function BlogPost({ post }) {
   const [components, setComponents] = useState(null)
@@ -167,17 +168,23 @@ export default function BlogPost({ post }) {
               <ShareButtons postTitle={postTitle} postUrl={postUrl} />
             </div>
 
-            {/* {post.categories?.length > 0 && (
-                <div className="light-border border-b-[0.5px] pb-4 pt-4">
-                  <div className="space-y-3">
-                    {post.categories.map((category, index) => (
-                      <p key={index} className="text-sm">
-                        {category.title}
-                      </p>
-                    ))}
-                  </div>
+            {post.categories?.length > 0 && (
+              <div className="light-border border-b-[0.5px] pb-4 pt-4">
+                <div className="flex flex-wrap gap-2">
+                  {post.categories.map((category) => (
+                    <Link
+                      key={category.slug ?? category.title}
+                      href={`/blog?category=${encodeURIComponent(
+                        category.slug ?? ''
+                      )}`}
+                      className="text-sm opacity-90 hover:opacity-100 hover:underline"
+                    >
+                      {category.title}
+                    </Link>
+                  ))}
                 </div>
-              )} */}
+              </div>
+            )}
 
             <div className="mt-6">
               <TableOfContents richText={post.body} />
