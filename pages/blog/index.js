@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useMemo } from 'react'
 import Head from 'next/head'
-import Link from 'next/link'
+import { useRouter } from 'next/router'
 import Loader from '../../components/Loader'
 import ProjectCard from '../../components/ProjectCard'
 import { getClient } from '../../lib/sanity'
@@ -13,7 +13,50 @@ import {
 } from '../../lib/queries'
 import ogImage from '../../public/images/gavin-grant-og.png'
 import { getSanityImageUrl } from '../../utils/getSanityImageUrl'
-import { Button } from '@heroui/react'
+import { Button, Select, SelectItem } from '@heroui/react'
+
+function BlogCategorySelect({ categories, currentCategorySlug, className = 'page-padding' }) {
+  const router = useRouter()
+  const selectedKeys = useMemo(
+    () =>
+      currentCategorySlug ? new Set([currentCategorySlug]) : new Set(['all']),
+    [currentCategorySlug]
+  )
+
+  const handleSelectionChange = (keys) => {
+    if (keys === 'all') return
+    const key = keys instanceof Set ? Array.from(keys)[0] : undefined
+    if (key === 'all' || key == null) {
+      router.push('/blog')
+    } else {
+      router.push(`/blog?category=${encodeURIComponent(String(key))}`)
+    }
+  }
+
+  if (!categories?.length) return null
+
+  return (
+    <div className={className}>
+      <Select
+        label="Category"
+        className="w-full sm:w-[360px]"
+        selectedKeys={selectedKeys}
+        onSelectionChange={handleSelectionChange}
+        selectionMode="single"
+        disallowEmptySelection
+      >
+        <SelectItem key="all" textValue="All blog posts">
+          All blog posts
+        </SelectItem>
+        {categories.map((cat) => (
+          <SelectItem key={cat.slug} textValue={cat.title}>
+            {cat.title}
+          </SelectItem>
+        ))}
+      </Select>
+    </div>
+  )
+}
 
 export default function Blog({
   initialBlogPosts,
@@ -62,6 +105,13 @@ export default function Blog({
   const description =
     'Blog posts written by front-end engineer Gavin Grant, sharing insights and experiences in web development, Next.js, and modern technologies.'
 
+  if (!blogPosts.length)
+    return (
+      <div className="flex h-screen items-center justify-center">
+        <Loader />
+      </div>
+    )
+
   const hasAnyPosts = blogPosts.length > 0
 
   if (!hasAnyPosts)
@@ -78,33 +128,13 @@ export default function Blog({
           <meta property="og:description" content={description} />
           <meta property="og:image" content={ogImage.src} />
         </Head>
-        {categories?.length > 0 && (
-          <div className="page-padding mb-6 flex flex-wrap items-center gap-2">
-            <Link
-              href="/blog"
-              className={`rounded-full border px-3 py-1.5 text-sm transition-colors ${
-                !currentCategorySlug
-                  ? 'bg-primary text-primary-foreground'
-                  : 'light-border hover:opacity-80'
-              }`}
-            >
-              All
-            </Link>
-            {categories.map((cat) => (
-              <Link
-                key={cat._id}
-                href={`/blog?category=${encodeURIComponent(cat.slug)}`}
-                className={`rounded-full border px-3 py-1.5 text-sm transition-colors ${
-                  currentCategorySlug === cat.slug
-                    ? 'bg-primary text-primary-foreground'
-                    : 'light-border hover:opacity-80'
-                }`}
-              >
-                {cat.title}
-              </Link>
-            ))}
-          </div>
-        )}
+
+        <BlogCategorySelect
+          categories={categories}
+          currentCategorySlug={currentCategorySlug}
+          className="page-padding mb-6"
+        />
+
         <div className="page-padding flex min-h-[40vh] items-center justify-center">
           <p className="text-muted-foreground">
             {currentCategorySlug
@@ -129,33 +159,11 @@ export default function Blog({
         <meta property="og:image" content={ogImage.src} />
       </Head>
 
-      {categories?.length > 0 && (
-        <div className="page-padding flex flex-wrap items-center gap-2">
-          <Link
-            href="/blog"
-            className={`rounded-full border px-3 py-1.5 text-sm transition-colors ${
-              !currentCategorySlug
-                ? 'bg-neutral-900 dark:bg-white text-white dark:text-black'
-                : 'light-border hover:opacity-80'
-            }`}
-          >
-            All Blog Posts
-          </Link>
-          {categories.map((cat) => (
-            <Link
-              key={cat._id}
-              href={`/blog?category=${encodeURIComponent(cat.slug)}`}
-              className={`rounded-full border px-3 py-1.5 text-sm transition-colors ${
-                currentCategorySlug === cat.slug
-                  ? 'bg-neutral-900 dark:bg-white text-white dark:text-black'
-                  : 'light-border hover:opacity-80'
-              }`}
-            >
-              {cat.title}
-            </Link>
-          ))}
-        </div>
-      )}
+      <BlogCategorySelect
+        categories={categories}
+        currentCategorySlug={currentCategorySlug}
+        className="page-padding flex items-center justify-end"
+      />
 
       <div className="page-padding-no-top grid grid-cols-1 gap-4 sm:gap-6 md:grid-cols-2 2xl:max-w-[1536px] 2xl:grid-cols-3">
         {blogPosts.map((post, index) => {
