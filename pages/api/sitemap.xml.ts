@@ -3,6 +3,7 @@ import type { NextApiRequest, NextApiResponse } from 'next'
 import {
   SITEMAP_PROJECTS_QUERY,
   SITEMAP_BLOG_POSTS_QUERY,
+  BLOG_CATEGORIES_QUERY,
 } from '../../lib/queries'
 
 interface SitemapUrl {
@@ -10,13 +11,13 @@ interface SitemapUrl {
   lastmod: string
   priority?: string
   changefreq?:
-    | 'always'
-    | 'hourly'
-    | 'daily'
-    | 'weekly'
-    | 'monthly'
-    | 'yearly'
-    | 'never'
+  | 'always'
+  | 'hourly'
+  | 'daily'
+  | 'weekly'
+  | 'monthly'
+  | 'yearly'
+  | 'never'
 }
 
 interface Project {
@@ -26,6 +27,10 @@ interface Project {
 interface BlogPost {
   slug: string
   publishDate?: string
+}
+
+interface BlogCategory {
+  slug: string
 }
 
 const baseUrl = process.env.NEXT_PUBLIC_SITE_URL
@@ -40,6 +45,8 @@ export default async function handler(
     const projects: Project[] = await client.fetch(SITEMAP_PROJECTS_QUERY)
     // Fetch blog posts from Sanity
     const blogPosts: BlogPost[] = await client.fetch(SITEMAP_BLOG_POSTS_QUERY)
+    // Fetch blog categories from Sanity
+    const blogCategories: BlogCategory[] = await client.fetch(BLOG_CATEGORIES_QUERY)
 
     const generateStaticPages = (): SitemapUrl[] => {
       const pages = ['', 'projects', 'blog', 'contact', 'search']
@@ -49,7 +56,7 @@ export default async function handler(
         loc: `${baseUrl}/${page}`,
         lastmod: now,
         changefreq: 'weekly',
-        priority: page === '' ? '1.0' : '0.8',
+        priority: page === '' ? '1.0' : '0.9',
       }))
     }
 
@@ -74,11 +81,25 @@ export default async function handler(
       loc: `${baseUrl}/blog/${post.slug}`,
       lastmod: formatDate(post.publishDate),
       changefreq: 'monthly',
-      priority: '0.9',
+      priority: '0.8',
     }))
 
-    // Combine static pages, project pages, and blog posts
-    const allPages = [...staticPages, ...projectUrls, ...blogPostUrls]
+    const blogCategoryUrls: SitemapUrl[] = (blogCategories ?? []).map(
+      (cat) => ({
+        loc: `${baseUrl}/blog/category/${cat.slug}`,
+        lastmod: new Date().toISOString(),
+        changefreq: 'weekly' as const,
+        priority: '0.75',
+      })
+    )
+
+    // Combine static pages, project pages, blog categories, and blog posts
+    const allPages = [
+      ...staticPages,
+      ...projectUrls,
+      ...blogCategoryUrls,
+      ...blogPostUrls,
+    ]
 
     const generateSitemapXml = (urls: SitemapUrl[]): string => {
       const urlElements = urls

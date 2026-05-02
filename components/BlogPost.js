@@ -174,7 +174,7 @@ export default function BlogPost({ post }) {
                   {post.categories.map((category) => (
                     <Link
                       key={category.slug ?? category.title}
-                      href={`/blog?category=${encodeURIComponent(
+                      href={`/blog/category/${encodeURIComponent(
                         category.slug ?? ''
                       )}`}
                       className="text-sm opacity-90 hover:opacity-100 hover:underline"

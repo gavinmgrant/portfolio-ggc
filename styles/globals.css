@@ -214,3 +214,24 @@ html.dark {
     transform: translateY(0);
   }
 }
+
+.route-progress-bar {
+  width: 100%;
+  transform-origin: left center;
+  transform: scaleX(0);
+}
+
+.route-progress-bar.idle {
+  transform: scaleX(0);
+  transition: transform 0.25s ease-in;
+}
+
+.route-progress-bar.loading {
+  transform: scaleX(0.88);
+  transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.route-progress-bar.complete {
+  transform: scaleX(1);
+  transition: transform 0.2s ease-out;
+}
