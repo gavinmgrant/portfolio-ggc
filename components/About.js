@@ -6,9 +6,9 @@ import { Button } from '@heroui/react'
 import { urls } from '../configs/urls.config'
 import useMediaQuery from '../hooks/useMediaQuery'
 
-const TITLE = 'Crafting performant, modern web apps.'
+const TITLE = 'Building web apps that work beautifully.'
 const DESCRIPTION =
-  'Frontend engineer focused on crafting scalable, maintainable experiences with React, Next.js, Vue, and TypeScript — where usability and performance meet thoughtful design.'
+  'Frontend engineer and freelance developer with deep expertise in React, Next.js, Vue, and TypeScript. From polished marketing sites to AI-powered web apps, I build things that perform well and hold up over time.'
 
 const About = () => {
   const router = useRouter()
