@@ -44,6 +44,10 @@ const variants = {
   }),
 }
 
+/** Matches ProjectCard outer shell (no link / tilt / image). */
+const CARD_SHELL =
+  'light-border relative flex w-full min-h-0 flex-col rounded-[20px] border-[0.5px] transition-all duration-300 ease-in-out hover:border-black dark:hover:border-white'
+
 const Testimonials = () => {
   const [[page, direction], setPage] = useState([0, 0])
   const testimonialIndex = wrap(0, testimonials.length, page)
@@ -51,60 +55,73 @@ const Testimonials = () => {
   const paginate = (newDirection) =>
     setPage([page + newDirection, newDirection])
 
-  return (
-    <div className="flex w-screen items-center justify-center lg:h-[calc(100vh-168px)]">
-      <AnimatedSection className="flex h-[600px] w-full max-w-[1536px] flex-col items-center justify-center gap-4 px-4 py-8 xs:h-[560px] sm:h-[580px] sm:py-20 lg:gap-10">
-        <div className="flex w-full max-w-[900px] items-center justify-between">
-          <button
-            onClick={() => paginate(-1)}
-            className="z-10 flex shrink-0 items-center justify-center transition-all ease-in-out hover:scale-110 hover:bg-opacity-70 active:scale-90"
-          >
-            <IconChevronLeft className="h-10 w-10 lg:h-12 lg:w-12" />
-          </button>
-          <h2 className="heading-size-lg font-semibold">Testimonials</h2>
-          <button
-            onClick={() => paginate(1)}
-            className="z-10 flex shrink-0 items-center justify-center transition-all ease-in-out hover:scale-110 hover:bg-opacity-70 active:scale-90"
-          >
-            <IconChevronRight className="h-10 w-10 lg:h-12 lg:w-12" />
-          </button>
-        </div>
+  const current = testimonials[testimonialIndex]
 
-        <div className="flex h-full w-full max-w-[900px] items-start justify-center gap-2 sm:gap-6 md:gap-8 lg:gap-12 xl:gap-24">
-          <div className="relative flex h-full w-full items-start justify-center overflow-hidden">
-            <AnimatePresence initial={false} custom={direction}>
-              <motion.div
-                key={testimonials[testimonialIndex].name}
-                custom={direction}
-                variants={variants}
-                initial="enter"
-                animate="center"
-                exit="exit"
-                transition={{
-                  x: {
-                    stiffness: 100,
-                    damping: 30,
-                    ease: 'linear',
-                    duration: 0.4,
-                  },
-                }}
-                className="absolute w-full text-center lg:text-left"
-              >
-                <p className="mb-6 text-sm lg:text-base">
-                  {testimonials[testimonialIndex].quote}
-                </p>
-                <div className="mt-4 text-center lg:text-left">
-                  <h5 className="text-lg font-semibold">
-                    {testimonials[testimonialIndex].name}
-                  </h5>
-                  <p className="text-sm">
-                    {testimonials[testimonialIndex].title}
-                  </p>
-                </div>
-              </motion.div>
-            </AnimatePresence>
+  return (
+    <div className="flex w-screen items-center justify-center lg:min-h-[calc(100vh-168px)]">
+      <AnimatedSection className="flex w-full max-w-[1536px] flex-col items-center gap-6 px-4 py-8 sm:gap-8 sm:py-20 lg:gap-10">
+        <h2
+          id="testimonials-heading"
+          className="heading-size-lg text-center font-semibold"
+        >
+          Testimonials
+        </h2>
+
+        <section
+          aria-labelledby="testimonials-heading"
+          aria-roledescription="carousel"
+          aria-label="Testimonials"
+          className="relative w-full max-w-[900px]"
+        >
+          <div className={`${CARD_SHELL} p-4 lg:p-5`}>
+            <button
+              type="button"
+              onClick={() => paginate(-1)}
+              aria-label="Previous testimonial"
+              className="absolute left-1 top-1/2 z-20 -translate-y-1/2 rounded-md p-1 transition-all ease-in-out hover:opacity-80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground active:scale-90 sm:left-2 md:left-3"
+            >
+              <IconChevronLeft className="h-8 w-8 sm:h-10 sm:w-10 lg:h-11 lg:w-11" />
+            </button>
+            <button
+              type="button"
+              onClick={() => paginate(1)}
+              aria-label="Next testimonial"
+              className="absolute right-1 top-1/2 z-20 -translate-y-1/2 rounded-md p-1 transition-all ease-in-out hover:opacity-80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground active:scale-90 sm:right-2 md:right-3"
+            >
+              <IconChevronRight className="h-8 w-8 sm:h-10 sm:w-10 lg:h-11 lg:w-11" />
+            </button>
+
+            <div className="relative overflow-hidden px-10 py-4 sm:px-12 md:px-14">
+              <AnimatePresence mode="wait" initial={false} custom={direction}>
+                <motion.div
+                  key={current.name}
+                  custom={direction}
+                  variants={variants}
+                  initial="enter"
+                  animate="center"
+                  exit="exit"
+                  transition={{
+                    x: {
+                      stiffness: 100,
+                      damping: 30,
+                      ease: 'linear',
+                      duration: 0.4,
+                    },
+                  }}
+                  className="w-full text-center lg:text-left"
+                >
+                  <p className="mb-6 text-sm lg:text-base">{current.quote}</p>
+                  <div className="mt-4 text-center lg:text-left">
+                    <h3 className="text-xl font-semibold sm:text-2xl">
+                      {current.name}
+                    </h3>
+                    <p className="mt-1 text-sm opacity-80">{current.title}</p>
+                  </div>
+                </motion.div>
+              </AnimatePresence>
+            </div>
           </div>
-        </div>
+        </section>
       </AnimatedSection>
     </div>
   )
