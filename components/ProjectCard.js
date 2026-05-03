@@ -42,6 +42,7 @@ const ProjectCard = ({
 
   return (
     <motion.div
+      className="h-full"
       style={{ perspective: 1200 }}
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
@@ -58,13 +59,16 @@ const ProjectCard = ({
           rotateY,
         }}
       >
-        <Link href={`/${type}/${slug}`}>
-          <div className="light-border !h-full rounded-[20px] border-[0.5px] p-4 transition-all duration-300 ease-in-out hover:border-black dark:hover:border-white lg:p-5">
-            <div key={slug}>
+        <Link
+          href={`/${type}/${slug}`}
+          className="flex h-full min-h-0 flex-col"
+        >
+          <div className="light-border flex h-full min-h-0 flex-col rounded-[20px] border-[0.5px] p-4 transition-all duration-300 ease-in-out hover:border-black dark:hover:border-white lg:p-5">
+            <div key={slug} className="flex min-h-0 flex-1 flex-col">
               {imgsrc && (
-                <div className="light-border relative mb-4 aspect-[548/300] max-h-[600px] max-w-[900px] overflow-hidden rounded-xl border-[0.5px]">
+                <div className="light-border relative mb-4 aspect-[548/300] max-h-[600px] w-full max-w-full shrink-0 overflow-hidden rounded-xl border-[0.5px]">
                   {!isLoaded && (
-                    <div className="absolute left-0 top-0 z-10 h-[600px] w-[900px] animate-pulse overflow-hidden rounded-xl bg-slate-300"></div>
+                    <div className="absolute inset-0 z-10 animate-pulse rounded-xl bg-slate-300"></div>
                   )}
                   <Image
                     className="cursor-pointer overflow-hidden rounded-xl"
@@ -72,13 +76,13 @@ const ProjectCard = ({
                     src={imgsrc}
                     objectFit='cover'
                     fill
-                    sizes="(max-width: 900px) 100vw, 900px"
+                    sizes="(max-width: 767px) 100vw, (max-width: 1535px) 50vw, 33vw"
                     onLoad={() => setIsLoaded(true)}
                     priority={index === 0 || index === 1 || index === 2}
                   />
                 </div>
               )}
-              <div className="cursor-pointer">
+              <div className="flex min-h-0 flex-1 flex-col cursor-pointer">
                 <h2 className="text-xl font-semibold sm:text-2xl">{name}</h2>
                 {publishDate && (
                   <div className="my-2 flex items-center justify-between text-sm opacity-70 sm:my-3">
@@ -88,7 +92,7 @@ const ProjectCard = ({
                     </p>
                   </div>
                 )}
-                <p className="mt-3 p-0 text-sm lg:text-base">{description}</p>
+                <p className="mt-3 flex-1 p-0 text-sm lg:text-base">{description}</p>
               </div>
             </div>
           </div>

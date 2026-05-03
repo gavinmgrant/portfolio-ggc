@@ -41,7 +41,7 @@ export const BLOG_POST_QUERY = `*[_type == "blog.post" && metadata.slug.current 
 }`
 export const BLOG_POST_COUNT_QUERY = `count(*[_type == "blog.post"])`
 export const BLOG_POST_COUNT_BY_CATEGORY_QUERY = `count(*[_type == "blog.post" && $categorySlug in categories[]->slug.current])`
-export const FEATURED_BLOG_POSTS_QUERY = `*[_type == "blog.post"]{
+export const FEATURED_BLOG_POSTS_QUERY = `*[_type == "blog.post" && featured == true]{
   featured,
   metadata{
     title,
