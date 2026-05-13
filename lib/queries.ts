@@ -58,6 +58,14 @@ export const PROJECTS_QUERY = `*[_type == "project"] | order(order asc)[$start..
 export const PROJECTS_SLUG_QUERY = `*[_type == "project"] { slug }`
 export const PROJECT_QUERY = `*[_type == "project" && slug == $slug]`
 export const PROJECT_COUNT_QUERY = `count(*[_type == "project"])`
+export const FEATURED_PROJECTS_QUERY = `*[_type == "project" && featured == true]{
+  featured,
+  slug,
+  name,
+  description,
+  "image": projectImages[0],
+  order
+} | order(order asc)`
 
 // Technologies queries
 export const TECHNOLOGIES_QUERY = `*[_type == "technology"] | order(description)`

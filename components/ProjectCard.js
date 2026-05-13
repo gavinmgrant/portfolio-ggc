@@ -4,6 +4,21 @@ import Image from 'next/image'
 import { motion, useMotionValue, useSpring, useTransform } from 'motion/react'
 import { getDisplayDate } from '../utils/getDisplayDate'
 
+/**
+ * @typedef {Object} ProjectCardProps
+ * @property {number} index
+ * @property {string} slug
+ * @property {string} [imgsrc]
+ * @property {string} name
+ * @property {string} description
+ * @property {string} type
+ * @property {string} [publishDate] Blog posts only; omit for project cards.
+ * @property {number} [readingTime] Shown with publishDate for blog posts.
+ */
+
+/**
+ * @param {ProjectCardProps} props
+ */
 const ProjectCard = ({
   index,
   slug,
@@ -71,10 +86,9 @@ const ProjectCard = ({
                     <div className="absolute inset-0 z-10 animate-pulse rounded-xl bg-slate-300"></div>
                   )}
                   <Image
-                    className="cursor-pointer overflow-hidden rounded-xl"
+                    className="cursor-pointer overflow-hidden rounded-xl object-cover"
                     alt={name}
                     src={imgsrc}
-                    objectFit='cover'
                     fill
                     sizes="(max-width: 767px) 100vw, (max-width: 1535px) 50vw, 33vw"
                     onLoad={() => setIsLoaded(true)}

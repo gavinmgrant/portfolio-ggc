@@ -8,7 +8,7 @@ import useMediaQuery from '../hooks/useMediaQuery'
 
 const TITLE = 'Building web apps that work beautifully.'
 const DESCRIPTION =
-  'Frontend engineer and freelance developer with deep expertise in React, Next.js, Vue, and TypeScript. From polished marketing sites to AI-powered web apps, I build things that perform well and hold up over time.'
+  'Frontend engineer and freelance developer with deep expertise in React, Next.js, Vue, and TypeScript. From polished marketing sites to AI-powered web apps, I build products that perform well and hold up over time.'
 
 const About = () => {
   const router = useRouter()

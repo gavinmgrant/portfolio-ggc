@@ -110,12 +110,12 @@ const Testimonials = () => {
                   }}
                   className="w-full text-center lg:text-left"
                 >
-                  <p className="mb-6 text-sm lg:text-base">{current.quote}</p>
+                  <p className="mb-6 text-md lg:text-lg !leading-8">{current.quote}</p>
                   <div className="mt-4 text-center lg:text-left">
                     <h3 className="text-xl font-semibold sm:text-2xl">
                       {current.name}
                     </h3>
-                    <p className="mt-1 text-sm opacity-80">{current.title}</p>
+                    <p className="text-sm opacity-80">{current.title}</p>
                   </div>
                 </motion.div>
               </AnimatePresence>
