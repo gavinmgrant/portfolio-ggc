@@ -1,3 +1,5 @@
+import Link from 'next/link'
+import { Button } from '@heroui/react'
 import { getSanityImageUrl } from '../utils/getSanityImageUrl'
 import ProjectCard from './ProjectCard'
 import Divider from './Divider'
@@ -57,6 +59,18 @@ export default function FeaturedProjects({
                 />
               </div>
             ))}
+          </div>
+
+          <div className="flex items-center justify-center pt-4">
+            <Button
+              as={Link}
+              href="/projects"
+              color="primary"
+              radius="sm"
+              size="lg"
+            >
+              View all projects
+            </Button>
           </div>
         </section>
       </AnimatedSection>
