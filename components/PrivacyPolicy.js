@@ -4,7 +4,7 @@ const PrivacyPolicy = () => {
   const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL
 
   return (
-    <div className="page-padding">
+    <div className="page-padding max-w-4xl">
       <h1 className="pb-2 text-3xl">Privacy Policy</h1>
       <p>Last updated: March 15, 2022</p>
       <p>

@@ -53,6 +53,22 @@ export const FEATURED_BLOG_POSTS_QUERY = `*[_type == "blog.post" && featured == 
   "estimatedReadingTime": round(length(pt::text(body)) / 5 / 180 )
 } | order(publishDate desc)`
 
+export const NEWSLETTER_POSTS_QUERY = `*[
+  _type == "blog.post" &&
+  publishDate >= $date
+] | order(publishDate desc) {
+  publishDate,
+  featured,
+  "description": metadata.description,
+  "title": metadata.title,
+  "slug": metadata.slug.current,
+  "image": metadata.image,
+  "categories": categories[]->{
+    title,
+    "slug": slug.current
+  }
+}`
+
 // Project queries
 export const PROJECTS_QUERY = `*[_type == "project"] | order(order asc)[$start..$end]`
 export const PROJECTS_SLUG_QUERY = `*[_type == "project"] { slug }`

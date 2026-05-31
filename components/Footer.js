@@ -1,5 +1,6 @@
 import React from 'react'
 import Link from 'next/link'
+import { useRouter } from 'next/router'
 import { motion } from 'motion/react'
 import {
   IconBrandLinkedin,
@@ -8,8 +9,10 @@ import {
   IconMail,
 } from '@tabler/icons-react'
 import { urls } from '../configs/urls.config'
+import NewsletterSubscribe from './NewsletterSubscribe'
 
 const Footer = () => {
+  const router = useRouter()
   const year = new Date().getFullYear()
 
   return (
@@ -23,6 +26,9 @@ const Footer = () => {
         </div>
 
         <div className="relative mx-auto text-sm text-neutral-800 dark:text-white">
+          <div className="mb-6 flex justify-center border-b border-neutral-200 pb-6 dark:border-neutral-700 md:justify-start">
+            <NewsletterSubscribe key={router.pathname} />
+          </div>
           <div className="flex flex-col items-center justify-between gap-4 md:flex-row">
             <div className="flex flex-col space-x-0 space-y-3 pt-2 sm:flex-row sm:space-x-4 sm:space-y-0 sm:pt-0">
               <motion.a

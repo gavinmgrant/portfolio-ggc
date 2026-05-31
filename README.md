@@ -19,11 +19,20 @@ A modern web development portfolio website showcasing professional work and serv
 - Server-side rendering for improved SEO
 - Fast page loads and optimized performance
 - Contact form with secure email delivery via Resend
+- Monthly blog newsletter (Sanity + Resend Audiences + Vercel Cron)
 - Smooth page transitions and UI animations using Motion
 
 ## Related Repositories
 
 - [Portfolio Sanity Studio](https://github.com/gavinmgrant/portfolio-ggc-sanity) - The Sanity Studio configuration and schemas for content management
+
+## Newsletter environment variables
+
+See [`example.env`](example.env). Required for subscribe and monthly cron:
+
+- `RESEND_API_KEY`, `RESEND_AUDIENCE_ID` (Resend Audience for segment `newsletter`)
+- `CRON_SECRET` (Vercel sends as `Authorization: Bearer …` on cron invocations)
+- `NEXT_PUBLIC_SITE_URL`
 
 ## Contact
 
