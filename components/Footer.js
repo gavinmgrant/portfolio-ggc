@@ -26,7 +26,7 @@ const Footer = () => {
         </div>
 
         <div className="relative mx-auto text-sm text-neutral-800 dark:text-white">
-          <div className="mb-6 flex justify-center border-b border-neutral-200 pb-6 dark:border-neutral-700 md:justify-start">
+          <div className="mb-6 pt-12 pb-20 flex justify-center border-b border-neutral-200 dark:border-neutral-700 md:justify-start">
             <NewsletterSubscribe key={router.pathname} />
           </div>
           <div className="flex flex-col items-center justify-between gap-4 md:flex-row">

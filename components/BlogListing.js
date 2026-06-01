@@ -6,8 +6,9 @@ import ProjectCard from './ProjectCard'
 import ogImage from '../public/images/gavin-grant-og.png'
 import { getSanityImageUrl } from '../utils/getSanityImageUrl'
 import { Button, Select, SelectItem } from '@heroui/react'
+import NewsletterSubscribe from './NewsletterSubscribe'
 
-function BlogCategorySelect({ categories, currentCategorySlug, className = 'page-padding' }) {
+function BlogCategorySelect({ categories, currentCategorySlug, className }) {
   const router = useRouter()
   const selectedKeys = useMemo(
     () =>
@@ -28,10 +29,10 @@ function BlogCategorySelect({ categories, currentCategorySlug, className = 'page
   if (!categories?.length) return null
 
   return (
-    <div className={className}>
+    <div className="w-full md:w-[360px]">
       <Select
         label="Category"
-        className="w-full sm:w-[360px]"
+        className="w-full"
         selectedKeys={selectedKeys}
         onSelectionChange={handleSelectionChange}
         selectionMode="single"
@@ -129,13 +130,16 @@ export default function BlogListing({
           <meta property="og:image" content={ogImage.src} />
         </Head>
 
-        <BlogCategorySelect
-          categories={categories}
-          currentCategorySlug={currentCategorySlug}
-          className="page-padding mb-6"
-        />
+        <div className="page-padding flex flex-col gap-4 md:flex-row items-end justify-between">
+          <NewsletterSubscribe />
 
-        <div className="page-padding flex min-h-[40vh] items-center justify-center">
+          <BlogCategorySelect
+            categories={categories}
+            currentCategorySlug={currentCategorySlug}
+          />
+        </div>
+
+        <div className="page-padding flex min-h-[40vh] items-start md:items-center justify-center">
           <p className="text-muted-foreground">
             {currentCategorySlug
               ? 'No posts in this category yet.'
@@ -160,11 +164,14 @@ export default function BlogListing({
         <meta property="og:image" content={ogImage.src} />
       </Head>
 
-      <BlogCategorySelect
-        categories={categories}
-        currentCategorySlug={currentCategorySlug}
-        className="page-padding flex items-center justify-end"
-      />
+      <div className="page-padding flex flex-col gap-4 md:flex-row items-start md:items-end justify-between">
+        <NewsletterSubscribe />
+
+        <BlogCategorySelect
+          categories={categories}
+          currentCategorySlug={currentCategorySlug}
+        />
+      </div>
 
       <div className="page-padding-no-top grid grid-cols-1 gap-4 sm:gap-6 md:grid-cols-2 2xl:max-w-[1536px] 2xl:grid-cols-3">
         {blogPosts.map((post, index) => {

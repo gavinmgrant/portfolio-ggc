@@ -53,14 +53,14 @@ export default function NewsletterSubscribe() {
   }
 
   return (
-    <div className="w-full max-w-lg my-12">
+    <div className="w-full max-w-lg">
       <h3 className="text-2xl font-semibold sm:text-3xl">
         Subscribe to the newsletter
       </h3>
       <p className="mb-3 text-sm">
-        Stay connected and receive updates in your inbox on the first of each month.
+        Stay connected and receive the latest blog posts in your inbox each month.
       </p>
-      <Form onSubmit={handleSubmit} className="flex flex-col gap-2 sm:flex-row">
+      <Form onSubmit={handleSubmit} className="flex flex-col gap-4 sm:flex-row">
         <input
           type="text"
           name="website"
@@ -86,7 +86,7 @@ export default function NewsletterSubscribe() {
           type="submit"
           color="primary"
           isLoading={isLoading}
-          className="shrink-0"
+          className="shrink-0 w-full sm:w-auto"
           radius="sm"
         >
           Subscribe
