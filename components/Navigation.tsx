@@ -40,10 +40,15 @@ const Navigation = () => {
         <LogoHeader />
 
         {/* Mobile Menu */}
-        <IconMenu2
-          className="block shrink-0 cursor-pointer lg:hidden"
-          onClick={onOpen}
-        />
+        <div className="flex flex-row items-center justify-center gap-3">
+          <div className="block lg:hidden">
+            <ThemeSwitch />
+          </div>
+          <IconMenu2
+            className="block shrink-0 cursor-pointer lg:hidden w-8 h-8"
+            onClick={onOpen}
+          />
+        </div>
         <Drawer
           placement="right"
           backdrop="blur"
@@ -54,7 +59,7 @@ const Navigation = () => {
           <DrawerContent>
             {(onClose) => (
               <DrawerBody className="px-8 py-14">
-                <div className="flex flex-col items-center justify-center gap-5">
+                <div className="flex flex-col items-center justify-center gap-4">
                   <Button
                     className="w-full"
                     onPress={() => {
@@ -127,7 +132,6 @@ const Navigation = () => {
                       radius="sm"
                     />
                   </Form>
-                  <ThemeSwitch />
                 </div>
               </DrawerBody>
             )}
@@ -208,7 +212,7 @@ const Navigation = () => {
         </div>
         {/* Desktop Menu */}
       </div>
-    </div>
+    </div >
   )
 }
 
