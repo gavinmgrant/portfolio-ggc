@@ -23,7 +23,7 @@ const Navigation = () => {
 
   const CustomCloseButton = (
     <div>
-      <IconX className="text-neutral-900 dark:text-white" />
+      <IconX className="text-neutral-900 dark:text-white w-8 h-8" />
     </div>
   )
 
@@ -58,7 +58,7 @@ const Navigation = () => {
         >
           <DrawerContent>
             {(onClose) => (
-              <DrawerBody className="px-8 py-14">
+              <DrawerBody className="px-12 py-14">
                 <div className="flex flex-col items-center justify-center gap-4">
                   <Button
                     className="w-full"
