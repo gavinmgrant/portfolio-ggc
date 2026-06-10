@@ -90,12 +90,26 @@ export function MonthlyNewsletterEmail({
           <Hr style={hr} />
 
           <Section style={footer}>
+            <Link href={siteUrl}>
+              <Img
+                src={`${siteUrl}/android-chrome-192x192.png`}
+                alt="Gavin Grant Consulting"
+                width="48"
+                height="48"
+                style={footerLogo}
+              />
+            </Link>
             <Text style={footerText}>
+              Copyright © {new Date().getFullYear()}
               <Link href={siteUrl} style={link}>
-                gavingrant.com
+                Gavin Grant Consulting
               </Link>
             </Text>
             <Text style={footerText}>
+              <Link href={`${siteUrl}/privacy`} style={link}>
+                Privacy Policy
+              </Link>
+              {' · '}
               <Link href="{{{RESEND_UNSUBSCRIBE_URL}}}" style={link}>
                 Unsubscribe
               </Link>
@@ -197,6 +211,11 @@ const hr = {
 
 const footer = {
   textAlign: 'center' as const,
+}
+
+const footerLogo = {
+  display: 'block',
+  margin: '0 auto 16px',
 }
 
 const footerText = {

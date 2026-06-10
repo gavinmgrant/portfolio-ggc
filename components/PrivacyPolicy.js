@@ -6,7 +6,7 @@ const PrivacyPolicy = () => {
   return (
     <div className="page-padding max-w-4xl">
       <h1 className="pb-2 text-3xl">Privacy Policy</h1>
-      <p>Last updated: March 15, 2022</p>
+      <p>Last updated: June 10, 2026</p>
       <p>
         This Privacy Policy describes Our policies and procedures on the
         collection, use and disclosure of Your information when You use the
@@ -127,12 +127,35 @@ const PrivacyPolicy = () => {
       </p>
       <ul>
         <li>
-          <p>Email address</p>
+          <p>
+            Email address (when You submit our contact form or subscribe to our
+            email newsletter)
+          </p>
+        </li>
+        <li>
+          <p>First and last name (when You submit our contact form)</p>
+        </li>
+        <li>
+          <p>Message content (when You submit our contact form)</p>
         </li>
         <li>
           <p>Usage Data</p>
         </li>
       </ul>
+      <h3>Email Newsletter</h3>
+      <p>
+        If You choose to subscribe to our email newsletter, We collect Your email
+        address when You voluntarily submit the newsletter form on our blog or
+        site footer. We use this information to send You a monthly email digest
+        of recent blog posts, approximately once per month when new posts are
+        available. By submitting the newsletter form, You consent to receive
+        these emails.
+      </p>
+      <p>
+        A successful subscription may be recorded as an analytics event through
+        Google Tag Manager (see the Analytics and Tag Management section below);
+        this event may include Your email address.
+      </p>
       <h3>Usage Data</h3>
       <p>Usage Data is collected automatically when using the Service.</p>
       <p>
@@ -198,6 +221,49 @@ const PrivacyPolicy = () => {
           system and server integrity).
         </li>
       </ul>
+      <h3>Analytics and Tag Management</h3>
+      <p>
+        We use Google Tag Manager (GTM) on all pages of our Service to manage
+        analytics and event tracking. Google Analytics, loaded through GTM,
+        collects Usage Data such as pages visited, interactions on the site,
+        browser and device information, and approximate location derived from
+        Your IP address.
+      </p>
+      <p>
+        Custom events may be sent to GTM when You take certain actions on our
+        Service, including:
+      </p>
+      <ul>
+        <li>
+          <strong>Contact form submission</strong> — when You successfully send
+          a message through our contact form; this event may include Your first
+          name, last name, and email address.
+        </li>
+        <li>
+          <strong>Book a meeting</strong> — when You use the Cal.com scheduling
+          button to book a meeting.
+        </li>
+        <li>
+          <strong>Newsletter subscription</strong> — when You successfully
+          subscribe via our newsletter form; this event may include Your email
+          address. No GTM tag is active for this event today, but the site is
+          configured to support it and We may enable tracking in the future
+          without a separate notice beyond an updated &quot;Last updated&quot;
+          date on this page.
+        </li>
+      </ul>
+      <p>
+        Page views are also recorded as You navigate our Service. For more
+        information on how Google processes this data, see{' '}
+        <a
+          href="https://policies.google.com/privacy"
+          rel="external nofollow noopener"
+          target="_blank"
+        >
+          Google&apos;s Privacy Policy
+        </a>
+        .
+      </p>
       <p>
         Cookies can be &quot;Persistent&quot; or &quot;Session&quot; Cookies.
         Persistent Cookies remain on Your personal computer or mobile device
@@ -256,6 +322,18 @@ const PrivacyPolicy = () => {
             your preferences every time You use the Website.
           </p>
         </li>
+        <li>
+          <p>
+            <strong>Analytics Cookies</strong>
+          </p>
+          <p>Type: Persistent Cookies</p>
+          <p>Administered by: Google (via Google Tag Manager)</p>
+          <p>
+            Purpose: These Cookies help Us understand how visitors use the
+            Website by collecting and reporting Usage Data, such as pages
+            visited and interactions on the site.
+          </p>
+        </li>
       </ul>
       <p>
         For more information about the cookies we use and your choices regarding
@@ -299,17 +377,16 @@ const PrivacyPolicy = () => {
         </li>
         <li>
           <p>
-            <strong>To provide You</strong> with news, special offers and
-            general information about other goods, services and events which we
-            offer that are similar to those that you have already purchased or
-            enquired about unless You have opted not to receive such
-            information.
+            <strong>To provide You with our blog newsletter:</strong> to send
+            subscribers a monthly digest of recent blog posts and related
+            updates You have opted in to receive, unless You have unsubscribed.
           </p>
         </li>
         <li>
           <p>
             <strong>To manage Your requests:</strong> To attend and manage Your
-            requests to Us.
+            requests to Us, including messages submitted through our contact
+            form.
           </p>
         </li>
         <li>
@@ -337,8 +414,47 @@ const PrivacyPolicy = () => {
       <ul>
         <li>
           <strong>With Service Providers:</strong> We may share Your personal
-          information with Service Providers to monitor and analyze the use of
-          our Service, to contact You.
+          information with Service Providers who process data on Our behalf,
+          including:
+          <ul>
+            <li>
+              <strong>Resend</strong> — to store newsletter subscriber email
+              addresses, send monthly newsletter broadcasts, and deliver contact
+              form messages. See{' '}
+              <a
+                href="https://resend.com/legal/privacy-policy"
+                rel="external nofollow noopener"
+                target="_blank"
+              >
+                Resend&apos;s Privacy Policy
+              </a>
+              .
+            </li>
+            <li>
+              <strong>Google</strong> — for analytics and event tracking via
+              Google Tag Manager and Google Analytics. See{' '}
+              <a
+                href="https://policies.google.com/privacy"
+                rel="external nofollow noopener"
+                target="_blank"
+              >
+                Google&apos;s Privacy Policy
+              </a>
+              .
+            </li>
+            <li>
+              <strong>Cal.com</strong> — for scheduling when You book a meeting
+              through the embedded calendar on our Service. See{' '}
+              <a
+                href="https://cal.com/privacy"
+                rel="external nofollow noopener"
+                target="_blank"
+              >
+                Cal.com&apos;s Privacy Policy
+              </a>
+              .
+            </li>
+          </ul>
         </li>
         <li>
           <strong>For business transfers:</strong> We may share or transfer Your
@@ -384,6 +500,20 @@ const PrivacyPolicy = () => {
         when this data is used to strengthen the security or to improve the
         functionality of Our Service, or We are legally obligated to retain this
         data for longer time periods.
+      </p>
+      <h3>Newsletter Subscribers</h3>
+      <p>
+        If You subscribe to our email newsletter, We retain Your email address
+        in our mailing list (managed through Resend) until You unsubscribe or
+        request deletion. You may unsubscribe at any time by clicking the
+        unsubscribe link included in any newsletter email, or by contacting Us
+        at gavin@gavingrant.com.
+      </p>
+      <p>
+        Submitting our contact form does not add You to the newsletter mailing
+        list. Contact form submissions are used to respond to Your inquiry and
+        are not retained for newsletter purposes unless You separately
+        subscribe.
       </p>
       <h2 className="pb-2 pt-4 text-2xl">Transfer of Your Personal Data</h2>
       <p>

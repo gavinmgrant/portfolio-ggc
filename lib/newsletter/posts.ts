@@ -66,4 +66,4 @@ export function getNewsletterSubject(monthLabel: string, postCount: number): str
 }
 
 export const DEFAULT_NEWSLETTER_INTRO =
-  'Here is what I published on the blog over the last month. Thanks for reading.'
+  "Here's what I published on my blog over the last month. Thanks for reading."

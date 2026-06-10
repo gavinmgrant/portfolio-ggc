@@ -81,6 +81,7 @@ export default function NewsletterSubscribe() {
           isRequired
           aria-label="Email address"
           radius="sm"
+          size="lg"
         />
         <Button
           type="submit"
@@ -88,6 +89,7 @@ export default function NewsletterSubscribe() {
           isLoading={isLoading}
           className="shrink-0 w-full sm:w-auto"
           radius="sm"
+          size="lg"
         >
           Subscribe
         </Button>
