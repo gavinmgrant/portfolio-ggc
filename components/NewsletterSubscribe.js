@@ -53,12 +53,12 @@ export default function NewsletterSubscribe() {
   }
 
   return (
-    <div className="w-full max-w-lg">
+    <div className="w-full max-w-2xl">
       <h3 className="text-2xl font-semibold sm:text-3xl">
-        Subscribe to the newsletter
+        Build better, more resilient interfaces
       </h3>
       <p className="mb-3 text-sm">
-        Stay connected and receive the latest blog posts in your inbox each month.
+        I share practical engineering deep-dives on React, Next.js, and performance optimization for complex web apps. Join me to sharpen your frontend craft and solve the architectural challenges that matter.
       </p>
       <Form onSubmit={handleSubmit} className="flex flex-col gap-4 sm:flex-row">
         <input
