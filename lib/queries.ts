@@ -20,6 +20,24 @@ export const BLOG_CATEGORIES_QUERY = `*[_type == "blog.category"] | order(title 
   "slug": slug.current
 }`
 export const BLOG_POSTS_SLUG_QUERY = `*[_type == "blog.post"] { "slug": metadata.slug.current }`
+export const BLOG_POST_BODY_PROJECTION = `body[]{
+  ...,
+  _type == "image" => {
+    ...,
+    alt,
+    caption,
+    source,
+    loading,
+    asset
+  },
+  _type == "table" => {
+    ...,
+    caption,
+    rows[]{
+      cells
+    }
+  }
+}`
 export const BLOG_POST_QUERY = `*[_type == "blog.post" && metadata.slug.current == $slug][0]{
   metadata{
     title,
@@ -27,7 +45,7 @@ export const BLOG_POST_QUERY = `*[_type == "blog.post" && metadata.slug.current 
     slug,
     image
   },
-  body,
+  ${BLOG_POST_BODY_PROJECTION},
   publishDate,
   categories[]->{
     title,

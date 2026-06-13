@@ -58,14 +58,95 @@ export default function BlogPost({ post }) {
       },
       types: {
         image: ({ value }) => {
-          return (
+          if (!value?.asset) return null
+
+          const loading = value.loading === 'eager' ? 'eager' : 'lazy'
+          const hasCaption = value.caption || value.source
+          const image = (
             <Image
-              className="my-6 overflow-hidden rounded-xl"
-              alt={value.alt}
+              className="overflow-hidden rounded-xl"
+              alt={value.alt || ''}
               src={urlBuilder.image(value).url()}
               width={1024}
               height={512}
+              loading={loading}
             />
+          )
+
+          if (!hasCaption) {
+            return <div className="my-6">{image}</div>
+          }
+
+          return (
+            <figure className="my-6">
+              {image}
+              <figcaption className="mt-2 text-center text-sm text-neutral-500 dark:text-neutral-400">
+                {value.caption}
+                {value.source && (
+                  <>
+                    {value.caption ? ' ' : null}
+                    (
+                    <a
+                      href={value.source}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="hover-color underline"
+                    >
+                      Source
+                    </a>
+                    )
+                  </>
+                )}
+              </figcaption>
+            </figure>
+          )
+        },
+        table: ({ value }) => {
+          const rows =
+            value?.rows?.filter((row) => row?.cells?.length > 0) ?? []
+          if (!rows.length) return null
+
+          const [headerRow, ...bodyRows] = rows
+          const headerCells = headerRow.cells ?? []
+
+          return (
+            <figure className="my-6">
+              <div className="overflow-x-auto">
+                <table className="w-full border-collapse text-sm lg:text-base">
+                  <thead>
+                    <tr>
+                      {headerCells.map((cell, index) => (
+                        <th
+                          key={index}
+                          className="light-border border px-3 py-2 text-left font-semibold"
+                        >
+                          {cell}
+                        </th>
+                      ))}
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {bodyRows.map((row, rowIndex) => (
+                      <tr key={rowIndex}>
+                        {(row.cells ?? []).map((cell, cellIndex) => (
+                          <td
+                            key={cellIndex}
+                            className="light-border border px-3 py-2 align-top"
+                          >
+                            {cell}
+                          </td>
+                        ))}
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+              {value.caption && (
+                <figcaption className="mt-2 text-center text-sm text-neutral-500 dark:text-neutral-400">
+                  {value.caption}
+                </figcaption>
+              )}
+            </figure>
           )
         },
         code: ({ value }) => {
