@@ -71,7 +71,7 @@
   }
 
   .page-padding-no-top {
-    @apply mx-auto px-4 pb-8 sm:px-6 sm:pb-12;
+    @apply mx-auto px-4 pb-8 pt-[88px] sm:px-6 sm:pb-12 sm:pt-[104px] lg:pt-0;
   }
 
   .min-height-viewport {

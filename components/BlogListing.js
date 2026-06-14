@@ -115,41 +115,6 @@ export default function BlogListing({
     )
   }
 
-  if (showEmptyState) {
-    return (
-      <div>
-        <Head>
-          <title>{pageTitle}</title>
-          <meta name="description" content={description} />
-          <meta charSet="utf-8" />
-          <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-          <meta name="author" content="Gavin Grant" />
-          <meta property="og:site_name" content="Gavin Grant Consulting" />
-          <meta property="og:title" content={ogTitle} />
-          <meta property="og:description" content={description} />
-          <meta property="og:image" content={ogImage.src} />
-        </Head>
-
-        <div className="page-padding flex flex-col gap-4 md:flex-row items-end justify-between">
-          <NewsletterSubscribe />
-
-          <BlogCategorySelect
-            categories={categories}
-            currentCategorySlug={currentCategorySlug}
-          />
-        </div>
-
-        <div className="page-padding flex min-h-[40vh] items-start md:items-center justify-center">
-          <p className="text-muted-foreground">
-            {currentCategorySlug
-              ? 'No posts in this category yet.'
-              : 'No posts yet.'}
-          </p>
-        </div>
-      </div>
-    )
-  }
-
   return (
     <div className="page-padding">
       <Head>
@@ -164,7 +129,7 @@ export default function BlogListing({
         <meta property="og:image" content={ogImage.src} />
       </Head>
 
-      <div className="flex flex-col gap-4 mb-4 sm:mb-6 md:flex-row items-start md:items-end justify-between">
+      <div className="flex flex-col gap-4 mb-4 sm:mb-6 md:flex-row items-start justify-between">
         <NewsletterSubscribe />
 
         <BlogCategorySelect
@@ -173,37 +138,49 @@ export default function BlogListing({
         />
       </div>
 
-      <div className="grid grid-cols-1 gap-4 sm:gap-6 md:grid-cols-2 2xl:max-w-[1536px] 2xl:grid-cols-3">
-        {blogPosts.map((post, index) => {
-          return (
-            <ProjectCard
-              index={index}
-              key={post.metadata.slug.current}
-              slug={post.metadata.slug.current}
-              imgsrc={getSanityImageUrl(post.metadata.image.asset._ref)}
-              name={post.metadata.title}
-              description={post.metadata.description}
-              type="blog"
-              publishDate={post.publishDate}
-              readingTime={post.estimatedReadingTime}
-            />
-          )
-        })}
-      </div>
-
-      {hasMorePosts && (
-        <div className="pb-10 pt-4 flex items-center justify-center">
-          <Button
-            color="primary"
-            radius="sm"
-            size="lg"
-            onPress={loadMorePosts}
-            disabled={isLoading}
-            isLoading={isLoading}
-          >
-            {isLoading ? 'Loading...' : 'Load More Posts'}
-          </Button>
+      {showEmptyState ? (
+        <div className="flex min-h-[40vh] items-start justify-center md:items-center">
+          <p className="text-muted-foreground">
+            {currentCategorySlug
+              ? 'No posts in this category yet.'
+              : 'No posts yet.'}
+          </p>
         </div>
+      ) : (
+        <>
+          <div className="grid grid-cols-1 gap-4 sm:gap-6 md:grid-cols-2 2xl:max-w-[1536px] 2xl:grid-cols-3">
+            {blogPosts.map((post, index) => {
+              return (
+                <ProjectCard
+                  index={index}
+                  key={post.metadata.slug.current}
+                  slug={post.metadata.slug.current}
+                  imgsrc={getSanityImageUrl(post.metadata.image.asset._ref)}
+                  name={post.metadata.title}
+                  description={post.metadata.description}
+                  type="blog"
+                  publishDate={post.publishDate}
+                  readingTime={post.estimatedReadingTime}
+                />
+              )
+            })}
+          </div>
+
+          {hasMorePosts && (
+            <div className="pb-10 pt-4 flex items-center justify-center">
+              <Button
+                color="primary"
+                radius="sm"
+                size="lg"
+                onPress={loadMorePosts}
+                disabled={isLoading}
+                isLoading={isLoading}
+              >
+                {isLoading ? 'Loading...' : 'Load More Posts'}
+              </Button>
+            </div>
+          )}
+        </>
       )}
     </div>
   )
