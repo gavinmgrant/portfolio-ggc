@@ -26,7 +26,7 @@ export default function BookAMeetingButton() {
 
   return (
     <button
-      className="light-border rounded-lg border px-3 py-2.5 transition-all duration-300 ease-in-out hover:scale-105"
+      className="light-border rounded-lg border px-3 py-2.5 transition-all duration-300 ease-in-out hover:scale-105 w-full sm:w-auto flex justify-center items-center"
       data-cal-namespace="30min"
       data-cal-link="gavingrant/30min"
       data-cal-config='{"layout":"month_view"}'

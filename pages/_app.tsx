@@ -1,4 +1,4 @@
-import { useEffect, lazy, Suspense } from 'react'
+import { useEffect, useLayoutEffect, lazy, Suspense } from 'react'
 import Script from 'next/script'
 import { useRouter } from 'next/router'
 import Navigation from '../components/Navigation'
@@ -8,6 +8,7 @@ import type { AppProps } from 'next/app'
 import { ThemeProvider } from 'next-themes'
 import { HeroUIProvider } from '@heroui/react'
 import { VisualEditing } from '@sanity/visual-editing/next-pages-router'
+import { libreBaskerville, outfit, plusJakartaSans } from '@/lib/fonts'
 import '../styles/globals.css'
 import 'tailwindcss/tailwind.css'
 
@@ -18,12 +19,23 @@ export interface SharedPageProps {
 
 const PreviewProvider = lazy(() => import('@/components/PreviewProvider'))
 
+const fontVariables = `${plusJakartaSans.variable} ${libreBaskerville.variable} ${outfit.variable}`
+
 function MyApp({ Component, pageProps }: AppProps<SharedPageProps>) {
   const { draftMode, token } = pageProps
 
   const GTM_ID = process.env.NEXT_PUBLIC_GTM_ID
 
   const router = useRouter()
+
+  useLayoutEffect(() => {
+    document.documentElement.classList.add(
+      plusJakartaSans.variable,
+      libreBaskerville.variable,
+      outfit.variable
+    )
+    document.body.classList.add(plusJakartaSans.className)
+  }, [])
 
   useEffect(() => {
     const handleRouteChange = (url: string) => {
@@ -38,7 +50,9 @@ function MyApp({ Component, pageProps }: AppProps<SharedPageProps>) {
   }, [router.events])
 
   return (
-    <div className="relative min-h-screen dark:bg-neutral-900">
+    <div
+      className={`${fontVariables} ${plusJakartaSans.className} relative min-h-screen dark:bg-neutral-900`}
+    >
       <RouteProgress />
       <HeroUIProvider>
         <ThemeProvider

@@ -58,7 +58,7 @@ export default function NewsletterSubscribe() {
         Build better, more resilient interfaces
       </h3>
       <p className="mb-3 text-sm">
-        I share practical engineering deep-dives on React, Next.js, and performance optimization for complex web apps. Join me to sharpen your frontend craft and solve the architectural challenges that matter.
+      Practical deep-dives on React, Next.js, and performance. Join to sharpen your frontend craft and tackle real architectural challenges.
       </p>
       <Form onSubmit={handleSubmit} className="flex flex-col gap-4 sm:flex-row">
         <input

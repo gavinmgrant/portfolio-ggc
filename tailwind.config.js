@@ -9,14 +9,26 @@ module.exports = {
   darkMode: 'class',
   theme: {
     fontFamily: {
-      sans: ['Inter', 'ui-sans-serif'],
-      poppins: ['Poppins', 'ui-sans-serif'],
-      serif: ['DM Serif Text', 'ui-serif'],
-      mono: ['SFMono-Regular', 'ui-monospace'],
-      display: ['Oswald'],
-      body: ['Open Sans'],
+      sans: ['var(--font-sans)', 'ui-sans-serif'],
+      heading: ['var(--font-heading)', 'ui-sans-serif'],
+      logo: ['var(--font-logo)', 'ui-sans-serif'],
     },
     extend: {
+      fontSize: {
+        xs: ['0.875rem', { lineHeight: '1.25rem' }], // 14px
+        sm: ['1rem', { lineHeight: '1.5rem' }], // 16px
+        base: ['1.125rem', { lineHeight: '1.75rem' }], // 18px
+        lg: ['1.25rem', { lineHeight: '1.75rem' }], // 20px
+        xl: ['1.375rem', { lineHeight: '2rem' }], // 22px
+        '2xl': ['1.625rem', { lineHeight: '2.125rem' }], // 26px
+        '3xl': ['2rem', { lineHeight: '2.375rem' }], // 32px
+        '4xl': ['2.375rem', { lineHeight: '2.625rem' }], // 38px
+        '5xl': ['3.125rem', { lineHeight: '1' }], // 50px
+        '6xl': ['3.875rem', { lineHeight: '1' }], // 62px
+        '7xl': ['4.625rem', { lineHeight: '1' }], // 74px
+        '8xl': ['6.125rem', { lineHeight: '1' }], // 98px
+        '9xl': ['8.125rem', { lineHeight: '1' }], // 130px
+      },
       screens: {
         xs: '420px',
       },
@@ -24,6 +36,14 @@ module.exports = {
         DEFAULT: {
           css: {
             maxWidth: '1024px',
+            fontSize: '1.125rem',
+            lineHeight: '1.75',
+            p: {
+              fontWeight: '500',
+            },
+            li: {
+              fontWeight: '500',
+            },
             ul: {
               padding: '0',
             },

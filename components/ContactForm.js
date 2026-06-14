@@ -149,7 +149,7 @@ export default function ContactForm() {
         />
         <div className="mt-4 flex h-12 w-full items-center justify-center">
           <motion.div
-            className="mx-auto"
+            className="mx-auto w-full sm:w-auto"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.25 }}

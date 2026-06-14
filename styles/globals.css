@@ -7,12 +7,16 @@
     @apply bg-white dark:bg-neutral-900;
   }
 
+  body {
+    @apply text-base font-medium leading-relaxed;
+  }
+
   p {
-    @apply py-2 leading-7;
+    @apply py-2 leading-8;
   }
 
   li {
-    @apply ml-8 list-disc py-1;
+    @apply ml-8 list-disc py-1 font-medium;
   }
 
   code {
@@ -25,7 +29,7 @@
   h4,
   h5,
   h6 {
-    @apply !font-poppins !font-semibold tracking-wide;
+    @apply !font-heading !font-semibold;
   }
 
   .bg-standard {
@@ -63,11 +67,11 @@
   }
 
   .page-padding {
-    @apply mx-auto px-4 pb-4 pt-[88px] sm:px-6 sm:pb-6 sm:pt-[104px] lg:pt-[112px];
+    @apply mx-auto px-4 pb-8 pt-[88px] sm:px-6 sm:pb-12 sm:pt-[104px] lg:pt-[112px];
   }
 
   .page-padding-no-top {
-    @apply mx-auto px-4 pb-4 sm:px-6 sm:pb-6;
+    @apply mx-auto px-4 pb-8 sm:px-6 sm:pb-12;
   }
 
   .min-height-viewport {

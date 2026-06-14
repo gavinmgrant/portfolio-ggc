@@ -151,7 +151,7 @@ export default function BlogListing({
   }
 
   return (
-    <div>
+    <div className="page-padding">
       <Head>
         <title>{pageTitle}</title>
         <meta name="description" content={description} />
@@ -164,7 +164,7 @@ export default function BlogListing({
         <meta property="og:image" content={ogImage.src} />
       </Head>
 
-      <div className="page-padding flex flex-col gap-4 md:flex-row items-start md:items-end justify-between">
+      <div className="flex flex-col gap-4 mb-4 sm:mb-6 md:flex-row items-start md:items-end justify-between">
         <NewsletterSubscribe />
 
         <BlogCategorySelect
@@ -173,7 +173,7 @@ export default function BlogListing({
         />
       </div>
 
-      <div className="page-padding-no-top grid grid-cols-1 gap-4 sm:gap-6 md:grid-cols-2 2xl:max-w-[1536px] 2xl:grid-cols-3">
+      <div className="grid grid-cols-1 gap-4 sm:gap-6 md:grid-cols-2 2xl:max-w-[1536px] 2xl:grid-cols-3">
         {blogPosts.map((post, index) => {
           return (
             <ProjectCard

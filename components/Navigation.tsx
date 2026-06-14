@@ -58,10 +58,10 @@ const Navigation = () => {
         >
           <DrawerContent>
             {(onClose) => (
-              <DrawerBody className="px-4 py-16">
+              <DrawerBody className="px-4 py-16 font-sans">
                 <div className="flex flex-col items-center justify-center gap-4">
                   <Button
-                    className="w-full"
+                    className="w-full font-sans"
                     onPress={() => {
                       onClose()
                       router.push('/')
@@ -73,7 +73,7 @@ const Navigation = () => {
                     Home
                   </Button>
                   <Button
-                    className="w-full"
+                    className="w-full font-sans"
                     onPress={() => {
                       onClose()
                       router.push('/projects')
@@ -85,7 +85,7 @@ const Navigation = () => {
                     Projects
                   </Button>
                   <Button
-                    className="w-full"
+                    className="w-full font-sans"
                     onPress={() => {
                       onClose()
                       router.push('/blog')
@@ -97,7 +97,7 @@ const Navigation = () => {
                     Blog
                   </Button>
                   <Button
-                    className="w-full"
+                    className="w-full font-sans"
                     onPress={() => {
                       onClose()
                       router.push('/contact')
@@ -124,6 +124,7 @@ const Navigation = () => {
                     }}
                   >
                     <Input
+                      className="font-sans"
                       startContent={<IconSearch className="mr-1" />}
                       value={searchString}
                       onChange={(e) => setSearchString(e.target.value)}
