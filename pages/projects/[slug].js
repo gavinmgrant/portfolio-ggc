@@ -40,7 +40,7 @@ export default function ProjectPage({ project, technologies }) {
   const pageTitle = `${proj.isArray ? '' : proj.name} | Gavin Grant Consulting`
 
   return (
-    <div className="mx-auto px-4 pt-[72px] sm:px-6 sm:pt-[104px] lg:pt-[112px] 2xl:max-w-[1536px]">
+    <div className="page-padding 2xl:max-w-[1536px]">
       <Head>
         <title>{pageTitle}</title>
         <meta name="description" content={proj.description} />

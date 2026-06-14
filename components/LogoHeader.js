@@ -6,7 +6,7 @@ const LogoHeader = () => {
   return (
     <Link href="/">
       <div className="hover-color flex items-center justify-start gap-3 sm:gap-4">
-        <div className="h-[28px] w-[28px] sm:h-[32px] sm:w-[32px]">
+        <div className="h-[30px] w-[30px] sm:h-[32px] sm:w-[32px]">
           <svg
             className="h-full w-full"
             width="389"

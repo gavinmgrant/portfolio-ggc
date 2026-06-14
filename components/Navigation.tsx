@@ -41,7 +41,7 @@ const Navigation = () => {
 
         {/* Mobile Menu */}
         <div className="flex flex-row items-center justify-center gap-3">
-          <div className="block lg:hidden">
+          <div className="flex items-center justify-center origin-right scale-[0.8] lg:hidden">
             <ThemeSwitch />
           </div>
           <IconMenu2
@@ -58,7 +58,7 @@ const Navigation = () => {
         >
           <DrawerContent>
             {(onClose) => (
-              <DrawerBody className="px-12 py-14">
+              <DrawerBody className="px-4 py-16">
                 <div className="flex flex-col items-center justify-center gap-4">
                   <Button
                     className="w-full"
