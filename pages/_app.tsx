@@ -8,7 +8,12 @@ import type { AppProps } from 'next/app'
 import { ThemeProvider } from 'next-themes'
 import { HeroUIProvider } from '@heroui/react'
 import { VisualEditing } from '@sanity/visual-editing/next-pages-router'
-import { libreBaskerville, outfit, plusJakartaSans } from '@/lib/fonts'
+import {
+  jetbrainsMono,
+  libreBaskerville,
+  outfit,
+  plusJakartaSans,
+} from '@/lib/fonts'
 import '../styles/globals.css'
 import 'tailwindcss/tailwind.css'
 
@@ -19,7 +24,7 @@ export interface SharedPageProps {
 
 const PreviewProvider = lazy(() => import('@/components/PreviewProvider'))
 
-const fontVariables = `${plusJakartaSans.variable} ${libreBaskerville.variable} ${outfit.variable}`
+const fontVariables = `${plusJakartaSans.variable} ${libreBaskerville.variable} ${outfit.variable} ${jetbrainsMono.variable}`
 
 function MyApp({ Component, pageProps }: AppProps<SharedPageProps>) {
   const { draftMode, token } = pageProps
@@ -32,7 +37,8 @@ function MyApp({ Component, pageProps }: AppProps<SharedPageProps>) {
     document.documentElement.classList.add(
       plusJakartaSans.variable,
       libreBaskerville.variable,
-      outfit.variable
+      outfit.variable,
+      jetbrainsMono.variable
     )
     document.body.classList.add(plusJakartaSans.className)
   }, [])

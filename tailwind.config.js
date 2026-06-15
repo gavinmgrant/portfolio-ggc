@@ -12,6 +12,7 @@ module.exports = {
       sans: ['var(--font-sans)', 'ui-sans-serif'],
       heading: ['var(--font-heading)', 'ui-sans-serif'],
       logo: ['var(--font-logo)', 'ui-sans-serif'],
+      mono: ['var(--font-mono)', 'ui-monospace', 'monospace'],
     },
     extend: {
       fontSize: {

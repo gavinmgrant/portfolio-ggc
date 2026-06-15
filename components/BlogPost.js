@@ -154,6 +154,11 @@ export default function BlogPost({ post }) {
             <SyntaxHighlighter
               language={value.language || 'javascript'}
               style={theme === 'dark' ? materialDark : materialLight}
+              customStyle={{
+                fontFamily: 'var(--font-mono), ui-monospace, monospace',
+                fontSize: '0.875rem',
+                lineHeight: '1.6',
+              }}
             >
               {value.code}
             </SyntaxHighlighter>
