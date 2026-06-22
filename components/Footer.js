@@ -11,7 +11,7 @@ import {
 import { urls } from '../configs/urls.config'
 import NewsletterSubscribe from './NewsletterSubscribe'
 
-const Footer = () => {
+const Footer = ({ showNewsletterSubscribe = true }) => {
   const router = useRouter()
   const year = new Date().getFullYear()
 
@@ -26,9 +26,11 @@ const Footer = () => {
         </div>
 
         <div className="relative mx-auto text-sm text-neutral-800 dark:text-white">
-          <div className="mb-6 pt-12 pb-20 flex justify-center border-b border-neutral-200 dark:border-neutral-700 md:justify-start">
-            <NewsletterSubscribe key={router.pathname} />
-          </div>
+          {showNewsletterSubscribe ? (
+            <div className="mb-6 flex justify-center border-b border-neutral-200 pb-20 pt-12 dark:border-neutral-700 md:justify-start">
+              <NewsletterSubscribe key={router.pathname} />
+            </div>
+          ) : null}
           <div className="flex flex-col items-center justify-between gap-4 md:flex-row">
             <div className="flex flex-col space-x-0 space-y-3 pt-2 sm:flex-row sm:space-x-4 sm:space-y-0 sm:pt-0">
               <motion.a

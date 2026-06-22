@@ -54,11 +54,11 @@ export default function NewsletterSubscribe() {
 
   return (
     <div className="w-full max-w-2xl">
-      <h3 className="text-2xl font-semibold sm:text-3xl">
-        Build better, more resilient interfaces
+      <h3 className="font-semibold text-2xl">
+        Frontend engineering & building AI tools
       </h3>
       <p className="mb-3 text-sm">
-        Practical deep-dives on React, Next.js, and performance. Written for engineers who want sharper craft and stronger architecture.
+        Practical deep-dives on frontend craft in React and Next.js and how to ship AI tools that feel polished and production-ready.
         One email/month. Unsubscribe anytime.
       </p>
       <Form onSubmit={handleSubmit} className="flex flex-col gap-4 sm:flex-row">

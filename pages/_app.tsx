@@ -20,6 +20,11 @@ import 'tailwindcss/tailwind.css'
 export interface SharedPageProps {
   draftMode: boolean
   token: string
+  hideFooterNewsletter?: boolean
+}
+
+type AppPageComponent = AppProps['Component'] & {
+  hideFooterNewsletter?: boolean
 }
 
 const PreviewProvider = lazy(() => import('@/components/PreviewProvider'))
@@ -27,7 +32,10 @@ const PreviewProvider = lazy(() => import('@/components/PreviewProvider'))
 const fontVariables = `${plusJakartaSans.variable} ${libreBaskerville.variable} ${outfit.variable} ${jetbrainsMono.variable}`
 
 function MyApp({ Component, pageProps }: AppProps<SharedPageProps>) {
-  const { draftMode, token } = pageProps
+  const { draftMode, token, hideFooterNewsletter } = pageProps
+  const PageComponent = Component as AppPageComponent
+  const showFooterNewsletter =
+    !hideFooterNewsletter && !PageComponent.hideFooterNewsletter
 
   const GTM_ID = process.env.NEXT_PUBLIC_GTM_ID
 
@@ -91,7 +99,7 @@ function MyApp({ Component, pageProps }: AppProps<SharedPageProps>) {
               <Component {...pageProps} />
             )}
           </div>
-          <Footer />
+          <Footer showNewsletterSubscribe={showFooterNewsletter} />
         </ThemeProvider>
       </HeroUIProvider>
     </div>
