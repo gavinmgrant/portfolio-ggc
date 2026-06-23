@@ -1,4 +1,4 @@
-import { useEffect, useLayoutEffect, lazy, Suspense } from 'react'
+import { useEffect, lazy, Suspense } from 'react'
 import Script from 'next/script'
 import { useRouter } from 'next/router'
 import Navigation from '../components/Navigation'
@@ -41,7 +41,7 @@ function MyApp({ Component, pageProps }: AppProps<SharedPageProps>) {
 
   const router = useRouter()
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     document.documentElement.classList.add(
       plusJakartaSans.variable,
       libreBaskerville.variable,
