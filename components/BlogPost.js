@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react'
 import Image from 'next/image'
-import { useTheme } from 'next-themes'
 import { AnimatePresence, motion } from 'motion/react'
 import { PortableText } from '@portabletext/react'
 import { useScrollHeight } from '../hooks/useScrollHeight'
@@ -11,11 +10,7 @@ import ContactForm from '../components/ContactForm'
 import TableOfContents from './TableOfContents'
 import { getSanityImageUrl } from '../utils/getSanityImageUrl'
 import { parseChildrenToSlug } from '../utils/handleSlugs'
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
-import {
-  materialDark,
-  materialLight,
-} from 'react-syntax-highlighter/dist/cjs/styles/prism'
+import CodeBlock from './CodeBlock'
 import imageUrlBuilder from '@sanity/image-url'
 import { getDisplayDate } from '../utils/getDisplayDate'
 import Link from 'next/link'
@@ -23,7 +18,6 @@ import Link from 'next/link'
 export default function BlogPost({ post }) {
   const [components, setComponents] = useState(null)
   const scrollHeight = useScrollHeight()
-  const { theme } = useTheme()
 
   const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID
   const dataset = process.env.NEXT_PUBLIC_SANITY_DATASET
@@ -149,25 +143,13 @@ export default function BlogPost({ post }) {
             </figure>
           )
         },
-        code: ({ value }) => {
-          return (
-            <SyntaxHighlighter
-              language={value.language || 'javascript'}
-              style={theme === 'dark' ? materialDark : materialLight}
-              customStyle={{
-                fontFamily: 'var(--font-mono), ui-monospace, monospace',
-                fontSize: '0.875rem',
-                lineHeight: '1.6',
-              }}
-            >
-              {value.code}
-            </SyntaxHighlighter>
-          )
-        },
+        code: ({ value }) => (
+          <CodeBlock code={value.code} language={value.language} />
+        ),
       },
     }
     setComponents(components)
-  }, [theme])
+  }, [])
 
   if (!post || !components)
     return (
