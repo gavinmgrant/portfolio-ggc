@@ -54,7 +54,7 @@ export default function NewsletterSubscribe() {
 
   return (
     <div className="w-full max-w-2xl">
-      <h3 className="font-semibold text-2xl">
+      <h3 className="font-semibold text-xl sm:text-2xl">
         Frontend engineering & building AI tools
       </h3>
       <p className="mb-3 text-sm">

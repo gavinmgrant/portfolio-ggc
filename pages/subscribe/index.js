@@ -21,7 +21,10 @@ function Subscribe() {
       </Head>
 
       <div className="flex items-start justify-center px-4 lg:h-screen lg:items-center">
-        <NewsletterSubscribe />
+        <div className="w-full max-w-3xl">
+          <h1 className="heading-size-lg mb-4 font-semibold">Subscribe to the newsletter</h1>
+          <NewsletterSubscribe />
+        </div>
       </div>
     </div>
   )
