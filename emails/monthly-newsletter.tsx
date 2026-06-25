@@ -106,6 +106,13 @@ export function MonthlyNewsletterEmail({
               </Link>
             </Text>
             <Text style={footerText}>
+              You received this commercial email from Gavin Grant Consulting because you
+              subscribed at <Link href={siteUrl} style={link}>{siteUrl}</Link>.
+            </Text>
+            <Text style={footerText}>
+              1362 Frankfort Street #4301, San Diego, CA 92110
+            </Text>
+            <Text style={footerText}>
               <Link href={`${siteUrl}/privacy`} style={link}>
                 Privacy Policy
               </Link>
